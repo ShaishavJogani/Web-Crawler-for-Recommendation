@@ -1,0 +1,1 @@
+byteis akeywordwhich designate 8 bit sign integerprimitive type . Thejava.lang.Byteclass nominal wrapper class need store abytevalue object reference require . Syntax : byte < variable-name > = < integer-value > ; For example : The number 65 code 'A ' inASCII . See also : Java Programming/Primitive Types

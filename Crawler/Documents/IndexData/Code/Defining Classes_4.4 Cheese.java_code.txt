@@ -1,0 +1,6 @@
+public class Cheese {
+  // This is a method with the same name as the class
+  public void Cheese() {
+    System.out.println("A method execution.");
+  }
+}

@@ -1,0 +1,4 @@
+public <D> D assign(Collection<D> generic, D obj) {
+  generic.add(obj);
+  return obj;
+}

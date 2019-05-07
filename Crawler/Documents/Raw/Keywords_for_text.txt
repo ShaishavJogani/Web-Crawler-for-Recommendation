@@ -1,0 +1,14 @@
+
+foris a Java keyword.
+It starts a looping block.
+The general syntax of afor, usingExtended Backus-Naur Form, is
+
+for-looping-statement ::=forcondition-clausesingle-statement|block-statementcondition-clause    ::=( before-statement;Boolean Expression; after-statement )single-statement    ::=Statementblock-statement     ::={Statement[Statement]}
+
+For example:
+
+
+See also:
+
+Java Programming/Keywords/whileJava Programming/Keywords/do
+

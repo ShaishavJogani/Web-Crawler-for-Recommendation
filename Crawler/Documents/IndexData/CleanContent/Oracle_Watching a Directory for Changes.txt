@@ -1,0 +1,1 @@
+Have ever find edit file , use IDE another editor , dialog box appear inform one open file change file system need reload ? Or perhaps , like NetBeans IDE , application quietly update file without notify . The following sample dialog box show notification look free editor , jEdit :

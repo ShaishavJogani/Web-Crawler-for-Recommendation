@@ -1,0 +1,10 @@
+
+Pre-requisite lesson: Creating a Policy File
+This lesson shows how to use a security manager to grant or deny access to system resources for applications. The lesson also shows how resource accesses, such as reading or writing a file, are not permitted for applications that are run with a security manager unless explicitly allowed by a permission entry in a policy file.
+The steps for this lesson are:
+
+Observe Application Freedom
+See How to Restrict Applications
+Set Up the Policy File to Grant the Required Permissions
+See the Policy File Effects
+

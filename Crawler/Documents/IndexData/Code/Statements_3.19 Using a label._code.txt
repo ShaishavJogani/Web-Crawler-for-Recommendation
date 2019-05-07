@@ -1,0 +1,8 @@
+String s = "A test string for the switch!\nLine two of test string...";
+outer: for (int i = 0; i < s.length(); i++) {
+  switch (s.charAt(i)) {
+    case '\n': break outer;
+    case ' ': break;
+    default: System.out.print(s.charAt(i));
+  }
+}

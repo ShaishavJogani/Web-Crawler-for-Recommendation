@@ -1,0 +1,4 @@
+
+Below is an example on how you need to override the above method. For this very example, the component class that we would be using would be theCanvasclass. For more information about theCanvasclass,see the section onUnderstanding the Canvas class
+
+

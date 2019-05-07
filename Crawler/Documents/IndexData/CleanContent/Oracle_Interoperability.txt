@@ -1,0 +1,1 @@
+In section , 'll learn following two aspect interoperability : Compatibility : This subsection describe collection make work old APIs predate addition Collections Java platform . API Design : This subsection describe design new APIs interoperate seamlessly one another .

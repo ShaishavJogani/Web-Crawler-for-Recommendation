@@ -1,0 +1,1 @@
+If section optional , hide like : You writeYou get { { Java/Hidden begin|title=Hidden section } } This section mandatory . { { Hidden end } } Hidden sectionThis section mandatory .

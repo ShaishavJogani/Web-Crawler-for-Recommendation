@@ -1,0 +1,73 @@
+
+Service providers for internationalization enable the plug-in of locale-dependent data and services. Because locale-dependent data and services can be plugged-in, third parties are able to provide implementations of most locale-sensitive classes in the java.text and java.util packages.
+A service is a set of programming interfaces and classes that provide access to a specific application's functionality or feature. A service provider interface (SPI) is the set of public interfaces and abstract classes that a service defines. A service provider implements the SPI. Service providers enable you to create extensible applications, which you can extend without modifying its original code base. You can enhance their functionality with new plug-ins or modules. For more information about service providers and extensible applications, see 
+Creating Extensible Applications.
+You can use service providers for internationalization to provide custom implementations of the following locale-sensitive classes:
+
+
+BreakIterator objects
+
+Collator objects
+Language code, country code, and variant name for the
+Locale class
+Time zone names
+Currency symbols
+
+DateFormat objects
+
+DateFormatSymbols objects
+
+NumberFormat objects
+
+DecimalFormatSymbols objects
+
+The corresponding SPIs are contained both in java.text.spi and in java.util.spi packages:
+
+
+java.util.spi
+java.text.spi
+
+
+
+
+
+CurrencyNameProvider
+
+LocaleServiceProvider
+
+TimeZoneNameProvider
+
+
+
+
+
+BreakIteratorProvider
+
+CollatorProvider
+
+DateFormatProvider
+
+DateFormatSymbolsProvider
+
+DecimalFormatSymbolsProvider
+
+NumberFormatProvider
+
+
+
+
+For example, if you want to provide a NumberFormat object for a new locale, implement the java.text.spi.NumberFormatProvider class and implement these methods:
+
+getCurrencyInstance(Locale locale)
+getIntegerInstance(Locale locale)
+getNumberInstance(Locale locale)
+getPercentInstance(Locale locale)
+
+
+Locale loc = new Locale("da", "DK");
+NumberFormat nf = NumberFormatProvider.getNumberInstance(loc);
+
+These methods first check whether the Java runtime environment supports the requested locale; if so, the methods use that support. Otherwise, the methods invoke the getAvailableLocales methods of installed providers for the appropriate interface to find a provider that supports the requested locale.
+For an in-depth example of how to use service providers for internationalization, see    
+Installing a Custom Resource Bundle as an Extension. This section shows you how to implement the
+ResourceBundleControlProvider interface, which enables you to use any custom ResourceBundle.Control classes without any additional changes to the source code of your application.

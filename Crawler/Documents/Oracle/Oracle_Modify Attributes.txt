@@ -1,0 +1,52 @@
+
+The 
+DirContext interface contains methods for modifying the attributes and attribute values of objects in the directory.
+Using a List of Modifications
+One way to modify the attributes of an object is to supply a list of modification requests (
+ModificationItem). Each ModificationItem consists of a numeric constant indicating the type of modification to make and an 
+Attribute describing the modification to make. Following are the three types of modifications:
+
+
+ADD_ATTRIBUTE
+
+REPLACE_ATTRIBUTE
+
+REMOVE_ATTRIBUTE
+
+Modifications are applied in the order in which they appear in the list. Either all of the modifications are executed, or none are.
+The following code creates a list of modifications. It replaces the "mail" attribute's value with a value of "geisel@wizards.com", adds an additional value to the "telephonenumber" attribute, and removes the "jpegphoto" attribute.
+
+// Specify the changes to make
+ModificationItem[] mods = new ModificationItem[3];
+
+// Replace the "mail" attribute with a new value
+mods[0] = new ModificationItem(DirContext.REPLACE_ATTRIBUTE,
+    new BasicAttribute("mail", "geisel@wizards.com"));
+
+// Add an additional value to "telephonenumber"
+mods[1] = new ModificationItem(DirContext.ADD_ATTRIBUTE,
+    new BasicAttribute("telephonenumber", "+1 555 555 5555"));
+
+// Remove the "jpegphoto" attribute
+mods[2] = new ModificationItem(DirContext.REMOVE_ATTRIBUTE,
+    new BasicAttribute("jpegphoto"));
+
+
+Windows Active Directory: Active Directory defines "telephonenumber" to be a single-valued attribute, contrary to 
+RFC 2256. To get this example to work against Active Directory, you must either use an attribute other than "telephonenumber", or change the DirContext.ADD_ATTRIBUTE to DirContext.REPLACE_ATTRIBUTE.
+
+After creating this list of modifications, you can supply it to 
+modifyAttributes() as follows.
+
+// Perform the requested modifications on the named object
+ctx.modifyAttributes(name, mods);
+
+Using Attributes
+Alternatively, you can perform modifications by specifying the type of modification and the attributes to which to apply the modification.
+For example, the following line replaces the attributes (identified in orig) associated with name with those in orig:
+
+ctx.modifyAttributes(name, DirContext.REPLACE_ATTRIBUTE, orig);
+
+Any other attributes of name remain unchanged.
+Both of these uses of modifyAttributes() are demonstrated in 
+the sample program . This program modifies the attributes by using a modification list and then uses the second form of modifyAttributes() to restore the original attributes.

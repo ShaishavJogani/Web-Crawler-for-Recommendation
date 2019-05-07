@@ -1,0 +1,11 @@
+
+Let's examine the following code:
+
+
+In thecode section 6.7,methodCis invalid.  BecausemethodAandmethodBpass (or throw) exceptions,methodCmust be prepared to handle them.  This can be handled in two ways: atry-catchblock, which will handle the exception within the method and athrowsclause which would in turn throw the exception to the caller to handle.  The above example will cause a compilation error, as Java is very strict about exception handling. So the programmer is forced to handle any possible error condition at some point.
+A method can do two things with an exception: ask the calling method to handle it by thethrowsdeclaration or handle the exception inside the method by thetry-catchblock.
+To work correctly, the original code can be modified in multiple ways.  For example, the following:
+
+
+TheAnotherExceptionfrommethodBwill be handled locally, whileCustomExceptionandSomeExceptionwill be thrown to the caller to handle it. Most of the developers are embarrassed when they have to choose between the two options. This type of decision should not be taken at development time. If you are a development team, it should be discussed between all the developers in order to have a common exception handling policy.
+

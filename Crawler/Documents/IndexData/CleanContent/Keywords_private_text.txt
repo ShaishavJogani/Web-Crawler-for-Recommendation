@@ -1,0 +1,1 @@
+privateis Javakeywordwhich declare member'saccessas private . That , member visible within class , class ( include subclass ) . The visibility ofprivatemembers extend tonested class . Please note : Because access modifier handle instance level class level , private member object visible instance class ! Syntax : privatevoidmethod ( ) ; See also : Java Programming/Access Modifiers

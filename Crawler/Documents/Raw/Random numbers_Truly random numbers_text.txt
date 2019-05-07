@@ -1,0 +1,17 @@
+
+BothMath.random()and theRandomclass produce pseudorandom numbers. This is good enough for a lot of applications, but remember that it is nottrulyrandom. If you want a more secure random number generator, Java provides thejava.security.SecureRandompackage. What happens withMath.random()and theRandomclass is that a 'seed' is chosen from which the pseudorandom numbers are generated.SecureRandomincreases the security to ensure that the seed which is used by the pseudorandom number generator is non-deterministic — that is, you cannot simply put the machine in the same state to get the same set of results. Once you have created aSecureRandominstance, you can use it in the same way as you can theRandomclass.
+If you wanttrulyrandom numbers, you can get a hardware random number generator or use a randomness generation service.
+
+
+
+To do:Add some exercises like the ones inVariables
+
+
+
+Large numbersJava ProgrammingRandom numbersUnicode
+
+
+
+
+
+

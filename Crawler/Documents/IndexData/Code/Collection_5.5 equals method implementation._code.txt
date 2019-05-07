@@ -1,0 +1,14 @@
+public boolean equals(Object obj) {
+    boolean ret = false;
+    if (this instanceof Apple &&
+          obj instanceof Apple) {
+        ret = this.appleEquals(obj);
+    } else if (this instanceof Orange &&
+              obj  instanceof Orange) {
+        ret = this.orangeEquals(obj);  
+    } else {
+        // Can not compare Orange to Apple
+       ret = false;
+    }
+    return ret;
+}

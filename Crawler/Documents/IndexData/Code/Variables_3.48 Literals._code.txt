@@ -1,0 +1,2 @@
+int age = 24;
+long bankBalance = 20000005L;

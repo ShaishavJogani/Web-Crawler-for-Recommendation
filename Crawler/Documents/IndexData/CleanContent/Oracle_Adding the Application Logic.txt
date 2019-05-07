@@ -1,0 +1,1 @@
+It time add application logic . Step 1 : Change Default Variable Names The figure show default variable name currently appear within Inspector . For component , variable name appear first , follow object 's type square bracket . For example , jTextField1 [ JTextField ] mean `` jTextField1 '' variable name `` JTextField '' type .

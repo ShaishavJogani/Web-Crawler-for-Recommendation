@@ -1,0 +1,24 @@
+
+This class is namedDistance, so using your favorite editor orJava IDE, first create a file namedDistance.java, then copy the source below, paste it into the file and save the file.
+
+
+At this point, you may wish to review the source to see how much you might be able to understand. While perhaps not being the most literate of programming languages, someone with understanding of other procedural languages such as C, or other object oriented languages such as C++ or C#, will be able to understand most if not all of the sample program.
+Once you save the file,compilethe program:
+
+Compilation command$ javac Distance.java
+
+(If thejavaccommand fails, review theinstallation instructions.)
+To run the program, you supply it with thexandycoordinates of two points on a plane separated by a space. For this version of Distance, only integer points are supported. The command sequence isjava Distance <x0> <y0> <x1> <y1>to compute the distance between the points (x0, y0) and (x1, y1).
+
+If you get ajava.lang.NumberFormatExceptionexception, some arguments are not a number. If you get ajava.lang.ArrayIndexOutOfBoundsExceptionexception, you did not provide enough numbers.
+
+Here are two examples:
+
+Output for the distance between the points (0, 3) and (4, 0)$ java Distance 0 3 4 0
+Distance between java.awt.Point[x=0,y=3] and java.awt.Point[x=4,y=0] is 5.0
+
+Output for the distance between the points (-4, 5) and (11, 19)$ java Distance -4 5 11 19
+Distance between java.awt.Point[x=-4,y=5] and java.awt.Point[x=11,y=19] is 20.518284528683193
+
+We'll explain this strange looking output, and also show how to improve it, later.
+

@@ -1,0 +1,37 @@
+
+We can pass anyprimitive data typesor reference data type to a method.
+
+Primitive type parameter[edit]
+
+The primitive types arepassed in by value. It means that as soon as the primitive type is passed in, there is no more link between the value inside the method and the source variable:
+
+
+
+As you can see incode section 3.70, themodifyValue()method has not modified the value ofi.
+
+Reference type parameter[edit]
+
+The object references are passed by value. It means that:
+
+There is no more link between the reference inside the method and the source reference,The source object itself and the object itself inside the method are still the same.
+
+You must understand the difference between the reference of an object and the object itself. Aobject referenceis the link between a variable name and an instance of object:
+
+Object object⇔new Object()
+
+An object reference is a pointer, an address to the object instance.
+The object itself is the value of its attributes inside the object instance:
+
+object.firstName⇒"James"object.lastName⇒"Gosling"object.birthDay⇒"May 19"
+
+Take a look at the example above:
+
+
+
+The name has changed because the method has changed the object itself and not the reference. Now take a look at the other example:
+
+
+
+The name has not changed because the method has changed the reference and not the object itself. The behavior is the same as if the method was in-lined and the parameters were assigned to new variable names:
+
+

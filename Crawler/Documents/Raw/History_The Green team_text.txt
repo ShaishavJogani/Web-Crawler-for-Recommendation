@@ -1,0 +1,7 @@
+
+James Gosling, architect and designer of the compiler for the Java technology
+
+In December of 1990, a project was initiated behind closed doors with the aim to create a programming tool that could render obsolete the C and C++ programming languages. EngineerPatrick Naughtonhad become extremely frustrated with the state of Sun's C++ and C APIs (Application Programming Interfaces) and tools. While he was considering to move towardsNeXT, he was offered a chance to work on new technology and theStealth Projectwas started, a secret nobody but he knew.
+This Stealth Project was later named theGreen ProjectwhenJames Goslingand Mike Sheridan joined Patrick.[1]As the Green Project teethed, the prospects of the project started becoming clearer to the engineers working on it. No longer did it aim to create a new language far superior to the present ones, but it aimed to target devices other than the computer.
+Staffed at 13 people, they began work in a small office on Sand Hill Road inMenlo Park, California. This team came to be called theGreen Teamhenceforth in time. The project they underwent was chartered by Sun Microsystems to anticipate and plan for the "next wave" in computing. For the team, this meant at least one significant trend, that of the convergence of digitally controlled consumer devices and computers.[1]
+

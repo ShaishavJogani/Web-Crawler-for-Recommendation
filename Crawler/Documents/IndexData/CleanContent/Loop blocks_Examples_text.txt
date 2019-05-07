@@ -1,0 +1,1 @@
+Thecode list 3.7recieves number parameter print binary representation . Thecode list 3.8is simulation play game call Lucky Sevens . It dice game player roll two dice . If number dice add seven , win $ 4 . If , lose $ 1 . The game show use control flow program well fruitlessness gambling . Conditional blocksJava ProgrammingLoop blocksBoolean expression

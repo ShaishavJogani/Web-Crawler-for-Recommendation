@@ -1,0 +1,14 @@
+
+ThePatternclass offers the functionmatcheswhich returnstrueif an expression is found into a string.
+For example, this script returns the unknown word preceding a known word:
+
+importjava.util.regex.Pattern;publicclassRegex{publicstaticvoidmain(String[]args){Strings="Test Java regex for Wikibooks.";System.out.println(Pattern.matches("[a-z]* Wikibooks",s));}}// Displays: "for Wikibooks"
+
+TheMatcherclass allows to get all matches for a given expression, with different methods:
+
+find(): find the next result.group(): displays the result.
+
+For example, this script displays the HTMLbtags contents:
+
+importjava.util.regex.Pattern;importjava.util.regex.Matcher;publicclassRegex{publicstaticvoidmain(String[]args){Strings="Test <i>Java</i> <b>regex</b> for <b>Wikibooks</b>.";Patternp=Pattern.compile("<b>([^<]+)</b>");Matcherm=p.matcher(s);while(m.find()){System.out.println(m.group());System.out.println(m.group(1));}}}/* Displays:<b>regex</b>regex<b>Wikibooks</b>Wikibooks*/
+

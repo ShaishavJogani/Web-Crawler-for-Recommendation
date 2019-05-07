@@ -1,0 +1,4 @@
+
+With the GUI components now in place, it is time to make the final adjustments. There are a few different ways to do this; the order suggested here is just one possible approach. 
+Step 1: Set the Component Text
+First, double-click the JTextField and JButton to change the default text that was inserted by the IDE. When you erase the text from the JTextField, it will shrink in size as shown below. Change the text of the JButton from "JButton1" to "Convert." Also change the top JLabel text to "Celsius" and the bottom to "Fahrenheit."

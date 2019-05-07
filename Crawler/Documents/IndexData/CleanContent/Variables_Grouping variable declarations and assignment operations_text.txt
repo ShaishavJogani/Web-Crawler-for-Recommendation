@@ -1,0 +1,1 @@
+Consider following code : There various way streamline writing code . You group declaration similar data type one statement , instance : Alternatively , far reduce syntax group declaration assignment together , :

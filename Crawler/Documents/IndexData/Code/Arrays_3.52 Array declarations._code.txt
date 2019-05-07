@@ -1,0 +1,2 @@
+int[] array1 = null;
+int array2[] = null;

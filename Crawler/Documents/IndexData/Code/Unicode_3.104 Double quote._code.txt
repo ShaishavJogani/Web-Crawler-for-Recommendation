@@ -1,0 +1,3 @@
+// Declare Strings doubleQuote1 and doubleQuote2 which both contain " (double quote):
+String doubleQuote1 = "\"";
+String doubleQuote2 = "\\u0022"; // "\u0022" doesn't work since """ doesn't work.

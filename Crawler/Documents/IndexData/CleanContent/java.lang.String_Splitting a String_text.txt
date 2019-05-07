@@ -1,0 +1,1 @@
+Sometimes useful split string separate string , base aregular expression . TheStringclass asplit ( ) method , since Java 1.4 , return String array : Another useful application could tosplitthe String text base new line character , could process text line line .

@@ -1,0 +1,1 @@
+throwis keyword ; 'throws ' exception . In throw statement , three type object throw : Exception , java : Throwable , andjava : Error Syntax : throw < Exception Ref > ; For example :

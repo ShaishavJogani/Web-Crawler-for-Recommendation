@@ -1,0 +1,9 @@
+
+In this lesson, you will act as the receiver of the signed jar file containing the count.class file. It requests access to your system resources on your system that it normally would not have permission to access.
+This procedure requires you to perform the following steps listed below.
+
+Observe the Restricted Application. This application will not be able to access your system resources until you import Susan's certificate and create a policy file.
+Import Susan's certificate as a trusted certificate using the keytool -import command, and give it the alias susan.
+Set up a policy file to grant permission for the count application signed by susan to read the specified file on your system.
+Test your reconfigured count application to verify that with a trusted certificate and access to your new policy file that grants it permission to read files on your system, count can now read your data file.
+

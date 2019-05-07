@@ -1,0 +1,1 @@
+The first thing need contract file . You download use basic sample file name contract . Or use file like . Just sure name file contract work command specify lesson . Once 've get contract file , place JAR file . In command window type following : jar cvf Contract.jar contract This command create JAR file name Contract.jar place contract file inside .

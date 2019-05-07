@@ -1,0 +1,11 @@
+MyClass obj;
+
+if (new java.util.Calendar().get(java.util.Calendar.AM_PM) == java.util.Calendar.AM) {
+  // Executed during a morning
+  obj = new SubOfMyClass();
+} else {
+  // Executed during an afternoon
+  obj = new MyClass();
+}
+ 
+obj.myMethod();

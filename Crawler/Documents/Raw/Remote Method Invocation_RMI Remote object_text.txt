@@ -1,0 +1,3 @@
+
+The remote object has to either extend thejava.rmi.server.UnicastRemoteObjectobject, or be explicitly exported by calling thejava.rmi.server.UnicastRemoteObject.exportObject()method.
+

@@ -1,0 +1,1 @@
+throwsis Java keyword . It use method definition declare Exceptions throw method . Syntax : public myMethod ( ) throwsMyException1 , MyException2 { MyException1 ... } Example :

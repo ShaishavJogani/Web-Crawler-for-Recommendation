@@ -1,0 +1,1 @@
+packageis Java keyword . It declare 'name space ' Java class . It must put top Java file , first Java statement line . To ensure package name unique across vendor , usually company url use start backword . Syntax : packagepackage ; For example : See also : Java Programming/PackagesJava Programming/Keywords/import

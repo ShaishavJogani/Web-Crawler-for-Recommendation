@@ -1,0 +1,1 @@
+This lesson focus Streaming API XML ( StAX ) , stream Java technology-based , event-driven , pull-parsing API read write XML document . StAX enable create bidirectional XML parser fast , relatively easy program , light memory footprint .

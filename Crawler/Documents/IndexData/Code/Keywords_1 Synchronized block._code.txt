@@ -1,0 +1,4 @@
+synchronized(<object_reference>) {
+   // Thread.currentThread() has a lock on object_reference. All other threads trying to access it will
+   // be blocked until the current thread releases the lock.
+}

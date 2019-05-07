@@ -1,0 +1,13 @@
+
+Static variables can be used as data sharing amongst objects of the same class. For example to implement a counter that stores the number of objects created at a given time can be defined as so:
+
+
+Thecountervariable is incremented each time an object is created.
+Public static variable should not be used, as these becomeglobalvariables that can be accessed from everywhere in the program. Global constants can be used, however. See below:
+
+
+Static methods can be used for utility functions or for functions that do not belong to any particular object. For example:
+
+
+See alsoStatic methods
+

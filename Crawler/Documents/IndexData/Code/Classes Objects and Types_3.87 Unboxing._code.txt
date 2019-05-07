@@ -1,0 +1,5 @@
+Boolean canMove = new Boolean(true);
+ 
+if (canMove) {
+  System.out.println("This code is legal in Java 1.5");
+}

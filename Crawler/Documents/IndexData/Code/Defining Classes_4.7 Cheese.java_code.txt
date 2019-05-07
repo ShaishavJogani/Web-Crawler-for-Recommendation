@@ -1,0 +1,5 @@
+public class Cheese {
+     public Cheese(int weight, String type) {
+          doStuff();
+     }
+}

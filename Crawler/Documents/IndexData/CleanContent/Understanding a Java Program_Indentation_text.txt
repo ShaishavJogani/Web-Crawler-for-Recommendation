@@ -1,0 +1,1 @@
+Java ignore whitespace front statement . As , two code snippet identical compiler : However , first one 's style ( whitespace ) preferred , readability high . The method body easy distinguish head , even high reading speed . ExecutionJava ProgrammingUnderstanding Java ProgramJava IDEs

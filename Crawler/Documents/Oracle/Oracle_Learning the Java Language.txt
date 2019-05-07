@@ -1,0 +1,10 @@
+
+This trail covers the fundamentals of programming in the Java programming language. 
+ Object-Oriented Programming Concepts teaches you the core concepts behind object-oriented programming: objects, messages, classes, and inheritance. This lesson ends by showing you how these concepts translate into code. Feel free to skip this lesson if you are already familiar with object-oriented programming. 
+ Language Basics describes the traditional features of the language, including variables, arrays, data types, operators, and control flow. 
+ Classes and Objects describes how to write the classes from which objects are created, and how to create and use the objects. 
+ Annotations are a form of metadata and provide information for the compiler. This lesson describes where and how to use annotations in a program effectively.
+ Interfaces and Inheritance describes interfaces—what they are, why you would want to write one, and how to write one. This section also describes the way in which you can derive one class from another. That is, how a subclass can inherit fields and methods from a superclass. You will learn that all classes are derived from the Object class, and how to modify the methods that a subclass inherits from superclasses. 
+ Numbers and Strings This lesson describes how to use Number and String objects The lesson also shows you how to format data for output. 
+ Generics are a powerful feature of the Java programming language. They improve the type safety of your code, making more of your bugs detectable at compile time. 
+ Packages are a feature of the Java programming language that help you to organize and structure your classes and their relationships to one another.

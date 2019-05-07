@@ -1,0 +1,9 @@
+public void logIt(String param) {
+  ...
+}
+
+public String logIt(String param) {
+  String retValue;
+  ...
+  return retValue;
+}

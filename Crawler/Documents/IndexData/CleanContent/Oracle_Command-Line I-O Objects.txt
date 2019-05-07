@@ -1,0 +1,1 @@
+System provide several predefined I/O object useful Java application mean launch command line . These implement Standard I/O stream provide operate system , also console object useful enter password . For information , refer I/O Command Line Basic I/O lesson .

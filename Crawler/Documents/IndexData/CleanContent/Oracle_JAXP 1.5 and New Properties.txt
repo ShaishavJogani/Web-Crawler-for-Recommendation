@@ -1,0 +1,1 @@
+This lesson focus new property introduce JAXP 1.5 . JAXP 1.5 add 7u40 JDK 8 release . You download current JDK 8 snapshot java.net .

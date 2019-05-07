@@ -1,0 +1,13 @@
+
+This section describes some of the methods in System that aren't covered in the previous sections.
+The arrayCopy method efficiently copies data between arrays. For more information, refer to 
+Arrays in the 
+Language Basics lesson.
+The 
+currentTimeMillis and 
+nanoTime methods are useful for measuring time intervals during execution of an application. To measure a time interval in milliseconds, invoke currentTimeMillis twice, at the beginning and end of the interval, and subtract the first value returned from the second. Similarly, invoking nanoTime twice measures an interval in nanoseconds.
+Note: The accuracy of both currentTimeMillis and nanoTime is limited by the time services provided by the operating system. Do not assume that currentTimeMillis is accurate to the nearest millisecond or that nanoTime is accurate to the nearest nanosecond. Also, neither currentTimeMillis nor nanoTime should be used to determine the current time. Use a high-level method, such as 
+java.util.Calendar.getInstance.
+
+The 
+exit method causes the Java virtual machine to shut down, with an integer exit status specified by the argument. The exit status is available to the process that launched the application. By convention, an exit status of 0 indicates normal termination of the application, while any other value is an error code.

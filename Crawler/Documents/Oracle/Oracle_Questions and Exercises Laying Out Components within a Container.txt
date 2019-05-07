@@ -1,0 +1,46 @@
+
+Questions
+In each of the following questions, choose the layout manager(s) most naturally suited for the described layout. Assume that the container controlled by the layout manager is a JPanel.
+1. The container has one component that should take up as much space as possible
+
+
+
+
+
+
+a. BorderLayout
+b. GridLayout
+c. GridBagLayout
+d. a and b
+e. b and c
+2. The container has a row of components that should all be displayed at the same size, filling the containerâs entire area.
+ 
+a. FlowLayout
+b. GridLayout
+c. BoxLayout
+d. a and b
+3. The container displays a number of components in a column, with any extra space going between the first two components.
+
+
+
+
+
+
+a. FlowLayout
+b. BoxLayout
+c. GridLayout
+d. BorderLayout
+4. The container can display three completely different components at different times, depending perhaps on user input or program state. Even if the componentsâ sizes differ, switching from one component to the next shouldnât change the amount of space devoted to the component.
+ 
+a. SpringLayout
+b. BoxLayout
+c. CardLayout
+d. GridBagLayout
+Exercises
+1. Implement the layout described and shown in question 1.
+2. Implement the layout described and shown in question 2.
+3. Implement the layout described and shown in question 3.
+4. Implement the layout described and shown in question 4.
+5. By adding a single line of code, make the program you wrote for Exercise 2 display the components from right-to-left, instead of from left-to-right.
+
+Check your answers.

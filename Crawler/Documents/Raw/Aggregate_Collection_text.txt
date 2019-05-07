@@ -1,0 +1,5 @@
+
+The implementations ofjava.util.Collectioninterface are used for grouping simple java objects.
+
+ExampleWe can group together all patients in a Hospital to a "patient" collection.
+

@@ -1,0 +1,5 @@
+int a = 5, b = 3;
+System.out.println(a > b); // Value is true because a is greater than b
+System.out.println(a == b); // Value is false because a does not equal b
+System.out.println(a != b); // Value is true because a does not equal b
+System.out.println(b <= a); // Value is true because b is less than a

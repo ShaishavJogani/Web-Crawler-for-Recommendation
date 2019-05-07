@@ -1,0 +1,38 @@
+
+The HelloWorld applet shown next is a Java class that displays the string "Hello World".
+
+
+//<![CDATA[
+ 
+        var attributes = { code:'HelloWorld.class', archive:'examples/dist/applet_HelloWorld/applet_HelloWorld.jar',  width:150, height:30} ; 
+        var parameters = { permissions:'sandbox' } ; 
+        deployJava.runApplet(attributes, parameters, '1.4'); 
+//]]>
+A browser with JavaScript enabled is required for this page to operate properly.
+Note:  If you don't see the example running, you might need to enable the JavaScript interpreter in your browser so that the Deployment Toolkit script can function properly.Following is the source code for the HelloWorld applet:
+
+
+import javax.swing.JApplet;
+import javax.swing.SwingUtilities;
+import javax.swing.JLabel;
+
+public class HelloWorld extends JApplet {
+    //Called when this applet is loaded into the browser.
+    public void init() {
+        //Execute a job on the event-dispatching thread; creating this applet's GUI.
+        try {
+            SwingUtilities.invokeAndWait(new Runnable() {
+                public void run() {
+                    JLabel lbl = new JLabel("Hello World");
+                    add(lbl);
+                }
+            });
+        } catch (Exception e) {
+            System.err.println("createGUI didn't complete successfully");
+        }
+    }
+}
+
+An applet such as this is typically managed and run by the Java Plug-in software in the browser.
+
+Download source code for the Hello World example to experiment further.

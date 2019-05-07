@@ -1,0 +1,3 @@
+  public MyClass() {
+    this("Default Value");
+  }

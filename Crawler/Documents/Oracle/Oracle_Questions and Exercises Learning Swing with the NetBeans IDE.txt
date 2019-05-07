@@ -1,0 +1,17 @@
+
+Questions
+
+When creating this new project, we left the "Create Main Class" checkbox deselected. Why?
+The _____ contains all of the components offered by the Swing API.
+What is the purpose of the Design Area?
+Explain the difference between the Source and Design tabs.
+Name some advantages to editing an object with the Property Editor (as opposed to editing it directly in the source code.)
+This lesson used Swing objects of three different types. What were they?
+Describe the process for setting two components to the same width in the Design Area.
+
+Exercises
+
+Use the property editor to change the appearance of this application. Experiment by changing some values and seeing what effect your changes have.
+
+
+Check your answers

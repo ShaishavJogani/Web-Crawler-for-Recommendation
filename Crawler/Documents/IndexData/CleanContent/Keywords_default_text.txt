@@ -1,0 +1,1 @@
+defaultis Java keyword . This optional part theswitchstatement , execute none case match . See also : Java Programming/Keywords/switch

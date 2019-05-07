@@ -1,0 +1,1 @@
+Questions How invoke applet package JAR file ? What purpose -e option jar command ? What significance manifest JAR file ? How modify JAR 's manifest file ? Check answer .

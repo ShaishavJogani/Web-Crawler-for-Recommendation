@@ -1,0 +1,8 @@
+boolean done = false;
+
+while (!done && something) {
+    if (something2) {
+       done = true;
+       something3("yep");
+    }
+}

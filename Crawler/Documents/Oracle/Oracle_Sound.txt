@@ -1,0 +1,35 @@
+
+The Java Sound API is a low-level API for effecting and controlling the input and output of sound media, including both audio and Musical Instrument Digital Interface (MIDI) data. The Java Sound API provides explicit control over the capabilities normally required for sound input and output, in a framework that promotes extensibility and flexibility. 
+ The Java Sound API fulfills the needs of a wide range of application developers. Potential application areas include:
+
+Communication frameworks, such as conferencing and telephony
+End-user content delivery systems, such as media players and music using streamed content
+Interactive application programs, such as games and Web sites that use dynamic content
+Content creation and editing
+Tools, toolkits, and utilities
+
+ 
+ The Java Sound API provides the lowest level of sound support on the Java platform. It provides application programs with a great amount of control over sound operations, and it is extensible. For example, the Java Sound API supplies mechanisms for installing, accessing, and manipulating system resources such as audio mixers, MIDI synthesizers, other audio or MIDI devices, file readers and writers, and sound format converters. The Java Sound API does not include sophisticated sound editors or graphical tools, but it provides capabilities upon which such programs can be built. It emphasizes low-level control beyond that commonly expected by the end user.
+
+The Java Sound API includes support for both digital audio and MIDI data. These two major modules of functionality are provided in separate packages:
+
+
+javax.sound.sampled – This package specifies interfaces for capture, mixing, and playback of digital (sampled) audio.
+
+javax.sound.midi – This package provides interfaces for MIDI synthesis, sequencing, and event transport.
+
+Two other packages permit service providers (as opposed to application developers) to create custom software components that extend the capabilities of an implementation of the Java Sound API: 
+
+
+javax.sound.sampled.spi
+
+javax.sound.midi.spi
+
+
+This page introduces the sampled-audio system, the MIDI system, and the SPI packages. Each package is then discussed in greater detail later in the tutorial. 
+Note: There are other Java platform APIs that also have sound-related elements. The 
+Java Media Framework API (JMF) is a higher-level API that is currently available as a Standard Extension to the Java platform. JMF specifies a unified architecture, messaging protocol, and programming interface for capturing and playing back time-based media. JMF provides a simpler solution for basic media-player application programs, and it enables synchronization between different media types, such as audio and video. On the other hand, programs that focus on sound can benefit from the Java Sound API, especially if they require more advanced features, such as the ability to carefully control buffered audio playback or directly manipulate a MIDI synthesizer. Other Java APIs with sound aspects include Java 3D and APIs for telephony and speech. An implementation of any of these APIs might use an implementation of the Java Sound API internally, but is not required to do so.
+
+What is Sampled Audio?
+ The 
+javax.sound.sampled package handles digital audio data, which the Java Sound API refers to as sampled audio. Samples are successive snapshots of a signal. In the case of audio, the signal is a sound wave. A microphone converts the acoustic signal into a corresponding analog electrical signal, and an analog-to-digital converter transforms that analog signal into a sampled digital form. The following figure shows a brief moment in a sound recording.

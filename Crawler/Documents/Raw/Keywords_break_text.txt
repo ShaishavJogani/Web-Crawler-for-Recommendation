@@ -1,0 +1,10 @@
+
+breakis a Java keyword.
+Jumps (breaks) out from a loop. Also used atswitchstatement.
+For example:
+
+
+See also:
+
+Java Programming/Keywords/switch
+

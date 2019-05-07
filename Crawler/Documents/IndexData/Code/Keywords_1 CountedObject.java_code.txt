@@ -1,0 +1,12 @@
+public CountedObject {
+   private static int counter;
+   …
+   public AClass() {
+      …
+      counter++;
+   }
+   …
+   public int getNumberOfObjectsCreated() {
+      return counter;
+   }
+}

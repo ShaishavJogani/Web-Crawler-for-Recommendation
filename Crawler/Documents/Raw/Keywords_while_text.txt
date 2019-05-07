@@ -1,0 +1,23 @@
+
+whileis a Java keyword.
+It starts a looping block.
+The general syntax of awhile, usingExtended Backus-Naur Form, is
+
+while-looping-statement ::=whilecondition-clausesingle-statement|block-statementcondition-clause    ::=(Boolean Expression)single-statement    ::=Statementblock-statement     ::={Statement[Statements]}
+
+For example:
+
+
+See also:
+
+Java Programming/StatementsJava Programming/Keywords/forJava Programming/Keywords/do
+
+
+
+CommentsJava ProgrammingKeywordsCoding conventions
+
+
+
+
+
+

@@ -1,0 +1,1 @@
+A general guideline visibility make member visible need . Do n't make member public need private . Doing , rewrite class change private member without make compilation error , even n't know class use class long change signature public member .

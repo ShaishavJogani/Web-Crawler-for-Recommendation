@@ -1,0 +1,1 @@
+doubleis akeywordwhich designate 64 bit floatprimitive type . Thejava.lang.Doubleclass nominal wrapper class need store adoublevalue object reference require . Syntax : double < variable-name > = < float-value > ; For example : See also : Java Programming/Primitive Types

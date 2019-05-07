@@ -1,0 +1,16 @@
+
+Program flow can be affected using function/method calls, loops and iterations. Of various types of branching constructs,
+we can easily pick out two generic branching methods.
+
+Unconditional BranchingConditional Branching
+
+Unconditional Branching Statements[edit]
+
+If you look closely at a method, you'll see that a method is a named statement block that is executed by calling that particular name. An unconditional branch is created either by invoking the method or by callingbreak,continue,returnorthrow, all of which are described below.
+When a name of a method is encountered in a flow, it stops execution in the current method and branches to the newly called method. After returning a value from the called method, execution picks up at the original method on the line below the method call.
+
+
+The program flow begins in themainmethod. Just asaMethodis invoked, the flow travels to
+the called method. At this very point, the flow branches to the other method. Once the method is completed, the flow
+is returned to the point it left off and resumes at the next statement after the call to the method.
+

@@ -1,0 +1,1 @@
+An array create usingnew Object [ 10 ] 10 null pointer . That 's 10 want , use collection instead , explicitly fill array initialization : :

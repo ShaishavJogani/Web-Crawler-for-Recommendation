@@ -1,0 +1,4 @@
+Collection<Integer> myNumbers = buildNumbers();
+for (Integer myNumber : myNumbers) {
+  System.out.println(myNumber);
+}

@@ -1,0 +1,1 @@
+To warn user thing like common pitfall , theXWarningtemplate use demonstrated : You writeYou get { { XWarning|This warning . } } This warning .

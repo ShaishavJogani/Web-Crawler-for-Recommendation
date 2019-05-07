@@ -1,0 +1,20 @@
+
+Each Java top level class belongs to a package (covered in the chapter aboutPackages). This may be declared in apackagestatement at the beginning of the file; if that is missing, the class belongs to the unnamed package.
+For compilation, the file must be in the right directory structure. A file containing a class in the unnamed package must be in the current/root directory; if the class belongs to a package, it must be in a directory with the same name as the package.
+The convention is that package names and directory names corresponding to the package consist of only lower case letters.
+
+Top level package[edit]
+
+A class with this package declaration
+
+
+has to be in a directory namedexample.
+
+Subpackages[edit]
+
+A class with this package declaration
+
+
+has to be in a directory namedenwhich has to be a sub-directory ofwikibookswhich in turn has to be a sub-directory oforgresulting inorg/wikibooks/enon Linux ororg\wikibooks\enon Windows.
+Java programs often contain non-code files such as images and properties files. These are referred to generally asresourcesand stored in directories local to the classes in which they're used. For example, if the classcom.example.ExampleAppuses theicon.pngfile, this file could be stored as/com/example/resources/icon.png. These resources present a problem when a program is compiled, becausejavacdoes not copy them to wherever the.classfiles are being compiled to (see above); it is up to the programmer to move the resource files and directories.
+

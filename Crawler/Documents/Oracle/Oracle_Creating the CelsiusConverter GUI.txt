@@ -1,0 +1,5 @@
+
+This section explains how to use the NetBeans IDE to create the application's GUI. As you drag each component from the Palette to the Design Area, the IDE auto-generates the appropriate source code.
+
+Step 1: Set the Title
+First, set the title of the application's JFrame to "Celsius Converter", by single-clicking the JFrame in the Inspector:

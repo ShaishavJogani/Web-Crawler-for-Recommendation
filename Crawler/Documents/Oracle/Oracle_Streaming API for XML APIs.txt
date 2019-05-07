@@ -1,0 +1,38 @@
+
+
+StAX is the latest API in the JAXP family, and provides an alternative to SAX, DOM, TrAX, and DOM for developers looking to do high-performance stream filtering, processing, and modification, particularly with low memory and limited extensibility requirements.
+To summarize, StAX provides a standard, bidirectional pull parser interface for streaming XML processing, offering a simpler programming model than SAX and more efficient memory management than DOM. StAX enables developers to parse and modify XML streams as events, and to extend XML information models to allow application-specific additions. More detailed comparisons of StAX with several alternative APIs are provided in 
+Streaming API for XML, in 
+Comparing StAX to Other JAXP APIs.
+
+StAX Packages
+The StAX APIs are defined in the packages shown in Table 1-4.
+Table 1-4 StAX Packages
+
+
+
+
+
+Package
+
+
+Description
+
+
+
+
+javax.xml.stream
+
+
+Defines the XMLStreamReader interface, which is used to iterate over the elements of an XML document. The XMLStreamWriter interface specifies how the XML should be written.
+
+
+
+
+javax.xml.transform.stax
+
+
+Provides StAX-specific transformation APIs.
+
+
+

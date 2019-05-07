@@ -1,0 +1,8 @@
+String person1 = "Peter";
+String person2 = "John";
+if (person1.compareTo(person2) > 0) {
+    // Badly ordered
+    String temp = person1;
+    person1 = person2;
+    person2 = temp;
+}

@@ -1,0 +1,2 @@
+BigInteger aBigInteger = new BigInteger("3");
+long aLong = aBigInteger.longValue();

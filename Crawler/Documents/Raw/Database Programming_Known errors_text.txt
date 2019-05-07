@@ -1,0 +1,17 @@
+
+package oracle.jdbc does not exist[edit]
+
+If you have Oracle Database on your PC, just add to the classpath its following files[3]:
+
+C:\oracle12\app\oracle\product\12.1.0\dbhome_1\jdbc\lib\ojdbc7.jarC:\oracle12\app\oracle\product\12.1.0\dbhome_1\sqlj\lib\runtime12.jar
+
+Otherwise, ojdbc7.jar can be downloaded fromhttp://www.oracle.com/technetwork/database/features/jdbc/jdbc-drivers-12c-download-1958347.html, and add it to the compilation. Eg:
+
+javac MyClass.java -classpath ojdbc7.jar
+
+ORA-28009: connection as SYS should be as SYSDBA or SYSOPER[edit]
+
+Just add " as sysdba" after your Oracle account name, eg:
+
+Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:MyDatabase", "MyAccount as sysdba",
+

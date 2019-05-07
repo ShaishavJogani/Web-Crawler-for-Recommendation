@@ -1,0 +1,1 @@
+A generic type define method : Here new identifier ( D ) choose beginning method declaration . The type isspecific method calland different type use object instance : The actual type define type method parameter . Hence , generic type ca n't define return value would n't resolve . See theClass < T > section solution .

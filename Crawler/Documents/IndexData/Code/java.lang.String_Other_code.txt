@@ -1,0 +1,28 @@
+public static String getDisplayName(String mail) {
+  String displayName = null;
+ 
+  if (mail != null) {
+    String[] mailParts = mail.split("@");
+    String namePart = mailParts[0];
+    String[] namesParts = namePart.split("\\.");
+   
+    // The last name
+    String lastName = namesParts[1];
+    lastName = lastName.toUpperCase();
+   
+    // The first name
+    String firstName = namesParts[0];
+   
+    String firstNameInitial = firstName.substring(0, 1);
+    firstNameInitial = firstNameInitial.toUpperCase();
+   
+    String firstNameEnd = firstName.substring(1);
+    firstNameEnd = firstNameEnd.toLowerCase();
+   
+    // Concatenation
+    StringBuilder displayNameBuilder = new StringBuilder(lastName).append(" ").append(firstNameInitial).append(firstNameEnd);
+    displayName = displayNameBuilder.toString();
+  }
+ 
+  return displayName;
+}

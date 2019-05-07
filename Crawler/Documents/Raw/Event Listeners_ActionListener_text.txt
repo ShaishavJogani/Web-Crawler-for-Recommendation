@@ -1,0 +1,7 @@
+
+ActionListeneris an interface that could be implemented in order to determine how a certain event should be handled. When implementing an interface, all methods in that interface should be implemented,ActionListenerinterface has one method to implement namedactionPerformed().
+Thecode listing 9.6shows how to implementActionListener:
+
+
+When you compile and run the above code, the message "Hi!!!" will appear when you click on the button.
+

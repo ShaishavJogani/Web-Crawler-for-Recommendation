@@ -1,0 +1,24 @@
+boolean iMTrue = true;
+boolean iMTrueToo = true;
+boolean iMFalse = false;
+boolean iMFalseToo = false;
+
+System.out.println("NOT operand:");
+System.out.println(!iMTrue);
+System.out.println(!iMFalse);
+System.out.println(!(4 < 5));
+System.out.println("AND operand:");
+System.out.println(iMTrue && iMTrueToo);
+System.out.println(iMFalse && iMFalseToo);
+System.out.println(iMTrue && iMFalse);
+System.out.println(iMTrue && !iMFalse);
+System.out.println("OR operand:");
+System.out.println(iMTrue || iMTrueToo);
+System.out.println(iMFalse || iMFalseToo);
+System.out.println(iMTrue || iMFalse);
+System.out.println(iMFalse || !iMTrue);
+System.out.println("XOR operand:");
+System.out.println(iMTrue ^ iMTrueToo);
+System.out.println(iMFalse ^ iMFalseToo);
+System.out.println(iMTrue ^ iMFalse);
+System.out.println(iMFalse ^ !iMTrue);

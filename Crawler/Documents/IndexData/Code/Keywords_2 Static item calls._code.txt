@@ -1,0 +1,2 @@
+double aNumber = MyClass.PI;
+MyClass.main(new String[0]);

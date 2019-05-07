@@ -1,0 +1,11 @@
+
+abstractis a Java keyword. It can be applied to a class and methods. Anabstractclass cannot be directly instantiated. It must be placed before the variable type or the method return type. It is recommended to place it after the access modifier and after thestatickeyword. A non-abstract class is aconcreteclass. An abstract class cannot befinal.
+Only an abstract class can have abstract methods. An abstract method is only declared, not implemented:
+
+
+An abstract method cannot befinal,staticnornative. Either you instantiate a concrete sub-class, either you instantiate the abstract class by implementing its abstract methods alongside a new statement:
+
+
+A private method cannot beabstract.
+
+

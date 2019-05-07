@@ -1,0 +1,3 @@
+int age = 24;
+int daysInYear = 365;
+int ageInDays = age * daysInYear;

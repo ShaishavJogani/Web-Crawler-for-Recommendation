@@ -1,0 +1,12 @@
+
+A policy file is an ASCII text file and can be composed via a text editor or the graphical Policy Tool utility demonstrated in this section. The Policy Tool saves you typing and eliminates the need for you to know the required syntax of policy files, thus reducing errors.
+This lesson uses the Policy Tool to create a policy file named examplepolicy, in which you will add a policy entry that grants code from the examples directory permission to write.
+Follow these steps to create and modify your new policy file:
+
+Start Policy Tool
+Grant the Required Permission
+Save the Policy File
+
+Note for UNIX Users: The steps illustrate creating the policy file for a Windows system. The steps are exactly the same if you are working on a UNIX system. Where the text says to store the policy file in the C:\Test directory, you can store it in another directory. The examples in the lesson 
+Quick Tour of Controlling Applications assume that you stored it in the ~/test directory.
+

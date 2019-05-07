@@ -1,0 +1,11 @@
+
+The Java language provides special support for the string concatenation with operator+:
+
+
+The concatenation is not always processed at the same time.Raw string literalsconcatenation is done at compile time, hence there is a single string literal in the byte code of the class. Concatenation with at least one object is done at runtime.
++operator can concatenate other objects with strings. For instance, integers will be converted to strings before the concatenation:
+
+
+Each Java object has theString toString()inherited from theObjectclass. This method provides a way to convert objects intoStrings. Most classes override the default behavior to provide more specific (and more useful) data in the returnedString:
+
+

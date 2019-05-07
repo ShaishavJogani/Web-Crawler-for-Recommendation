@@ -1,0 +1,88 @@
+
+In this lesson you will learn the basics of the JDBC API.
+
+
+Getting Started sets up a basic database development environment and shows you how to compile and run the JDBC tutorial samples.
+
+
+Processing SQL Statements with JDBC outlines the steps required to process any SQL statement. The pages that follow describe these steps in more detail:
+
+
+Establishing a Connection connects you to your database.
+
+
+Connecting with DataSource Objects shows you how to connect to your database with DataSource objects, the preferred way of getting a connection to a data source.
+
+
+Handling SQLExceptions shows you how to handle exceptions caused by database errors.
+
+
+Setting Up Tables describes all the database tables used in the JDBC tutorial samples and how to create and populate tables with JDBC API and SQL scripts.
+
+
+Retrieving and Modifying Values from Result Sets develop the process of configuring your database, sending queries, and retrieving data from your database.
+
+
+Using Prepared Statements describes a more flexible way to create database queries.
+
+
+Using Transactions shows you how to control when a database query is actually executed.
+
+
+
+
+Using RowSet Objects introduces you to RowSet objects; these are objects that hold tabular data in a way that make it more flexible and easier to use than result sets. The pages that follow describe the different kinds of RowSet objects available:
+
+
+Using JdbcRowSet Objects
+
+
+Using CachedRowSetObjets
+
+
+Using JoinRowSet Objects
+
+
+Using FilteredRowSet Objects
+
+
+Using WebRowSet Objects
+
+
+
+
+Using Advanced Data Types introduces you to other data types; the pages that follow describe these data types in further detail:
+
+
+Using Large Objects
+
+
+Using SQLXML Objects
+
+
+Using Array Objects
+
+
+Using DISTINCT Data Type
+
+
+Using Structured Objects
+
+
+Using Customized Type Mappings
+
+
+Using Datalink Objects
+
+
+Using RowId Objects
+
+
+
+
+Using Stored Procedures shows you how to create and use a stored procedure, which is a group of SQL statements that can be called like a Java method with variable input and output parameters.
+
+
+Using JDBC with GUI API demonstrates how to integrate JDBC with the Swing API.
+
+

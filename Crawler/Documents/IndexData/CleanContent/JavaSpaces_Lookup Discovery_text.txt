@@ -1,0 +1,1 @@
+Jini Discovery Join Specificationdescribes client find jini lookup service . There protocol , jini come set API 's implement protocol . TheJini Discovery Utility Specificationdefines set utility class use work protocol .

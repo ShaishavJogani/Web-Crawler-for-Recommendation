@@ -1,0 +1,33 @@
+
+
+XML, Schema, and XSLT standards support the following constructs that require external resources. The default behavior of the JDK XML processors is to make a connection and fetch the external resources as specified.
+
+External DTD: references an external Document Type Definition (DTD), example: <!DOCTYPE root_element SYSTEM "url">
+External Entity Reference: refer to external data, syntax: <!ENTITY name SYSTEM "url">
+ 
+General entity reference such as the following:
+ 
+<?xml version="1.0" standalone="no" ?>
+<!DOCTYPE doc [<!ENTITY otherFile SYSTEM "otherFile.xml">]>
+<doc>
+    <foo>
+    <bar>&otherFile;</bar>
+    </foo>
+</doc>
+
+
+External Parameter Entities, syntax <!ENTITY % name SYSTEM uri>. For example:
+
+<?xml version="1.0" standalone="no"?>
+    <!DOCTYPE doc [
+      <!ENTITY % foo SYSTEM "http://www.example.com/student.dtd"<
+      %foo;
+    ]>
+
+
+XInclude: include an external infoset in an XML document
+Reference to XML Schema components using schemaLocation attribute, and import and include elements. Example: schemaLocation="http://www.example.com/schema/bar.xsd"
+Combining style sheets using import or include elements: syntax: <xsl:include href="include.xsl"/>
+xml-stylesheet processing instruction: used to include a stylesheet in an xml document, syntax: <?xml-stylesheet href="foo.xsl" type="text/xsl"?>
+XSLT document() function: used to access nodes in an external XML document. For example, <xsl:variable name="dummy" select="document('DocumentFunc2.xml')"/>.
+

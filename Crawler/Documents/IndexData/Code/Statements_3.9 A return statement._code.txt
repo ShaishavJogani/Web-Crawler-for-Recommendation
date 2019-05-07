@@ -1,0 +1,4 @@
+    public int getAge() {
+        int age = 24;
+        return age;
+    }

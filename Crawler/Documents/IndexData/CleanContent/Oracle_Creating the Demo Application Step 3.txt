@@ -1,0 +1,1 @@
+Finally , add event-handling code programatically repaint component whenever user click drag mouse . To keep custom painting efficient possible , track mouse coordinate repaint area screen change . This recommended best practice keep application run efficiently possible .

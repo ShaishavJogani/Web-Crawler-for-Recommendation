@@ -1,0 +1,1 @@
+catchis keyword . It 's part atryblock . If exception throw inside try block , exception compare catch part block . If exception match one exception catch part , exception handle . For example : See also : Java Programming/Keywords/try

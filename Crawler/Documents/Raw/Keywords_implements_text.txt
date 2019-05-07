@@ -1,0 +1,10 @@
+
+implementsis a Java keyword.
+Used inclassdefinition to declare the Interfaces that are to be implemented by the class.
+Syntax:
+
+
+See also:
+
+Java Programming/Creating ObjectsJava Programming/Keywords/classJava Programming/Keywords/interface
+

@@ -1,0 +1,25 @@
+
+Simple authentication consists of sending the LDAP server the fully qualified DN of the client (user) and the client's clear-text password (see 
+RFC 2251 and 
+RFC 2829). This mechanism has security problems because the password can be read from the network. To avoid exposing the password in this way, you can use the simple authentication mechanism within an encrypted channel (such as SSL), provided that this is supported by the LDAP server.
+Both the LDAP v2 and v3 support simple authentication.
+To use the simple authentication mechanism, you must set the three authentication environment properties as follows.
+
+
+Context.SECURITY_AUTHENTICATION.
+Set to "simple".
+
+
+
+Context.SECURITY_PRINCIPAL.
+Set to the fully qualified DN of the entity that is being authenticated (e.g., "cn=S. User, ou=NewHires, o=JNDITutorial"). It is of type java.lang.String.
+
+
+
+Context.SECURITY_CREDENTIALS.
+Set to the password of the principal (e.g., "mysecret"). It is of type java.lang.String, char array (char[]), or byte array (byte[]). If the password is a java.lang.String or a char array, then it is encoded using UTF-8 for the LDAP v3 and using ISO-Latin-1 for the LDAP v2 for transmission to the server. If the password is a byte[], then it is transmitted as is to the server.
+
+See the 
+example earlier in this section that illustrates how to use simple authentication.
+
+Note: If you supply an empty string, an empty byte/char array, or null to the Context.SECURITY_CREDENTIALS environment property, then the authentication mechanism will be "none". This is because the LDAP requires the password to be nonempty for simple authentication. The protocol automatically converts the authentication to "none" if a password is not supplied.

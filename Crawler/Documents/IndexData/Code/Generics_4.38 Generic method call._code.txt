@@ -1,0 +1,4 @@
+Collection<Integer> numbers = new ArrayList<Integer>();
+Integer number = assign(numbers, new Integer(1));
+Collection<String> texts = new ArrayList<String>();
+String text = assign(texts, "Store it.");

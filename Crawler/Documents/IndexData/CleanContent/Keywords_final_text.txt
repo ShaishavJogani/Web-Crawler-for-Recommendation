@@ -1,0 +1,1 @@
+finalis keyword . Beware ! It distinct meaning depend whether use class , method , variable . It must place variable type method return type . It recommend place access modifier thestatickeyword .

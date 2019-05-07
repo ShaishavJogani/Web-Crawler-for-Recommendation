@@ -1,0 +1,13 @@
+
+The code signer takes the following steps:
+
+Download and Try the Sample Application.
+Create a JAR File Containing the Class File, using the jar tool.
+Generate Keys (if they don't already exist), using the keytool -genkey command.
+
+Optional Step Generate a certificate signing request (CSR) for the public key certificate, and import the response from the certification authority (CA). For simplicity (and since you are only pretending to be Susan Jones), this step is omitted. See 
+Generating a Certificate Signing Request (CSR) for a Public Key Certificate for more information.
+
+Sign the JAR File, using the jarsigner tool and the private key.
+Export the Public Key Certificate, using the keytool -export command. Then supply the signed JAR file and the certificate to the receiver Ray.
+

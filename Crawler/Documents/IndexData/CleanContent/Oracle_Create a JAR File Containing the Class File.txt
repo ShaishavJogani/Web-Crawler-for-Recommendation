@@ -1,0 +1,1 @@
+Next , create JAR file contain Count.class file . Type follow command window : jar cvf Count.jar Count.class This create JAR file , Count.jar , place Count.class file inside .

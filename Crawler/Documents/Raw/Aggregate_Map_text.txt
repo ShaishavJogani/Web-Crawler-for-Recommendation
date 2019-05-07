@@ -1,0 +1,5 @@
+
+The implementations ofjava.util.Mapinterface are used to represent mapping between "key" and "value" objects. A Map represents a group of "key" objects, where each "key" object is mapped to a "value" object.
+
+ExampleFor each patient, there is one and only one main nurse assigned to. That association can be represented by a "patient-nurse" Map.
+

@@ -1,0 +1,70 @@
+
+The default 
+SearchControls specifies that the search is to be performed in the named context (
+SearchControls.ONELEVEL_SCOPE). This default is used in the examples in the 
+Search Filters section.
+In addition to this default, you can specify that the search be performed in the entire subtree or only in the named object.
+Search the Subtree
+A search of the entire subtree searches the named object and all of its descendants. To make the search behave in this way, pass 
+SearchControls.SUBTREE_SCOPE to 
+SearchControls.setSearchScope() as follows.
+
+// Specify the ids of the attributes to return
+String[] attrIDs = {"sn", "telephonenumber", "golfhandicap", "mail"};
+SearchControls ctls = new SearchControls();
+ctls.setReturningAttributes(attrIDs);
+ctls.setSearchScope(SearchControls.SUBTREE_SCOPE);
+
+// Specify the search filter to match
+// Ask for objects that have the attribute "sn" == "Geisel"
+// and the "mail" attribute
+String filter = "(&(sn=Geisel)(mail=*))";
+
+// Search the subtree for objects by using the filter
+NamingEnumeration answer = ctx.search("", filter, ctls);
+
+
+This example
+ searches the context ctx's subtree for entries that satisfy the specified filter. It finds the entry "cn= Ted Geisel, ou=People" in this subtree that satisfies the filter.
+
+# java SearchSubtree
+>>>cn=Ted Geisel, ou=People
+attribute: sn
+value: Geisel
+attribute: mail
+value: Ted.Geisel@JNDITutorial.example.com
+attribute: telephonenumber
+value: +1 408 555 5252
+
+Search the Named Object
+You can also search the named object. This is useful, for example, to test whether the named object satisfies a search filter. To search the named object, pass 
+SearchControls.OBJECT_SCOPE to setSearchScope().
+
+// Specify the ids of the attributes to return
+String[] attrIDs = {"sn", "telephonenumber", "golfhandicap", "mail"};
+SearchControls ctls = new SearchControls();
+ctls.setReturningAttributes(attrIDs);
+ctls.setSearchScope(SearchControls.OBJECT_SCOPE);
+
+// Specify the search filter to match
+// Ask for objects that have the attribute "sn" == "Geisel"
+// and the "mail" attribute
+String filter = "(&(sn=Geisel)(mail=*))";
+
+// Search the subtree for objects by using the filter
+NamingEnumeration answer = 
+    ctx.search("cn=Ted Geisel, ou=People", filter, ctls);
+
+
+This example tests whether the object "cn=Ted Geisel, ou=People" satisfies the given filter.
+
+# java SearchObject
+>>>
+attribute: sn
+value: Geisel
+attribute: mail
+value: Ted.Geisel@JNDITutorial.example.com
+attribute: telephonenumber
+value: +1 408 555 5252
+
+The example found one answer and printed it. Notice that the name of the result is the empty string. This is because the name of the object is always named relative to the context of the search (in this case, "cn=Ted Geisel, ou=People").

@@ -1,0 +1,1 @@
+Programming I/O often involve translate neatly format data human like work . To assist chore , Java platform provide two APIs . The scanner API break input individual token associate bit data . The formatting API assemble data nicely format , human-readable form .

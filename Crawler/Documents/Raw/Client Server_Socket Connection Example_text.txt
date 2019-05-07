@@ -1,0 +1,60 @@
+
+Figure 1:Simple Client Server Implementation
+
+This page shows an example of a socket connection.
+
+Create a Server[edit]
+
+The Java language was developed having network computing in mind. For this reason it is very easy to create a server program. A server is a piece of code that runs all the time listening on a particular port on the computer for incoming requests. When a request arrives, it starts a new thread to service the request.
+See the following example:
+
+Listening on a port[edit]
+
+ComServerclass is for listening on a port for a client.
+
+
+ServerSocket( iPortNumber )Creates a server socket, bound to the specified port.serverSocket.accept()Listens for a connection to be made to this socket and accepts it. The method blocks until a connection is made. It returns a new Socket.
+
+Service One Client[edit]
+
+ComServerThreadThis class extended from a Thread is responsible to service one client. The Socket connection will be open between the client and server. A simple protocol has to be defined between the client and server, the server has to understand what the client wants from the server. The client will send aterminatecommand, for which the server will terminate the socket connection.  The ComServerThread class is responsible to handle all client requests, until the client sends aterminatecommand.
+
+
+COM_DATA tDataFromClientThis variable will contain the data object from the client.COM_DATA tDataToClientThis variable will contain the data object to be sent to the client.sendDataToClientThis method sends the data object to the client.getDataFromClientThis method gets the data object from the client.processInput( tDataFromClient )This method of the classComProtocolinterprets the client commands and returns the data object that will be sent back to the client.
+
+Handling the request; implements the communication protocol[edit]
+
+ComProtocolThis class implements, and encapsulates the communication logic (protocol). The protocol is the following:The client initiate the connection.The server accepts it and sends an acknowledgment notifying that it's readyThe client sends a requestThe server response based on the request...The client sends aBYErequestThe server acknowledge theBYErequest and disconnects the socket connectionThe client gets the acknowledgment to theBYE...The client sends aSHUTDOWNrequestThe server acknowledge theSHUTDOWNrequest and disconnects and also stops listening of other clients.The client gets the acknowledgment to theSHUTDOWN
+
+
+The Data object that goes through the network[edit]
+
+COM_DATAis data structure class that is transmitted through the network. The class contains only data.
+
+
+Create the Client[edit]
+
+A client code for a server/service is usually an API that a user application uses to interface to the server. With the help of a client API the user application does not have to know how to connect to the server to get services.
+
+ComClientThis class is the client API. The application is using this class to communicate with the server.
+
+The following is the client class for the above server:
+
+
+getServerData( COM_DATA tServData )This method reads the data from the server and copies the values totServDataobject.sendDataToServer( COM_DATA tServData )This method sends thetServDataobject through the network to the server.oIn.readObject()This method returns the data object sent by the server.oOut.writeObject( tServData )This method sends the data object to the server.
+
+
+
+
+
+To do:Add some exercises like the ones inVariables
+
+
+
+Basic SynchronizationJava ProgrammingClient ServerRemote Method Invocation
+
+
+
+
+
+

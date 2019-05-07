@@ -1,0 +1,7 @@
+public class MyClass {
+  /**
+  * MyClass Empty Constructor
+  */
+  public MyClass() {
+  }
+}

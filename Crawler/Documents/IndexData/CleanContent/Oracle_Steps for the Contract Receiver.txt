@@ -1,0 +1,1 @@
+Now act Ruth , receive signed JAR file certificate file Stan , perform following step . Import Certificate Trusted Certificate , use keytool -import command . Verify JAR File Signature , use jarsigner tool .

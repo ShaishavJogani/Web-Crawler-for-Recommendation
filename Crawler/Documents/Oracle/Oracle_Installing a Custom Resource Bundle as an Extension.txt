@@ -1,0 +1,306 @@
+
+The section  
+Customizing Resource Bundle Loading shows you how to change how resource bundles are loaded. This involves deriving a new class from the class
+ResourceBundle.Control, then retrieving the resource bundle by invoking the following method:
+
+ResourceBundle getBundle(
+  String baseName,
+  Locale targetLocale,
+  ResourceBundle.Control control)
+
+The parameter control is your implementation of ResourceBundle.Control.
+The 
+java.util.spi.ResourceBundleControlProvider interface enables you to change how the following method loads resource bundles:
+
+ResourceBundle getBundle(
+  String baseName,
+  Locale targetLocale)
+
+Note that this version of the
+ResourceBundle.getBundle method does not require an instance of the ResourceBundle.Control class. ResourceBundleControlProvider is a service provider interface (SPI). SPIs enable you to create extensible applications, which are those that you can extend easily without modifying their original code base. See 
+Creating Extensible Applications for more information.
+To use SPIs, you first create a service provider by implementing an SPI like ResourceBundleControlProvider. When you implement an SPI, you specify how it will provide the service. The service that the ResourceBundleControlProvider SPI provides is to obtain an appropriate ResourceBundle.Control instance when your application invokes the method ResourceBundle.getBundle(String baseName, Locale targetLocale). You package the service provider with the
+Java Extension Mechanism as an installed extension. When you run your application, you do not name your extensions in your class path; the runtime environment finds and loads these extensions.
+An installed implementation of the ResourceBundleControlProvider SPI replaces the default ResourceBundle.Control class (which defines the default bundle loading process). Consequently, the ResourceBundleControlProvider interface enables you to use any of the custom ResourceBundle.Control classes without any additional changes to the source code of your application. In addition, this interface enables you to write applications without having to refer to any of your custom ResourceBundle.Control classes.
+The
+RBCPTest.java sample shows how to implement the ResourceBundleControlProvider interface and how to package it as an installed extension. This sample, which is packaged in the zip file RBCPTest.zip, consists of the following files:
+
+src
+
+
+java.util.spi.ResourceBundleControlProvider 
+
+RBCPTest.java
+rbcp
+
+
+PropertiesResourceBundleControl.java 
+
+PropertiesResourceBundleControlProvider.java 
+
+XMLResourceBundleControl.java 
+
+XMLResourceBundleControlProvider.java 
+
+
+resources
+
+
+RBControl.properties 
+
+RBControl_zh.properties 
+
+RBControl_zh_CN.properties 
+
+RBControl_zh_HK.properties 
+
+RBControl_zh_TW.properties 
+
+XmlRB.xml 
+
+XmlRB_ja.xml 
+
+
+
+
+lib
+
+rbcontrolprovider.jar
+
+
+build: Contains all files packaged in rbcontrolprovider.jar as well as the class file RBCPTest.class
+
+build.xml 
+
+The following steps show you how to re-create the contents of the file RBCPTest.zip, how the RBCPTest sample works, and how to run it:
+
+Create implementations of the ResourceBundle.Control class.
+Implement the ResourceBundleControlProvider interface.
+In your application, invoke the method ResourceBundle.getBundle.
+Register the service provider by creating a configuration file.
+Package the provider, its required classes, and the configuration file in a JAR file.
+Run the RBCPTest program.
+
+
+1. Create implementations of the ResourceBundle.Control class.
+The
+RBCPTest.java sample uses two implementations of ResourseBundle.Control:
+
+
+PropertiesResourceBundleControlProvider.java: This is the same ResourceBundle.Control implementation that is defined in
+Customizing Resource Bundle Loading.
+
+XMLResourceBundleControl.java: This ResourceBundle.Control implementation loads XML-based bundles with the method
+Properties.loadFromXML.
+
+
+
+XML Properties Files
+As described in the section
+Backing a ResourceBundle with Properties Files, properties files are simple text files. They contain one key-value pair on each line. XML properties files are just like properties files: they contain key-value pairs except they have an XML structure. The following is the XML properties file XmlRB.xml:
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE properties [
+<!ELEMENT properties ( comment?, entry* ) >
+<!ATTLIST properties version CDATA #FIXED "1.0">
+<!ELEMENT comment (#PCDATA) >
+<!ELEMENT entry (#PCDATA) >
+<!ATTLIST entry key CDATA #REQUIRED>
+]>
+
+<properties>
+    <comment>Test data for RBCPTest.java</comment>
+    <entry key="type">XML</entry>
+</properties>
+
+The following is the properties text file equivalent:
+
+# Test data for RBCPTest.java
+type = XML
+
+All XML properties text files have the same structure:
+
+A DOCTYPE declaration that specifies the Document Type Definition (DTD): The DTD defines the structure of an XML file. Note: You can use the following DOCTYPE declaration instead in an XML properties file:
+
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">  
+
+The system URI (http://java.sun.com/dtd/properties.dtd) is not accessed when exporting or importing properties; it is a string that uniquely identifies the DTD of XML properties files.
+
+Root element <properties>: This element contains all the other elements.
+Any number of <comment> elements: These are used for comments.
+Any number of <entry> elements: Use the attribute key to specify the key; specify the value of the key between the <entry> tags.
+
+See the
+Properties class for more information about XML properties files.
+
+2. Implement the ResourceBundleControlProvider interface.
+This interface contains one method, the
+ResourceBundle.Control getControl(String baseName) method. The parameter baseName is the name of the resource bundle. In the method definition of getBundle, specify the instance of ResourceBundle.Control that should be returned given the name of the resource bundle.
+The RBCPTest sample contains two implementations of the ResourceBundleControlProvider interface,
+PropertiesResourceBundleControlProvider.java and
+XMLResourceBundleControlProvider.java. The method PropertiesResourceBundleControlProvider.getBundle returns an instance of PropertiesResourceBundleControl if the base name of the resource bundle starts with resources.RBControl (in this example, all the resource files are contained in the package resources):
+
+
+
+package rbcp;
+
+import java.util.ResourceBundle;
+import java.util.spi.ResourceBundleControlProvider;
+
+public class PropertiesResourceBundleControlProvider
+    implements ResourceBundleControlProvider {
+    static final ResourceBundle.Control PROPERTIESCONTROL =
+        new PropertiesResourceBundleControl();
+
+    public ResourceBundle.Control getControl(String baseName) {
+        System.out.println("Class: " + getClass().getName() + ".getControl");
+        System.out.println("    called for " + baseName);
+
+        // Throws a NPE if baseName is null.
+        if (baseName.startsWith("resources.RBControl")) {
+            System.out.println("    returns " + PROPERTIESCONTROL);
+            return PROPERTIESCONTROL;
+        }
+        System.out.println("    returns null");
+        System.out.println();
+        return null;
+    }
+}
+
+Similarly, the method XMLResourceBundleControlProvider.getControl returns an instance of XMLResourceBundleControl if the base name of the resource bundle starts with resources.Xml.
+Note: You can create one implementation of the ResourceBundleControlProvider interface that returns either an instance of PropertiesResourceBundleControl or XMLResourceBundleControl depending on the base name.
+
+3. In your application, invoke the method ResourceBundle.getBundle.
+The class RBCPTest retrieves resource bundles with the method
+ResourceBundle.getBundle:
+
+
+import java.io.*;
+import java.net.*;
+import java.util.*;
+
+public class RBCPTest {
+    public static void main(String[] args) {
+        ResourceBundle rb = ResourceBundle.getBundle(
+            "resources.XmlRB", Locale.ROOT);
+        String type = rb.getString("type");
+        System.out.println("Root locale. Key, type: " + type);
+        System.out.println();
+
+        rb = ResourceBundle.getBundle("resources.XmlRB", Locale.JAPAN);
+        type = rb.getString("type");
+        System.out.println("Japan locale. Key, type: " + type);
+        System.out.println();
+
+        test(Locale.CHINA);
+        test(new Locale("zh", "HK"));
+        test(Locale.TAIWAN);
+        test(Locale.CANADA);
+    }
+
+    private static void test(Locale locale) {
+        ResourceBundle rb = ResourceBundle.getBundle(
+            "resources.RBControl", locale);
+        System.out.println("locale: " + locale);
+        System.out.println("    region: " + rb.getString("region"));
+        System.out.println("    language: " + rb.getString("language"));
+        System.out.println();
+    }
+}
+
+Note that no implementations of ResourceBundle.Control or ResourceBundleControlProvider appear in this class. Because the ResourceBundleControlProvider interface uses the Java Extension Mechanism, the runtime environment finds and loads these implementations. However, ResourceBundleControlProvider implementations and other service providers that are installed with the Java Extension Mechanism are loaded using the
+ServiceLoaderclass. Using this class means that you have to register the service provider with a configuration file, which is described in the next step.
+
+4. Register the service provider by creating a configuration file.
+The name of the configuration file is the fully qualified name of the interface or class that the provider implemented. The configuration file contains the fully qualified class name of your provider. The file 
+java.util.spi.ResourceBundleControlProvider contains the fully qualified names of PropertiesResourceBundleControlProvider and XMLResourceBundleControlProvider, one name per line:
+
+rbcp.XMLResourceBundleControlProvider
+rbcp.PropertiesResourceBundleControlProvider
+
+
+5. Package the provider, its required classes, and the configuration file in a JAR file.
+Compile the source files. From the directory that contains the file build.xml, run the following command:
+javac -d build src/java.* src/rbcp/*.java
+This command will compile the source files contained in the src directory and put the class files in the build directory. On Windows, ensure that you use the backslash (\) to separate directory and file names.
+Create a JAR file that contains the compiled class files, resource files, and the configuration file in the following directory structure:
+
+META-INF
+
+services
+
+java.util.spi.ResourceBundleControlProvider
+
+
+
+
+rbcp
+
+PropertiesResourceBundleControl.class
+PropertiesResourceBundleControlProvider.class
+XMLResourceBundleControl.class
+XMLResourceBundleControlProvider.class
+
+
+resources
+
+RBControl.properties
+RBControl_zh.properties
+RBControl_zh_CN.properties
+RBControl_zh_HK.properties
+RBControl_zh_TW.properties
+XmlRB.xml
+XmlRB_ja.xml
+
+
+
+Note that the configuration file java.util.spi.ResourceBundleControlProvider must be packaged in the directory /META-INF/services. This sample packages these files in the JAR file rbcontrolprovider.jar in the lib directory.
+See
+Packaging Programs in JAR Files for more information about creating JAR files.
+Alternatively, download and install Apache Ant, which is a tool that enables you to automate build processes, such as compiling Java files and creating JAR files. Ensure that the Apache Ant executable file is in your PATH environment variable so that you can run it from any directory. Once you have installed Apache Ant, follow these steps:
+
+Edit the file
+build.xml and change ${JAVAC} to the full path name of your Java compiler, javac, and ${JAVA} to the full path name of your Java runtime executable, java.
+Run the following command from the same directory that contains the file build.xml:
+ant jar
+This command compiles the Java source files and packages them, along with the required resource and configuration files, into the JAR file rbcontrolprovider.jar in the lib directory.
+
+
+6. Run the RBCPTest program.
+At a command prompt, run the following command from the directory that contains the build.xml file:
+java -Djava.ext.dirs=lib -cp build RBCPTest
+This command assumes the following:
+
+The JAR file that contains the compiled code of the RBCPTest sample is in the directory lib.
+The compiled class, RBCPTest.class, is in the build directory.
+
+Alternatively, use Apache Ant and run the following command from the directory that contains the build.xml file:
+ant run
+When you install a Java extension, you typically put the JAR file of the extension in the lib/ext directory of your JRE. However, this command specifies the directory that contains Java extensions with the system property java.ext.dirs.
+The RBCPTest program first attempts to retrieve resource bundles with the base name resources.XmlRB and the locales Locale.ROOT and Local.JAPAN. The output of the program retrieving these resource bundles is similar to the following:
+
+Class: rbcp.XMLResourceBundleControlProvider.getControl
+    called for resources.XmlRB
+    returns rbcp.XMLResourceBundleControl@16c1857
+Root locale. Key, type: XML
+
+Class: rbcp.XMLResourceBundleControlProvider.getControl
+    called for resources.XmlRB
+    returns rbcp.XMLResourceBundleControl@16c1857
+Japan locale. Key, type: Value from Japan locale
+
+The program successfully obtains an instance of XMLResourceBundleControl and accesses the properties files XmlRB.xml and XmlRB_ja.xml.
+When the RBCPTest program tries to retrieve a resource bundle, it calls all the classes defined in the configuration file java.util.spi.ResourceBundleControlProvider. For example, when the program retrieves the resource bundle with the base name resources.RBControl and the locale Locale.CHINA, it prints the following output:
+
+Class: rbcp.XMLResourceBundleControlProvider.getControl
+    called for resources.RBControl
+    returns null
+
+Class: rbcp.PropertiesResourceBundleControlProvider.getControl
+    called for resources.RBControl
+    returns rbcp.PropertiesResourceBundleControl@1ad2911
+locale: zh_CN
+    region: China
+    language: Simplified Chinese
+

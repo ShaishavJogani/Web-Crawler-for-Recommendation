@@ -1,0 +1,3 @@
+int nbItems = 10;
+Object[] array3 = new Object[nbItems];
+System.out.println(array3.length);

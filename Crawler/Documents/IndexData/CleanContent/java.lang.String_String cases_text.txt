@@ -1,0 +1,1 @@
+TheStringclass also allow modification case . The two method make possible aretoLowerCase ( ) andtoUpperCase ( ) . These method useful search case sensitive :

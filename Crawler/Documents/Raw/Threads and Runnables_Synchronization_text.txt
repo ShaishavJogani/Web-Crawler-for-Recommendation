@@ -1,0 +1,27 @@
+
+The text in its current form is incomplete.
+
+Given below is an example of creating and running multiple threads that behave in a synchronous manner such that when one thread is using a particular resource, the others wait until the resource has been released. We will talk more about this in later sections.
+
+
+Output forcode listing 4Thread-1 printing material for the 0 time.
+Thread-2 printing material for the 0 time.
+Thread-1 printing material for the 1 time.
+Thread-2 printing material for the 1 time.
+Thread-1 printing material for the 2 time.
+Thread-2 printing material for the 2 time.
+Thread-1 printing material for the 3 time.
+Thread-2 printing material for the 3 time.
+Thread-1 printing material for the 4 time.
+Thread-2 printing material for the 4 time.
+Thread-1 printing material for the 5 time.
+Thread-2 printing material for the 5 time.
+Thread-1 printing material for the 6 time.
+Thread-2 printing material for the 6 time.
+Thread-1 printing material for the 7 time.
+Thread-2 printing material for the 7 time.
+Thread-1 printing material for the 8 time.
+Thread-2 printing material for the 8 time.
+Thread-1 printing material for the 9 time.
+Thread-2 printing material for the 9 time.
+

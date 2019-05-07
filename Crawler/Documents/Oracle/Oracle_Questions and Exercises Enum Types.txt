@@ -1,0 +1,18 @@
+
+Questions
+
+
+True or false: an Enum type can be a subclass of java.lang.String.
+
+Exercises
+
+
+Rewrite the class Card from the exercise in 
+Questions and Exercises: Classes so that it represents the rank and suit of a card with enum types.
+
+
+Rewrite the Deck class.
+
+
+
+Check your answers.

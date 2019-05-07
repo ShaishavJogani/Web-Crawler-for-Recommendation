@@ -1,0 +1,23 @@
+
+Astatic methodis a method that can be called without an object instance. It can be called on the class directly. For example, thevalueOf(String)method of theIntegerclass is a static method:
+
+
+The static keyword makes attributes instance-agnostic. This means that you cannot reference a static attribute of a single object (because such a specific object attribute doesn't exist). Instead, only one instance of a static attribute exists, whether there is one object in the JVM or one hundred. Here is an example of using a static attribute in a static method:
+
+
+You can notice that when you useSystem.out.println(),outis a static attribute of theSystemclass. A static attribute is related to a class, not to any object instance. This is how Java achieves one universal output stream that we can use to print output. Here is a more complex use case:
+
+
+Test your knowledgeQuestion 3.11: Visit the OracleJavaDoc of the classjava.lang.Integer.How many static fields does this class have?Answer4.int MAX_VALUE,int MIN_VALUE,int SIZEandClass<Integer> TYPE.
+
+To learn how to overload and override a method, seeOverloading Methods and Constructors.
+
+
+
+LiteralsJava ProgrammingMethodsAPI/java.lang.String
+
+
+
+
+
+

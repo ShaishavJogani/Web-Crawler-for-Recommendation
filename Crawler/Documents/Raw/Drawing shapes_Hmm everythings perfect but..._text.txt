@@ -1,0 +1,8 @@
+
+Sometimes people ask, after creating simple programs like the ones above, questions like:
+
+Why did I have to tell theGraphicsinstance the color before each drawing routine?Why can't it remember my choice for the outlines and for the fill colors? The answer is simpler than it seems. But, to fully understand it, we need to focus on one little thing called theGraphics Context. The graphics context is the information that adheres to a single instance of theGraphicsclass. Such an instance remembers only one color at a time and that is why we need to make sure the context knows of the color we need to use by using thesetColor(Color)method.Can I manipulate the shapes, like tilt them and crop them?Hold your horses, cowboy! Everything is possible in Java, even tilting and cropping drawings. We will be focusing on these issues in a later section.Is making shapes like triangles, rhombuses and other complex ones tedious?Well, to be honest here, you need to go back to your dusty book cabinet and take out that High School Geometry book because we would be covering some geometry basics while dealing with such shapes. Why not read awikibook on Geometry?
+
+
+If you have any questions regarding the content provided here, please feel free to comment in this page'sdiscussion.
+

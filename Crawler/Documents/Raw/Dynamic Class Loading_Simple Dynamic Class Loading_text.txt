@@ -1,0 +1,21 @@
+
+An easy way to dynamically load aClassis via thejava.net.URLClassLoaderclass. This class can be used to load aClassor a collection of classes that are accessible via a URL. This is very similar to the-classpathparameter in thejavaexecutable. To create aURLClassLoader, use the factory method (as using the constructor requires a security privilege):
+
+
+Unlike other dynamic class loading techniques, this can be used even without security permission provided the classes come from the same Web domain as the caller.
+Once aClassLoaderinstance is obtained, a class can be loaded via theloadClassmethod. For example, to load the classcom.example.MyClass, one would:
+
+
+Executing code from aClassinstance is explained in theDynamic Invocationchapter.
+
+
+
+To do:Add some exercises like the ones inVariables
+
+
+
+
+
+
+
+

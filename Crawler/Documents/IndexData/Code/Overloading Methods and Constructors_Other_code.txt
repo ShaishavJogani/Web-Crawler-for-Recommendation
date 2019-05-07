@@ -1,0 +1,28 @@
+public class Question6 {
+ 
+  public void example1() {
+  }
+
+  public int example1() {
+  }
+
+  public void example2(int x) {
+  }
+
+  public void example2(int y) {
+  }
+
+  private void example3() {
+  }
+
+  public void example3() {
+  }
+
+  public String example4(int x) {
+    return null;
+  }
+
+  public String example4() {
+    return null;
+  }
+}

@@ -1,0 +1,108 @@
+
+List data events occur when the contents of a mutable 
+list change. Since the model — not the component — fires these events, you have to register a list data listener with the list model. If you have not explicitly created a list with a mutable list model, then your list is immutable, and its model will not fire these events.
+Note: 
+Combo box models also fire list data events. However, you normally do not need to know about them unless you are 
+creating a custom combo box model.
+
+The following example demonstrates list data events on a mutable list:
+Try this: 
+Click the Launch button to run ListDataEventDemo using 
+Java™ Web Start (download JDK 7 or later). Alternatively, to compile and run the example yourself, consult the example index.
+Type in the name of your favorite ski resort and click the Add button. An intervalAdded event was fired.
+Select a few continguous items in the list and click the Delete button. An intervalRemoved event was fired.
+Select one item and move it up or down in the list with the arrow buttons. Two contentsChanged events are fired â one for the item that moved and one for the item that was displaced.
+
+
+You can find the demo's code in 
+ListDataEventDemo.java. Here is the code that registers a list data listener on the list model and implements the listener:
+
+//...where member variables are declared...
+private DefaultListModel listModel;
+...
+//Create and populate the list model
+listModel = new DefaultListModel();
+...
+listModel.addListDataListener(new MyListDataListener());
+
+class MyListDataListener implements ListDataListener {
+    public void contentsChanged(ListDataEvent e) {
+        log.append("contentsChanged: " + e.getIndex0() +
+                   ", " + e.getIndex1() + newline);
+    }
+    public void intervalAdded(ListDataEvent e) {
+        log.append("intervalAdded: " + e.getIndex0() +
+                   ", " + e.getIndex1() + newline);
+    }
+    public void intervalRemoved(ListDataEvent e) {
+        log.append("intervalRemoved: " + e.getIndex0() +
+                   ", " + e.getIndex1() + newline);
+    }
+} 
+
+The List Data Listener API
+The ListDataListener Interface
+ListDataListener has no corresponding adapter class.
+
+
+Method
+Purpose
+
+
+
+intervalAdded(ListDataEvent)
+Called when one or more items have been added to the list.
+
+
+
+intervalRemoved(ListDataEvent)
+Called when one or more items have been removed from the list.
+
+
+
+contentsChanged(ListDataEvent)
+Called when the contents of one or more items in the list have changed.
+
+
+The ListDataEvent API
+
+
+Method
+Purpose
+
+
+
+Object getSource()
+(in java.util.EventObject)
+Return the object that fired the event.
+
+
+
+int getIndex0()
+Return the index of the first item whose value has changed.
+
+
+
+int getIndex1()
+Return the index of the last item whose value has changed.
+
+
+
+int getType()
+Return the event type. The possible values are: CONTENTS_CHANGED, INTERVAL_ADDED, or INTERVAL_REMOVED.
+
+
+Examples that Use List Data Listeners
+The following table lists the examples that use list data listeners.
+
+
+Example
+Where Described
+Notes
+
+
+ListDataEventDemo
+This section
+Reports all list data events that occur on a list.
+
+

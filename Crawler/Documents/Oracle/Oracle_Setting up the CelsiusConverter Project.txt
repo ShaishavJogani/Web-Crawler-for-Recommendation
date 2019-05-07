@@ -1,0 +1,4 @@
+
+If you have worked with the NetBeans IDE in the past, much of this section will look familiar, since the initial steps are similar for most projects. Still, the following steps describe settings that are specific to this application, so take care to follow them closely. 
+Step 1: Create a New Project
+To create a new project, launch the NetBeans IDE and choose New Project from the File menu:

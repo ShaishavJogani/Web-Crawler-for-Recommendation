@@ -1,0 +1,5 @@
+BigInteger a = new BigInteger("3");
+BigInteger b = new BigInteger("4");
+
+// c = a^2 + b^2
+BigInteger c = a.multiply(a).add(b.multiply(b));

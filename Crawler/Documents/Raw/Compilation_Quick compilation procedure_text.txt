@@ -1,0 +1,6 @@
+
+To execute your first Java program, follow the instructions below:
+
+
+Ask for help if the program did not execute properly in theDiscussion pagefor this chapter.
+

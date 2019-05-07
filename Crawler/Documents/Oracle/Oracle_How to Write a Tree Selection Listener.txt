@@ -1,0 +1,124 @@
+
+To detect when the user selects a node in a 
+tree, you need to register a tree selection listener. Here is an example, taken from the TreeDemo example discussed in 
+Responding to Node Selection, of detecting node selection in a tree that can have at most one node selected at a time: 
+
+tree.addTreeSelectionListener(new TreeSelectionListener() {
+    public void valueChanged(TreeSelectionEvent e) {
+        DefaultMutableTreeNode node = (DefaultMutableTreeNode)
+                           tree.getLastSelectedPathComponent();
+
+    /* if nothing is selected */ 
+        if (node == null) return;
+
+    /* retrieve the node that was selected */ 
+        Object nodeInfo = node.getUserObject();
+        ...
+    /* React to the node selection. */
+        ...
+    }
+});
+
+To specify that the tree should support single selection, the program uses this code:
+
+tree.getSelectionModel().setSelectionMode
+        (TreeSelectionModel.SINGLE_TREE_SELECTION);
+
+The TreeSelectionModel interface defines three values for the selection mode:
+
+DISCONTIGUOUS_TREE_SELECTION
+This is the default mode for the default tree selection model. With this mode, any combination of nodes can be selected.
+SINGLE_TREE_SELECTION
+This is the mode used by the preceding example. At most one node can be selected at a time.
+CONTIGUOUS_TREE_SELECTION
+With this mode, only nodes in adjoining rows can be selected.
+
+The Tree Selection Listener API
+The TreeSelectionListener Interface
+Because TreeSelectionListener has only one method, it has no corresponding adapter class.
+
+
+Method
+Purpose
+
+
+
+valueChanged(TreeSelectionEvent)
+Called whenever the selection changes.
+
+
+The TreeSelectionEvent API
+
+
+Method
+Purpose
+
+
+
+Object getSource()
+(in java.util.EventObject)
+Return the object that fired the event.
+
+
+
+TreePath getNewLeadSelectionPath()
+Return the current lead path.
+
+
+
+TreePath getOldLeadSelectionPath()
+Return the path that was previously the lead path.
+
+
+
+TreePath getPath()
+Return the first path element.
+
+
+
+TreePath[] getPaths()
+Return the paths that have been added or removed from the selection.
+
+
+
+boolean isAddedPath()
+Return true if the first path element has been added to the selection. Returns false if the first path has been removed from the selection.
+
+
+
+boolean isAddedPath(int)
+Return true if the path specified by the index was added to the selection.
+
+
+
+boolean isAddedPath(TreePath)
+Return true if the specified path was added to the selection.
+
+
+
+Object getLastSelectedPathComponent()
+Return the last path component in the first node of the current selection.
+
+
+
+TreePath getLeadSelectionPath()
+(in JTree)
+Return the current lead path.
+
+
+Examples that Use Tree Selection Listeners
+The following table lists the examples that use tree selection listeners.
+
+
+Example
+Where Described
+Notes
+
+
+TreeDemo
+
+
+How to Use Trees
+The tree listener responds to node clicks by showing the appropriate HTML document.
+
+

@@ -1,0 +1,7 @@
+Label nameLabel = new Label("Name: ");
+
+...
+
+public void init() {
+    add(nameLabel);
+}

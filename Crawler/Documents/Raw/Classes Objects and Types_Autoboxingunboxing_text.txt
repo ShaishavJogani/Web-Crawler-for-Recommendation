@@ -1,0 +1,18 @@
+
+Autoboxing and unboxing, language features since Java 1.5, make the programmer's life much easier when it comes to working with the primitive wrapper types. Consider this code fragment:
+
+
+Primitive wrapper objects were Java's way of allowing one to treat primitive data types as though they were objects. Consequently, one was expected towrapone's primitive data type with the corresponding primitive wrapper object, as shown above.
+Since Java 1.5, one may write as below and the compiler will automatically create the wrap object. The extra step of wrapping the primitive is no longer required. It has beenautomatically boxed upon your behalf:
+
+
+Keep in mind that the compiler still creates the missing wrapper code, so one doesn't really gain anything performance-wise. Consider this feature a programmer convenience, not a performance booster.
+
+Each primitive type has a class wrapper:
+
+Primitive typeClass wrapperbytejava.lang.Bytecharjava.lang.Charactershortjava.lang.Shortintjava.lang.Integerlongjava.lang.Longfloatjava.lang.Floatdoublejava.lang.Doublebooleanjava.lang.Booleanvoidjava.lang.Void
+
+Unboxing uses the same process in reverse. Study the following code for a moment. Theifstatement requires abooleanprimitive value, yet it was given a Boolean wrapper object. No problem! Java 1.5 will automaticallyunboxthis.
+
+
+

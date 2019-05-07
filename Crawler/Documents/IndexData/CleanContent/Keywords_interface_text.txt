@@ -1,0 +1,1 @@
+interfaceis Java keyword . It start declaration Java Interface . For example : See also : Java Programming/Keywords/new

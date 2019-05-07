@@ -1,0 +1,17 @@
+
+This lesson explains how to format numbers, currencies, dates, times, and text messages. Because end users can see these data elements, their format must conform to various cultural conventions. Following the examples in this lesson will teach you how to:
+
+Format data elements in a locale-sensitive manner
+Keep your code locale-independent
+Avoid the need to write formatting routines for specific locales
+
+Numbers and Currencies
+This section explains how to use the NumberFormat, DecimalFormat, and DecimalFormatSymbols classes.
+Dates and Times
+Version note: This Date and Time section uses the date and time APIs in the java.util package. The java.time APIs, available in the JDK 8 release, provides a comprehensive date and time model that offers significant improvements over the java.util classes. The java.time APIs are described in the 
+Date Time trail. The
+Legacy Date-Time Code page might be of particular interest.
+
+This section focuses on the DateFormat, SimpleDateFormat, and DateFormatSymbols classes.
+Messages
+This section shows how the MessageFormat and ChoiceFormat classes can help you solve some of the problems you might encounter when formatting text messages.

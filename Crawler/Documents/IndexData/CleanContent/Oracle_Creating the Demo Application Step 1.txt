@@ -1,0 +1,1 @@
+All Graphical User Interfaces require kind main application frame display . In Swing , instance javax.swing.JFrame . Therefore , first step instantiate class make sure everything work expect . Note program Swing , GUI creation code place Event Dispatch Thread ( EDT ) . This prevent potential race condition could lead deadlock . The following code listing show .

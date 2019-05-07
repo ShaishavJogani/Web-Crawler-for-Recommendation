@@ -1,0 +1,10 @@
+FirstClass object = new FirstClass();
+object.setName("Christin");
+
+// Start of the method
+FirstClass anObject = object;
+anObject = new FirstClass();
+anObject.setName("Susan");
+// End of the method
+
+System.out.println(object.getName());

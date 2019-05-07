@@ -1,0 +1,91 @@
+
+ArrayList defines following methods:
+
+Adding Element in ArrayList[edit]
+
+Inserts the specified element at the specified position index in this list. Throws IndexOutOfBoundsException if the specified index is out of range (index < 0 || index >= size()).
+
+voidadd(intindex,Objectelement)
+
+Appends the specified element to the end of this list.
+
+booleanadd(Objecto)
+
+Appends all of the elements in the specified collection to the end of this list, in the order that they are returned by the specified collection's iterator. Throws NullPointerException if the specified collection is null.
+
+booleanaddAll(Collectionc)
+
+Inserts all of the elements in the specified collection into this list, starting at the specified position. Throws NullPointerException if the specified collection is null.
+
+booleanaddAll(intindex,Collectionc)
+
+Size of ArrayList[edit]
+
+Returns the number of elements in this list.
+
+intsize()
+
+Adding Element and Size of ArrayList
+
+importjava.util.*;publicclassArrayListDemo{publicstaticvoidmain(String[]args){// create an array listArrayList<String>al=newArrayList<String>();System.out.println("Initial ArrayList : "+al);// add elements to the array listal.add("A");al.add("B");//find size of ArrayListSystem.out.println("Size of al :"+al.size());// display the array listSystem.out.println("Contents of al :"+al);al.add(1,"C");System.out.println("Contents of al :"+al);System.out.println("Size of al :"+al.size());}}
+
+Output for Adding Element and Size of  ArrayList
+
+Initial ArrayList : []
+Size of al :2
+Contents of al :[A, B]
+Contents of al :[A, C, B]
+Size of al :3
+
+Get and Set ArrayList Element[edit]
+
+Returns the element at the specified position in this list. Throws IndexOutOfBoundsException if the specified index is is out of range (index < 0 or index >= size()).
+
+Objectget(intindex)
+
+Replaces the element at the specified position in this list with the specified element. Throws IndexOutOfBoundsException if the specified index is is out of range (index < 0 or index >= size()).
+
+Objectset(intindex,Objectelement)
+
+Find Index of ArrayList Element[edit]
+
+Returns the index in this list of the first occurrence of the specified element, or -1 if the List does not contain this element.
+
+intindexOf(Objecto)
+
+Returns the index in this list of the last occurrence of the specified element, or -1 if the list does not contain this element.
+
+intlastIndexOf(Objecto)
+
+Find Element Contain in ArrayList[edit]
+
+Returns true if this list contains the specified element. More formally, returns true if and only if this list contains at least one element e such that (o==null ? e==null : o.equals(e)).
+
+booleancontains(Objecto)
+
+Different Method in ArrayList
+
+publicclassArrayListDemo{publicstaticvoidmain(String[]args){// create an array listArrayListal=newArrayList();// add elements to the array listal.add("A");al.add("B");al.add("C");al.add("A");al.add("D");al.add("A");al.add("E");System.out.println("Contents of al : "+al);// find index of element in ArrayListSystem.out.println("Index of D : "+al.indexOf("D"));System.out.println("Index of A : "+al.indexOf("A"));// find index of element in ArrayListSystem.out.println("Index of A : "+al.lastIndexOf("A"));// get element at given IndexSystem.out.println("Element at Second Index : "+al.get(2));System.out.println("Element at Sixth Index : "+al.get(6));//set element at given Indexal.set(3,"B");// replacing third index element by "B"System.out.println("Contents of al : "+al);//check ArrayList contains given elementSystem.out.println("ArrayList contain D : "+al.contains("D"));System.out.println("ArrayList contain F : "+al.contains("F"));}}
+
+Output for Different Method in ArrayList
+
+Contents of al : [A, B, C, A, D, A, E]
+Index of D : 4
+Index of A : 0
+Index of A : 5
+Element at Second Index : C
+Element at Sixth Index : E
+Contents of al : [A, B, C, B, D, A, E]
+ArrayList contain D : true
+ArrayList contain F : false
+
+
+Some more ArrayList methods:
+
+MethodDescriptionObject clone()Returns a shallow copy of this ArrayList.Object[] toArray()Returns an array containing all of the elements in this list in the correct order. Throws NullPointerException if the specified array is null.void trimToSize()Trims the capacity of this ArrayList instance to be the list's current size.void ensureCapacity(int minCapacity)Increases the capacity of this ArrayList instance, if necessary, to ensure that it can hold at least the number of elements specified by the minimum capacity argument.protected void removeRange(int fromIndex, int toIndex)Removes from this List all of the elements whose index is between fromIndex, inclusive and toIndex, exclusive.
+
+CollectionJava ProgrammingArrayListMap
+
+
+
+

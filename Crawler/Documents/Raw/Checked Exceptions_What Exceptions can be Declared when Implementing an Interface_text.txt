@@ -1,0 +1,18 @@
+
+JAVA 1.8 onwards: When interfaces are involved, the implementation declaration may skip a throws-clause but if one wish to have then should be compatible with the interface declarations. In other words, the implementation should throw the declared exception or it's sub-type or no exception.
+Prior to Java 1.8: The implementer must declare same exception or its subclass.
+
+
+
+
+To do:Add some exercises like the ones inVariables
+
+
+
+Throwing and Catching ExceptionsJava ProgrammingChecked ExceptionsUnchecked Exceptions
+
+
+
+
+
+

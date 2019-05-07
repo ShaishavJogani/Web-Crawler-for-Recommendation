@@ -1,0 +1,1 @@
+There two constant theMathclass fairly accurate approximation irrational mathematical number . Math.E [ edit ] TheMath.Econstant represent value ofEuler 's number ( e ) , base natural logarithm . Math.PI [ edit ] TheMath.PIconstant represent value ofpi , ratio circle 's circumference diameter .

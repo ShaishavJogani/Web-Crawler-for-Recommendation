@@ -1,0 +1,1 @@
+ActionListeneris interface could implement order determine certain event handle . When implement interface , method interface implement , ActionListenerinterface one method implement namedactionPerformed ( ) . Thecode list 9.6shows implementActionListener : When compile run code , message `` Hi ! ! ! '' appear click button .

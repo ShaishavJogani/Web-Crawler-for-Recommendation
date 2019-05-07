@@ -1,0 +1,19 @@
+String word = "Integer";
+String text = "A number without a decimal part is an integer."
+  + " Integers are a list of digits.";
+
+...
+
+// Remove the case
+String lowerCaseWord = word.toLowerCase();
+String lowerCaseText = text.toLowerCase();
+
+// Search
+int index = lowerCaseText.indexOf(lowerCaseWord);
+while (index != -1) {
+  System.out.println(word
+    + " appears at column "
+    + (index + 1)
+    + ".");
+  index = lowerCaseText.indexOf(lowerCaseWord, index + 1);
+}

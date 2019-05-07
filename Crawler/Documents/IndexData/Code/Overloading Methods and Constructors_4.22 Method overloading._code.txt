@@ -1,0 +1,7 @@
+public void runAroundThe(Building block) {
+  ...
+}
+
+public void runAroundThe(Park park) {
+  ...
+}

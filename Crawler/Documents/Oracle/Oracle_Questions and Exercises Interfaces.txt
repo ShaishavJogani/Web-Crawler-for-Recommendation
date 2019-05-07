@@ -1,0 +1,65 @@
+
+Questions
+
+At the beginning of this lesson, you learned that the core collection interfaces
+ are organized into two distinct
+inheritance trees. One interface in particular is not considered to be 
+a true Collection, and therefore sits at the top of its own tree. What is the name 
+of this interface?
+
+
+Each interface in the collections framework is declared
+with the <E> syntax, which tells you that it is 
+generic. When you declare a Collection instance, what is
+the advantage of specifying the type of objects that it will contain?
+
+
+What interface represents a collection that does not allow duplicate elements?
+
+
+What interface forms the root of the collections hierarchy?
+
+
+What interface represents an ordered collection that may contain duplicate elements?
+
+
+What interface represents a collection that holds elements prior to processing?
+
+
+What interface repesents a type that maps keys to values?
+
+
+What interface represents a double-ended queue?
+
+Name three different ways to iterate over the elements of a List.
+True or False: Aggregate operations are mutative operations that modify the underlying collection.
+
+Exercises
+
+Write a program that prints its arguments in random order. Do not make a copy of the argument array.
+Demonstrate how to print out the elements using both streams and the traditional enhanced for statement.
+
+
+Take the 
+FindDupsexample 
+ and modify it to use a SortedSet instead of a Set. Specify a Comparator so that case is ignored when sorting and identifying set elements.
+Write a method that takes a List<String> and applies 
+String.trim to each element. 
+
+Consider the four core interfaces, Set, List, Queue, and Map.
+For each of the following four assignments, specify which of the four core
+interfaces is best-suited, and explain how to use it to implement the assignment.
+  
+Whimsical Toys Inc (WTI) needs to record the names of all its employees. Every month, an employee will be chosen at random
+ from these records to receive a free toy.
+WTI has decided that each new product will be named after an employee but only first names will be used, and each name
+ will be used only once. Prepare a list of unique first names.
+WTI decides that it only wants to use the most popular names for its toys. Count up the number of employees who have each first
+ name.
+WTI acquires season tickets for the local lacrosse team, to be shared by employees. Create a waiting list for this popular
+sport.
+
+
+
+
+Check your answers.

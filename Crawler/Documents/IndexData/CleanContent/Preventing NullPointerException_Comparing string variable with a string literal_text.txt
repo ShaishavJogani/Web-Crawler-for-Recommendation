@@ -1,0 +1,1 @@
+When compare variable string literal , people would way : Always put string literal first : If thestatevariable null , get aNullPointerExceptionin first example , second one .

@@ -1,0 +1,3 @@
+
+
+JAXP 1.5 provides new properties to give controls of fetching external resources to users. The use of the new properties is the same as with other existing properties, except that the properties are provided with corresponding system properties and jaxp.properties so that they can be used for system-wide restrictions or permissions.

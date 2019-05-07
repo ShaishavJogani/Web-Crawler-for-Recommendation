@@ -1,0 +1,32 @@
+
+We now proceed on to our second drawing. A simple rectangle would do it justice, see below for code.
+
+
+In the above example, you see how easy it is to draw a simple rectangle using thedrawRect(int, int, int, int)method in theGraphicsinstance that we obtained. Run the program and you will see a simple black outline of a rectangle appearing where once a blank canvas was.
+The four arguments that are being passed into the method are, in order of appearance, thex-coordinate, they-coordinate,widthand theheight. Hence, the resultant rectangle would start painting at the point on the screen 10 pixels from the left and 10 from the top and would be a 100 pixel wide and a 100 pixel in height. To save the argument here, the above drawing is that of a square with equal sides but squares are drawn using the same method and there is no such method asdrawSquare(int, int, int)
+
+Figure 9.4: Same rectangle drawn with a red outline
+
+Playing around with colors[edit]
+
+You can change the color of the outline by telling theGraphicsinstance the color you desire. This can be done as follows:
+
+
+Running the program would render the same rectangle but with a red colored outline.
+For the purposes of bringing color to our drawing, we used a method namely thesetColor(Color)method. This method comes into force for all the drawing made after its call until another color is set. It asks for an argument of typeColor. Now because you have no idea of how to actually instantiate aColorclass, the class itself has a few built-in colors. Some built-in colors that you can use are mentioned below.
+
+Color.redColor.blueColor.greenColor.yellowColor.pinkColor.blackColor.white
+
+Try running the program while coding changes to colors for a different colored outline each time. Play around a bit with more colors. Look for the Color class API documentation in theexternal linksat the bottom of the page.
+
+Figure 9.5: Same rectangle drawn with a red outline and a yellow fill
+
+Filling up the area of the rectangle[edit]
+
+Up until now, you have been able to draw a simple rectangle for yourself while asking a question silently, "why is the outline of the rectangle being painted rather the area as a whole?" The answer is simple. Any method that starts withdrawXxxx(...)only draws the outline. To paint the area within the outline, we use thefillXxxx(...)methods. For instance, the code below would fill a rectangle with yellow color while having a red outline. Notice that the arguments remain the same.
+
+
+
+
+Figure 9.6: A white circle drawn with a blue outline
+

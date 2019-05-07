@@ -1,0 +1,13 @@
+
+shortis a keyword. It defines a 16 bit signed integerprimitive type.
+Syntax:
+
+short<variable-name> = <integer-value>;
+
+For example:
+
+
+See also:
+
+Java Programming/Primitive Types
+

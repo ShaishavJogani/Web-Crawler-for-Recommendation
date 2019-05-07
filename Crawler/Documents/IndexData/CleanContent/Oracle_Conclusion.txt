@@ -1,0 +1,1 @@
+JAXP 1.5 provide new property give control fetch external resource user . The use new property exist property , except property provide correspond system property jaxp.properties use system-wide restriction permission .

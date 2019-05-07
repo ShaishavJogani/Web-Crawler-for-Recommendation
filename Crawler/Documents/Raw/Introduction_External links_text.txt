@@ -1,0 +1,16 @@
+
+[1]The Java™ Tutorial on Annotations
+
+
+
+
+
+To do:Add some exercises like the ones inVariables.
+
+
+
+
+
+
+
+

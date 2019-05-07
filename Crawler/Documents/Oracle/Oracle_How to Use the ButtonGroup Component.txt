@@ -1,0 +1,62 @@
+
+The ButtonGroup component manages the selected/unselected state for a set of buttons. For the group, the ButtonGroup instance guarantees that only one button can be selected at a time.
+Initially, all buttons managed by a ButtonGroup instance are unselected.
+How to Use ButtonGroup Features
+You can use ButtonGroup with any set of objects that inherit from AbstractButton. Typically a button group contains instances of JRadioButton, JRadioButtonMenuItem, or JToggleButton. It would not make sense to put an instance of JButton or JMenuItem in a button group because JButton and JMenuItem do not implement the select/deselect button state.
+In general, you will typically follow these steps to write code that uses a ButtonGroup component.
+
+Subclass JFrame
+Call ContextPane together with a layout manager
+Declare and configure a set of radio buttons or toggle buttons
+Instantiate a ButtonGroup object
+Call the add method on that buttongroup object in order to add each button to the group.
+
+For details and a code example, see 
+How to Use Radio Buttons. It shows how to use a ButtonGroup component to group a set of RadioButtons set into a JPanel.
+The ButtonGroup API
+ 
+
+Commonly Used Button Group Constructors/Methods
+
+Constructor or Method
+Purpose
+
+
+
+ButtonGroup()
+Create a ButtonGroup instance.
+
+
+
+void add(AbstractButton)
+void remove(AbstractButton)
+Add a button to the group, or remove a button from the group. 
+
+
+
+
+public ButtonGroup getGroup()
+(in DefaultButtonModel)
+Get the ButtonGroup, if any, that controls a button. For example:
+ButtonGroup group = ((DefaultButtonModel)button.getModel()).getGroup();
+
+
+
+public ButtonGroup clearSelection()
+Clears the state of selected buttons in the ButtonGroup. None of the buttons in the ButtonGroup are selected .
+
+
+ButtonGroup Examples
+The following demonstration application uses the ButtonGroup component to group radio buttons displaying on a Window.
+
+
+Example
+Where Described
+Notes
+
+
+RadioButtonDemo
+How to Use Radio Buttons
+Uses radio buttons to determine which of five images it should display.
+
+

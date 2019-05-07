@@ -1,0 +1,22 @@
+
+Java file[edit]
+
+Sometimes we wish to convey an entire java file, this can be done as follows:
+
+
+"1.1" means that it is the first code of the first chapter. Using<source/>is better than using a template as||is a part of the Java syntax.
+
+Snippets[edit]
+
+When just a small section of code is shown, the code template may be used as follows:
+
+
+Screen print[edit]
+
+To represent what is shown on the screen, use the following syntax:
+
+You writeYou get{{XConsole|1='''Output for the application'''
+<pre style="background-color:#000; color:#fff;">
+Hello World!
+</pre>}}Output for the applicationHello World!
+

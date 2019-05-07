@@ -1,0 +1,7 @@
+
+An array created usingnew Object[10]has 10 null pointers.  That's 10 more than we want, so use collections instead, or explicitly fill the array at initialization with:
+
+
+or:
+
+

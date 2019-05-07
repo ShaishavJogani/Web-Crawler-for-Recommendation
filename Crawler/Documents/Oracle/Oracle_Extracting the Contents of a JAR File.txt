@@ -1,0 +1,48 @@
+
+The basic command to use for extracting the contents of a JAR file is:
+
+jar xf jar-file [archived-file(s)]
+
+Let's look at the options and arguments in this command:
+
+The x option indicates that you want to extract files from the JAR archive.
+The f options indicates that the JAR file from which files are to be extracted is specified on the command line, rather than through stdin.
+The jar-file argument is the filename (or path and filename) of the JAR file from which to extract files.
+archived-file(s) is an optional argument consisting of a space-separated list of the files to be extracted from the archive. If this argument is not present, the Jar tool will extract all the files in the archive.
+
+As usual, the order in which the x and f options appear in the command doesn't matter, but there must not be a space between them.
+When extracting files, the Jar tool makes copies of the desired files and writes them to the current directory, reproducing the directory structure that the files have in the archive. The original JAR file remains unchanged.
+Caution: When it extracts files, the Jar tool will overwrite any existing files having the same pathname as the extracted files.
+
+An Example
+Let's extract some files from the TicTacToe JAR file we've been using in previous sections. Recall that the contents of TicTacToe.jar are:
+
+META-INF/MANIFEST.MF
+TicTacToe.class
+TicTacToe.class
+TicTacToe.java
+audio/
+audio/beep.au
+audio/ding.au
+audio/return.au
+audio/yahoo1.au
+audio/yahoo2.au
+example1.html
+images/
+images/cross.gif
+images/not.gif
+
+Suppose you want to extract the TicTacToe class file and the cross.gif image file. To do so, you can use this command:
+
+jar xf TicTacToe.jar TicTacToe.class images/cross.gif
+
+This command does two things:
+
+It places a copy of TicTacToe.class in the current directory.
+It creates the directory images, if it doesn't already exist, and places a copy of cross.gif within it.
+
+The original TicTacToe JAR file remains unchanged.
+As many files as desired can be extracted from the JAR file in the same way. When the command doesn't specify which files to extract, the Jar tool extracts all files in the archive. For example, you can extract all the files in the TicTacToe archive by using this command:
+
+jar xf TicTacToe.jar
+

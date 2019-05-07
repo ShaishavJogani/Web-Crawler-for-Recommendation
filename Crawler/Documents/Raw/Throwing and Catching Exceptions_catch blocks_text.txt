@@ -1,0 +1,11 @@
+
+Atry/catchstatement can contain severalcatchblocks, to handle different exceptions in different ways. Eachcatchblock must take a parameter of a different throwable class. A thrown object may match severalcatchblock but only the firstcatchblock that matches the object will be executed. A catch-block will catch a thrown exception if and only if:
+
+the thrown exception object is the same as the exception object specified by the catch-block.the thrown exception object is the subtype of the exception object specified by the catch-block.
+
+This means that thecatchblock order is important. As a consequence, you can't put acatchblock that catches all the exception (which take ajava.lang.Exceptionas parameter) before acatchblock that catches a more specific exception as the second block could never be executed.
+
+
+At line 14, we use amulti-catchclause. It is available since the JDK 7. This is a combination of severalcatchclauses and let's you handle exceptions in a single handler while also maintaining their types. So, instead of being boxed into a parent Exception super-class, they retain their individual types.
+You can also use thejava.lang.Throwableclass here, sinceThrowableis the parent class for theapplication-specificExceptionclasses. However, this is discouraged in Java programming circles. This is becauseThrowablehappens to also be the parent class for thenon-application specificErrorclasses which are not meant to be handled explicitly as they are catered for by the JVM itself.
+

@@ -1,0 +1,8 @@
+private boolean initialized = false;
+
+public void synchronizeConnection() {
+   if (!initialized) {
+      connection = connect();
+      initialized = true;
+   }
+}

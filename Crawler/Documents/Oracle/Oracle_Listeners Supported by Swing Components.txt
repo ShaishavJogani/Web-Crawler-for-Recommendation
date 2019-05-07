@@ -1,0 +1,426 @@
+
+You can tell what kinds of events a component can fire by looking at the kinds of event listeners you can register on it. For example, the JComboBox class defines these listener registration methods:
+
+addActionListener
+addItemListener
+addPopupMenuListener
+
+Thus, a combo box supports action, item, and popup menu listeners in addition to the listener methods it inherits from JComponent.
+Listeners supported by Swing components fall into two categories:
+
+Listeners that All Swing Components Support
+Other Listeners that Swing Components Support
+
+
+Listeners that All Swing Components Support
+Because all Swing components descend from the AWT Component class, you can register the following listeners on any Swing component:
+
+component listener
+Listens for changes in the component's size, position, or visibility.
+focus listener
+Listens for whether the component gained or lost the keyboard focus.
+key listener
+Listens for key presses; key events are fired only by the component that has the current keyboard focus.
+mouse listener
+Listens for mouse clicks, mouse presses, mouse releases and mouse movement into or out of the component's drawing area.
+mouse-motion listener
+Listens for changes in the mouse cursor's position over the component.
+mouse-wheel listener
+Listens for mouse wheel movement over the component.
+
+Hierarchy Listener
+Listens for changes to a component's containment hierarchy of changed events.
+
+Hierarchy Bounds Listener
+Listens for changes to a component's containment hierarchy of moved and resized events.
+
+All Swing components descend from the AWT Container class, but many of them are not used as containers. So, technically speaking, any Swing component can fire container events, which notify listeners that a component has been added to or removed from the container. Realistically speaking, however, only containers (such as panels and frames) and compound components (such as combo boxes) typically fire container events.
+JComponent provides support for three more listener types. You can register an 
+ancestor listener to be notified when a component's containment ancestors are added to or removed from a container, hidden, made visible, or moved. This listener type is an implementation detail which predated hierarchy listeners.
+The other two listener types are part of the Swing components' conformance to the JavaBeans specification. Among other things, this means that Swing components support bound and constrained properties and notify listeners of changes to the properties. Property change listeners listen for changes to bound properties and are used by several Swing components, such as 
+formatted text fields, to track changes on a component's bound properties. Also, property change listeners, as well as 
+vetoable change listeners are used by builder tools to listen for changes on constrained properties. For more information refer to the 
+Properties lesson in the 
+JavaBeans trail. 
+Other Listeners that Swing Components Support
+The following table lists Swing components and the specialized listeners they support, not including listeners supported by all Components, Containers, or JComponents. In many cases, the events are fired directly from the component. In other cases, the events are fired from the component's data or selection model. To find out the details for the particular component and listener you are interested in, go first to the component how-to section, and then if necessary to the listener how-to section.
+
+This table lists Swing components with their specialized listeners
+
+Component
+Action Listener
+Caret Listener
+Change Listener
+Document Listener,
+Undoable Edit Listener
+Item Listener
+List Selection Listener
+Window Listener
+Other Types of Listeners
+
+
+button
+
+
+ 
+
+
+ 
+
+
+ 
+ 
+ 
+
+
+check box
+
+
+ 
+
+
+ 
+
+
+ 
+ 
+ 
+
+
+color chooser
+ 
+ 
+
+
+ 
+ 
+ 
+ 
+ 
+
+
+combo box
+
+
+ 
+ 
+ 
+
+
+ 
+ 
+ 
+
+
+dialog
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+ 
+
+
+editor pane
+ 
+
+
+ 
+
+
+ 
+ 
+ 
+
+hyperlink
+
+
+file chooser
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+formatted text field
+
+
+
+
+ 
+
+
+ 
+ 
+ 
+ 
+
+
+frame
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+ 
+
+
+internal frame
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+internal frame
+
+
+list
+ 
+ 
+ 
+ 
+ 
+
+
+ 
+
+list data
+
+
+menu
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+menu
+
+
+menu item
+
+
+ 
+
+
+ 
+
+
+ 
+ 
+
+menu key
+menu drag mouse
+
+
+option pane
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+password field
+
+
+
+
+ 
+
+
+ 
+ 
+ 
+ 
+
+
+popup menu
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+popup menu
+
+
+progress bar
+ 
+ 
+
+
+ 
+ 
+ 
+ 
+ 
+
+
+radio button
+
+
+ 
+
+
+ 
+
+
+ 
+ 
+ 
+
+
+slider
+ 
+ 
+
+
+ 
+ 
+ 
+ 
+ 
+
+
+spinner
+ 
+ 
+
+
+ 
+ 
+ 
+ 
+ 
+
+
+tabbed pane
+ 
+ 
+
+
+ 
+ 
+ 
+ 
+ 
+
+
+table
+ 
+ 
+ 
+ 
+ 
+
+
+ 
+  table model
+table column model
+cell editor
+
+
+text area
+ 
+
+
+ 
+
+
+ 
+ 
+ 
+ 
+
+
+text field
+
+
+
+
+ 
+
+
+ 
+ 
+ 
+ 
+
+
+text pane
+ 
+
+
+ 
+
+
+ 
+ 
+ 
+  
+hyperlink
+
+
+toggle button
+
+
+ 
+
+
+ 
+
+
+ 
+ 
+ 
+
+
+tree
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  tree expansion
+tree will expand
+tree model
+tree selection
+
+
+viewport
+(used by scrollpane)
+ 
+ 
+
+
+ 
+ 
+ 
+ 
+ 
+
+

@@ -1,0 +1,13 @@
+public class Customer implements Cloneable {
+  Activity activity;
+  ...
+    public Customer clone() throws CloneNotSupportedException {
+      Customer clonedCustomer = (Customer) super.clone();
+
+      // Clone the object referenced objects
+      if (activity != null) {
+         clonedCustomer.setActivity((Activity) activity.clone());
+      }
+      return clonedCustomer;
+   }
+}

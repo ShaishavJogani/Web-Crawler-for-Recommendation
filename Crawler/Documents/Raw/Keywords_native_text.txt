@@ -1,0 +1,13 @@
+
+nativeis a java keyword. It marks a method, that it will be implemented in other languages, not in Java. The method is declared without a body and cannot beabstract. It works together withJNI (Java Native Interface).
+Syntax:
+
+[public|protected|private]nativemethod();
+
+Native methods were used in the past to write performance critical sections but with java getting faster this is now less common. Native methods are currently needed when
+
+You need to call from java a library, written in another language.You need to access system or hardware resources that are only reachable from the other language (typicallyC). Actually, many system functions that interact with real computer (disk and network IO, for instance) can only do this because they call native code.
+
+To complete writing native method, you need to process your class withjavahtool that will generate a header code in C. You then need to provide implementation of the header code, produce dynamically loadable library (.sounder Linux,.dllunder Windows) and load it (in the simplest case withSystem.load(library_file_name). The code completion is trivial if only primitive types like integers are passed but gets more complex if it is needed to exchange strings or objects from the C code. In general, everything can be on C level, including creation of the new objects and calling back methods, written in java.
+To call the code in some other language (includingC++), you need to write a bridge from C to that language. This is usually trivial as most of languages are callable from C.
+

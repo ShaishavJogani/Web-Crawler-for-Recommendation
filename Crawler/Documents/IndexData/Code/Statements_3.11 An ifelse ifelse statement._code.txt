@@ -1,0 +1,7 @@
+if (i > 0) {
+   System.out.println("value stored in i is greater than zero");
+} else if (i < 0) {
+   System.out.println("value stored in i is less than zero");
+} else {
+   System.out.println("value stored is equal to 0");
+}

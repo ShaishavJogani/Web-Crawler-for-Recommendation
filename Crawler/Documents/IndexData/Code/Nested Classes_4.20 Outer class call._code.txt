@@ -1,0 +1,6 @@
+public void testInner() {
+    ...
+    OuterClass outer = new OuterClass();
+    OuterClass.InnerClass inner = outer.new InnerClass();  
+    ...
+}

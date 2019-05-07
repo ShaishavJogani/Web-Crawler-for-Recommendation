@@ -1,0 +1,241 @@
+
+You can obtain the names of the formal parameters of any method or constructor with the method
+java.lang.reflect.Executable.getParameters. (The classes
+Method and 
+Constructor extend the class 
+Executable and therefore inherit the method Executable.getParameters.) However, .class files do not store formal parameter names by default. This is because many tools that produce and consume class files may not expect the larger static and dynamic footprint of .class files that contain parameter names. In particular, these tools would have to handle larger .class files, and the Java Virtual Machine (JVM) would use more memory. In addition, some parameter names, such as secret or password, may expose information about security-sensitive methods.
+To store formal parameter names in a particular .class file, and thus enable the Reflection API to retrieve formal parameter names, compile the source file with the -parameters option to the javac compiler.
+The 
+MethodParameterSpy example illustrates how to retrieve the names of the formal parameters of all constructors and methods of a given class. The example also prints other information about each parameter.
+The following command prints the formal parameter names of the constructors and methods of the class
+ExampleMethods. Note: Remember to compile the example ExampleMethods with the -parameters compiler option:
+java MethodParameterSpy ExampleMethods
+This command prints the following:
+Number of constructors: 1
+
+Constructor #1
+public ExampleMethods()
+
+Number of declared constructors: 1
+
+Declared constructor #1
+public ExampleMethods()
+
+Number of methods: 4
+
+Method #1
+public boolean ExampleMethods.simpleMethod(java.lang.String,int)
+             Return type: boolean
+     Generic return type: boolean
+         Parameter class: class java.lang.String
+          Parameter name: stringParam
+               Modifiers: 0
+            Is implicit?: false
+        Is name present?: true
+           Is synthetic?: false
+         Parameter class: int
+          Parameter name: intParam
+               Modifiers: 0
+            Is implicit?: false
+        Is name present?: true
+           Is synthetic?: false
+
+Method #2
+public int ExampleMethods.varArgsMethod(java.lang.String...)
+             Return type: int
+     Generic return type: int
+         Parameter class: class [Ljava.lang.String;
+          Parameter name: manyStrings
+               Modifiers: 0
+            Is implicit?: false
+        Is name present?: true
+           Is synthetic?: false
+
+Method #3
+public boolean ExampleMethods.methodWithList(java.util.List<java.lang.String>)
+             Return type: boolean
+     Generic return type: boolean
+         Parameter class: interface java.util.List
+          Parameter name: listParam
+               Modifiers: 0
+            Is implicit?: false
+        Is name present?: true
+           Is synthetic?: false
+
+Method #4
+public <T> void ExampleMethods.genericMethod(T[],java.util.Collection<T>)
+             Return type: void
+     Generic return type: void
+         Parameter class: class [Ljava.lang.Object;
+          Parameter name: a
+               Modifiers: 0
+            Is implicit?: false
+        Is name present?: true
+           Is synthetic?: false
+         Parameter class: interface java.util.Collection
+          Parameter name: c
+               Modifiers: 0
+            Is implicit?: false
+        Is name present?: true
+           Is synthetic?: false
+The MethodParameterSpy example uses the following methods from the
+Parameter class:
+
+
+getType: Returns a
+Class object that identifies the declared type for the parameter.
+
+getName: Returns the name of the parameter. If the parameter's name is present, then this method returns the name provided by the .class file. Otherwise, this method synthesizes a name of the form argN, where N is the index of the parameter in the descriptor of the method that declares the parameter.
+For example, suppose you compiled the class ExampleMethods without specifying the -parameters compiler option. The example MethodParameterSpy would print the following for the method ExampleMethods.simpleMethod:
+public boolean ExampleMethods.simpleMethod(java.lang.String,int)
+             Return type: boolean
+     Generic return type: boolean
+         Parameter class: class java.lang.String
+          Parameter name: arg0
+               Modifiers: 0
+            Is implicit?: false
+        Is name present?: false
+           Is synthetic?: false
+         Parameter class: int
+          Parameter name: arg1
+               Modifiers: 0
+            Is implicit?: false
+        Is name present?: false
+           Is synthetic?: false
+
+getModifiers  : Returns an integer that represents various characteristics that the formal parameter possesses. This value is the sum of the following values, if applicable to the formal parameter:
+
+
+Value (in decimal)
+Value (in hexadecimal
+Description
+
+
+16
+0x0010
+The formal parameter is declared final
+
+
+4096
+0x1000
+The formal parameter is synthetic. Alternatively, you can invoke the method isSynthetic.
+
+
+32768
+0x8000
+The parameter is implicitly declared in source code. Alternatively, you can invoke the method isImplicit
+
+
+
+
+isImplicit: Returns true if this parameter is implicitly declared in source code. See the section Implicit and Synthetic Parameters for more information.
+
+isNamePresent: Returns true if the parameter has a name according to the .class file.
+
+isSynthetic: Returns true if this parameter is neither implicitly nor explicitly declared in source code. See the section Implicit and Synthetic Parameters for more information.
+
+Implicit and Synthetic Parameters
+Certain constructs are implicitly declared in the source code if they have not been written explicitly. For example, the
+ExampleMethods example does not contain a constructor. A default constructor is implicitly declared for it. The MethodParameterSpy example prints information about the implicitly declared constructor of ExampleMethods:
+Number of declared constructors: 1
+public ExampleMethods()
+Consider the following excerpt from
+MethodParameterExamples:
+public class MethodParameterExamples {
+    public class InnerClass { }
+}
+The class InnerClass is a non-static
+nested class or inner class. A constructor for inner classes is also implicitly declared. However, this constructor will contain a parameter. When the Java compiler compiles InnerClass, it creates a .class file that represents code similar to the following:
+public class MethodParameterExamples {
+    public class InnerClass {
+        final MethodParameterExamples parent;
+        InnerClass(final MethodParameterExamples this$0) {
+            parent = this$0; 
+        }
+    }
+}
+The InnerClass constructor contains a parameter whose type is the class that encloses InnerClass, which is MethodParameterExamples. Consequently, the example MethodParameterExamples prints the following:
+public MethodParameterExamples$InnerClass(MethodParameterExamples)
+         Parameter class: class MethodParameterExamples
+          Parameter name: this$0
+               Modifiers: 32784
+            Is implicit?: true
+        Is name present?: true
+           Is synthetic?: false
+Because the constructor of the class InnerClass is implicitly declared, its parameter is implicit as well.
+Note:
+
+The Java compiler creates a formal parameter for the constructor of an inner class to enable the compiler to pass a reference (representing the immediately enclosing instance) from the creation expression to the member class's constructor.
+The value 32784 means that the parameter of the InnerClass constructor is both final (16) and implicit (32768).
+The Java programming language allows variable names with dollar signs ($); however, by convention, dollar signs are not used in variable names.
+
+Constructs emitted by a Java compiler are marked as synthetic if they do not correspond to a construct declared explicitly or implicitly in source code, unless they are class initialization methods. Synthetic constructs are artifacts generated by compilers that vary among different implementations. Consider the following excerpt from
+MethodParameterExamples:
+public class MethodParameterExamples {
+    enum Colors {
+        RED, WHITE;
+    }
+}
+When the Java compiler encounters an enum construct, it creates several methods that are compatible with the .class file structure and provide the expected functionality of the enum construct. For example, the Java compiler would create a .class file for the enum construct Colors that represents code similar to the following:
+final class Colors extends java.lang.Enum<Colors> {
+    public final static Colors RED = new Colors("RED", 0);
+    public final static Colors BLUE = new Colors("WHITE", 1);
+ 
+    private final static values = new Colors[]{ RED, BLUE };
+ 
+    private Colors(String name, int ordinal) {
+        super(name, ordinal);
+    }
+ 
+    public static Colors[] values(){
+        return values;
+    }
+ 
+    public static Colors valueOf(String name){
+        return (Colors)java.lang.Enum.valueOf(Colors.class, name);
+    }
+}
+The Java compiler creates three constructors and methods for this enum construct: Colors(String name, int ordinal), Colors[] values(), and Colors valueOf(String name). The methods values and valueOf are implicitly declared. Consequently, their formal parameter names are implicitly declared as well.
+The enum constructor Colors(String name, int ordinal) is a default constructor and it is implicitly declared. However, the formal parameters of this constructor (name and ordinal) are not implicitly declared. Because these formal parameters are neither explicitly or implicitly declared, they are synthetic. (The formal parameters for the default constructor of an enum construct are not implicitly declared because different compilers need not agree on the form of this constructor; another Java compiler might specify different formal parameters for it. When compilers compile expressions that use enum constants, they rely only on the  public static fields of the enum construct, which are implicitly declared, and not on their constructors or how these constants are initialized.)
+Consequently, the example MethodParameterExample prints the following about the enum construct Colors:
+enum Colors:
+
+Number of constructors: 0
+
+Number of declared constructors: 1
+
+Declared constructor #1
+private MethodParameterExamples$Colors()
+         Parameter class: class java.lang.String
+          Parameter name: $enum$name
+               Modifiers: 4096
+            Is implicit?: false
+        Is name present?: true
+           Is synthetic?: true
+         Parameter class: int
+          Parameter name: $enum$ordinal
+               Modifiers: 4096
+            Is implicit?: false
+        Is name present?: true
+           Is synthetic?: true
+
+Number of methods: 2
+
+Method #1
+public static MethodParameterExamples$Colors[]
+    MethodParameterExamples$Colors.values()
+             Return type: class [LMethodParameterExamples$Colors;
+     Generic return type: class [LMethodParameterExamples$Colors;
+
+Method #2
+public static MethodParameterExamples$Colors
+    MethodParameterExamples$Colors.valueOf(java.lang.String)
+             Return type: class MethodParameterExamples$Colors
+     Generic return type: class MethodParameterExamples$Colors
+         Parameter class: class java.lang.String
+          Parameter name: name
+               Modifiers: 32768
+            Is implicit?: true
+        Is name present?: true
+           Is synthetic?: false
+Refer to the Java Language Specification for more information about implicitly declared constructs, including parameters that appear as implicit in the Reflection API.

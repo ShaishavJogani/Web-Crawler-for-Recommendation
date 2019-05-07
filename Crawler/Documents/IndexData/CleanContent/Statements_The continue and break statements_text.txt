@@ -1,0 +1,1 @@
+At time , would like re-iterate loop without execute remain statement within loop . Thecontinuestatement cause loop re-iterate start top statement inside loop . Where ability re-iterate loop , ability exit loop require . At give moment , 'd like exit loop end work within loop , thebreakought use . Thecontinueandbreakstatements use label like follow :

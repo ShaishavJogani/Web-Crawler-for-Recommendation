@@ -1,0 +1,34 @@
+
+
+The 
+Path class includes various methods that can be used to obtain information about the path, access elements of the path, convert the path to other forms, or extract portions of a path. There are also methods for matching the path string and methods for removing redundancies in a path. This lesson addresses these Path methods, sometimes called syntactic operations, because they operate on the path itself and don't access the file system.
+This section covers the following:
+
+Creating a Path
+Retrieving Information About a Path
+Removing Redundancies from a Path
+Converting a Path
+Joining Two Paths
+Creating a Path Between Two Paths
+Comparing Two Paths
+
+Creating a Path
+A Path instance contains the information used to specify the location of a file or directory. At the time it is defined, a Path is provided with a series of one or more names. A root element or a file name might be included, but neither are required. A Path might consist of just a single directory or file name.
+You can easily create a Path object by using one of the following get methods from the 
+Paths (note the plural) helper class:
+
+Path p1 = Paths.get("/tmp/foo");
+Path p2 = Paths.get(args[0]);
+Path p3 = Paths.get(URI.create("file:///Users/joe/FileTest.java"));
+
+The Paths.get method is shorthand for the following code:
+
+Path p4 = FileSystems.getDefault().getPath("/users/sally");
+
+The following example creates /u/joe/logs/foo.log assuming your home directory is /u/joe, or C:\joe\logs\foo.log if you are on Windows.
+
+Path p5 = Paths.get(System.getProperty("user.home"),"logs", "foo.log");
+
+Retrieving Information about a Path
+You can think of the Path as storing these name elements as a sequence. The highest element in the directory structure would be located at index 0. The lowest element in the directory structure would be located at index [n-1], where n is the number of name elements in the Path. Methods are available for retrieving individual elements or a subsequence of the Path using these indexes.
+The examples in this lesson use the following directory structure.

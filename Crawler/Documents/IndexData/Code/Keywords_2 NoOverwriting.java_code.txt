@@ -1,0 +1,4 @@
+public class NoOverwriting {
+  public final void sealedMethod() {
+  }
+}

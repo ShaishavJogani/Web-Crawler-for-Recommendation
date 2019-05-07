@@ -1,0 +1,1 @@
+When service register lookup service , receive lease lookup service , describe theJini Distributed Leasing Specification .

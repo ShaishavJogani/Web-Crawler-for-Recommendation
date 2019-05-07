@@ -1,0 +1,37 @@
+
+Reflection defines an interface 
+java.lang.reflect.Member which is implemented by 
+java.lang.reflect.Field, 
+java.lang.reflect.Method, and 
+java.lang.reflect.Constructor . These objects will be discussed in this lesson. For each member, the lesson will describe the associated APIs to retrieve declaration and type information, any operations unique to the member (for example, setting the value of a field or invoking a method), and commonly encountered errors. Each concept will be illustrated with code samples and related output which approximate some expected reflection uses.
+Note: According to The Java Language Specification, Java SE 7 Edition, the members of a class are the inherited components of the class body including fields, methods, nested classes, interfaces, and enumerated types. Since constructors are not inherited, they are not members. This differs from the implementing classes of 
+java.lang.reflect.Member.
+
+Fields
+Fields have a type and a value. The 
+java.lang.reflect.Field class provides methods for accessing type information and setting and getting values of a field on a given object.
+
+Obtaining Field Types describes how to get the declared and generic types of a field
+Retrieving and Parsing Field Modifiers shows how to get portions of the field declaration such as public or transient
+Getting and Setting Field Values illustrates how to access field values
+Troubleshooting describes some common coding errors which may cause confusion
+
+Methods
+Methods have return values, parameters, and may throw exceptions. The 
+java.lang.reflect.Method class provides methods for obtaining the type information for the parameters and return value. It may also be used to invoke methods on a given object.
+
+Obtaining Method Type Information shows how to enumerate methods declared in a class and obtain type information
+Obtaining Names of Method Parameters shows how to retrieve names and other information of a method or constructor's parameters
+Retrieving and Parsing Method Modifiers describes how to access and decode modifiers and other information associated with the method
+Invoking Methods illustrates how to execute a method and obtain its return value
+Troubleshooting covers common errors encountered when finding or invoking methods
+
+Constructors
+The Reflection APIs for constructors are defined in 
+java.lang.reflect.Constructor and are similar to those for methods, with two major exceptions: first, constructors have no return values; second, the invocation of a constructor creates a new instance of an object for a given class.
+
+Finding Constructors illustrates how to retrieve constructors with specific parameters
+Retrieving and Parsing Constructor Modifiers shows how to obtain the modifiers of a constructor declaration and other information about the constructor
+Creating New Class Instances shows how to instantiate an instance of an object by invoking its constructor
+Troubleshooting describes common errors which may be encountered while finding or invoking constructors
+

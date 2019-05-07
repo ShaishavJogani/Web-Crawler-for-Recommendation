@@ -1,0 +1,7 @@
+
+defaultis a Java keyword.
+This is an optional part of theswitchstatement, which only executes if none of the above cases are matched.
+See also:
+
+Java Programming/Keywords/switch
+

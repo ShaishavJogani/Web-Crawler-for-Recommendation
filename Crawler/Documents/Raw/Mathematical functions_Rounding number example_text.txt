@@ -1,0 +1,67 @@
+
+Sometimes, we are not only interested in mathematically correct rounded numbers, but we want that a fixed number of significant digits are always displayed, regardless of the number used. Here is an example program that returns always the correct string. You are invited to modify it such that it does the same and is simpler!
+The constant class contains repeating constants that should exist only once in the code so that to avoid inadvertent changes. (If the one constant is changed inadvertently, it is most likely to be seen, as it is used at several locations.)
+
+
+The MathsUtils class is like an addition to thejava.lang.Mathclass and contains the rounding calculations.
+
+
+The code is tested with the followingJUnittest:
+
+
+The output of the JUnit test follows:
+
+Output for code listing 3.22MathsUtils.round(5, '.', 0.0) ==> 0.00000 = 0.00000
+ MathsUtils.round(5, '.', -1.4012984643248202E-45) ==> -1.4012E-45 = -1.4012E-45
+ MathsUtils.round(5, '.', 1.4012984643248202E-45) ==> 1.4013E-45 = 1.4013E-45
+ MathsUtils.round(5, '.', -1.999999757E-5) ==> -1.9999E-5 = -1.9999E-5
+ MathsUtils.round(5, '.', 1.999999757E-5) ==> 2.0000E-5 = 2.0000E-5
+ MathsUtils.round(5, '.', -1.999999757E-4) ==> -1.9999E-4 = -1.9999E-4
+ MathsUtils.round(5, '.', 1.999999757E-4) ==> 2.0000E-4 = 2.0000E-4
+ MathsUtils.round(5, '.', -0.001999999757) ==> -0.0019999 = -0.0019999
+ MathsUtils.round(5, '.', 0.001999999757) ==> 0.0020000 = 0.0020000
+ MathsUtils.round(5, '.', -6.40589E-4) ==> -6.4058E-4 = -6.4058E-4
+ MathsUtils.round(5, '.', 6.40589E-4) ==> 6.4059E-4 = 6.4059E-4
+ MathsUtils.round(5, '.', -0.3396899998188019) ==> -0.33968 = -0.33968
+ MathsUtils.round(5, '.', 0.3396899998188019) ==> 0.33969 = 0.33969
+ MathsUtils.round(5, '.', -0.34) ==> -0.33999 = -0.33999
+ MathsUtils.round(5, '.', 0.34) ==> 0.34000 = 0.34000
+ MathsUtils.round(5, '.', -7.07) ==> -7.0699 = -7.0699
+ MathsUtils.round(5, '.', 7.07) ==> 7.0700 = 7.0700
+ MathsUtils.round(5, '.', -118.188) ==> -118.18 = -118.18
+ MathsUtils.round(5, '.', 118.188) ==> 118.19 = 118.19
+ MathsUtils.round(5, '.', -118.2) ==> -118.19 = -118.19
+ MathsUtils.round(5, '.', 118.2) ==> 118.20 = 118.20
+ MathsUtils.round(5, '.', -123.405009) ==> -123.40 = -123.40
+ MathsUtils.round(5, '.', 123.405009) ==> 123.41 = 123.41
+ MathsUtils.round(5, '.', -30.76994323730469) ==> -30.769 = -30.769
+ MathsUtils.round(5, '.', 30.76994323730469) ==> 30.770 = 30.770
+ MathsUtils.round(5, '.', -130.7699432373047) ==> -130.76 = -130.76
+ MathsUtils.round(5, '.', 130.7699432373047) ==> 130.77 = 130.77
+ MathsUtils.round(5, '.', -540.0) ==> -539.99 = -539.99
+ MathsUtils.round(5, '.', 540.0) ==> 540.00 = 540.00
+ MathsUtils.round(5, '.', -12345.0) ==> -12344 = -12344
+ MathsUtils.round(5, '.', 12345.0) ==> 12345 = 12345
+ MathsUtils.round(5, '.', -123456.0) ==> -123450 = -123450
+ MathsUtils.round(5, '.', 123456.0) ==> 123460 = 123460
+ MathsUtils.round(5, '.', -540911.0) ==> -540900 = -540900
+ MathsUtils.round(5, '.', 540911.0) ==> 540910 = 540910
+ MathsUtils.round(5, '.', -9.223372036854776E56) ==> -9.2233E56 = -9.2233E56
+ MathsUtils.round(5, '.', 9.223372036854776E56) ==> 9.2234E56 = 9.2234E56
+
+If you are interested in a comparison withC#, take a look at therounding number examplethere. If you are interested in a comparison withC++, you can compare this code here with the sameexampleover there.
+Notice that in the expression starting withif ((D == 0), I have to use OR instead of the||because of a bug in the source template.
+
+
+
+To do:Add some exercises like the ones inVariables
+
+
+
+ArraysJava ProgrammingMathematical functionsLarge numbers
+
+
+
+
+
+

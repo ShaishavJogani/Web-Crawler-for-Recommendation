@@ -1,0 +1,382 @@
+
+ This section lists commonly used parts of the API that are shared by text components. Much of this API is defined by the 
+JTextComponent class. Text Component Features discusses how to use some of this API.
+The JComponent Class describes the API that text components inherit from JComponent. For information about the API related to specific text components, see the how-to page for that component: text field, password field, formatted text field, text area, or editor pane and text pane.
+For complete details about the text API, see the API documentation for 
+JTextComponent and for the various classes and interfaces in the 
+text package.
+The API listed in this section includes the following categories:
+
+Setting Attributes
+Manipulating the Selection
+Converting Positions Between the Model and the View
+Text Editing Commands
+Classes and Interfaces That Represent Documents
+Working With Documents
+Manipulating Carets and Selection Highlighters
+Reading and Writing Text
+
+
+Setting Attributes
+These methods are defined in the JTextComponent class.
+
+Method
+Description
+
+
+
+void setEditable(boolean)
+boolean isEditable()
+Sets or indicates whether the user can edit the text in the text component.
+
+
+
+void setDragEnabled(boolean)
+boolean getDragEnabled()
+Sets or gets the dragEnabled property, which must be true to enable drag handling on this component. The default value is false. See 
+Drag and Drop and Data Transfer for more details.
+
+
+
+void setDisabledTextColor(Color)
+Color getDisabledTextColor()
+Sets or gets the color used to display text when the text component is disabled.
+
+
+
+void setMargin(Insets)
+Insets getMargin()
+Sets or gets the margin between the text and the text component's border.
+
+
+
+Manipulating the Selection
+These methods are defined in the JTextComponent class.
+
+Method
+Description
+
+
+
+String getSelectedText()
+Gets the currently selected text.
+
+
+
+void selectAll()
+void select(int, int)
+Selects all text or selects text within a start and end range.
+
+
+
+void setSelectionStart(int)
+void setSelectionEnd(int)
+int getSelectionStart()
+int getSelectionEnd()
+Sets or gets the extent of the current selection by index.
+
+
+
+void setSelectedTextColor(Color)
+Color getSelectedTextColor()
+Sets or gets the color of selected text.
+
+
+
+void setSelectionColor(Color)
+Color getSelectionColor()
+Sets or gets the background color of selected text.
+
+
+
+Converting Positions Between the Model and the View
+These methods are defined in the JTextComponent class.
+
+Method
+Description
+
+
+
+int viewToModel(Point)
+Converts the specified point in the view coordinate system to a position within the text.
+
+
+
+Rectangle modelToView(int)
+Converts the specified position within the text to a rectangle in the view coordinate system.
+
+
+
+Text Editing Commands
+
+Class or Method
+Description
+
+
+
+void cut()
+void copy()
+void paste()
+void replaceSelection(String)
+(in JTextComponent)
+Cuts, copies, and pastes text using the system clipboard, or replaces the selected text with the string specified by an argument, respectively.
+
+
+
+EditorKit
+Provides a text component's view factory, document, caret, and actions, as well as reading and writing documents of a particular format.
+
+
+
+DefaultEditorKit
+A concrete subclass of EditorKit that provides the basic text editing capabilities.
+
+
+
+StyledEditorKit
+A subclass of Default EditorKit that provides additional editing capabilities for styled text.
+
+
+
+String xxxxAction
+(in DefaultEditorKit)
+The names of all the actions supported by the default editor kit. See Associating Text Actions with Menus and Buttons.
+
+
+
+BeepAction
+CopyAction
+CutAction
+DefaultKeyTypedAction
+InsertBreakAction
+InsertContentAction
+InsertTabAction
+PasteAction
+(in DefaultEditorKit)
+Inner classes that implement various text editing commands.
+
+
+
+AlignmentAction
+BoldAction
+FontFamilyAction
+FontSizeAction
+ForegroundAction
+ItalicAction
+StyledTextAction
+UnderlineAction
+(in StyledEditorKit)
+Inner classes that implement various editing commands for styled text.
+
+
+
+Action[] getActions()
+(in JTextComponent)
+Gets the actions supported by this component. This method gets the array of actions from the editor kit if one is used by the component.
+
+
+
+InputMap getInputMap()
+(in JComponent)
+Gets the input map that binds key strokes to actions. See Associating Text Actions with Key Strokes.
+
+
+
+void put(KeyStroke, Object)
+(in InputMap)
+Binds the specified key to the specified action. You generally specify the action by its name, which for standard editing actions is represented by a string constant such as DefaultEditorKit.backwardAction.
+
+
+
+Classes and Interfaces That Represent Documents
+
+Interface or Class
+Description
+
+
+
+Document
+An interface that defines the API that must be implemented by all documents.
+
+
+
+AbstractDocument
+An abstract superclass implementation of the Document interface. This is the superclass for all documents provided by the Swing text package.
+
+
+
+PlainDocument
+A class that implements the Document interface. This is the default document for the plain text components (text field, password field, and text area). Additionally, this class is used by the editor panes and text panes when loading plain text or text of an unknown format.
+
+
+
+StyledDocument
+A Document subinterface. Defines the API that must be implemented by documents that support styled text. JTextPane requires that its document be of this type.
+
+
+
+DefaultStyledDocument
+A class that implements the StyledDocument interface. The default document for JTextPane.
+
+
+
+Working With Documents
+
+Class or Method
+Description
+
+
+
+DocumentFilter
+The superclass of all document filters. You can use a document filter to change what gets inserted or removed from a document, without having to implement a document yourself. See Implementing a Document Filter.
+
+
+
+void setDocumentFilter(DocumentFilter)
+(in AbstractDocument)
+Sets the document filter.
+
+
+
+void setDocument(Document)
+Document getDocument()
+(in JTextComponent)
+Sets or gets the document for a text component.
+
+
+
+Document createDefaultModel()
+(in JTextField)
+Creates a default PlainDocument model. Override this method to create a custom document instead of the default PlainDocument.
+
+
+
+void addDocumentListener(DocumentListener)
+void removeDocumentListener(DocumentListener)
+(in Document)
+Adds or removes a document listener. See Listening for Changes on a Document.
+
+
+
+void addUndoableEditListener(UndoableEditListener)
+void removeUndoableEditListener(UndoableEditlistener)
+(in Document)
+Adds or removes an undoable edit listener. Undoable edit listeners are used in Implementing Undo and Redo.
+
+
+
+int getLength()
+Position getStartPosition()
+Position getEndPosition()
+String getText(int, int)
+(in Document)
+Document methods that return various descriptive information about the document.
+
+
+
+Object getProperty(Object)
+void putProperty(Object, Object)
+(in Document)
+void setDocumentProperties(Dictionary)
+Dictionary getDocumentProperties()
+(in AbstractDocument)
+A Document maintains a set of properties that you can manipulate with these methods.
+
+
+
+Manipulating Carets and Selection Highlighters
+These methods are defined in the JTextComponent class.
+
+Interface, Class, or Method
+Description
+
+
+
+Caret
+An interface that defines the API for objects that represent an insertion point within documents.
+
+
+
+DefaultCaret
+The default caret used by all text components.
+
+
+
+void setCaret(Caret)
+Caret getCaret()
+Sets or gets the caret object used by a text component.
+
+
+
+void setCaretColor(Color)
+Color getCaretColor()
+Sets or gets the color of the caret.
+
+
+
+void setCaretPosition(int)
+void moveCaretPosition(int)
+int getCaretPosition()
+Sets or gets the current position of the caret within the document.
+
+
+
+void addCaretListener(CaretListener)
+void removeCaretListener(CaretListener)
+Adds or removes a caret listener from a text component.
+
+
+
+NavigationFilter
+The superclass for all navigation filters. A navigation filter lets you modify caret changes that are about to occur for a text component.
+
+
+
+void setNavigationFilter(NavigationFilter)
+Attaches a navigation filter to a text component.
+
+
+
+Highlighter
+An interface that defines the API for objects used to highlight the current selection.
+
+
+
+DefaultHighlighter
+The default highlighter used by all text components.
+
+
+
+void setHighlighter(Highlighter)
+Highlighter getHighlighter()
+Sets or gets the highlighter used by a text component.
+
+
+
+Reading and Writing Text
+
+Method
+Description
+
+
+
+void read(Reader, Object)
+void write(Writer)
+(in JTextComponent)
+Reads or writes text.
+
+
+
+void read(Reader, Document, int)
+void read(InputStream, Document, int)
+(in EditorKit)
+Reads text from a stream into a document.
+
+
+
+void write(Writer, Document, int, int)
+void write(OutputStream, Document, int, int)
+(in EditorKit)
+Writes text from a document to a stream.
+
+

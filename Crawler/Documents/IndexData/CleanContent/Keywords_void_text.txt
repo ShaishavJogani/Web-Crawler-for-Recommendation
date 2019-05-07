@@ -1,0 +1,1 @@
+voidis Java keyword . Used method declaration definition specify method return type , method returnsvoid . It type void references/pointers C/C++ . For example : See also : Java Programming/Keywords/return

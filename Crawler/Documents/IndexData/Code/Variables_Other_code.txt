@@ -1,0 +1,10 @@
+public class SomeClass {
+  public static int c = 1;
+  public int a = c;
+  private int b;
+
+  public void someMethod(int d) {
+    d = c;
+    int e;
+  }
+}

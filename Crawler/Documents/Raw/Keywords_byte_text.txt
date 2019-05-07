@@ -1,0 +1,23 @@
+
+byteis akeywordwhich designates
+the 8 bit signed integerprimitive type.
+Thejava.lang.Byteclass is the nominal
+wrapper class when you need to store abytevalue
+but an object reference is required.
+Syntax:
+
+byte<variable-name> = <integer-value>;
+
+For example:
+
+
+or
+
+
+
+
+The number 65 is the code for 'A' inASCII.
+See also:
+
+Java Programming/Primitive Types
+

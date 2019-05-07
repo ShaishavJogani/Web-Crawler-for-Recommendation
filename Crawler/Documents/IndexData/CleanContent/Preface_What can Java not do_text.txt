@@ -1,0 +1,1 @@
+Well , honest , nothing Java ca n't , least application programming . Java `` complete '' language ; limit programmer imagination ability . This book aim get acquaint basic language create software masterpiece dream . The one area Java ca n't use direct interaction computer hardware . If want write operating system , need look elsewhere ! TOCJava ProgrammingPrefaceAbout This Book

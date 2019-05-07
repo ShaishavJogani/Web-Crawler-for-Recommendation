@@ -1,0 +1,29 @@
+
+You may need to reference classes in other JAR files from within a JAR file.
+For example, in a typical situation an applet is bundled in a JAR file whose manifest references a different JAR file (or several different JAR files) that serves as utilities for the purposes of that applet.
+You specify classes to include in the Class-Path header field in the manifest file of an applet or application. The Class-Path header takes the following form:
+
+Class-Path: jar1-name jar2-name directory-name/jar3-name
+
+By using the Class-Path header in the manifest, you can avoid having to specify a long -classpath flag when invoking Java to run the your application.
+Note: The Class-Path header points to classes or JAR files on the local network, not JAR files within the JAR file or classes accessible over Internet protocols. To load classes in JAR files within a JAR file into the class path, you must write custom code to load those classes. For example, if MyJar.jar contains another JAR file called MyUtils.jar, you cannot use the Class-Path header in MyJar.jar's manifest to load classes in MyUtils.jar into the class path.
+
+An Example
+We want to load classes in MyUtils.jar into the class path for use in MyJar.jar. These two JAR files are in the same directory.
+We first create a text file named Manifest.txt with the following contents:
+
+Class-Path: MyUtils.jar
+
+Warning: The text file must end with a new line or carriage return. The last line will not be parsed properly if it does not end with a new line or carriage return.
+
+We then create a JAR file named MyJar.jar by entering the following command:
+
+jar cfm MyJar.jar Manifest.txt MyPackage/*.class
+
+This creates the JAR file with a manifest with the following contents:
+
+Manifest-Version: 1.0
+Class-Path: MyUtils.jar
+Created-By: 1.7.0_06 (Oracle Corporation)
+
+The classes in MyUtils.jar are now loaded into the class path when you run MyJar.jar.

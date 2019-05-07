@@ -1,0 +1,50 @@
+
+Any 
+Shape object can be used as a clipping path that restricts the portion of the drawing area that will be rendered. The clipping path is part of the 
+Graphics2D context; to set the clip attribute, you call Graphics2D.setClip and pass in the Shape that defines the clipping path you want to use. You can shrink the clipping path by calling the clip method and passing in another Shape; the clip is set to the intersection of the current clip and the specified Shape.
+Example: ClipImage
+This example animates a clipping path to reveal different portions of an image.
+
+
+
+
+Note:  If you don't see the applet running, you need to install at least the Java SE Development Kit (JDK) 7 release.
+
+ClipImage.java contains the complete code for this applet. The applet requires the clouds.jpg image file.
+The clipping path is defined by the intersection of an ellipse and a rectangle whose dimensions are set randomly. The ellipse is passed to the setClip method, and then clip is called to set the clipping path to the intersection of the ellipse and the rectangle.
+
+private Ellipse2D ellipse = new Ellipse2D.Float();
+private Rectangle2D rect = new Rectangle2D.Float();
+...
+ellipse.setFrame(x, y, ew, eh);
+g2.setClip(ellipse);
+rect.setRect(x+5, y+5, ew-10, eh-10);
+g2.clip(rect);
+
+Example: Starry
+A clipping area can also be created from a text string. The following example creates a TextLayout with the string The Starry Night. Then, it gets the outline of the TextLayout. The 
+TextLayout.getOutline method returns a Shape object and a Rectangle is created from the bounds of this Shape object. The bounds contain all the pixels the layout can draw. The color in the graphics context is set to blue and the outline shape is drawn, as illustrated by the following image and code snippet.
+
+FontRenderContext frc = g2.getFontRenderContext();
+Font f = new Font("Helvetica", 1, w/10);
+String s = new String("The Starry Night");
+TextLayout textTl = new TextLayout(s, f, frc);
+AffineTransform transform = new AffineTransform();
+Shape outline = textTl.getOutline(null);
+Rectangle r = outline.getBounds();
+transform = g2.getTransform();
+transform.translate(w/2-(r.width/2), h/2+(r.height/2));
+g2.transform(transform);
+g2.setColor(Color.blue);
+g2.draw(outline);   
+
+Next, a clipping area is set on the graphics context using the Shape object created from getOutline. The starry.gif image, which is Van Gogh's famous painting, The Starry Night, is drawn into this clipping area starting at the lower left corner of the Rectangle object.
+
+g2.setClip(outline);
+g2.drawImage(img, r.x, r.y, r.width, r.height, this);
+
+
+
+Note:  If you don't see the applet running, you need to install at least the Java SE Development Kit (JDK) 7 release.
+
+Starry.java contains the complete code for this program. This applet requires the Starry.gif image file.

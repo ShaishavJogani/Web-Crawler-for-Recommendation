@@ -1,0 +1,1 @@
+Instead overload , use dynamic number argument . After last parameter , pass optional unlimited parameter type . These parameter define add last parameter add ... type . The dynamic argument receive array : The method call dynamic number argument , example : This feature available Java 1.5 .

@@ -1,0 +1,9 @@
+
+In the Java programming language, there are four kinds of variables.
+
+
+In thecode listing 3.9, are examples of all four kinds of variables.
+
+Instance variables: These are variables that are used to store the state of an object (for example,id). Every object created from a class definition would have its own copy of the variable. It is valid for and occupies storage for as long as the corresponding object is in memory.Class variables: These variables are explicitly defined within the class-level scope with astaticmodifier (for example,isClassUsed). No other variables can have astaticmodifier attached to them. Because these variables are defined with thestaticmodifier, there would always be a single copy of these variables no matter how many times the class has been instantiated. They live as long as the class is loaded in memory.ParametersorArguments: These are variables passed into a method signature (for example,parameter). Recall the usage of theargsvariable in the main method. They are not attached to modifiers (i.e.public,private,protectedorstatic) and they can be used everywhere in the method. They are in memory during the execution of the method and can't be used after the method returns.Local variables: These variables are defined and used specifically within the method-level scope (for example,currentValue) but not in the method signature. They do not have any modifiers attached to it. They no longer exist after the method has returned.
+
+

@@ -1,0 +1,1 @@
+If member annotate type mark @ Documented , member document annotate type . In documentation theExampleclass , JavaDoc , Examplewill show annotate @ NotSecret , @ Secret . To : Add render Javadoc .

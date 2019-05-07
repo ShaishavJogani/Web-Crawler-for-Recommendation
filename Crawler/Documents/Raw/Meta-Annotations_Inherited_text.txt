@@ -1,0 +1,6 @@
+
+Exactly as the name sounds, an@Inheritedannotation type is inherited by subclasses of an annotated type.
+
+
+In this example,Superclasshas been explicitly annotated with both@ForEveryoneand@JustForMe.Subclasshasn't been explicitly marked with either one; however, it inherits@ForEveryonebecause the latter is annotated with@Inherited.@JustForMeisn't annotated, so it isn't inherited bySubclass.
+

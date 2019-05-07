@@ -1,0 +1,4 @@
+char firstChar = 'J';
+char secondChar = 'o';
+char thirdChar = 'h';
+char fourthChar = 'n';

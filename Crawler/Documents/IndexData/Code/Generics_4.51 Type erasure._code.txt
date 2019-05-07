@@ -1,0 +1,4 @@
+public <T> void method(T argument) {
+  T variable;
+  …
+}

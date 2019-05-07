@@ -1,0 +1,1 @@
+reflectionA way treat class method object , refer runtime , instance quering particular class method parameter . LinksJava ProgrammingGlossaryIndex

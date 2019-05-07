@@ -1,0 +1,1 @@
+Next , add custom draw surface frame . For create subclass javax.swing.JPanel ( generic lightweight container ) supply code render custom painting .

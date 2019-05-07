@@ -1,0 +1,16 @@
+public class Cheese {
+     // This is a constructor
+     public Cheese() {
+          doStuff();
+     }
+
+     // This is another constructor
+     public Cheese(int weight) {
+          doStuff();
+     }
+
+     // This is yet another constructor
+     public Cheese(String type, int weight) {
+          doStuff();
+     }
+}

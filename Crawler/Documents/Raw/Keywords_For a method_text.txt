@@ -1,0 +1,4 @@
+
+Thefinalkeyword forbids to overwrite the method in a subclass. It is useless if the class is already final and a private method is implicitlyfinal. A final method cannot beabstract.
+
+

@@ -1,0 +1,7 @@
+int x = f();
+int y = y();
+if (x < y) {
+  int z = x;
+  x = y;
+  y = z;
+}

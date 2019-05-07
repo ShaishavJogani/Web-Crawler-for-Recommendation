@@ -1,0 +1,1 @@
+An assertion check condition true : Eachassertstatement end semi-colon ( ; ) . However , assertion disable default , must run program the-eaargument order assertion enable ( java -ea [ name compiled program ] ) .

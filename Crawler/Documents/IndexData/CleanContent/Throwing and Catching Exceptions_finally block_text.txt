@@ -1,0 +1,1 @@
+Afinallyblock add thecatchblocks . Afinallyblock always execute , even exception throw , exception thrown caught , exception throw catch . It 's place put code always execute unsafe operation like file close database disconnection . You define atryblock withoutcatchblock , however , case , must follow afinallyblock .

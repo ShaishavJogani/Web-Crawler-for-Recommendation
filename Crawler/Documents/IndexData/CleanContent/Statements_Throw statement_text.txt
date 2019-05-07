@@ -1,0 +1,1 @@
+Athrowstatement exit method catch atry/catchblock . It return variable exception : Beware write statement athrowstatement would execute ! Eachthrowstatement end semi-colon ( ; ) .

@@ -1,0 +1,3 @@
+
+genericsA means of passing a data type as an argument of another type, such as Vector<JButton>;
+

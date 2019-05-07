@@ -1,0 +1,1 @@
+constis areserved keyword , presently use . In programming language , C , const often use declare constant . However , Java , finalis use instead .

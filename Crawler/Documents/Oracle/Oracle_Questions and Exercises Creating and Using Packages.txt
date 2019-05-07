@@ -1,0 +1,44 @@
+
+Questions
+Assume you have written some classes. Belatedly, you decide they should be split into three packages, as listed in the following table. Furthermore, assume the classes are currently in the default package (they have no package statements).
+ 
+
+Destination Packages
+
+Package Name
+Class Name
+
+
+mygame.server
+Server
+
+
+mygame.shared
+Utilities
+
+
+mygame.client
+Client
+
+
+
+Which line of code will you need to add to each source file to put each class in the right package?
+To adhere to the directory structure, you will need to create some subdirectories in the development directory and put source files in the correct subdirectories. What subdirectories must you create? Which subdirectory does each source file go in?
+Do you think you'll need to make any other changes to the source files to make them compile correctly? If so, what?
+
+Exercises
+Download the source files as listed here.
+
+
+Client
+
+Server
+
+Utilities
+
+
+Implement the changes you proposed in questions 1 through 3 using the source files you just downloaded.
+Compile the revised source files. (Hint: If you're invoking the compiler from the command line (as opposed to using a builder), invoke the compiler from the directory that contains the mygame directory you just created.)
+
+ 
+Check your answers.

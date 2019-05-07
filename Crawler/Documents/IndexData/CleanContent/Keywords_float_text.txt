@@ -1,0 +1,1 @@
+floatis akeywordwhich designate 32 bit floatprimitive type . Thejava.lang.Floatclass nominal wrapper class need store afloatvalue object reference require . Syntax : float < variable-name > = < float-value > ; For example : See also : Java Programming/Primitive Types

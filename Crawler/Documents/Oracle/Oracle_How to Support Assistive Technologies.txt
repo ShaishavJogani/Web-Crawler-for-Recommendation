@@ -1,0 +1,464 @@
+
+You might be wondering what exactly assistive technologies are, and why you should care. Primarily, assistive technologies exist to enable people with permanent or temporary disabilities to use the computer. For example, if you get carpal tunnel syndrome, you can use assistive technologies to accomplish your work without using your hands.
+Assistive technologies — voice interfaces, screen readers, alternate input devices, and so on — are useful not only for people with disabilities, but also for people using computers in non-office environments. For example, if you're stuck in a traffic jam, you might use assistive technologies to check your email, using only voice input and output. The information that enables assistive technologies can be used for other tools, as well, such as automated GUI testers and input devices such as touchscreens. Assistive technologies get information from components using the Accessibility API, which is defined in the 
+javax.accessibility package.
+
+Because support for the Accessibility API is built into the Swing components, your Swing program will probably work just fine with assistive technologies, even if you do nothing special. For example, assistive technologies can automatically get the text information that is set by the following lines of code:
+
+JButton button = new JButton("I'm a Swing button!");
+label = new JLabel(labelPrefix + "0    ");
+label.setText(labelPrefix + numClicks);
+JFrame frame = new JFrame("SwingApplication");
+
+Assistive technologies can also grab the tool-tip text (if any) associated with a component and use it to describe the component to the user. 
+
+Making your program function smoothly with assistive technologies is easy to do and, in the United States, may be required by federal law.
+The rest of this section covers these topics:
+
+Rules for Supporting Accessibility
+Testing for Accessibility
+Setting Accessible Names and Descriptions on Components
+Concepts: How Accessibility Works
+Making Custom Components Accessible
+The Accessibility API
+Examples that Use the Accessibility API
+
+Rules for Supporting Accessibility
+Here are a few things you can do to make your program work as well as possible with assistive technologies:
+
+If a component doesn't display a short string (which serves as its default name), specify a name with the setAccessibleName method. You might want to do this for image-only buttons, panels that provide logical groupings, text areas, and so on.
+Set 
+tool tip text for components whenever it makes sense to do so. For example:
+
+aJComponent.setToolTipText(
+     "Clicking this component causes XYZ to happen.");
+
+
+If you don't want to provide a tool tip for a component, use the setAccessibleDescription method to provide a description that assistive technologies can give the user. For example:
+
+aJComponent.getAccessibleContext().
+    setAccessibleDescription(
+    "Clicking this component causes XYZ to happen.");
+
+
+Specify keyboard alternatives wherever possible. Make sure you can use your program with only the keyboard. Try hiding your mouse! Note that if the focus is in an editable text component, you can use Shift-Tab to move focus to the next component.
+Support for keyboard alternatives varies by component. 
+Buttons support keyboard alternatives with the setMnemonic method. Menus inherit the button mnemonic support and also support accelerators, as described in 
+Enabling Keyboard Operation. Other components can use 
+key bindings to associate user typing with program actions.
+
+Assign a textual description to all ImageIcon objects in your program. You can set this property by using either the setDescription method or one of the String forms of the ImageIcon constructors.
+If a bunch of components form a logical group, try to put them into one container. For example, use a 
+JPanel to contain all the radio buttons in a radio button group.
+Whenever you have a 
+label that describes another component, use the setLabelFor method so that assistive technologies can find the component that the label is associated with. This is especially important when the label displays a mnemonic for another component (such as a text field).
+If you create a custom component, make sure it supports accessibility. In particular, be aware that subclasses of JComponent are not automatically accessible. Custom components that are descendants of other Swing components should override inherited accessibility information as necessary. For more information, see Concepts: How Accessibility Works and Making Custom Components Accessible.
+Use the examples provided with the accessibility utilities to test your program. Although the primary purpose of these examples is to show programmers how to use the Accessibility API when implementing assistive technologies, these examples are also quite useful for testing application programs for accessibility. Testing for Accessibility shows ScrollDemo running with Monkey, one of the accessibility utilities examples. Monkey shows the tree of accessible components in a program and lets you interact with those components.
+Finally, don't break what you get for free! If your GUI has an inaccessible container — for example, your own subclass of Container or JComponent or any other container that doesn't implement the Accessible interface — any components inside that container become inaccessible.
+
+Testing for Accessibility
+The examples that come with the accessibility utilities can give you an idea of how accessible your program is. For instructions on getting these utilities, see the 
+Java SE Desktop Accessibility home page. Follow the instructions in the accessibility utilities documentation for setting up the Java Virtual Machine (VM) to run one or more of the utilities automatically.
+Let's use an accessibility utility to compare the original version of one of our demos to a version in which the rules for supporting accessibility have been applied. Here's a picture of a program called ScrollDemo.
+Try this: 
+
+Click the Launch button to run ScrollDemo using 
+Java™ Web Start (download JDK 7 or later). Or, to compile and run the example yourself, consult the example index.
+
+Next, click the Launch button to run AccessibleScrollDemo using 
+Java™ Web Start (download JDK 7 or later). Or, to compile and run the example yourself, consult the example index.
+
+Compare the two versions side by side. The only noticeable difference is that the cm toggle button and the photograph have tool tips in the accessible version.
+
+
+Now run the two versions under the accessibility utility called Monkey. Note that when the accessibility tools have been downloaded and configured in the accessibility.properties file, the Monkey window automatically comes up when you click on the Run ScrollDemo and AccessibleScrollDemo links (in steps 1 and 2).
+If the Monkey window does not appear on startup, the problem may be that the accessibility.properties file is not present in the version of the VM being used by Java Web Start. You can change the VM you use by running the Java Web Start Application Manager and selecting File > Preferences > Java.
+
+
+Note that when the Monkey window comes up you need to select File > Refresh Trees to see information appear under Accessible Tree. You can then expand the tree by successively clicking on the horizontal icons displayed by each folder icon. When the tree has been expanded, you can see detailed information for the various components. The custom components (rules and corners) that weren't accessible in the original version are accessible in the modified version. This can make quite a difference to assistive technologies.
+
+
+
+Here's a snapshot of Monkey running on ScrollDemo:
+The left side of the split pane shows the actual component hierarchy for the program. The right side shows the accessible components in the hierarchy, which is what interests us.
+The first thing to notice is that, even with no explicit support in ScrollDemo, Monkey is able to discover a lot of information about the various components in the program. Most of the components and their children appear in the tree. However, the names for most of the components are empty (null), which is rather unhelpful. The descriptions are also empty.
+Further trouble comes with the program's custom components. The two rulers are inaccessible, so they are not included in the accessible tree. The viewports that contain the rulers are displayed as leaf nodes because they have no accessible children. The custom corners are also missing from the accessible tree.
+Now here's a picture of the Monkey window for AccessibleScrollDemo:
+
+The rules are now listed as children of the viewports, and the corners are listed as children of the scroll pane. Furthermore, many of the components now have non-null names.
+In the previous snapshot of Monkey, the Column Header item is selected. Monkey highlights the corresponding component in ScrollDemo program.
+When an item is selected, you can use Monkey's Panels menu to bring up one of four different panels that let you interact with the selected component. Choosing Panels > Accessibility API panel brings up a panel like the one shown in the following figure. This panel displays information available through methods defined in the AccessibleContext base class and the AccessibleComponent interface.
+Monkey has three other panels:
+
+AccessibleAction:  Shows the actions supported by an accessible component and lets you invoke the action. Works only with an accessible component whose context implements the AccessibleAction interface.
+AccessibleSelection:  Shows the current selection of an accessible component and lets you manipulate the selection. Works only with accessible component whose context implements the AccessibleSelection interface.
+AccessibleHypertext: Shows any hyperlinks contained within an accessible component and lets you traverse them. Works only with accessible component whose context implements the AccessibleHypertext interface.
+
+
+
+The accessibility utilities examples are handy as testing tools and can give you an idea of how accessible the components in your program are. However, even if your components behave well in Monkey or the other examples, they still might not be completely accessible because Monkey and the other examples exercise only certain portions of the Accessibility API.
+The only true test of accessibility is to run your programs with real-world assistive technologies, however, you may find the following free and open source screen reader useful: 
+NonVisual Desktop Access (NVDA).
+Setting Accessible Names and Descriptions on Components
+Giving your program's components accessible names and descriptions is one of the easiest and most important steps in making your program accessible. Following is a complete listing of the AccessibleScrollDemo constructor that creates the scroll pane and the custom components it uses. The boldface statements give components names and descriptions that assistive technologies can use.
+
+public AccessibleScrollDemo() {
+    // Get the image to use.
+    ImageIcon bee = createImageIcon("images/flyingBee.jpg",
+                      "Photograph of a flying bee.");
+
+    // Create the row and column headers.
+    columnView = new Rule(Rule.HORIZONTAL, true);
+    if (bee != null) {
+        columnView.setPreferredWidth(bee.getIconWidth());
+    } else {
+        columnView.setPreferredWidth(320);
+    }
+    columnView.getAccessibleContext().setAccessibleName("Column Header");
+    columnView.getAccessibleContext().
+            setAccessibleDescription("Displays horizontal ruler for " +
+                                     "measuring scroll pane client.");
+    rowView = new Rule(Rule.VERTICAL, true);
+    if (bee != null) {
+        rowView.setPreferredHeight(bee.getIconHeight());
+    } else {
+        rowView.setPreferredHeight(480);
+    }
+    rowView.getAccessibleContext().setAccessibleName("Row Header");
+    rowView.getAccessibleContext().
+            setAccessibleDescription("Displays vertical ruler for " +
+                                     "measuring scroll pane client.");
+
+    // Create the corners.
+    JPanel buttonCorner = new JPanel();
+    isMetric = new JToggleButton("cm", true);
+    isMetric.setFont(new Font("SansSerif", Font.PLAIN, 11));
+    isMetric.setMargin(new Insets(2,2,2,2));
+    isMetric.addItemListener(this);
+    isMetric.setToolTipText("Toggles rulers' unit of measure " +
+                            "between inches and centimeters.");
+    buttonCorner.add(isMetric); //Use the default FlowLayout
+    buttonCorner.getAccessibleContext().
+                 setAccessibleName("Upper Left Corner");
+
+    String desc = "Fills the corner of a scroll pane " +
+                  "with color for aesthetic reasons.";
+    Corner lowerLeft = new Corner();
+    lowerLeft.getAccessibleContext().
+              setAccessibleName("Lower Left Corner");
+    lowerLeft.getAccessibleContext().setAccessibleDescription(desc);
+
+    Corner upperRight = new Corner();
+    upperRight.getAccessibleContext().
+               setAccessibleName("Upper Right Corner");
+    upperRight.getAccessibleContext().setAccessibleDescription(desc);
+    
+    // Set up the scroll pane.
+    picture = new ScrollablePicture(bee,
+                                    columnView.getIncrement());
+    picture.setToolTipText(bee.getDescription());
+    picture.getAccessibleContext().setAccessibleName(
+                                     "Scroll pane client");
+
+    JScrollPane pictureScrollPane = new JScrollPane(picture);
+    pictureScrollPane.setPreferredSize(new Dimension(300, 250));
+    pictureScrollPane.setViewportBorder(
+            BorderFactory.createLineBorder(Color.black));
+
+    pictureScrollPane.setColumnHeaderView(columnView);
+    pictureScrollPane.setRowHeaderView(rowView);
+
+    // In theory, to support internationalization you would change
+    // UPPER_LEFT_CORNER to UPPER_LEADING_CORNER,
+    // LOWER_LEFT_CORNER to LOWER_LEADING_CORNER, and
+    // UPPER_RIGHT_CORNER to UPPER_TRAILING_CORNER.  In practice,
+    // bug #4467063 makes that impossible (at least in 1.4.0).
+    pictureScrollPane.setCorner(JScrollPane.UPPER_LEFT_CORNER,
+                                buttonCorner);
+    pictureScrollPane.setCorner(JScrollPane.LOWER_LEFT_CORNER,
+                                lowerLeft);
+    pictureScrollPane.setCorner(JScrollPane.UPPER_RIGHT_CORNER,
+                                upperRight);
+
+    // Put it in this panel.
+    setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
+    add(pictureScrollPane);
+    setBorder(BorderFactory.createEmptyBorder(20,20,20,20));
+}
+
+Often, the program sets a component's name and description directly through the component's accessible context. Other times, the program sets an accessible description indirectly with tool tips. In the case of the cm toggle button, the description is set automatically to the text on the button. 
+Concepts: How Accessibility Works
+An object is accessible if it implements the 
+Accessible interface. The Accessible interface defines just one method, getAccessibleContext, which returns an 
+AccessibleContext object. The AccessibleContext object is an intermediary that contains the accessible information for an accessible object. The following figure shows how assistive technologies get the accessible context from an accessible object and query it for information:
+
+
+AccessibleContext is an abstract class that defines the minimum set of information an accessible object must provide about itself. The minimum set includes name, description, role, state set, and so on. To identify its accessible object as having particular capabilities, an accessible context can implement one or more of the interfaces as shown in the Accessible Interfaces table. For example, JButton implements AccessibleAction, AccessibleValue, AccessibleText, and AccessibleExtendedComponent. It is not necessary for JButton to implement AccessibleIcon because that is implemented by the ImageIcon attached to the button.
+Because the JComponent class itself does not implement the Accessible interface, instances of its direct subclasses are not accessible. If you write a custom component that inherits directly from JComponent, you need to explicitly make it implement the Accessible interface. JComponent does have an accessible context, called AccessibleJComponent, that implements the AccessibleComponent interface and provides a minimal amount of accessible information. You can provide an accessible context for your custom components by creating a subclass of AccessibleJComponent and overriding important methods. Making Custom Components Accessible shows two examples of doing this.
+All the other standard Swing components implement the Accessible interface and have an accessible context that implements one or more of the preceding interfaces as appropriate. The accessible contexts for Swing components are implemented as inner classes and have names of this style:
+
+Component.AccessibleComponent
+
+If you create a subclass of a standard Swing component and your subclass is substantially different from its superclass, then you should provide a custom accessible context for it. The easiest way is to create a subclass of the superclass's accessible context class and override methods as necessary. For example, if you create a JLabel subclass substantially different from JLabel, then your JLabel subclass should contain an inner class that extends AccessibleJLabel. The next section shows how to do so, using examples in which JComponent subclasses extend AccessibleJComponent. 
+Making Custom Components Accessible
+The scroll demo program uses three custom component classes. ScrollablePicture is a subclass of JLabel, and Corner and Rule are both subclasses of JComponent.
+The ScrollablePicture class relies completely on accessibility inherited from JLabel through 
+JLabel.AccessibleJLabel. The code that creates an instance of ScrollablePicture sets the tool-tip text for the scrollable picture. The tool-tip text is used by the context as the component's accessible description. This behavior is provided by AccessibleJLabel.
+The accessible version of the Corner class contains just enough code to make its instances accessible. We implemented accessibility support by adding the code shown in bold to the original version of Corner.
+
+public class Corner extends JComponent implements Accessible {
+
+    protected void paintComponent(Graphics g) {
+        //Fill me with dirty brown/orange.
+        g.setColor(new Color(230, 163, 4));
+        g.fillRect(0, 0, getWidth(), getHeight());
+    }
+
+    public AccessibleContext getAccessibleContext() {
+        if (accessibleContext == null) {
+            accessibleContext = new AccessibleCorner();
+        }
+        return accessibleContext;
+    }
+
+    protected class AccessibleCorner extends AccessibleJComponent {
+        //Inherit everything, override nothing.
+    }
+}
+
+All of the accessibility provided by this class is inherited from 
+AccessibleJComponent. This approach is fine for Corner because AccessibleJComponent provides a reasonable amount of default accessibility information and because corners are uninteresting: they exist only to take up a little bit of space onscreen. Other classes, such as Rule, need to provide customized information.
+Rule provides an accessible context for itself in the same manner as Corner, but the context overrides two methods to provide details about the component's role and state:
+
+protected class AccessibleRuler extends AccessibleJComponent {
+
+    public AccessibleRole getAccessibleRole() {
+        return AccessibleRuleRole.RULER;
+    }
+
+    public AccessibleStateSet getAccessibleStateSet() {
+        AccessibleStateSet states =
+            super.getAccessibleStateSet();
+        if (orientation == VERTICAL) {
+            states.add(AccessibleState.VERTICAL);
+        } else {
+            states.add(AccessibleState.HORIZONTAL);
+        }
+        if (isMetric) {
+            states.add(AccessibleRulerState.CENTIMETERS);
+        } else {
+            states.add(AccessibleRulerState.INCHES);
+        }
+        return states;
+    }
+}
+
+
+AccessibleRole is an enumeration of objects that identify roles that Swing components can play. It contains predefined roles such as label, button, and so on. The rulers in our example don't fit well into any of the predefined roles, so the program invents a new one in a subclass of AccessibleRole:
+
+class AccessibleRuleRole extends AccessibleRole {
+    public static final AccessibleRuleRole RULER
+        = new AccessibleRuleRole("ruler");
+
+    protected AccessibleRuleRole(String key) {
+        super(key);
+    }
+
+    //Should really provide localizable versions of these names.
+    public String toDisplayString(String resourceBundleName,
+                                  Locale locale) {
+        return key;
+    }
+}
+
+Any component that has state can provide state information to assistive technologies by overriding the getAccessibleStateSet method. A rule has two sets of states: its orientation can be either vertical or horizontal, and its units of measure can be either centimeters or inches. 
+AccessibleState is an enumeration of predefined states. This program uses its predefined states for vertical and horizontal orientation. Because AccessibleState contains nothing for centimeters and inches, the program makes a subclass to provide appropriate states:
+
+class AccessibleRulerState extends AccessibleState {
+    public static final AccessibleRulerState INCHES
+        = new AccessibleRulerState("inches");
+    public static final AccessibleRulerState CENTIMETERS
+        = new AccessibleRulerState("centimeters");
+
+    protected AccessibleRulerState(String key) {
+        super(key);
+    }
+
+    //Should really provide localizable versions of these names.
+    public String toDisplayString(String resourceBundleName,
+                                  Locale locale) {
+        return key;
+    }
+}
+
+You've seen how to implement accessibility for two simple components, that exist only to paint themselves onscreen. Components that do more, such as responding to mouse or keyboard events, need to provide more elaborate accessible contexts. You can find examples of implementing accessible contexts by delving in the source code for the Swing components.
+The Accessibility API
+The tables in this section cover just part of the accessibility API. For more information about the accessibility API, see the API documentation for the classes and packages in the 
+accessibility package. Also, refer to the API documentation for the accessible contexts for individual Swing components.
+The API for supporting accessibility falls into the following categories:
+
+Naming and Linking Components
+Making a Custom Component Accessible
+Accessible Interfaces
+
+
+Naming and Linking Components
+
+Method
+Purpose
+
+
+
+getAccessibleContext().setAccessibleName(String)
+getAccessibleContext().setAccessibleDescription(String)
+(on a JComponent or Accessible object)
+Provide a name or description for an accessible object.
+
+
+
+void setToolTipText(String)
+(in JComponent)
+Set a component's tool tip. If you don't set the description, than many accessible contexts use the tool-tip text as the accessible description.
+
+
+
+void setLabelFor(Component)
+(in JLabel)
+Associate a label with a component. This tells assistive technologies that a label describes another component.
+
+
+
+void setDescription(String)
+(in ImageIcon)
+Provide a description for an image icon.
+
+
+
+
+Making a Custom Component Accessible
+
+Interface or Class
+Purpose
+
+
+
+Accessible
+(an interface)
+Components that implement this interface are accessible. Subclasses of JComponent must implement this explicitly.
+
+
+
+AccessibleContext
+JComponent.AccessibleJComponent
+(an abstract class and its subclasses)
+AccessibleContext defines the minimal set of information required of accessible objects. The accessible context for each Swing component is a subclass of this and named as shown. For example, the accessible context for JTree is JTree.AccessibleJTree. To provide custom accessible contexts, custom components should contain an inner class that is a subclass of AccessibleContext. For more information, see Making Custom Components Accessible.
+
+
+
+AccessibleRole
+AccessibleStateSet
+(classes)
+Define the objects returned by an AccessibleContext object's getAccessibleRole and getAccessibleStateSet methods, respectively.
+
+
+
+AccessibleRelation
+AccessibleRelationSet
+
+Define the relations between components that implement this interface and one or more other objects. 
+
+
+
+
+
+Accessible Interfaces
+
+Interface
+Purpose
+
+
+
+AccessibleAction
+Indicates that the object can perform actions. By implementing this interface, the accessible context can give information about what actions the accessible object can perform and can tell the accessible object to perform them.
+
+
+
+AccessibleComponent
+Indicates that the accessible object has an onscreen presence. Through this interface, an accessible object can provide information about its size, position, visibility and so on. The accessible contexts for all standard Swing components implement this interface, directly or indirectly. The accessible contexts for your custom components should do the same. The AccessibleExtendedComponent method is preferred.
+
+
+
+AccessibleEditableText
+
+Indicates that the accessible object displays editable text. In addition to the information available from its superinterface, AccessibleText, methods are provided for cutting, pasting, deleting, selecting, and inserting text.
+
+
+
+AccessibleExtendedComponent
+
+In addition to the information available from its superinterface, AccessibleComponent, methods are provided for obtaining key bindings, border text, and tool-tip text.
+
+
+
+AccessibleExtendedTable
+
+In addition to the information available from its superinterface, AccessibleTable, methods are provided to convert between an index and its row or column.
+
+
+
+AccessibleHypertext
+Indicates that the accessible object contains hyperlinks. Through this interface, an accessible object can provide information about its links and allow them to be traversed.
+
+
+
+AccessibleIcon
+Indicates that the accessible object has an associated icon. Methods are provided that return information about the icon, such as size and description.
+
+
+
+AccessibleKeyBinding
+
+Indicates that the accessible object supports one or more keyboard shortcuts that can be used to select the object. Methods are provided that return the key bindings for a given object.
+
+
+
+AccessibleSelection
+Indicates that the accessible object can contain a selection. Accessible contexts that implement this interface can report information about the current selection and can modify the selection.
+
+
+
+AccessibleTable
+Indicates that the accessible object presents data in a two-dimensional data object. Through this interface information about the table such as table caption, row and column size, description, and name are provided. The AccessibleExtendedTable method is preferred.
+
+
+
+AccessibleText
+Indicates that the accessible object displays text. This interface provides methods for returning all or part of the text, attributes applied to it, and other information about the text such as its length.
+
+
+
+AccessibleValue
+Indicates that the object has a numeric value. Through this interface an accessible object provides information about its current value and its minimum and maximum values.
+
+
+Examples that Use the Accessibility API
+The following table lists some of our examples that have good support for assistive technologies.
+
+
+
+Example
+Where Described
+Notes
+
+
+AccessibleScrollDemo
+This section
+Contains two custom components that implement the Accessible interface. To see a less accessible version of this program see How to Use Scroll Panes.
+
+
+ButtonDemo
+
+How to Use the Common Button API
+Uses three buttons. Supports accessibility through button text, mnemonics, and tool tips.
+
+

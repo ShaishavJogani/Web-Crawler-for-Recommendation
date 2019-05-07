@@ -1,0 +1,1 @@
+This book use United States English , purely sake consistency . Most programming language word represent United States English , e.g. , color , etc . You use US English wherever possible .

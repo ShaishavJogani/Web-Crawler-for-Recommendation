@@ -1,0 +1,16 @@
+
+An enum is a language construct that is used to define type-safe enumerations which can be used when a fixed set of named values is desired. All enums implicitly extend 
+java.lang.Enum. Enums may contain one or more enum constants, which define unique instances of the enum type. An enum declaration defines an enum type which is very similar to a class in that it may have members such as fields, methods, and constructors (with some restrictions).
+Since enums are classes, reflection has no need to define an explicit java.lang.reflect.Enum class. The only Reflection APIs that are specific to enums are 
+Class.isEnum(), 
+Class.getEnumConstants(), and 
+java.lang.reflect.Field.isEnumConstant(). Most reflective operations involving enums are the same as any other class or member. For example, enum constants are implemented as public static final fields on the enum. The following sections show how to use 
+Class and 
+java.lang.reflect.Field with enums.
+
+Examining Enums illustrates how to retrieve an enum's constants and any other fields, constructors, and methods
+Getting and Setting Fields with Enum Types shows how to set and get fields with an enum constant value
+Troubleshooting describes common errors associated with enums
+
+For an introduction to enums, see the 
+Enum Types lesson.

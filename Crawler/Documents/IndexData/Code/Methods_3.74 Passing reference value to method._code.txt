@@ -1,0 +1,6 @@
+FirstClass object = new FirstClass();
+object.setName("Christin");
+
+modifyObject(object);
+
+System.out.println(object.getName());

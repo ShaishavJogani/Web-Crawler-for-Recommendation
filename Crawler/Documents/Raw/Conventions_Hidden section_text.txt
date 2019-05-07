@@ -1,0 +1,7 @@
+
+If a section is optional, it can be hidden like this:
+
+You writeYou get{{Java/Hidden begin|title=Hidden section}}
+This section is not mandatory.
+{{Hidden end}}Hidden sectionThis section is not mandatory.
+

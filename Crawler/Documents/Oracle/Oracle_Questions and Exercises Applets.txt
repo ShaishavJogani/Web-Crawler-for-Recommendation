@@ -1,0 +1,30 @@
+
+Questions
+
+
+Which classes can an applet extend?
+
+
+For what do you use the start() method?
+
+
+True or false: An applet can make network connections to any host on the internet.
+
+
+How do you get the value of a parameter specified in the JNLP file from within the applet's code?
+
+
+Which class enables applets to interact with JavaScript code in the applet's web page?
+
+
+True or False: Applets can modify the contents of the parent web page.
+
+
+Exercises
+
+
+The Exercise applet's parent web page has a JavaScript variable called memberId. Write the code to set the value of the memberId equal to "123489" in the applet's start method.
+
+
+
+Check your answers.

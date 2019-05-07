@@ -1,0 +1,12 @@
+
+privateis a Javakeywordwhich declares a member'saccessas private. That is, the member is only visible within the class,
+not from any other class (including subclasses). The visibility ofprivatemembers extends tonested classes.
+Please note: Because access modifiers are not handled at instance level but at class level, private members of an object are visible from other instances of the same class!
+Syntax:
+
+privatevoidmethod();
+
+See also:
+
+Java Programming/Access Modifiers
+

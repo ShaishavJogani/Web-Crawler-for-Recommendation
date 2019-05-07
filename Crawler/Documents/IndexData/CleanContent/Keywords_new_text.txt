@@ -1,0 +1,1 @@
+newis Java keyword . It create Java object allocate memory heap.newis also use array creation , array also object . Syntax : < JavaType > < variable > =new < JavaObject > ( ) ; For example : See also : Java Programming/Creating Objects

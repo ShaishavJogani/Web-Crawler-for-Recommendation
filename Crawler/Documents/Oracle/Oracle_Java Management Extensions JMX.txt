@@ -1,0 +1,32 @@
+
+The Java Management Extensions (JMX) trail provides an introduction to the JMX technology, which is included in the Java Platform, Standard Edition (Java SE platform). This trail presents examples of how to use the most important features of the JMX technology.
+
+
+
+
+Overview of the JMX Technology
+provides a brief description of the JMX technology, including its purpose and principal features.
+
+
+
+
+Introducing MBeans
+introduces the fundamental concept of the JMX technology, managed beans, otherwise known as MBeans. This lesson also introduces MXBeans.
+
+
+
+
+Notifications
+ introduces the JMX technology's notification mechanism.
+
+
+
+
+Remote Management
+ shows how to implement the JMX API's remote management capabilities and how to create a JMX client application.
+
+
+
+
+Where to Go From Here
+ provides pointers to more advanced documentation that describes the JMX technology.

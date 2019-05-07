@@ -1,0 +1,1 @@
+Customization viaProperty Editors . A property editor tool customize design time particular property type . Property editor activate so-calledproperty sheet , display property bean . If property select customization , property sheet find type property , display appropriate property editor property 's current value .

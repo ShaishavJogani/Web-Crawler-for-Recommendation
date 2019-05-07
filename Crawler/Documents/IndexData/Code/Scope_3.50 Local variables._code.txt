@@ -1,0 +1,16 @@
+{
+...
+     // myNumber is NOT visible
+  {
+     // myNumber is NOT visible
+     int myNumber;
+     // myNumber is visible
+    {
+      ...
+       // myNumber is visible
+    }
+       // myNumber is visible
+  }
+     // myNumber is NOT visible
+...
+}

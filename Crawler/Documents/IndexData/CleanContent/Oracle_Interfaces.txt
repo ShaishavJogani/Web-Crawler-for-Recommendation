@@ -1,0 +1,1 @@
+The core collection interface encapsulate different type collection , show figure . These interface allow collection manipulate independently detail representation . Core collection interface foundation Java Collections Framework . As see following figure , core collection interface form hierarchy .

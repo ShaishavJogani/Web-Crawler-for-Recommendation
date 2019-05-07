@@ -1,0 +1,1 @@
+To save new policy file 've create , choose Save As command File menu . This bring Save As dialog box . Navigate directory structure get directory save policy file : Test directory C : drive . Type file name exampleraypolicy Then choose Save button . The policy file save , name path show text box label Policy File . Then exit Policy Tool select Exit command File menu .

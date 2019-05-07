@@ -1,0 +1,14 @@
+
+Generally, it is best to make data private or protected.  Access to the data is controlled bysetterandgettermethods.  This lets the programmer control access to data, allowing him/her to check for and handle invalid data.
+
+
+In thecode section 3.51, thesetName()method will only change the value ofnameif the new name is not null.  BecausesetName()is conditionally changing name, it is wise to return a boolean to let the program know if the change was successful.
+
+
+
+
+Object LifecycleJava ProgrammingScopeNested Classes
+
+
+
+

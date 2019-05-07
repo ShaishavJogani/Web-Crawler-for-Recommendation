@@ -1,0 +1,55 @@
+
+Exposing your Java applications for remote management by using the JMX API can be extremely simple, if you use the out-of-the-box remote management agent and an existing monitoring and management tool such as JConsole.
+To expose your application for remote management, you need to start it with the correct properties. This example shows how to expose the 
+
+Main
+ JMX agent for remote management.
+Security consideration: For the sake of simplicity, the authentication and encryption security mechanisms are disabled in this example. However, you should implement these security mechanisms when implementing remote management in real-world environments. 
+What Next? provides pointers to other JMX technology documentation that shows how to activate security.
+
+This example requires version 6 of the Java SE platform. To monitor the Main JMX agent remotely, follow these steps:
+
+If you have not done so already, save 
+jmx_examples.zip into your work_dir directory.
+Unzip the bundle of sample classes by using the following command in a terminal window.
+
+unzip jmx_examples.zip
+
+
+Compile the example Java classes from within the work_dir directory.
+
+javac com/example/*.java
+
+
+Start the Main application, specifying the properties that expose Main for remote management. (For Windows, use the carat (^) instead of the backslash (\) to break up a long command into multiple lines):
+
+java -Dcom.sun.management.jmxremote.port=9999 \
+     -Dcom.sun.management.jmxremote.authenticate=false \
+     -Dcom.sun.management.jmxremote.ssl=false \
+     com.example.Main
+
+A confirmation that Main is waiting for something to happen is generated.
+
+Start JConsole in a different terminal window on a different machine:
+
+jconsole
+
+The New Connection dialog box is displayed, presenting a list of running JMX agents that you can connect to locally.
+
+Select Remote Process, and type the following in the Remote Process field:
+
+hostname:9999
+
+In this address, hostname is the name of the remote machine on which the Main application is running and 9999 is the number of the port on which the out-of-the-box JMX connector will be connected.
+
+Click Connect.
+A summary of the current activity of the Java Virtual Machine (Java VM) in which Main is running is displayed.
+
+Click the MBeans tab.
+This panel shows all the MBeans that are currently registered in the remote MBean server.
+
+In the left-hand frame, expand the com.example node in the MBean tree.
+You see the example MBean Hello that was created and registered by Main. If you click Hello, you see its associated Attributes and Operations nodes in the MBean tree, even though it is running on a different machine.
+
+To close JConsole, select Connection -> Exit.
+

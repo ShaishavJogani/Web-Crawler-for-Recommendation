@@ -1,0 +1,482 @@
+package string;
+
+/**
+ * Class for special mathematical calculations.<br/>
+ * ATTENTION:<br/>Should depend only on standard Java libraries!
+ *
+ * @since 2013-09-05
+ * @version 2014-10-14
+*/
+public class MathsUtils {
+
+	// CONSTANTS
+	// ------------------------------------------
+
+	/** The exponent sign in a scientific number, or the capital letter E. */
+	public static final char EXPONENT = 'E';
+
+	/** Value after which the language switches from scientific to double */
+	private static final double E_TO_DOUBLE = 1E-3;
+
+	/** The zero string constant used at several places. */
+	public static final String ZERO = "0";
+
+	/** The string of zeros */
+	private static final String ZEROS = "000000000000000000000000000000000";
+
+	// METHODS
+	// ------------------------------------------
+
+	/**
+	 * Determines, if the number uses a scientific representation.
+	 *
+	 * @param number the number
+	 * @return true, if it is a scientific number, false otherwise
+	 */
+	private static boolean isScientific(final double number) {
+		return ((new Double(number)).toString().indexOf(EXPONENT) > 0);
+	}
+
+	/**
+	 * Determines how many zeros are to be appended after the decimal digits.
+	 *
+	 * @param significantsAfter Requested significant digits after decimal
+	 * @param separator Language-specific decimal separator
+	 * @param number Rounded number
+	 * @return Requested value
+	 */
+	private static byte calculateMissingSignificantZeros(
+			final byte significantsAfter,
+			final char separator,
+			final double number) {
+
+		final byte after = findSignificantsAfterDecimal(separator, number);
+
+		final byte zeros =
+				(byte) (significantsAfter - ((after == 0) ? 1 : after));
+
+		return ((zeros >= 0) ? zeros : 0);
+	}
+
+	/**
+	 * Finds the insignificant zeros after the decimal separator.
+	 *
+	 * @param separator Language-specific decimal separator
+	 * @param number the number
+	 * @return the byte
+	 */
+	private static byte findInsignificantZerosAfterDecimal(
+			final char separator,
+			final double number) {
+
+		if ((Math.abs(number) >= 1) || isScientific(number)) {
+			return 0;
+		} else {
+			final StringBuilder string = new StringBuilder();
+
+			string.append(number);
+			string.delete(0,
+					string.indexOf(new Character(separator).toString()) + 1);
+
+			// Determine what to match:
+			final String regularExpression = "[1-9]";
+
+			final String[] split = string.toString().split(regularExpression);
+
+			return (split.length > 0) ? (byte) split[0].length() : 0;
+		}
+	}
+
+	/**
+	 * Calculates the number of all significant digits (without the sign and
+	 * the decimal separator).
+	 *
+	 * @param significantsAfter Requested significant digits after decimal
+	 * @param separator Language-specific decimal separator
+	 * @param number Value where the digits are to be counted
+	 * @return Number of significant digits
+	 */
+	private static byte findSignificantDigits(final byte significantsAfter,
+			final char separator,
+			final double number) {
+
+		if (number == 0) { return 0; }
+		else {
+			String mantissa =
+					findMantissa(separator, new Double(number).toString());
+
+			if (number == (long)number) {
+				mantissa = mantissa.substring(0, mantissa.length() - 1);
+			}
+
+			mantissa = retrieveDigits(separator, mantissa);
+			// Find the position of the first non-zero digit:
+			short nonZeroAt = 0;
+
+			for (; (nonZeroAt < mantissa.length())
+					&& (mantissa.charAt(nonZeroAt) == '0'); nonZeroAt++) ;
+
+			return (byte)mantissa.substring(nonZeroAt).length();
+		}
+	}
+	
+	/**
+	 * Determines the number of significant digits after the decimal separator
+	 * knowing the total number of significant digits and the number before the
+	 * decimal separator.
+	 *
+	 * @param significantsBefore Number of significant digits before separator
+	 * @param significantDigits Number of all significant digits
+	 * @return Number of significant decimals after the separator
+	 */
+	private static byte findSignificantsAfterDecimal(
+			final byte significantsBefore,
+			final byte significantDigits) {
+
+		final byte afterDecimal =
+				(byte) (significantDigits - significantsBefore);
+
+		return (byte) ((afterDecimal > 0) ? afterDecimal : 0);
+	}
+
+	/**
+	 * Determines the number of digits before the decimal point.
+	 *
+	 * @param separator Language-specific decimal separator
+	 * @param number Value to be scrutinised
+	 * @return Number of digits before the decimal separator
+	 */
+	private static byte findSignificantsBeforeDecimal(final char separator,
+													final double number) {
+
+		final String value = new Double(number).toString();
+
+		// Return immediately, if result is clear: Special handling at
+		// crossroads of floating point and exponential numbers:
+		if ((number == 0) || (Math.abs(number) >= E_TO_DOUBLE)
+				&& (Math.abs(number) < 1)) {
+
+			return 0;
+		} else if ((Math.abs(number) > 0) && (Math.abs(number) < E_TO_DOUBLE)) {
+			return 1;
+		} else {
+			byte significants = 0;
+			// Significant digits to the right of decimal separator:
+			for (byte b = 0; b < value.length(); b++) {
+				if (value.charAt(b) == separator) {
+					break;
+				} else if (value.charAt(b) != StringUtils.DASH) {
+					significants++;
+				}
+			}
+
+			return significants;
+		}
+	}
+
+	/**
+	 * Returns the exponent part of the double number.
+	 *
+	 * @param number Value of which the exponent is of interest
+	 * @return Exponent of the number or zero.
+	 */
+	private static short findExponent(final double number) {
+		return new Short(findExponent((new Double(number)).toString()));
+	}
+
+	/**
+	 * Finds the exponent of a number.
+	 *
+	 * @param value Value where an exponent is to be searched
+	 * @return Exponent, if it exists, or "0".
+	 */
+	private static String findExponent(final String value) {
+		final short exponentAt = (short) value.indexOf(EXPONENT);
+
+		if (exponentAt < 0) { return ZERO; }
+		else {
+			return value.substring(exponentAt + 1);
+		}
+	}
+
+	/**
+	 * Finds the mantissa of a number.
+	 *
+	 * @param separator Language-specific decimal separator
+	 * @param value Value where the mantissa is to be found
+	 * @return Mantissa of the number
+	 */
+	private static String findMantissa(final char separator,
+										final String value) {
+
+		String strValue = value;
+
+		final short exponentAt = (short) strValue.indexOf(EXPONENT);
+
+		if (exponentAt > -1) {
+			strValue = strValue.substring(0, exponentAt);
+		}
+		return strValue;
+	}
+
+	/**
+	 * Retrieves the digits of the value without decimal separator or sign.
+	 *
+	 * @param separator
+	 * @param number Mantissa to be scrutinised
+	 * @return The digits only
+	 */
+	private static String retrieveDigits(final char separator, String number) {
+		// Strip off exponent part, if it exists:
+		short eAt = (short)number.indexOf(EXPONENT);
+
+		if (eAt > -1) {
+			number = number.substring(0, eAt);
+		}
+
+		return number.replace((new Character(StringUtils.DASH)).toString(), "").
+				replace((new Character(separator)).toString(), "");
+	}
+
+
+	// ---- Public methods ----------------------
+
+	/**
+	 * Returns the number of digits in the long value.
+	 *
+	 * @param value the value
+	 * @return the byte
+	 */
+	public static byte digits(final long value) {
+		return (byte) StringUtils.filter(Long.toString(value), ".,").length();
+	}
+
+	/**
+	 * Finds the significant digits after the decimal separator of a mantissa.
+	 *
+	 * @param separator Language-specific decimal separator
+	 * @param number Value to be scrutinised
+	 * @return Number of significant zeros after decimal separator.
+	 */
+	public static byte findSignificantsAfterDecimal(final char separator,
+													final double number) {
+
+		if (number == 0) { return 1; }
+		else {
+			String value = (new Double(number)).toString();
+
+			final short separatorAt = (short) value.indexOf(separator);
+
+			if (separatorAt > -1) {
+				value = value.substring(separatorAt + 1);
+			}
+
+			final short exponentAt = (short) value.indexOf(EXPONENT);
+
+			if (exponentAt > 0) {
+				value = value.substring(0, exponentAt);
+			}
+
+			final Long longValue = new Long(value).longValue();
+
+			if (Math.abs(number) < 1) {
+				return (byte) longValue.toString().length();
+			} else if (longValue == 0) {
+				return 0;
+			} else {
+				return (byte) (("0." + value).length() - 2);
+			}
+		}
+	}
+
+	/**
+	 * Calculates the power of the base to the exponent without changing the
+	 * least-significant digits of a number.
+	 *
+	 * @param basis
+	 * @param exponent
+	 * @return basis to power of exponent
+	 */
+	public static double power(final int basis, final short exponent) {
+		return power((short) basis, exponent);
+	}
+
+	/**
+	 * Calculates the power of the base to the exponent without changing the
+	 * least-significant digits of a number.
+	 *
+	 * @param basis the basis
+	 * @param exponent the exponent
+	 * @return basis to power of exponent
+	 */
+	public static double power(final short basis, final short exponent) {
+		if (basis == 0) {
+			return (exponent != 0) ? 1 : 0;
+		} else {
+			if (exponent == 0) {
+				return 1;
+			} else {
+				// The Math method power does change the least significant
+				// digits after the decimal separator and is therefore useless.
+				double result = 1;
+				short s = 0;
+
+				if (exponent > 0) {
+					for (; s < exponent; s++) {
+						result *= basis;
+					}
+				} else if (exponent < 0) {
+					for (s = exponent; s < 0; s++) {
+						result /= basis;
+					}
+				}
+
+				return result;
+			}
+		}
+	}
+
+	/**
+	 * Rounds a number to the decimal places.
+	 *
+	 * @param significantsAfter Requested significant digits after decimal
+	 * @param separator Language-specific decimal separator
+	 * @param number Number to be rounded
+	 * @return Rounded number to the requested decimal places
+	 */
+	public static double round(final byte significantsAfter,
+								final char separator,
+								final double number) {
+
+		if (number == 0) { return 0; }
+		else {
+			final double constant = power(10, (short)
+					(findInsignificantZerosAfterDecimal(separator, number)
+							+ significantsAfter));
+			final short dExponent = findExponent(number);
+
+			short exponent = dExponent;
+
+			double value = number*constant*Math.pow(10, -exponent);
+			final String exponentSign =
+					(exponent < 0) ? String.valueOf(StringUtils.DASH) : "";
+
+			if (exponent != 0) {
+				exponent = (short) Math.abs(exponent);
+
+				value = round(value);
+			} else {
+				value = round(value)/constant;
+			}
+
+			// Power method cannot be used, as the exponentiated number may
+			// exceed the maximal long value.
+			exponent -= Math.signum(dExponent)*(findSignificantDigits
+					(significantsAfter, separator, value) - 1);
+
+			if (dExponent != 0) {
+				String strValue = Double.toString(value);
+
+				strValue = strValue.substring(0, strValue.indexOf(separator))
+						+ EXPONENT + exponentSign + Short.toString(exponent);
+
+				value = new Double(strValue);
+			}
+
+			return value;
+		}
+	}
+
+	/**
+	 * Rounds a number according to mathematical rules.
+	 *
+	 * @param value the value
+	 * @return the double
+	 */
+	public static double round(final double value) {
+		return (long) (value + .5);
+	}
+
+	/**
+	 * Rounds to a fixed number of significant digits.
+	 *
+	 * @param significantDigits Requested number of significant digits
+	 * @param separator Language-specific decimal separator
+	 * @param dNumber Number to be rounded
+	 * @return Rounded number
+	 */
+	public static String roundToString(final byte significantDigits,
+										final char separator,
+										double dNumber) {
+										
+		// Number of significants that *are* before the decimal separator:
+		final byte significantsBefore =
+			findSignificantsBeforeDecimal(separator, dNumber);
+		// Number of decimals that *should* be after the decimal separator:
+		final byte significantsAfter = findSignificantsAfterDecimal(
+				significantsBefore, significantDigits);
+		// Round to the specified number of digits after decimal separator:
+		final double rounded = MathsUtils.round(significantsAfter, separator, dNumber);
+
+		final String exponent = findExponent((new Double(rounded)).toString());
+		final String mantissa = findMantissa(separator,
+						(new Double(rounded)).toString());
+
+		final double dMantissa = new Double(mantissa).doubleValue();
+		final StringBuilder result = new StringBuilder(mantissa);
+		// Determine the significant digits in this number:
+		final byte significants = findSignificantDigits(significantsAfter,
+				separator, dMantissa);
+		// Add lagging zeros, if necessary:
+		if (significants <= significantDigits) {
+			if (significantsAfter != 0) {
+				result.append(ZEROS.substring(0,
+						calculateMissingSignificantZeros(significantsAfter,
+								separator, dMantissa)));
+			} else {
+				// Cut off the decimal separator & after decimal digits:
+				final short decimal = (short) result.indexOf(
+						new Character(separator).toString());
+
+				if (decimal > -1) {
+					result.setLength(decimal);
+				}
+			}
+		} else if (significantsBefore > significantDigits) {
+			dNumber /= power(10, (short) (significantsBefore - significantDigits));
+
+			dNumber = round(dNumber);
+
+			final short digits =
+					(short) (significantDigits + ((dNumber < 0) ? 1 : 0));
+
+			final String strDouble = (new Double(dNumber)).toString().substring(0, digits);
+
+			result.setLength(0);
+			result.append(strDouble + ZEROS.substring(0,
+					significantsBefore - significantDigits));
+		}
+
+		if (new Short(exponent) != 0) {
+			result.append(EXPONENT + exponent);
+		}
+
+		return result.toString();
+	} // public static String roundToString(…)
+
+	/**
+	 * Rounds to a fixed number of significant digits.
+	 *
+	 * @param separator Language-specific decimal separator
+	 * @param significantDigits Requested number of significant digits
+	 * @param value Number to be rounded
+	 * @return Rounded number
+	 */
+	public static String roundToString(final char separator,
+										final int significantDigits,
+										float value) {
+
+		return roundToString((byte)significantDigits, separator,
+				(double)value);
+	}
+} // class MathsUtils

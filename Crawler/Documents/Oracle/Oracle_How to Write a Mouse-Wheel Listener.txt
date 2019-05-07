@@ -1,0 +1,131 @@
+
+Mouse-wheel events notify when the wheel on the mouse rotates. For information on listening to other mouse events, such as clicks, see How to Write a Mouse Listener. For information on listening to mouse-dragged events, see How to Write a Mouse-Motion Listener. Not all mice have wheels and, in that case, mouse-wheel events are never generated. There is no way to programmatically detect whether the mouse is equipped with a mouse wheel.
+Alternatively, use the corresponding 
+MouseAdapter AWT class, which implements the MouseWheelListener interface, to create a MouseWheelEvent and override the methods for the specific events.
+Usually it is not necessary to implement a mouse-wheel listener because the mouse wheel is used primarily for scrolling. Scroll panes automatically register mouse-wheel listeners that react to the mouse wheel appropriately.
+However, to create a custom component to be used inside a scroll pane you may need to customize its scrolling behavior â specifically you might need to set the unit and block increments. For a text area, for example, scrolling one unit means scrolling by one line of text. A block increment typically scrolls an entire "page", or the size of the viewport. For more information, see 
+Implementing a Scrolling-Savvy Client in the 
+How to Use Scroll Panes page.
+To generate mouse-wheel events, the cursor must be over the component registered to listen for mouse-wheel events. The type of scrolling that occurs, either WHEEL_UNIT_SCROLL or WHEEL_BLOCK_SCROLL, is platform dependent. The amount that the mouse wheel scrolls is also platform dependent. Both the type and amount of scrolling can be set via the mouse control panel for the platform.
+The following example demonstrates mouse-wheel events.
+Try this: 
+Click the Launch button to run MouseWheelEventDemo using 
+Java™ Web Start (download JDK 7 or later). Alternatively, to compile and run the example yourself, consult the example index.
+Move the cursor over the text area.
+Rotate the mouse wheel away from you. You will see one or more mouse-wheel events in the up direction.
+Rotate the mouse wheel in the opposite direction. You will see mouse-wheel events in the down direction.
+Try changing your mouse wheel's scrolling behavior your system's mouse control panel to see how the output changes. You should not need to restart the demo to see the changes take effect.
+
+
+The output from MouseWheelEventDemo for a system that uses unit increments for its mouse wheel might look as follows:
+
+javax.swing.JTextArea: Mouse wheel moved UP 1 notch(es)
+    Scroll type: WHEEL_UNIT_SCROLL
+    Scroll amount: 3 unit increments per notch
+    Units to scroll: -3 unit increments
+    Vertical unit increment: 16 pixels
+
+The scroll amount, returned by the getScrollAmount method, indicates how many units will be scrolled and always presents a positive number. The units to scroll, returned by the getUnitsToScroll method, are positive when scrolling down and negative when scrolling up. The number of pixels for the vertical unit is obtained from the vertical scroll bar using the getUnitIncrement method. In the preceding example, rolling the mouse wheel one notch upward should result in the text area scrolling upward 48 pixels (3x16).
+For a system that uses block increments for mouse-wheel scrolling, for the same movement of the mouse wheel the output might look as follows:
+
+javax.swing.JTextArea: Mouse wheel moved UP 1 notch(es)
+    Scroll type: WHEEL_BLOCK_SCROLL
+    Vertical block increment: 307 pixels
+
+The vertical block increment is obtained from the vertical scroll bar using the getBlockIncrement method. In this case, rolling the mouse wheel upward one notch means that the text area should scroll upward 307 pixels.
+Find the demo's code in the 
+MouseWheelEventDemo.java file. The following code snippet is related to the mouse-wheel event handling:
+
+public class MouseWheelEventDemo ... implements MouseWheelListener ... {
+    public MouseWheelEventDemo() {
+        //where initialization occurs:
+        //Register for mouse-wheel events on the text area.
+        textArea.addMouseWheelListener(this);
+        ...
+    }
+
+    public void mouseWheelMoved(MouseWheelEvent e) {
+       String message;
+       int notches = e.getWheelRotation();
+       if (notches < 0) {
+           message = "Mouse wheel moved UP "
+                        + -notches + " notch(es)" + newline;
+       } else {
+           message = "Mouse wheel moved DOWN "
+                        + notches + " notch(es)" + newline;
+       }
+       if (e.getScrollType() == MouseWheelEvent.WHEEL_UNIT_SCROLL) {
+           message += "    Scroll type: WHEEL_UNIT_SCROLL" + newline;
+           message += "    Scroll amount: " + e.getScrollAmount()
+                   + " unit increments per notch" + newline;
+           message += "    Units to scroll: " + e.getUnitsToScroll()
+                   + " unit increments" + newline;
+           message += "    Vertical unit increment: "
+               + scrollPane.getVerticalScrollBar().getUnitIncrement(1)
+               + " pixels" + newline;
+       } else { //scroll type == MouseWheelEvent.WHEEL_BLOCK_SCROLL
+           message += "    Scroll type: WHEEL_BLOCK_SCROLL" + newline;
+           message += "    Vertical block increment: "
+               + scrollPane.getVerticalScrollBar().getBlockIncrement(1)
+               + " pixels" + newline;
+       }
+       saySomething(message, e);
+    }
+    ...
+}
+
+The Mouse Wheel Listener API
+The MouseWheelListener Interface
+Although MouseWheelListener has only one method, it has the corresponding adapter class — MouseAdapter. This capability enables an application to have only one adapter class instance for the component to manage all types of events from the mouse pointer.
+
+
+Method
+Purpose
+
+
+
+mouseWheelMoved(MouseWheelEvent)
+Called when the mouse wheel is rotated.
+
+
+The MouseWheelEvent Class
+
+
+Method
+Purpose
+
+
+
+int getScrollType()
+Returns the type of scrolling to be used. Possible values are WHEEL_BLOCK_SCROLL and WHEEL_UNIT_SCROLL, and are determined by the native platform.
+
+
+
+int getWheelRotation()
+Returns the number of notches the mouse wheel was rotated. If the mouse wheel rotated towards the user (down) the value is positive. If the mouse wheel rotated away from the user (up) the value is negative.
+
+
+
+int getScrollAmount()
+Returns the number of units that should be scrolled per notch. This is always a positive number and is only valid if the scroll type is MouseWheelEvent.WHEEL_UNIT_SCROLL.
+
+
+
+int getUnitsToScroll()
+Returns the positive or negative units to scroll for the current event. This is only valid when the scroll type is MouseWheelEvent.WHEEL_UNIT_SCROLL.
+
+
+Examples That Use Mouse Wheel Listeners
+The following table lists the examples that use mouse-wheel listeners.
+
+
+Example
+Where Described
+Notes
+
+
+MouseWheelEventDemo
+This section
+Reports all mouse wheel events that occur within a text area to demonstrate the circumstances under which mouse wheel events are fired.
+
+

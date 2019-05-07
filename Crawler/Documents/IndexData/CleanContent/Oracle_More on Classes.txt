@@ -1,0 +1,1 @@
+This section cover aspect class depend use object reference dot operator learn preceding section object : Returning value method . The keyword . Class vs. instance member . Access control .

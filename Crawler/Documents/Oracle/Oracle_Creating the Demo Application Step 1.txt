@@ -1,0 +1,2 @@
+
+All Graphical User Interfaces require some kind of main application frame in which to display. In Swing, this is an instance of javax.swing.JFrame. Therefore, our first step is to instantiate this class and make sure that everything works as expected. Note that when programming in Swing, your GUI creation code should be placed on the Event Dispatch Thread (EDT). This will prevent potential race conditions that could lead to deadlock. The following code listing shows how this is done.

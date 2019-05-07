@@ -1,0 +1,1 @@
+This section discuss problem might encounter use data transfer . Problem : My drag gesture recognizer work properly table/list/tree/text . Do use drag gesture recognizers component . Use setDragEnabled ( true ) TransferHandler . Problem : I unable drop data onto empty JTable . You need call setFillsViewportHeight ( true ) table . See Empty Table Drop information .

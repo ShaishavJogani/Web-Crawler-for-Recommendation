@@ -1,0 +1,6 @@
+Customer cust1 = new Customer();
+Customer cust2 = new Customer();
+//...
+if (cust1.equals(cust2)) {
+    // Two Customers are equal, by name and address
+}

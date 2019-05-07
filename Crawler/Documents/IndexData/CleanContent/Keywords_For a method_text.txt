@@ -1,0 +1,1 @@
+Thefinalkeyword forbid overwrite method subclass . It useless class already final private method implicitlyfinal . A final method beabstract .

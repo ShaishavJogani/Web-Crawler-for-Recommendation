@@ -1,0 +1,9 @@
+public Person getPerson(boolean isWoman) {
+  Person person = null;
+  if (isWoman) {
+    person = createWoman();
+  } else {
+    person = createMan();
+  }
+  return person;
+}

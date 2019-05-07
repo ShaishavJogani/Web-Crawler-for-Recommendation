@@ -1,0 +1,67 @@
+
+JAR files are packaged with the ZIP file format, so you can use them for tasks such as lossless data compression, archiving, decompression, and archive unpacking. These tasks are among the most common uses of JAR files, and you can realize many JAR file benefits using only these basic features.
+Even if you want to take advantage of advanced functionality provided by the JAR file format such as electronic signing, you'll first need to become familiar with the fundamental operations.
+To perform basic tasks with JAR files, you use the Java Archive Tool provided as part of the Java Development Kit (JDK). Because the Java Archive tool is invoked by using the jar command, this tutorial refers to it as 'the Jar tool'.
+As a synopsis and preview of some of the topics to be covered in this section, the following table summarizes common JAR file operations:
+
+Common JAR file operations
+
+Operation
+Command
+
+
+To create a JAR file
+jar cf jar-file input-file(s)
+
+
+To view the contents of a JAR file
+jar tf jar-file
+
+
+To extract the contents of a JAR file
+jar xf jar-file
+
+
+To extract specific files from a JAR file
+jar xf jar-file archived-file(s)
+
+
+To run an application packaged as a JAR file (requires the Main-class manifest header)
+java -jar app.jar
+
+
+To invoke an applet packaged as a JAR file
+
+
+<applet code=AppletClassName.class
+        archive="JarFileName.jar"
+        width=width height=height>
+</applet>
+
+
+
+
+This section shows you how to perform the most common JAR-file operations, with examples for each of the basic features:
+
+Creating a JAR File
+This section shows you how to use the Jar tool to package files and directories into a JAR file.
+
+Viewing the Contents of a JAR File
+You can display a JAR file's table of contents to see what it contains without actually unpacking the JAR file.
+
+Extracting the Contents of a JAR File
+You can use the Jar tool to unpack a JAR file. When extracting files, the Jar tool makes copies of the desired files and writes them to the current directory, reproducing the directory structure that the files have in the archive.
+
+Updating a JAR File
+This section shows you how to update the contents of an existing JAR file by modifying its manifest or by adding files.
+
+Running JAR-Packaged Software
+This section shows you how to invoke and run applets and applications that are packaged in JAR files.
+Additional References
+The documentation for the JDK includes reference pages for the Jar tool:
+
+
+Jar tool reference for the Windows platform
+
+Jar tool reference for UNIX-based platforms
+

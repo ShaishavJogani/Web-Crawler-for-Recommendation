@@ -1,0 +1,1 @@
+What look like method body annotation definition calledannotation element declaration . These named entity use annotation body example theprevious section . However , sake clarity , code also represent call following annotation : Note : Instead use declaration class , annotation use methoddoSomething ( ) . This might demonstrate power annotation yet , explore late chapter .

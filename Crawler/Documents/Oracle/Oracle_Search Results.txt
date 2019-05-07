@@ -1,0 +1,53 @@
+
+When you use the search methods in the 
+DirContext interface, you get back a 
+NamingEnumeration. Each item in NamingEnumeration is a 
+SearchResult, which contains the following information:
+
+Name
+Object
+Class name
+Attributes
+
+Name
+Each SearchResult contains the name of the LDAP entry that satisfied the search filter. You obtain the name of the entry by using 
+getName(). This method returns the 
+composite name of the LDAP entry relative to the target context. The target context is the context to which the name parameter resolves. In LDAP parlance, the target context is the base object for the search. Here's an example.
+
+NamingEnumeration answer = ctx.search("ou=NewHires", 
+    "(&(mySpecialKey={0}) (cn=*{1}))",  // Filter expression
+    new Object[]{key, name},                // Filter arguments
+    null);                                  // Default search controls
+
+The target context in this example is that named by "ou=NewHires". The names in SearchResults in answer are relative to "ou=NewHires". For example, if getName() returns "cn=J. Duke", then its name relative to ctx will be "cn=J. Duke, ou=NewHires".
+If you performed the search by using 
+SearchControls.SUBTREE_SCOPE or 
+SearchControls.OBJECT_SCOPE and the target context itself satisfied the search filter, then the name returned will be "" (the empty name) because that is the name relative to the target context.
+This isn't the whole story. If the search involves referrals (see the 
+JNDI Tutorial) or dereferencing aliases (see the 
+JNDI Tutorial ), then the corresponding SearchResults will have names that are not relative to the target context. Instead, they will be URLs that refer directly to the entry. To determine whether the name returned by getName() is relative or absolute, use 
+isRelative(). If this method returns true, then the name is relative to the target context; if it returns false, the name is a URL.
+If the name is a URL and you need to use that URL, then you can pass it to the initial context, which understands URLs (see the 
+JNDI Tutorial).
+If you need to get the entry's full DN, you can use 
+NameClassPair.getNameInNamespace().
+Object
+If the search was conducted requesting that the entry's object be returned 
+(SearchControls.setReturningObjFlag() was invoked with true), then SearchResult will contain an object that represents the entry. To retrieve this object, you invoke 
+getObject(). If a java.io.Serializable, 
+Referenceable, or 
+Reference object was previously bound to that LDAP name, then the attributes from the entry are used to reconstruct that object (see the example in the 
+JNDI Tutorial). Otherwise, the attributes from the entry are used to create a DirContext instance that represents the LDAP entry. In either case, the LDAP provider invokes 
+DirectoryManager.getObjectInstance() on the object and returns the results.
+Class Name
+If the search was conducted requesting that the entry's object be returned, then the class name is derived from the returned object. If the search requested attributes that included the retrieval of the "javaClassName" attribute of the LDAP entry, then the class name is the value of that attribute. Otherwise, the class name is "javax.naming.directory.DirContext". The class name is obtained from 
+getClassName().
+Attributes
+When you perform a search, you can select the return attributes either by supplying a parameter to one of the 
+search() methods or by setting the search controls using 
+SearchControls.setReturningAttributes() . If no attributes have been specified explicitly, then all of the LDAP entry's attributes are returned. To specify that no attributes be returned, you must pass an empty array (new String[0]).
+To retrieve the LDAP entry's attributes, you invoke 
+getAttributes() on the SearchResult.
+Response Controls
+See the 
+Controls and Extensions lesson of the JNDI Tutorial for details on how to retrieve a search result's response controls.

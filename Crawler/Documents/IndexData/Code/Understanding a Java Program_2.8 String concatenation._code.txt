@@ -1,0 +1,3 @@
+ "Distance between " + this.point0
+ + " and " + this.point1
+ + " is " + this.point0.distance(this.point1)

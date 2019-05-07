@@ -1,0 +1,51 @@
+
+Exponential methods[edit]
+
+
+
+There are several methods in theMathclass that deal with exponential functions.
+
+Exponentiation[edit]
+
+The power method,double Math.pow(double, double), returns the first parameter to the power of the second parameter.  For example, a call toMath.pow(2, 10)will return a value of 1024 (210).
+TheMath.exp(double)method, a special case ofpow, returnseto the power of the parameter. In addition,double Math.expm1(double)returns (ex- 1). Both of these methods are more accurate and convenient in these special cases.
+Java also provides special cases of the pow function for square roots and cube roots of doubles,double Math.sqrt(double)anddouble Math.cbrt(double).
+
+Logarithms[edit]
+
+Java has no general logarithm function; when needed this can be simulated using the change-of-base theorem.
+doubleMath.log(double)returns the natural logarithm of the parameter (not the common logarithm, as its name suggests!).
+doubleMath.log10(double)returns the common (base-10) logarithm of the parameter.
+doubleMath.log1p(double)returns ln(parameter+1). It is recommended for small values.
+
+Trigonometric and hyperbolic methods[edit]
+
+The trigonometric methods of theMathclass allow users to easily deal with trigonometric functions in programs. All accept onlydoubles. Please note that all values using these methods are initially passed and returned inradians,not degrees.  However, conversions are possible.
+
+Trigonometric functions[edit]
+
+The three main trigonometric methods areMath.sin(x),Math.cos(x), andMath.tan(x), which are used to find the sine, cosine, and tangent, respectively, of any given number. So, for example, a call toMath.sin(Math.PI/2)would return a value of about 1.  Although methods for finding the cosecant, secant, and cotangent are not available, these values can be found by taking the reciprocal of the sine, cosine, and tangent, respectively.  For example, the cosecant of pi/2 could be found using1/Math.sin(Math.PI/2).
+
+Inverse trigonometric functions[edit]
+
+Java provides inverse counterparts to the trigonometric functions:Math.asin(x), andMath.acos(x),Math.atan(x).
+
+Hyperbolic functions[edit]
+
+In addition, hyperbolic functions are available:Math.sinh(x),Math.cosh(x), andMath.tanh(x).
+
+Radian/degree conversion[edit]
+
+To convert between degree and radian measures of angles, two methods are available,Math.toRadians(x)andMath.toDegrees(x).  While usingMath.toRadians(x), a degrees value must be passed in, and that value in radians (the degree value multiplied by pi/180) will be returned.  TheMath.toDegrees(x)method takes in a value in radians and the value in degrees (the radian value multiplied by 180/pi) is returned.
+
+Absolute value:Math.abs[edit]
+
+The absolute value method of theMathclass is compatible with theint,long,float, anddoubletypes. The data returned is the absolute value of parameter (how far away it is from zero) in the same data type.  For example:
+
+
+In this example,resultwill contain a value of 3.
+
+Maximum and minimum values[edit]
+
+These methods are very simple comparing functions.  Instead of usingif...elsestatements, one can use theMath.max(x1, x2)andMath.min(x1, x2)methods.  TheMath.max(x1, x2)simply returns the greater of the two values, while theMath.min(x1, x2)returns the lesser of the two.  Acceptable types for these methods includeint,long,float, anddouble.
+

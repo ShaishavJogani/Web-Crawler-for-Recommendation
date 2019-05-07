@@ -1,0 +1,1 @@
+nullis special Java literal represent anull value : value refer object . It error attempt dereference null value — Java throw aNullPointerException.nullis often use represent uninitialized state .

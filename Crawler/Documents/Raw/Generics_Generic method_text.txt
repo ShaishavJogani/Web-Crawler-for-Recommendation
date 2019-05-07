@@ -1,0 +1,10 @@
+
+A generic type can be defined for just a method:
+
+
+Here a new identifier (D) has been chosen at the beginning of the method declaration. The type isspecific to a method calland different types can be used for the same object instance:
+
+
+The actual type will be defined by the type of the method parameter. Hence, the generic type can't be defined only for the return value as it wouldn't be resolved. See theClass<T>section for a solution.
+
+

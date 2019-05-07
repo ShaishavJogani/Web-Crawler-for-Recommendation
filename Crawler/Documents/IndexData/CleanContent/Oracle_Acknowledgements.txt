@@ -1,0 +1,1 @@
+Erik Ernst , Christian Plesner Hansen , Jeff Norton , Mads Torgersen , Peter von der Ahe Philip Wadler contribute material trail . Thanks David Biesack , Bruce Chapman , David Flanagan , Neal Gafter , Orjan Petersson , Scott Seligman , Yoshiki Shibata Kresten Krab Thorup valuable feedback early version trail . Apologies anyone I 've forget .

@@ -1,0 +1,132 @@
+
+This section describes the Basic JAXB examples (Modify Marshal,
+Unmarshal Validate) that demonstrate how to:
+
+Unmarshal an XML document into a Java content tree and access the data contained within it
+Modify a Java content tree
+Use the ObjectFactory class to create a Java content tree and then marshal it to XML data
+Perform validation during unmarshalling
+Validate a Java content tree at runtime
+
+ Modify Marshal Example
+The Modify Marshal example demonstrates how to modify a Java content tree.
+
+The jaxb-ri-install/samples/modify-marshal/src/Main.java class declares importing of three standard Java classes, five JAXB binding framework classes and the primer.po package:
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.math.BigDecimal;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBElement;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
+
+import primer.po.*;
+
+
+A JAXBContext instance is created for handling classes generated in the primer.po.
+	
+JAXBContext jc = JAXBContext.newInstance( "primer.po" );
+
+
+An Unmarshaller instance is created, and the po.xml file is unmarshalled.
+
+Unmarshaller u = jc.createUnmarshaller();
+PurchaseOrder po = (PurchaseOrder)
+    u.unmarshal(new FileInputStream("po.xml"));
+
+
+set methods are used to modify information in the address branch of the content tree.
+
+USAddress address = po.getBillTo();
+address.setName("John Bob");
+address.setStreet("242 Main Street");
+address.setCity("Beverly Hills");
+address.setState("CA");
+address.setZip(new BigDecimal
+address.setName("John Bob");
+address.setStreet("242 Main Street");
+address.setCity("Beverly Hills");
+address.setState("CA");
+address.setZip(new BigDecimal("90210"));
+
+
+A Marshaller instance is created, and the updated XML content is marshalled to system.out. The setProperty API is used to specify output encoding; in this case it is formatted (human readable) XML.
+
+Marshaller m = jc.createMarshaller();
+m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+m.marshal(po, System.out);
+
+
+
+Building and Running the Modify Marshal Example Using Ant
+To compile and run the Modify Marshal example using Ant, in a terminal window, go to the jaxb-ri-install/samples/modify-marshal/ directory and type the following:
+
+ant
+
+Unmarshal Validate Example
+The Unmarshal Validate example demonstrates how to enable validation during unmarshalling. Note that JAXB provides functions for validation during unmarshalling but not during marshalling. Validation is explained in more detail in 
+More About Validation.
+
+The jaxb-ri-install/samples/unmarshal-validate/src/Main.java class declares imports for one standard Java class, eleven JAXB binding framework classes, and the primer.po package:
+
+import java.io.File;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.UnmarshalException;
+import javax.xml.bind.Unmarshaller;
+import javax.xml.bind.ValidationEvent;
+import javax.xml.bind.ValidationEventHandler;
+import javax.xml.bind.ValidationEventLocator;
+
+import static javax.xml.XMLConstants.W3C_XML_SCHEMA_NS_URI;
+import javax.xml.validation.SchemaFactory;
+import javax.xml.validation.Schema;
+
+import primer.po.*;
+
+
+A JAXBContext instance is created for handling classes generated in the primer.po package.
+
+JAXBContext jc = JAXBContext.newInstance("primer.po");
+
+
+An Unmarshaller instance is created.
+
+Unmarshaller u = jc.createUnmarshaller();
+
+
+The default JAXB Unmarshaller ValidationEventHandler is enabled to send validation warnings and errors to system.out. The default configuration causes the unmarshal operation to fail upon encountering the first validation error.
+
+u.setValidating( true );
+
+
+An attempt is made to unmarshal the po.xml file into a Java content tree. For the purposes of this example, the po.xml file contains a deliberate error.
+
+PurchaseOrder po = (PurchaseOrder)u.unmarshal(
+    new FileInputStream("po.xml"));
+
+
+The default validation event handler processes a validation error, generates output to system.out, and then an exception is thrown. 
+
+
+} catch( UnmarshalException ue ) {
+    System.out.println("Caught UnmarshalException");
+} catch( JAXBException je ) { 
+    je.printStackTrace();
+} catch( IOException ioe ) {
+    ioe.printStackTrace();
+}
+
+
+
+Building and Running the Unmarshal Validate Example Using Ant
+To compile and run the Unmarshal Validate example using Ant, in a
+terminal window, go to the jaxb-ri-install/samples/unmarshal-validate/ directory and type the following:
+
+ant 
+

@@ -1,0 +1,10 @@
+
+Questions
+
+How do you invoke an applet that is packaged as a JAR file?
+What is the purpose of the -e option in a jar command?
+What is the significance of the manifest in a JAR file?
+How do you modify a JAR's manifest file?
+
+
+Check your answers.

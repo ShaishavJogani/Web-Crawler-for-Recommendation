@@ -1,0 +1,72 @@
+
+Areturnstatement exits from a block, so it is often the last statement of a method:
+
+
+A return statement can return the content of a variable or nothing. Beware not to write statements after a return statement which would not be executed! Eachreturnstatement is ended by a semi-colon (;).
+
+Conditional Branching Statements[edit]
+
+Conditional branching is attained with the help of theif...elseandswitchstatements. A
+conditional branch occurs only if a certain condition expression evaluates to true.
+
+Conditional Statements[edit]
+
+Also referred to asifstatements, these allow a program to perform a test and then take action based on the result of that test.
+The form of theifstatement:
+
+if(condition) {do statements here if condition is true}else{do statements here if condition is false}
+
+Theconditionis a boolean expression which can be eithertrueorfalse. The actions performed will depend on the value of the condition.
+Example:
+
+
+If statements can also be made more complex using the else if combination:
+
+if(condition 1) {do statements here if condition 1 is true}elseif(condition 2) {do statements here if condition 1 is false and condition 2 is true}else{do statements here if neither condition 1 nor condition 2 is true}
+
+Example:
+
+
+If there is only one statement to be executed after the condition, as in the above example, it is possible to omit the curly braces, however Oracle'sJava Code Conventionsexplicitly state that the braces should always be used.
+There is no looping involved in an if statement so once the condition has been evaluated the program will continue with the next instruction after the statement.
+
+If...else statements[edit]
+
+Theif...elsestatement is used to conditionally execute one of two blocks of
+statements, depending on the result of a boolean condition.
+Example:
+
+
+Oracle'sJava Code Conventionsrecommend that the braces should always be used.
+Anifstatement has two forms:
+
+if(boolean-condition)statement1
+
+and
+
+if(boolean-condition)statement1elsestatement2
+
+Use the second form if you have different statements to execute if theboolean-conditionis true or if it is false. Use the first if you only wish to executestatement1if the condition is true and you do not wish to execute alternate statements if the condition is false.
+Thecode section 3.13calls twointmethods,f()andy(), stores the results, then uses anifstatement to test ifxis less than y and if it is, thestatement1body will swap the values. The end result is x always contains the larger result and y always contains the smaller result.
+
+
+if...elsestatements also allow for the use of another statement,elseif.  This statement is used to provide anotherifstatement to the conditional that can only be executed if the others are not true.  For example:
+
+
+Theelseifstatement is useful in this case because if one of the conditionals is true, the other must be false.  Keep in mind that if one is true, the otherwill notexecute.  For example, if the statement at line 2 contained in the first conditional were changed tox = 3;, the second conditional, theelseif, would still not execute.  However, when dealing with primitive types in conditional statements, it is more desirable to useswitch statementsrather than multipleelseifstatements.
+
+Switch statements[edit]
+
+Theswitchconditional statement is basically a shorthand version of writing manyif...elsestatements.  The syntax forswitchstatements is as follows:
+
+switch(<variable>) {
+  case <result>: <statements>; break;
+  case <result>: <statements>; break;
+  default: <statements>; break;
+}
+
+This means that if the variable included equals one of the case results, the statements following that case, until the wordbreakwill run.  Thedefaultcase executes if none of the others are true.Note:the only types that can be analysed throughswitchstatements arechar,byte,short, orintprimitive types.  This means thatObjectvariables can not by analyzed throughswitchstatements. However, as of the JDK 7 release, you can use a String object in the expression of a switch statement.
+
+
+In this example, since the integer variablenis equal to 2,case 2will execute, makexequal to 4.  Thus, 4 is returned by the method.
+

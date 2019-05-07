@@ -1,0 +1,1 @@
+You download samples.zip file , contain two Java application file , LimitSamples.java SampleBase.java , directory , sample , contain xml file example . To run example , unzip samples.zip file , compile , execute follow command line : java LimitSamples

@@ -1,0 +1,15 @@
+import java.util.Collection
+import java.util.Iterator
+import java.yourcompany.Customer
+...
+public String printCustomerNames(Collection customerColl) {
+   StringBuffer buf = new StringBuffer();
+
+   Iterator iter = customerColl.iterator();
+   while(iter.hasNext()) {
+      Customer cust = (Customer) iter.next();
+      buf.append(cust.getName());
+      buf.append( "\n" );
+   }
+  return buf.toString();
+}

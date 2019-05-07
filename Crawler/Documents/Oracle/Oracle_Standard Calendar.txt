@@ -1,0 +1,58 @@
+
+
+The core of the Date-Time API is the
+java.time package. The classes defined in java.time base their calendar system on the ISO calendar, which is the world standard for representing date and time. The ISO calendar follows the proleptic Gregorian rules. The Gregorian calendar was introduced in 1582; in the proleptic Gregorian calendar, dates are extended backwards from that time to create a consistent, unified timeline and to simplify date calculations.
+
+This lesson covers the following topics:
+
+Overview
+
+This section compares the concepts of human time and machine time provides a table of the primary temporal-based classes in the java.time package.
+
+DayOfWeek and Month Enums
+
+This section discusses the enum that defines the days of the week (DayOfWeek) and the enum that defines months (Month).
+
+Date Classes
+
+This section shows the temporal-based classes that deal only with dates, without time or time zones. The four classes are LocalDate, YearMonth, MonthDay and Year.
+
+Date and Time Classes
+
+This section presents the LocalTime and LocalDateTime classes, which deal with time, and date and time, respectively, but without time zones.
+
+Time Zone and Offset Classes
+
+This section discusses the temporal-based classes that store time zone (or time zone offset) information, ZonedDateTime, OffsetDateTime, and OffsetTime. The supporting classes, ZoneId, ZoneRules, and ZoneOffset, are also discussed.
+
+Instant Class
+
+This section discusses the Instant class, which represents an instantaneous moment on the timeline.
+
+Parsing and Formatting
+
+This section provides an overview of how to use the predefined formatters to format and parse date and time values.
+
+The Temporal Package
+
+This section presents an overview of the java.time.temporal package, which supports the temporal classes, fields (TemporalField and ChronoField) and units (TemporalUnit and ChronoUnit). This section also explains how to use a temporal adjuster to retrieve an adjusted time value, such as "the first Tuesday after April 11", and how to perform a temporal query.
+
+Period and Duration
+
+This section explains how to calculate an amount of time, using both the Period and Duration classes, as well as the ChronoUnit.between method.
+
+Clock
+
+This section provides a brief overview of the Clock class. You can use this class to provide an alternative clock to the system clock.
+
+Non-ISO Date Conversion
+
+This section explains how to convert from a date in the ISO calendar system to a date in a non-ISO calendar system, such as a JapaneseDate or a ThaiBuddhistDate.
+
+Legacy Date-Time Code
+
+This section offers some tips on how to convert older java.util.Date and java.util.Calendar code to the Date-Time API.
+
+Summary
+
+This section provides a summary of the Standard Calendar lesson.

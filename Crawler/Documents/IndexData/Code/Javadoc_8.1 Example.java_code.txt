@@ -1,0 +1,7 @@
+/**
+ *  A class to give an <b>example</b> of HTML documentation.
+ */
+public class Example {
+    /** ...Documentation of a member with the type integer named example... */
+    public int example;
+}

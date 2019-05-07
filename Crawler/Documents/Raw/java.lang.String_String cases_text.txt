@@ -1,0 +1,8 @@
+
+TheStringclass also allows for the modification of cases. The two methods that make this possible aretoLowerCase()andtoUpperCase().
+
+
+These methods are useful to do a search which is not case sensitive:
+
+
+

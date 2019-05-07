@@ -1,0 +1,4 @@
+private void modifyObject(FirstClass anObject) {
+  anObject = new FirstClass();
+  anObject.setName("Susan");
+}

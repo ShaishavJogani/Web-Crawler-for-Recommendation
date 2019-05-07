@@ -1,0 +1,191 @@
+
+This section describes the default XML-to-Java bindings used by JAXB. All of these bindings can be overridden globally or case-by-case by using a custom binding declaration. See the
+JAXB Specification for complete information about the default JAXB bindings.
+Simple Type Definitions
+A schema component using a simple type definition typically binds
+to a Java property. Because there are different kinds of schema
+components, the following Java property attributes (common to the schema components) include:
+
+Base type
+Collection type, if any
+Predicate
+
+The rest of the Java property attributes are specified in the
+schema component using the simple type definition.
+Default Data Type Bindings
+The following sections explain the default schema-to-Java,
+JAXBElement, and Java-to-schema data type
+bindings.
+Schema-to-Java Mapping
+The Java language provides a richer set of data types than the XML schema. The following table provides a mapping of XML data types to Java data types in JAXB.
+Table: JAXB Mapping of XML Schema Built-in Data Types
+
+
+XML Schema Type
+Java Data Type
+
+
+xsd:string
+java.lang.String
+
+
+xsd:integer
+java.math.BigInteger
+
+
+xsd:int
+int
+
+
+xsd.long
+long
+
+
+xsd:short
+short
+
+
+xsd:decimal
+java.math.BigDecimal
+
+
+xsd:float
+float
+
+
+xsd:double
+double
+
+
+xsd:boolean
+boolean
+
+
+xsd:byte
+byte
+
+
+xsd:QName
+javax.xml.namespace.QName
+
+
+xsd:dateTime
+javax.xml.datatype.XMLGregorianCalendar
+
+
+xsd:base64Binary
+byte[]
+
+
+xsd:hexBinary
+byte[]
+
+
+xsd:unsignedInt
+long
+
+
+xsd:unsignedShort
+int
+
+
+xsd:unsignedByte
+short
+
+
+xsd:time
+javax.xml.datatype.XMLGregorianCalendar
+
+
+xsd:date
+javax.xml.datatype.XMLGregorianCalendar
+
+
+xsd:g
+javax.xml.datatype.XMLGregorianCalendar
+
+
+xsd:anySimpleType
+java.lang.Object
+
+
+xsd:anySimpleType
+java.lang.String
+
+
+xsd:duration
+javax.xml.datatype.Duration
+
+
+xsd:NOTATION
+javax.xml.namespace.QName
+
+
+
+JAXBElement Object
+When XML element information cannot be inferred by the derived Java representation of the XML content, a JAXBElement object is provided. This object has methods to get and set the object name and object value.
+Java-to-Schema Mapping
+The following table shows the default mapping of Java classes to XML data types.
+Table: JAXB Mapping of XML Data Types to Java Classes
+
+
+Java Class
+XML Data Type
+
+
+java.lang.String
+xs:string
+
+
+java.math.BigInteger
+xs:integer
+
+
+java.math.BigDecimal
+xs:decimal
+
+
+java.util.Calendar
+xs:dateTime
+
+
+java.util.Date
+xs:dateTime
+
+
+javax.xml.namespace.QName
+xs:QName
+
+
+java.net.URI
+xs:string
+
+
+javax.xml.datatype.XMLGregorianCalendar
+xs:anySimpleType
+
+
+javax.xml.datatype.Duration
+xs:duration
+
+
+java.lang.Object
+xs:anyType
+
+
+java.awt.Image
+xs:base64Binary
+
+
+javax.activation.DataHandler
+xs:base64Binary
+
+
+javax.xml.transform.Source
+xs:base64Binary
+
+
+java.util.UUID
+xs:string
+
+

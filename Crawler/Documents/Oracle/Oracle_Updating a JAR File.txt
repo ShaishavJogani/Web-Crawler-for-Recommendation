@@ -1,0 +1,79 @@
+
+The Jar tool provides a u option which you can use to update the contents of an existing JAR file by modifying its manifest or by adding files.
+The basic command for adding files has this format:
+
+jar uf jar-file input-file(s)
+
+In this command:
+
+The u option indicates that you want to update an existing JAR file.
+The f option indicates that the JAR file to update is specified on the command line.
+jar-file is the existing JAR file that is to be updated.
+input-file(s) is a space-delimited list of one or more files that you want to add to the JAR file.
+
+Any files already in the archive having the same pathname as a file being added will be overwritten.
+When creating a new JAR file, you can optionally use the -C option to indicate a change of directory. For more information, see the 
+Creating a JAR File section.
+Examples
+Recall that TicTacToe.jar has these contents:
+
+META-INF/MANIFEST.MF
+TicTacToe.class
+TicTacToe.class
+TicTacToe.java
+audio/
+audio/beep.au
+audio/ding.au
+audio/return.au
+audio/yahoo1.au
+audio/yahoo2.au
+example1.html
+images/
+images/cross.gif
+images/not.gif
+
+Suppose that you want to add the file images/new.gif to the JAR file. You could accomplish that by issuing this command from the parent directory of the images directory:
+
+jar uf TicTacToe.jar images/new.gif
+
+The revised JAR file would have this table of contents:
+
+META-INF/MANIFEST.MF
+TicTacToe.class
+TicTacToe.class
+TicTacToe.java
+audio/
+audio/beep.au
+audio/ding.au
+audio/return.au
+audio/yahoo1.au
+audio/yahoo2.au
+example1.html
+images/
+images/cross.gif
+images/not.gif
+images/new.gif
+
+You can use the -C option to "change directories" during execution of the command. For example:
+
+jar uf TicTacToe.jar -C images new.gif
+
+This command would change to the images directory before adding new.gif to the JAR file. The images directory would not be included in the pathname of new.gif when it's added to the archive, resulting in a table of contents that looks like this:
+
+META-INF/MANIFEST.MF
+META-INF/MANIFEST.MF
+TicTacToe.class
+TicTacToe.class
+TicTacToe.java
+audio/
+audio/beep.au
+audio/ding.au
+audio/return.au
+audio/yahoo1.au
+audio/yahoo2.au
+example1.html
+images/
+images/cross.gif
+images/not.gif
+new.gif
+

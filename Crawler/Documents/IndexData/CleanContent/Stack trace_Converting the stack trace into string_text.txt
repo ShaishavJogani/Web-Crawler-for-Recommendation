@@ -1,0 +1,1 @@
+Many time debug purpose , 'd like convert stack trace aStringso log log file . The following code show : To : Add exercise like one inVariables Preventing NullPointerExceptionJava ProgrammingStack traceNesting Exceptions

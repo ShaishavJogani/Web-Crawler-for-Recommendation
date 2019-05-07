@@ -1,0 +1,7 @@
+String person = "Brown, John:100 Yonge Street, Toronto:(416)777-9999";
+...
+String[] personData = person.split(":");
+...
+String name    = personData[0];
+String address = personData[1];
+String phone   = personData[2];

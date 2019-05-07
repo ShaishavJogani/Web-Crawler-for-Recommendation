@@ -1,0 +1,7 @@
+import business.BusinessClass;
+
+public class MyClass {
+  public static void main(String[] args) {
+    BusinessClass myBusinessClass = new BusinessClass();
+  }
+}

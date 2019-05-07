@@ -1,0 +1,11 @@
+
+
+The javax.xml.XMLConstants#FEATURE_SECURE_PROCESSING (FSP) feature is required for XML processors including DOM, SAX, Schema Validation, XSLT, and XPath. The proposed default limits are enforced when FSP is set to true. Setting FSP to false does not change the limits.
+
+When the Java Security Manager is present, FSP is set to true and can not be turned off. The proposed default limits are therefore enforced.
+
+Properties specified in the jaxp.properties file affect all invocations of the JDK and JRE, and will override their default values, or those that may have been set by FSP.
+ 
+System properties, when set, affect the invocation of the JDK and JRE, and override the default settings or that set in jaxp.properties, or those that may have been set by FSP.
+ 
+JAXP properties specified through JAXP factories or SAXParser take preference over system properties, the jaxp.properties file, as well as FEATURE_SECURE_PROCESSING.

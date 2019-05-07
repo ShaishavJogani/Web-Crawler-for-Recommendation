@@ -1,0 +1,4 @@
+public void method(Object argument) {
+  Object variable;
+  …
+}

@@ -1,0 +1,8 @@
+public String convertToString(Collection<String> words) {
+  String str = "";
+  // Loops through every element in words collection
+  for (String word : words) {
+    str = str + word + " ";
+  }
+  return str;
+}

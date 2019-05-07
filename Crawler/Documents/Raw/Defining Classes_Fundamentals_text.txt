@@ -1,0 +1,9 @@
+
+Every class in Java can be composed of the following elements:
+
+fields,member variablesorinstance variables— Fields are variables that hold data specific to each object.  For example, an employee might have an ID number. There is one field for each object of a class.member methodsorinstance methods— Member methods perform operations on an object.  For example, an employee might have a method to issue his paycheck or to access his name.static fieldsorclass fields— Static fields are common to any object of the same class.  For example, a static field within the Employee class could keep track of the last ID number issued. Each static field exists only once in the class, regardless of how many objects are created for that class.static methodsorclass methods— Static methods are methods that do not affect a specific object.inner classes— Sometimes it is useful to contain a class within another one if it is useless outside of the class or should not be accessed outside the class.Constructors— A special method that generates a new object.Parameterized types— Since 1.5,parameterized typescan be assigned to a class during definition.  Theparameterized typeswill be substituted with the types specified at the class's instantiation. It is done by the compiler. It is similar to the C language macro '#define' statement, where a preprocessor evaluates the macros.
+
+
+The following Java code would produce this output:
+
+

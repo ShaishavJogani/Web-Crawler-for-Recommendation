@@ -1,0 +1,1 @@
+This example simple JavaBean type propertiesint ageandString color .

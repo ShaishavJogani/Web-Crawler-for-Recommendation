@@ -1,0 +1,1 @@
+Next , input signature bytes file specify second command line argument . FileInputStream sigfis = new FileInputStream ( args [ 1 ] ) ; byte [ ] sigToVerify = new byte [ sigfis.available ( ) ] ; sigfis.read ( sigToVerify ) ; sigfis.close ( ) ; Now byte array sigToVerify contain signature bytes .

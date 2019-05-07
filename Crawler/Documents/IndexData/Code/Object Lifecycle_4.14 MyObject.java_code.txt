@@ -1,0 +1,9 @@
+public class MyObject {
+   private int memberVar;
+...
+   MyObject(MyObject obj) {
+      this.memberVar = obj.memberVar;
+    ...
+   }
+...
+}

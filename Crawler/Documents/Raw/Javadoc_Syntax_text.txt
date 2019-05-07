@@ -1,0 +1,16 @@
+
+A documentation comment is framed by slash-star-star and star-slash (i.e. /** ... */). The documentation is in the HTML format.
+
+
+A documentation comment is placed just above the commented entity (class, constructor, method, field).
+In a documentation comment, the first part is a description text in the HTML format. The second part is a list of special attributes whose name starts with an at sign (@):
+
+
+Get the sum of two integers.Description of the sum method.@param a The first integer number.Description attribute of the parameter a of the method.@param b The second integer number.Description attribute of the parameter b of the method.@return The value of the sum of the two given integers.Description attribute of the value returned by the method.
+
+Here is a non exhaustive list of special attributes:
+
+Attribute and syntaxIn a comment of ...Description@authorauthorclassName of the author of the class.@versionversionclassVersion of the class.@deprecateddescriptionclass, constructor, method, fieldFlags the entity as deprecated (old version), describes why and by what replace it.If the entity flagged as deprecated by this attribute is used, the compiler give a warning.@seereferenceclass, constructor, method, fieldAdd a link in the section "See also".@paramid descriptionconstructor and methodDescribes the method parameter.@returndescriptionmethodDescribes the value returned by the method.@exceptiontype descriptionconstructor and methodDescribes the reason of the throw of an exception of the specified type (throwsclause).
+
+See alsoannotationssince Java 5.
+

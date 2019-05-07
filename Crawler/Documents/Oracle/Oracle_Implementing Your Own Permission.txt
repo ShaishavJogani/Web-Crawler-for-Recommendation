@@ -1,0 +1,23 @@
+
+This lesson demonstrates how to write a class that defines its own special permission. The basic components in this lesson include:
+
+A sample game called ExampleGame.
+A class called HighScore, which is used by ExampleGame to store a user's latest high score.
+A class called HighScorePermission, which is used to protect access to the user's stored high score value.
+A user's security policy file, which grants permission to ExampleGame to update his/her high score.
+
+The basic scenario is as follows:
+
+A user plays ExampleGame.
+If the user reaches a new high score, ExampleGame uses the HighScore class to save this new value.
+The HighScore class looks into the user's security policy to check if ExampleGame has permission to update the user's high score value.
+If ExampleGame has permission to update the high score, then the HighScore class updates that value.
+
+We describe the key points of each of the basic components and then show a sample run:
+
+ExampleGame
+The HighScore Class
+The HighScorePermission Class
+A Sample Policy File
+Putting It All Together
+

@@ -1,0 +1,1 @@
+This page discuss detail reading , write , create , open file . There wide array file I/O method choose . To help make sense API , following diagram arrange file I/O method complexity .

@@ -1,0 +1,1 @@
+In lesson discuss new feature list support JNDI LDAP Service provider JDK 5.0 JDK 6 release . Retreiving distinguish name ( DN ) search result . Using standard LDAP control . Manipulation LDAP name . Setting read timeout LDAP operation .

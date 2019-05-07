@@ -1,0 +1,41 @@
+
+Normalization is the process by which you can perform certain transformations of text to make it reconcilable in a way which it may not have been before. Let's say, you would like searching or sorting text, in this case you need to normalize that text to account for code points that should be represented as the same text.
+What can be normalized? The normalization is applicable when you need to convert characters with diacritical marks, change all letters case, decompose ligatures, or convert half-width katakana characters to full-width characters and so on.
+In accordance with the 
+Unicode Standard Annex #15 the Normalizer's API supports all of the following four Unicode text normalization forms that are defined in the 
+java.text.Normalizer.Form:
+
+Normalization Form D (NFD): Canonical Decomposition
+Normalization Form C (NFC): Canonical Decomposition, followed by Canonical Composition
+Normalization Form KD (NFKD): Compatibility Decomposition
+Normalization Form KC (NFKC): Compatibility Decomposition, followed by Canonical Composition
+
+Let's examine how the latin small letter "o" with diaeresis can be normalized by using these normalization forms:
+
+
+Original word
+NFC
+NFD
+NFKC
+NFKD
+
+
+"schön"
+"schön"
+"scho\u0308n"
+"schön"
+"scho\u0308n"
+
+
+You can notice that an original word is left unchanged in NFC and NFKC. This is because with NFD and NFKD, composite characters are mapped to their canonical decompositions. But with NFC and NFKC, combining character sequences are mapped to composites, if possible. There is no composite for diaeresis, so it is left decomposed in NFC and NFKC.
+In the code example, 
+NormSample.java, which is represented later, you can also notice another normalization feature. The half-width and full-width katakana characters will have the same compatibility decomposition and are thus compatibility equivalents. However, they are not canonical equivalents.
+To be sure that you really need to normalize the text you may use the isNormalized method to determine if the given sequence of char values is normalized. If this method returns false, it means that you have to normalize this sequence and you should use the normalize method which normalizes a char values according to the specified normalization form. For example, to transform text into the canonical decomposed form you will have to use the following normalize method:
+
+normalized_string = Normalizer.normalize(target_chars, Normalizer.Form.NFD);
+
+Also, the normalize method rearranges accents into the proper canonical order, so that you do not have to worry about accent rearrangement on your own.
+The following example represents an application that enables you to select a normalization form and a template to normalize:
+
+Note:  If you don't see the applet running, you need to install at least the Java SE Development Kit (JDK) 7 release.The complete code for this applet is in 
+NormSample.java

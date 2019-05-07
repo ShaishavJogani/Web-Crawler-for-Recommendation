@@ -1,0 +1,8 @@
+
+In this section, you'll learn about the following two aspects of interoperability:
+
+
+Compatibility: This subsection describes how collections can be made to work with older APIs that predate the addition of Collections to the Java platform.
+
+API Design: This subsection describes how to design new APIs so that they will interoperate seamlessly with one another.
+

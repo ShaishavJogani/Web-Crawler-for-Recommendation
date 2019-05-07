@@ -1,0 +1,12 @@
+public void methodA() throws SomeException {
+    // Method body
+}
+
+public void methodB() throws CustomException, AnotherException {
+    // Method body
+}
+
+public void methodC() {
+    methodB();
+    methodA();
+}

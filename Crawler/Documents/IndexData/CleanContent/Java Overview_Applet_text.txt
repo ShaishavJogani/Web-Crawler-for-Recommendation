@@ -1,0 +1,1 @@
+The Java creator create concept theapplet . A Java program run client browser program . Java release 1995 ; time Internet become available familiar general public . The promise Java client browser-side code would download execute Java applet client browser program . See alsoJava Programming/Applets .

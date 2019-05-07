@@ -1,0 +1,54 @@
+
+
+Many Swing components display a text string as part of their GUI. By default, a component's text is displayed in a single font and color, all on one line. You can determine the font and color of a component's text by invoking the component's setFont and setForeground methods, respectively. For example, the following code creates a label and then sets its font and color:
+
+label = new JLabel("A label");
+label.setFont(new Font("Serif", Font.PLAIN, 14));
+label.setForeground(new Color(0xffffdd));
+
+If you want to mix fonts or colors within the text, or if you want formatting such as multiple lines, you can use HTML. HTML formatting can be used in all Swing buttons, menu items, labels, tool tips, and tabbed panes, as well as in components such as trees and tables that use labels to render text.
+To specify that a component's text has HTML formatting, just put the <html> tag at the beginning of the text, then use any valid HTML in the remainder. Here is an example of using HTML in a button's text:
+
+button = new JButton("<html><b><u>T</u>wo</b><br>lines</html>");
+
+Here is the resulting button. 
+
+An Example: HtmlDemo
+An application called HtmlDemo lets you play with HTML formatting by setting the text on a label. You can find the entire code for this program in 
+HtmlDemo.java. Here is a picture of the HtmlDemo example.
+Try This: 
+Click the Launch button to run HtmlDemo using 
+Java™ Web Start  (download JDK 7 or later). Alternatively, to compile and run the example yourself, consult the example index.
+Edit the HTML formatting in the text area at the left and click the "Change the label" button. The label at the right shows the result.
+Remove the <html> tag from the text area on the left. The label's text is no longer parsed as HTML.
+
+
+Example 2: ButtonHtmlDemo
+Let us look at another example that uses HTML. ButtonHtmlDemo adds font, color, and other text formatting to three buttons. You can find the entire code for this program in 
+ButtonHtmlDemo.java. Here is a picture of the ButtonHtmlDemo example.
+Click the Launch button to run ButtonHtmlDemo using 
+Java™ Web Start (download JDK 7 or later). Alternatively, to compile and run the example yourself, consult the example index.
+
+The left and right buttons have multiple lines and text styles and are implemented using HTML. The middle button, on the other hand, uses just one line, font, and color, so it does not require HTML. Here is the code that specifies the text formatting for these three buttons:
+
+b1 = new JButton("<html><center><b><u>D</u>isable</b><br>"
+                 + "<font color=#ffffdd>middle button</font>",
+                 leftButtonIcon);
+Font font = b1.getFont().deriveFont(Font.PLAIN);
+b1.setFont(font);
+...
+b2 = new JButton("middle button", middleButtonIcon);
+b2.setFont(font);
+b2.setForeground(new Color(0xffffdd));
+...
+b3 = new JButton("<html><center><b><u>E</u>nable</b><br>"
+                 + "<font color=#ffffdd>middle button</font>",
+                 rightButtonIcon);
+b3.setFont(font);
+
+Note that we have to use a <u> tag to cause the mnemonic characters "D" and "E" to be underlined in the buttons that use HTML. Note also that when a button is disabled, its HTML text unfortunately remains black, instead of becoming gray. (Refer to 
+bug #4783068 to see if this situation changes.)
+This section discussed how to use HTML in ordinary, non-text components. For information on components whose primary purpose is formatting text, see 
+Using Text Components.
+If you are programming in JavaFX, see
+HTML Editor.

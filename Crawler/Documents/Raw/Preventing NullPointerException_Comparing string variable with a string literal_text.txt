@@ -1,0 +1,9 @@
+
+When you compare a variable with a string literal, most of people would do that this way:
+
+
+Always put the string literal first:
+
+
+If thestatevariable is null, you get aNullPointerExceptionin the first example, but not in the second one.
+

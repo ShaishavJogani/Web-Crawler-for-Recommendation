@@ -1,0 +1,1 @@
+genericsA mean pass data type argument another type , Vector < JButton > ;

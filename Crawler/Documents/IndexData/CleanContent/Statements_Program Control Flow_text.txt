@@ -1,0 +1,1 @@
+Statements evaluate order occur . The execution flow begin top statement proceed downwards till last statement encounter . A statement substitute statement block . There special statement redirect execution flow base condition , statement calledbranchingstatements , describe detail late section .

@@ -1,0 +1,13 @@
+
+Rich Internet applications (RIAs) may take a few seconds to load depending on factors such as network speed and resources required by the RIA. Customize the RIA loading experience by providing a splash screen or a customized loading progress indicator to engage the end user during the loading process and to communicate measurable progress information.
+While the overall mechanisms to customize the loading experience for applets and Java Web Start applications are similar, there are subtle differences in syntax and implementation. See the following topics for step-by-step instructions and conceptual information about customizing the RIA loading experience:
+
+
+Customizing the Loading Screen
+
+Displaying a Customized Loading Progress Indicator for an applet
+
+Displaying a Customized Loading Progress Indicator for a Java Web Start application
+
+Customizing the Loading Experience (conceptual information, client Java Runtime Environment (JRE) software capabilities)
+

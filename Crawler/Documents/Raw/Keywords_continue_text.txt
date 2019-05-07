@@ -1,0 +1,15 @@
+
+continueis a Java keyword. It skips the remainder of the loop and continues with the next iteration.
+For example:
+
+
+results in
+
+0
+1
+2
+3
+4
+6
+7
+

@@ -1,0 +1,1 @@
+Applet mouse listener differ AWT mouse listener general . When mouse applet area , listener receive notification mouse click drag ( ifMouseListeneris register ) mouse movement ( ifMouseMotionListeneris register ) . As applet often small , common practice let applet implement mouse listener . To : Add exercise like one inVariables

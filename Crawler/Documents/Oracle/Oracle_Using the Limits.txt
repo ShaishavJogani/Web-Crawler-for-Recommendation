@@ -1,0 +1,173 @@
+
+Environment Evaluation
+
+    Evaluation includes, at the system level, the amount of memory available for applications, whether XML, XSD, or XSL sources from untrusted sources are accepted and processed, and at the application level, whether certain constructs such as DTDs are used.
+Memory Setting and Limits
+    
+XML processing can be very memory intensive.  The amount of memory that should be allowed to be consumed depends on the requirements of the applications in a specific environment. Processing of malformed XML data must be prevented from consuming excessive memory.
+
+
+The default limits are generally set to allow legitimate XML inputs for most applications with memory usage allowed for a small hardware system, such as a PC. It is recommended that the limits are set to the smallest possible values, so that any malformed input can be caught before it consumes large amount of memory.
+
+
+The limits are correlated, but not entirely redundant. You should set appropriate values for all of the limits: usually the limits should be set to a much smaller value than the default. 
+
+
+As an example, the ENTITY_EXPANSION_LIMIT and GENERAL_ENTITY_SIZE_LIMIT can be set to prevent excessive entity references. But when the exact combination of the expansion and entity sizes are unknown, the TOTAL_ENTITY_SIZE_LIMIT can serve as a overall control. Similarly, while TOTAL_ENTITY_SIZE_LIMIT controls the total size of a replacement text, if the text is a very large chunk of XML, the ENTITY_REPLACEMENT_LIMIT sets a restriction on the total number of nodes that can appear in the text and prevents overloading the system.
+
+Estimating the Limits Using the getEntityCountInfo Property
+
+To help you analyze what values you should set for the limits, a special property called http://www.oracle.com/xml/jaxp/properties/getEntityCountInfo is available. The following code snippet shows an example of using the property:
+
+parser.setProperty("http://www.oracle.com/xml/jaxp/properties/getEntityCountInfo", "yes");
+
+
+See
+Samples for more information on downloading the example code.
+
+When the program is run with the DTD in W3C MathML 3.0, it prints out the following table:
+
+
+Property
+Limit
+Total Size
+Size
+Entity Name
+
+
+ENTITY_EXPANSION_LIMIT
+64000
+1417
+0
+null
+
+
+MAX_OCCUR_NODE_LIMIT
+5000
+0
+0
+null
+
+
+ELEMENT_ATTRIBUTE_LIMIT
+10000
+0
+0
+null
+
+
+TOTAL_ENTITY_SIZE_LIMIT
+50000000
+55425
+0
+null
+
+
+GENERAL_ENTITY_SIZE_LIMIT
+0
+0
+0
+null
+
+
+PARAMETER_ENTITY_SIZE_LIMIT
+1000000
+0
+7303
+%MultiScriptExpression
+
+
+MAX_ELEMENT_DEPTH_LIMIT
+0
+2
+0
+null
+
+
+MAX_NAME_LIMIT
+1000
+13
+13
+null
+
+
+ENTITY_REPLACEMENT_LIMIT
+3000000
+0
+0
+null
+
+
+
+In this example, the total number of entity references, or the entity expansion, is 1417; the default limit is 64000. The total size of all entities is 55425; the default limit is 50000000. The biggest parameter entity is %MultiScriptExpression with a length of 7303 after all references are resolved; the default limit is 1000000.
+
+If this is the largest file that the application is expected to process, it is recommended that the limits be set to smaller numbers. For example, 2000 for ENTITY_EXPANSION_LIMIT, 100000 for TOTAL_ENTITY_SIZE_LIMIT, and 10000 for PARAMETER_ENTITY_SIZE_LIMIT.
+Setting Limits
+
+Limits can be set in the same way as other JAXP properties. They can be set through factory methods, or through the parser:
+
+DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+dbf.setAttribute(name, value);
+ 
+SAXParserFactory spf = SAXParserFactory.newInstance();
+SAXParser parser = spf.newSAXParser();
+parser.setProperty(name, value);
+ 
+XMLInputFactory xif = XMLInputFactory.newInstance();
+xif.setProperty(name, value);
+ 
+SchemaFactory schemaFactory = SchemaFactory.newInstance(schemaLanguage);
+schemaFactory.setProperty(name, value);
+ 
+TransformerFactory factory = TransformerFactory.newInstance();
+factory.setAttribute(name, value);
+
+
+The following example shows how to set limits using DocumentBuilderFactory:
+
+dbf.setAttribute(JDK_ENTITY_EXPANSION_LIMIT, "2000");
+dbf.setAttribute(TOTAL_ENTITY_SIZE_LIMIT, "100000");
+dbf.setAttribute(PARAMETER_ENTITY_SIZE_LIMIT, "10000"); 
+dbf.setAttribute(JDK_MAX_ELEMENT_DEPTH, "100"); 
+
+Using System Properties
+
+System properties may be useful if changing code is not feasible.
+
+To set limits for an entire invocation of the JDK or JRE, set the system properties on the command line. To set the limits for only a portion of the application, the system properties may be set before the section and cleared afterwards. The following code shows how system properties may be used:
+
+public static final String SP_GENERAL_ENTITY_SIZE_LIMIT = "jdk.xml.maxGeneralEntitySizeLimit";
+
+//set limits using system property
+System.setProperty(SP_GENERAL_ENTITY_SIZE_LIMIT, "2000");
+
+//this setting will affect all processing after it's set
+...
+
+//after it is done, clear the property
+System.clearProperty(SP_GENERAL_ENTITY_SIZE_LIMIT);
+
+
+Note that the values of the properties are expected to be integers. A NumberFormatException will be thrown if
+the value entered does not contain a parsable integer; see the method 
+parseInt(String).
+
+
+See
+Samples for more information on downloading the example code.
+Using the jaxp.properties File
+
+The jaxp.properties file is a configuration file. It is usually located at ${java.home}/lib/jaxp.properties where java.home is the JRE install directory, e.g., [path to installation directory]/jdk8/jre.
+
+A limit can be set by adding the following line to the jaxp.properties file:
+
+jdk.xml.maxGeneralEntitySizeLimit=2000
+
+
+Note that the property name is the same as that of the system property and has the prefix jdk.xml.
+The values of the properties are
+expected to be integers. A NumberFormatException will be thrown if the value entered does not contain a parsable integer; see the method 
+parseInt(String).
+
+
+When the property is set in the file, all invocations of the JDK and JRE will observe the limit.

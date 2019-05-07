@@ -1,0 +1,2 @@
+class Dog extends Animal {
+}

@@ -1,0 +1,8 @@
+public class Customer implements Cloneable {
+ ...
+    public Object clone() throws CloneNotSupportedException {
+       Object obj = super.clone();
+
+       return obj;
+    }
+}

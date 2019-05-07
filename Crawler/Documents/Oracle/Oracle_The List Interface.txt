@@ -1,0 +1,105 @@
+
+A 
+List is an ordered 
+Collection (sometimes called a sequence). Lists may contain duplicate elements. In addition to the operations inherited from Collection, the List interface includes operations for the following:
+
+Positional access — manipulates elements based on their numerical position in the list. This includes methods such as get, 
+set, add, addAll, and remove.
+Search — searches for a specified object in the list and returns its numerical position. Search methods include
+indexOf and lastIndexOf.
+Iteration — extends Iterator semantics to take advantage of the list's sequential nature. The 
+ listIterator methods provide this behavior.
+Range-view — The sublist method performs arbitrary range operations on the list.
+
+
+The Java platform contains two general-purpose List implementations. 
+ArrayList, which is usually the better-performing implementation, and 
+LinkedList which offers better performance under certain circumstances. 
+
+Collection Operations
+The operations inherited from Collection all do about what you'd expect them to do, assuming you're already familiar with them. If you're not familiar with them from Collection, now would be a good time to read 
+The Collection Interface section. The remove operation always removes the first occurrence of the specified element from the list. The add and addAll operations always append the new element(s) to the end of the list. Thus, the following idiom concatenates one list to another.
+
+list1.addAll(list2);
+
+Here's a nondestructive form of this idiom, which produces a third List consisting of the second list appended to the first.
+
+List<Type> list3 = new ArrayList<Type>(list1);
+list3.addAll(list2);
+
+Note that the idiom, in its nondestructive form, takes advantage of ArrayList's standard conversion constructor.
+
+And here's an example (JDK 8 and later) that aggregates some names into a List:
+
+
+List<String> list = people.stream()
+.map(Person::getName)
+.collect(Collectors.toList());
+
+Like the 
+Set interface, List strengthens the requirements on the equals and hashCode methods so that two List objects can be compared for logical equality without regard to their implementation classes. Two List objects are equal if they contain the same elements in the same order.
+Positional Access and Search Operations
+The basic positional access operations are get, set, add and remove. (The set and remove operations return the old value that is being overwritten or removed.) Other operations (indexOf and lastIndexOf) return 
+the first or last index of the specified element in the list.
+
+
+The addAll operation inserts all the elements of the specified Collection starting at the specified position. The elements are inserted in the order they are returned by the specified Collection's iterator. This call is the positional access analog of Collection's addAll operation.
+Here's a little method to swap two indexed values in a List.
+
+public static <E> void swap(List<E> a, int i, int j) {
+    E tmp = a.get(i);
+    a.set(i, a.get(j));
+    a.set(j, tmp);
+}
+
+Of course, there's one big difference. This is a polymorphic algorithm: It swaps two elements in any List, regardless of its implementation type. Here's another polymorphic algorithm that uses the preceding swap method.
+
+public static void shuffle(List<?> list, Random rnd) {
+    for (int i = list.size(); i > 1; i--)
+        swap(list, i - 1, rnd.nextInt(i));
+}
+
+This algorithm, which is included in the Java platform's 
+Collections class, randomly permutes the specified list using the specified source of randomness. It's a bit subtle: It runs up the list from the bottom, repeatedly swapping a randomly selected element into the current position. Unlike most naive attempts at shuffling, it's fair (all permutations occur with equal likelihood, assuming an unbiased source of randomness) and fast (requiring exactly list.size()-1 swaps). The following program uses this algorithm to print the words in its argument list in random order.
+
+import java.util.*;
+
+public class Shuffle {
+    public static void main(String[] args) {
+        List<String> list = new ArrayList<String>();
+        for (String a : args)
+            list.add(a);
+        Collections.shuffle(list, new Random());
+        System.out.println(list);
+    }
+}
+
+In fact, this program can be made even shorter and faster. The 
+Arrays class has a static factory method called asList, which allows an array to be viewed as a List. This method does not copy the array. Changes in the List write through to the array and vice versa. The resulting List is not a general-purpose List implementation, because it doesn't implement the (optional) add and remove operations: Arrays are not resizable. Taking advantage of Arrays.asList and calling the library version of shuffle, which uses a default source of randomness, you get the following 
+tiny program whose behavior is identical to the previous program.
+
+import java.util.*;
+
+public class Shuffle {
+    public static void main(String[] args) {
+        List<String> list = Arrays.asList(args);
+        Collections.shuffle(list);
+        System.out.println(list);
+    }
+}
+
+Iterators
+As you'd expect, the Iterator returned by List's iterator operation returns the elements of the list in proper sequence. List also provides a richer iterator, called a ListIterator, which allows you to traverse the list in either direction, modify the list during iteration, and obtain the current position of the iterator. 
+
+
+The three methods that ListIterator inherits from Iterator (hasNext, next, and remove) do exactly the same thing in both interfaces. The hasPrevious and the previous operations are exact analogues of hasNext and next. The former operations refer to the element before the (implicit) cursor, whereas the latter refer to the element after the cursor. The previous operation moves the cursor backward, whereas next moves it forward.
+Here's the standard idiom for iterating backward through a list.
+
+for (ListIterator<Type> it = list.listIterator(list.size()); it.hasPrevious(); ) {
+    Type t = it.previous();
+    ...
+}
+
+Note the argument to listIterator in the preceding idiom. The List interface has two forms of the listIterator method. The form with no arguments returns a ListIterator positioned at the beginning of the list; the form with an int argument returns a ListIterator positioned at the specified index. The index refers to the element that would be returned by an initial call to next. An initial call to previous would return the element whose index was index-1. In a list of length n, there are n+1 valid values for index, from 0 to n, inclusive.
+Intuitively speaking, the cursor is always between two elements — the one that would be returned by a call to previous and the one that would be returned by a call to next. The n+1 valid index values correspond to the n+1 gaps between elements, from the gap before the first element to the gap after the last one. 
+The following figure shows the five possible cursor positions in a list containing four elements.

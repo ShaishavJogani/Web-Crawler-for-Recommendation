@@ -1,0 +1,20 @@
+
+Inlinguistics, the wordsyntax(which comes fromAncient Greekσύνταξιςwhereσύν[syn] means "together", andτάξις[táxis] means "an ordering") refers to "the process of arranging things". It defines the principles and rules for constructing phrases andsentencesinnatural languages.
+When learning a new language, the first step one must take is to learn itsprogramming syntax.Programming syntaxis to programming languages whatgrammaris to spoken languages. Therefore, in order to create effective code in the Java programming language, we need to learn its syntax — its principles and rules for constructing valid code statements and expressions.
+Java uses a syntax similar to theC programming languageand therefore if one learns the Java programming syntax, they automatically would be able to read and write programs in similar languages — C,C++andC#
+The next step one must take when learning a new language is to learn its keywords; by combining the knowledge ofkeywordswith an understanding ofsyntaxrules, one can createstatements, Programming Blocks, Classes, Interfaces, et al.
+Usepackagesto avoid name collisions. To hide as much information as possible use theaccess modifiersproperly.
+Createmethodsthat do one and if possible only one thing/task. If possible have separate method that changes the object state.
+In an object oriented language, programs are run with objects; however, for ease of use and for historic reasons, Java hasprimitive types. Primitive Data Types only store values and have no methods. Primitive Types may be thought of as Raw Data and are usually embedded attributes inside objects or used as local variables in methods. Because primitive types are not subclasses of the object superclass, each type has a Wrapper Class which is a subclass of Object, and can thus be stored in a collection or returned as an object.
+Java is a strongtypechecking language. There are two concepts regarding types and objects. One is the object type and the other the template/class the object was created from. When an object is created, the template/class is assigned to that object which can not be changed. Types of an object however can be changed by type casting. Types of an object is associated with the object reference that referencing the object and determines what operation can be performed on the object through that object reference. Assigning the value of one object reference to a different type of object reference is called type casting.
+The most often used data structure in any language is a character string. For this reason java defines a special object that isString.
+To aggregate same type java objects to an array, java has a specialarrayobject for that. Both java objects and primitive types can be aggregated to arrays.
+
+
+Java IDEsJava ProgrammingLanguage FundamentalsStatements
+
+
+
+
+
+

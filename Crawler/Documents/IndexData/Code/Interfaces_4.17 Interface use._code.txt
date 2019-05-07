@@ -1,0 +1,8 @@
+public static void main(String[] args) {
+    doAction(new ClassWithInterface());
+    doAction(new AnotherClassWithInterface());
+}
+
+public void doAction(SimpleInterface anObject) {
+    anObject.method1("Hello!");
+}

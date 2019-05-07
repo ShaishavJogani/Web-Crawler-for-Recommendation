@@ -1,0 +1,8 @@
+public static void main(String[] args) {
+    doAction(new OneClass());
+    doAction(new AnotherClass());
+}
+
+public void doAction(Object anObject) {
+    anObject.method1("Hello!");
+}

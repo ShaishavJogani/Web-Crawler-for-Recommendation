@@ -1,0 +1,15 @@
+
+This step uses the Policy Tool utility to open the policy file named examplepolicy created in the 
+Creating a Policy File lesson. You will add a new policy entry granting permission for code from the directory where GetProps.class is stored to read the "user.home" and the "java.home" property values, as shown in the following figure.
+The steps are as follows.
+
+Open the Policy File
+Grant the Required Permissions
+Save the Policy File
+
+Note for UNIX Users: The instructions illustrate creating the policy file for a Windows system. The steps are exactly the same if you are working on a UNIX system, with the following differences.
+
+You retrieve the examplepolicy file from the test directory in your home directory.
+For the CodeBase URL in the step for granting the required permissions, you can substitute file:${user.home}/test/ for file:/C:/Test/. Alternatively you could directly specify your home directory rather than referring to the "user.home" property, as in file:/home/jones/test/.
+
+

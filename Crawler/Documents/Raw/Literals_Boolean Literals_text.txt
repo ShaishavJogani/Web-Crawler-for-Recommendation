@@ -1,0 +1,7 @@
+
+There are two boolean literals
+
+truerepresents a true boolean valuefalserepresents a false boolean value
+
+There are no other boolean literals, because there are no other boolean values!
+

@@ -1,0 +1,1 @@
+This section explain use NetBeans IDE create application 's GUI . As drag component Palette Design Area , IDE auto-generates appropriate source code . Step 1 : Set Title First , set title application 's JFrame `` Celsius Converter '' , single-clicking JFrame Inspector :

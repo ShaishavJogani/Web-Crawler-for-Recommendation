@@ -1,0 +1,7 @@
+
+booleanis akeywordwhich designates thebooleanprimitive type. There are only two possiblebooleanvalues:trueandfalse. The default value forbooleanfields isfalse.
+The following is a declaration of aprivatebooleanfield namedinitialized, and its use in a method namedsynchronizeConnection.
+
+
+The previous code only creates a connection once (at the first method call). Note that there is no automatic conversion between integer types (such asint) tobooleanas is possible in some languages likeC. Instead, one must use an equivalent expression such as(i != 0)which evaluates totrueifiis not zero.
+

@@ -1,0 +1,1 @@
+Within class , field name field superclass hide superclass 's field , even type different . Within subclass , field superclass reference simple name . Instead , field must access super , cover next section . Generally speak , n't recommend hide field make code difficult read .

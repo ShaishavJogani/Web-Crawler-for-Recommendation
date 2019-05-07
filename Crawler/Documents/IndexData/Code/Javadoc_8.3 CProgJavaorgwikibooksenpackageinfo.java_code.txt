@@ -1,0 +1,5 @@
+/**
+ * This fake package is used to illustrate the Java wikibook.
+ * at <i>en.wikibooks.org</i>.
+ */
+package org.wikibooks.en;

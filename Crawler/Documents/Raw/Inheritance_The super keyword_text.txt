@@ -1,0 +1,21 @@
+
+Thesuperkeyword allows access to the members of the superclass of a class, as you can usethisto access the members of the current class.
+Example:
+
+
+In this example, the constructor of thePlaneclass calls the constructor of its superclassVehicle. You can only usesuperto access the members of the superclass inside the child class. If you use it from another class, it accesses the superclass of the other class.
+This keyword also allows you to explicitly access the members of the superclass, for instance, in the case where there is a method with the same name in your class (overriding, ...).
+Example :
+
+
+
+
+See also theObject Oriented Programmingbook about the inheritance concept.
+
+Defining ClassesJava ProgrammingInheritanceInterfaces
+
+
+
+
+
+

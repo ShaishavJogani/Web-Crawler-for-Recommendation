@@ -1,0 +1,1 @@
+The Sockets Direct Protocol ( SDP ) provide access high performance network connection , provide InfiniBand . This trail show enable SDP , Java APIs involve , explain work .

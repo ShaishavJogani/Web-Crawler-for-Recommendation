@@ -1,0 +1,11 @@
+
+Systemis a class in the packagejava.langwith a number of static members that are available to Java programs.  Two members that are useful for console output areSystem.outandSystem.err.  Both System.out and System.err arePrintStreamobjects.PrintStreamis a subclass ofFilterOutputStream, itself a subclass ofOutputStream(discussed above), and its main purpose is to translate a wide variety of data types into streams of bytes that represent that data in characters according to some encoding scheme.
+System.outandSystem.errboth display text to a console where the user can read it, however what this means exactly depends on the platform used and the environment in which the program is running.  In BlueJay and Eclipse IDE, for example, there is a special "terminal" window that will display this output.  If the program is launched in Windows, the output will be sent to the DOS prompt (usually this means that you have to launch the program from the command line to see the output).
+System.outandSystem.errdiffer in what they're supposed to be used for.System.outshould be used for normal program output,System.errshould be used to inform the user that some kind of error has occurred in the program.  In some situations, this may be important.  In DOS, for instance, a user can redirect standard output to some other destination (a file, for example), but error output will not be redirected, but rather displayed on the screen.  If this weren't the case, the user might never be able to tell that an error had occurred.
+
+
+
+To do:Illustrate how theprint()method works, emphasize that this method does not break up lines, but that this can be accomplished with the\nescape sequence. Talk about how it works with different data types, and then introduce theprintln()method as a convenience method that automatically adds the\ncharacter.
+
+
+

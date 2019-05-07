@@ -1,0 +1,561 @@
+
+The following sections describe how to use the sample applications that are included in the JAXB RI bundle. The JAXB RI bundle is available from 
+http://jaxb.java.net. Download and install the JAXB RI bundle. The examples are located in the jaxb-ri-install/samples/ directory. These examples demonstrate and build upon key JAXB features and concepts. Follow these procedures in the order presented.
+After reading this section, you should feel comfortable enough
+with JAXB that you can:
+
+Generate JAXB Java classes from an XML schema
+Use schema-derived JAXB classes to unmarshal and marshal XML
+	content in a Java application
+Create a Java content tree using schema-derived JAXB classes
+	
+Validate XML content during unmarshalling and at runtime
+Customize JAXB schema-to-Java bindings
+
+This document describes three sets of examples:
+
+The basic examples (Modify Marshal, Unmarshal Validate)
+	demonstrate basic JAXB concepts such as unmarshalling, marshalling, 		and validating XML content using default settings and bindings.
+The customize examples (Customize Inline, Datatype Converter,
+	External Customize) demonstrate various ways of customizing the
+	default binding of XML schemas to Java objects.
+The java-to-schema examples show how to use annotations to
+	map Java classes to an XML schema.
+	
+
+Note: The basic and customize examples are based on a Purchase Order scenario. Each uses an XML document, po.xml, written against an XML schema, po.xsd. These documents are derived from the 
+W3C XML Schema Part 0: Primer, edited by David C. Fallside.
+
+The basic and customize example directories contain several base files:
+
+po.xsd is the XML schema that is used as input to the JAXB binding compiler, and from which schema-derived JAXB Java classes will be generated. For the Customize Inline and Datatype Converter examples, this file contains inline binding customizations.
+po.xml is the Purchase Order XML file containing sample XML content, and it is the file unmarshalled into a Java content tree in each example. This file is almost the same in each example; there are minor content differences to highlight different JAXB concepts.
+Main.java is the main Java class for each example.
+build.xml is an Ant project file provided for your convenience. Use the Ant tool to generate, compile, and run the schema-derived JAXB classes automatically. The build.xml file varies across the examples.
+MyDatatypeConverter.java in the inline-customize example is a Java class used to provide custom data type conversions.
+binding.xjb in the External Customize example is an external binding declarations file that is passed to the JAXB binding compiler to customize the default JAXB bindings.
+
+The following tables briefly describe the basic, customize, and java-to-schema JAXB examples.
+Table: Basic JAXB Examples
+
+
+Example Name
+Description
+
+
+
+Modify Marshal	
+Demonstrates how to modify a Java content tree.
+
+
+
+Unmarshal Validate
+Demonstrates how to enable validation during unmarshalling.
+
+
+
+Table:  Customize JAXB Examples
+
+
+Example Name
+Description
+
+
+
+Customize Inline
+Demonstrates how to customize the default JAXB bindings by using inline annotations in an XML schema.
+
+
+
+Datatype Converter
+Illustrates alternate, more terse bindings of XML simpleType definitions to Java data types, and is similar to Customize Inline example.
+
+
+
+External Customize
+Illustrates how to use an external binding declarations file to pass binding customizations for a read-only schema to the JAXB binding compiler.
+
+
+
+Table:  Java-to-Schema JAXB Examples
+
+
+Example Name
+Description
+
+
+
+Create Marshal
+Demonstrates how to use the ObjectFactory class to create a Java content tree and marshal it to XML data. It also demonstrates how to add content to a JAXB List property.
+
+
+
+
+XmlAccessorOrder
+Illustrates how to use the @XmlAccessorOrder and @XmlType.propOrder mapping annotations in Java classes to control the order in which XML content is marshalled or unmarshalled by a Java type.
+
+
+
+
+XmlAdapter
+Illustrates how to use the interface XmlAdapter and the annotation @XmlJavaTypeAdapter to provide a a custom mapping of XML content into and out of a HashMap (field) that uses an interger (int) as the key and a string (String) as the value.
+
+
+
+
+XmlAttribute
+Illustrates how to use the annotation @XmlAttribute to define a property or field to be handled as an XML attribute.
+
+
+
+
+XmlRootElement
+Illustrates how to use the annotation @XmlRootElement to define an XML element name for the XML schema type of the corresponding class.
+
+
+
+XmlSchemaType Class
+Illustrates how to use the annotation @XmlSchemaType to customize the mapping of a property or field to an XML built-in type.
+
+
+
+
+XmlType
+Illustrates how to use the annotation @XmlType to map a class or enum type to an XML schema type.
+
+
+
+
+JAXB Compiler Options
+The JAXB XJC schema binding compiler transforms, or binds, a source XML schema to a set of JAXB content classes in the Java programming language.
+The compiler class, xjc, is provided as: xjc.sh on Solaris/Linux and xjc.bat on Windows in the JAXB RI bundle. The xjc class is included in the JDK class library (in tools.jar).
+Both xjc.sh and xjc.bat take the same command-line options. You can display quick usage instructions by invoking the scripts without any options, or with the -help switch. The syntax is as follows:
+
+xjc [-options ...] <schema file/URL/dir/jar>... [-b >bindinfo<] ...
+
+If dir is specified, all schema files in the directory will be compiled. If jar is specified, /META-INF/sun-jaxb.episode binding file will be compiled.
+The xjc command-line options are as follows:
+
+-nv
+
+	Do not perform strict validation of the input schema or schemas. 
+	By default, xjc performs strict validation of the source 		schema before processing. Note that this does not mean the binding 		compiler will not perform any validation; it will just perform a 
+	less-strict validation.
+
+-extension 
+
+	By default, the XJC binding compiler strictly enforces the rules
+	outlined in the Compatibility chapter of the JAXB Specification. In 		the default (strict) mode, you are also limited to using only the
+	binding customizations defined in the specification. By using the
+	-extension switch, you are allowed to use the JAXB Vendor 		Extensions.
+
+-b file 
+
+	Specify one or more external binding files to process. (Each 		binding file must have its own -b switch.) The syntax of 		the external binding files is flexible. You may have a single 
+	binding file that contains customizations for multiple schemas or 		you can break the customizations into multiple bindings files. In 		addition, the ordering of the schema files and binding files on the 		command-line does not matter.
+
+-d dir 
+
+	By default, the XJC binding compiler generates Java content classes 		in the current directory. Use this option to specify an alternate 		output directory. The directory must already exist; the XJC binding 		compiler does not create one for you.
+
+-p package
+
+	Specify an alternate output directory. By default, the XJC binding 		compiler will generate the Java content classes in the current 		directory. The output directory must already exist; the XJC binding 		compiler does not create one for you.
+
+-httpproxy proxy
+
+	Specify the HTTP/HTTPS proxy. The format is
+	[user[:password]@]proxyHost[:proxyPort]. The old -host and -port options are still supported by the Reference Implementation for backward compatibility, but they have been deprecated.
+
+-httpproxyfile f
+
+	Works like the -httpproxy option but takes the argument in 		a file to protect password.
+
+-classpath arg 
+
+	Specify where to find client application class files used by the
+	<jxb:javaType> and <xjc:superClass>
+	customizations.
+
+-catalog file 
+
+	Specify catalog files to resolve external entity references.
+	Supports TR9401, XCatalog, and OASIS XML Catalog format. For more
+	information, see the XML Entity and URI Resolvers document or 		examine the catalog-resolver sample application.
+
+-readOnly 
+
+	Force the XJC binding compiler to mark the generated Java sources
+	as read-only. By default, the XJC binding compiler does not 		write-protect the Java source files it generates.
+
+-npa 
+
+	Suppress the generation of package level annotations into 
+	**/package-info.java. Using this switch causes the 		generated code to internalize those annotations into the other 		generated classes.
+
+-no-header 
+
+	Suppress generation of a file header with timestamp.
+
+-target (2.0|2.1) 
+
+	Behave like XJC 2.0 or 2.1 and generate code that doesnt use any 		XJC 2.2 features.
+
+-enableIntrospection 
+
+	Enable correct generation of Boolean getters/setters to enable Bean 		Introspection apis.
+
+-contentForWildcard 
+
+	Generates content property for types with multiple xs:any derived  		elements.
+
+-xmlschema 
+
+	Treat input schemas as W3C XML Schema (default). If you do not
+	specify this switch, your input schemas are treated as W3C XML  	Schema.
+
+-verbose 
+
+	Be extra verbose in compiler output.
+
+-quiet 
+
+	Suppress compiler output, such as progress information and 		warnings.
+
+-help 
+
+	Display a brief summary of the compiler switches.
+
+-version 
+
+	Display the compiler version information.
+
+-fullversion 
+
+	Display the compiler full version information.
+
+-Xinject-code 
+
+	Inject specified Java code fragments into the generated code.
+
+-Xlocator 
+
+	Enable source location support for generated code.
+
+-Xsync-methods 
+
+	Generate accessor methods with the synchronized
+	keyword.
+
+-mark-generated 
+
+	Mark the generated code with the -@javax.annotation. 		Generated annotation.
+
+-episode FILE 
+
+	Generate the episode file for separate compilation.
+
+JAXB Schema Generator Option
+The JAXB Schema Generator, schemagen, creates a schema file for each namespace referenced in your Java classes. The schema generator can be started by using the appropriate schemagen shell script in the bin directory for your platform. The schema generator processes Java source files only. If your Java sources reference other classes, those sources must be accessible from your system CLASSPATH environment variable; otherwise errors will occur when the schema is generated. There is no way to control the name of the generated schema files.
+You can display quick usage instructions by invoking the scripts
+without any options or by using the -help option. The syntax is as follows:
+
+schemagen [-d path] 
+    [java-source-files]
+
+The -d path option specifies the location of the processor-generated and javac-generated class files.
+About the Schema-to-Java Bindings
+When you run the JAXB binding compiler against the po.xsd
+XML schema used in the basic examples (Unmarshal Read, Modify Marshal, Unmarshal Validate), the JAXB binding compiler generates a Java package named primer.po containing the classes, described in the following table.
+Table:  Schema-Derived JAXB Classes in the Basic Examples
+
+
+Class
+Description
+
+
+primer/po/Items.java
+Public interface that binds to the schema complexType named Items.
+
+
+primer/po/ObjectFactory.java
+Public class extending com.sun.xml.bind.DefaultJAXBContextImpl; used to create instances of specified interfaces. For example, the 
+ObjectFactory createComment() method instantiates a Comment object.
+
+
+primer/po/PurchaseOrderType.java
+Public interface that binds to the schema complexType named PurchaseOrderType.
+
+
+primer/po/USAddress.java
+Public interface that binds to the schema complexType named USAddress.
+
+
+
+
+These classes and their specific bindings to the source XML schema
+for the basic examples are described in the following table.
+Table: Schema-to-Java Bindings for the Basic Examples
+
+
+XML Schema
+JAXB Binding
+
+
+
+
+<xsd:schema xmlns:xsd=
+ "http://www.w3.org/2001/XMLSchema">
+
+
+  
+
+
+
+
+<xsd:complexType 
+  name="PurchaseOrderType">
+  <xsd:sequence>
+    <xsd:element 
+      name="shipTo" 
+      type="USAddress"/>
+    <xsd:element 
+      name="billTo" 
+      type="USAddress"/>
+    <xsd:element 
+      ref="comment" 
+      minOccurs="0"/>
+    <xsd:element 
+      name="items"
+      type="Items"/>
+  </xsd:sequence>
+  <xsd:attribute 
+    name="orderDate"
+    type="xsd:date"/>
+</xsd:complexType>
+
+
+PurchaseOrderType.java
+
+
+
+
+<xsd:complexType 
+  name="USAddress">
+  <xsd:sequence>
+    <xsd:element 
+      name="name" 
+      type="xsd:string"/>
+    <xsd:element 
+      name="street" 
+      type="xsd:string"/>
+    <xsd:element 
+      name="city" 
+      type="xsd:string"/>
+    <xsd:element 
+      name="state" 
+      type="xsd:string"/>
+    <xsd:element 
+      name="zip" 
+      type="xsd:decimal"/>
+  </xsd:sequence>
+  <xsd:attribute 
+    name="country" 
+    type="xsd:NMTOKEN" 
+    fixed="US"/>
+</xsd:complexType>
+
+
+USAddress.java
+
+
+
+
+<xsd:complexType 
+  name="Items">
+  <xsd:sequence>
+    <xsd:element 
+      name="item" 
+      minOccurs="1" 
+      maxOccurs="unbounded">
+
+
+Items.java
+
+
+
+
+<xsd:complexType>
+  <xsd:sequence>
+    <xsd:element 
+      name="productName" 
+      type="xsd:string"/>
+    <xsd:element 
+      name="quantity">
+      <xsd:simpleType>
+        <xsd:restriction 
+          base="xsd:positiveInteger">
+          <xsd:maxExclusive 
+            value="100"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+    </xsd:element>
+    <xsd:element 
+      name="USPrice" 
+      type="xsd:decimal"/>
+    <xsd:element 
+      ref="comment" 
+      minOccurs="0"/>
+    <xsd:element 
+      name="shipDate" 
+      type="xsd:date" 
+      minOccurs="0"/>
+  </xsd:sequence>
+  <xsd:attribute 
+    name="partNum" 
+    type="SKU" 
+    use="required"/>
+</xsd:complexType>
+
+
+Items.ItemType
+
+
+
+
+</xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+
+
+ 
+
+
+
+
+<!-- Stock Keeping Unit, a code for 
+    identifying products -->
+
+
+ 
+
+
+
+
+<xsd:simpleType 
+  name="SKU">
+  <xsd:restriction 
+    base="xsd:string">
+    <xsd:pattern 
+      value="\d{3}-[A-Z]{2}"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+
+ 
+
+
+
+
+</xsd:schema>
+
+
+ 
+
+
+
+Schema-Derived JAXB Classes
+The next sections briefly explain the functions of the following individual classes generated by the JAXB binding compiler for the examples:
+
+Items Class
+ObjectFactory Class
+PurchaseOrderType Class
+USAddress Class
+
+Items Class
+In Items.java:
+
+The Items class is part of the
+	primer.po package.
+The class provides public interfaces for Items
+	and ItemType.
+Content in instantiations of this class binds to the XML
+	ComplexTypes Items and its child element 
+	ItemType.
+Item provides the getItem() method.
+ItemType provides methods for:
+	
+getPartNum();
+setPartNum(String value);
+getComment();
+setComment(java.lang.String value);
+getUSPrice();
+setUSPrice(java.math.BigDecimal value);
+getProductName();
+setProductName(String value);
+getShipDate();
+setShipDate(java.util.Calendar value);
+getQuantity();
+setQuantity(java.math.BigInteger value);
+
+
+
+ObjectFactory Class
+In ObjectFactory.java:
+
+The ObjectFactory class is part of the primer.po package.
+ObjectFactory provides factory methods for instantiating Java interfaces representing XML content in the Java content tree.
+Method names are generated by concatenating:
+
+The string constant create.
+All outer Java class names, if the Java content interface is nested within another interface.
+The name of the Java content interface.
+
+
+
+As an example, in this case, for the Java interface primer.po.Items.ItemType, the ObjectFactory creates the method createItemsItemType().
+PurchaseOrderType Class
+In PurchaseOrderType.java:
+
+The PurchaseOrderType class is part of the primer.po package.
+Content in instantiations of this class binds to the XML schema child element named PurchaseOrderType.
+PurchaseOrderType is a public interface that provides the following methods:
+
+getItems();
+setItems(primer.po.Items value);
+getOrderDate();
+setOrderDate(java.util.Calendar value);
+getComment();
+setComment(java.lang.String value);
+getBillTo();
+setBillTo(primer.po.USAddress value);
+getShipTo();
+setShipTo(primer.po.USAddress value);
+
+
+
+USAddress Class
+In USAddress.java:
+
+The USAddress class is part of the
+	primer.po package.
+Content in instantiations of this class binds to the XML
+	schema element named USAddress.
+USAddress is a public interface that
+	provides the following methods:
+	
+getState();
+setState(String value);
+getZip();
+setZip(java.math.BigDecimal value);
+getCountry();
+setCountry(String value);
+getCity();
+setCity(String value);
+getStreet();
+setStreet(String value);
+getName();
+setName(String value);
+
+
+

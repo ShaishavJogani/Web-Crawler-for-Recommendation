@@ -1,0 +1,4 @@
+System.out.println("First part");
+System.out.println(" second part");
+String str = "First part" + " second part";
+System.out.println(str);

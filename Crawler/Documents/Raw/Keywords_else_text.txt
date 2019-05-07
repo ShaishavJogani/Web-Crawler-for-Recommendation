@@ -1,0 +1,15 @@
+
+elseis a Java keyword. It is an optional part of a branching statement. It starts the 'false' statement block.
+The general syntax of aif, usingExtended Backus-Naur Form, is
+
+branching-statement ::=ifcondition-clausesingle-statement|block-statement[elsesingle-statement|block-statement]
+ 
+condition-clause    ::=(Boolean Expression)single-statement    ::=Statementblock-statement     ::={Statement[Statement]}
+
+For example:
+
+
+See also:
+
+Java Programming/Keywords/if
+

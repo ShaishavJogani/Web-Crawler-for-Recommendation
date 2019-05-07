@@ -1,0 +1,31 @@
+
+
+
+Note: This lesson covers writing layout code by hand, which can be challenging. If you are not interested in learning all the details of layout management, you might prefer to use the GroupLayout layout manager combined with a builder tool to lay out your GUI. One such builder tool is the 
+NetBeans IDE. Otherwise, if you want to code by hand and do not want to use GroupLayout, then GridBagLayout is recommended as the next most flexible and powerful layout manager.
+
+If you are interested in using JavaFX to create your GUI, see
+Working With Layouts in JavaFX.
+Here is an example of a layout management sequence for a container using 
+LayoutManager2.
+
+Layout managers basically do two things:
+
+Calculate the minimum/preferred/maximum sizes for a container.
+Lay out the container's children.
+
+Layout managers do this based on the provided constraints, the container's properties (such as insets) and on the children's minimum/preferred/maximum sizes. If a child is itself a container then its own layout manger is used to get its minimum/preferred/maximum sizes and to lay it out.
+
+
+A container can be valid (namely, isValid() returns true) or invalid. For a container to be valid, all the container's children must be laid out already and must all be valid also. The 
+Container.validate method can be used to validate an invalid container. This method triggers the layout for the container and all the child containers down the component hierarchy and marks this container as valid.
+
+
+After a component is created it is in the invalid state by default. The 
+Window.pack method validates the window and lays out the window's component hierarchy for the first time.
+
+
+The end result is that to determine the best size for the container, the system determines the sizes of the containers at the bottom of the containment hierarchy. These sizes then percolate up the containment hierarchy, eventually determining the container's total size.
+If the size of a component changes, for example following a change of font, the component must be resized and repainted by calling the revalidate and repaint methods on that component. Both revalidate and repaint are 
+thread-safe — you need not invoke them from the event-dispatching thread.
+When you invoke revalidate on a component, a request is passed up the containment hierarchy until it encounters a container, such as a scroll pane or top-level container, that should not be affected by the component's resizing. (This is determined by calling the container's isValidateRoot method.) The container is then laid out, which has the effect of adjusting the revalidated component's size and the size of all affected components.

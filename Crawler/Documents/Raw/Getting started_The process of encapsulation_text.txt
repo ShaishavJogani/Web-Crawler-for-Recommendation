@@ -1,0 +1,28 @@
+
+By now, we thoroughly understand that any object can interact with its environment and in turn be influenced by it. In our example, theAnimalobject exposed certain fields –nameandlegs, and a method –walk()to be used by the environment to manipulate the object. This form of exposure is implicit. Using the Java programming language, a programmer has the power to define the level of access other objects and the environment have on a certain object.
+
+Using access modifiers[edit]
+
+Alongside declaring and defining objects, their fields and methods, a programmer also has the ability to define the levels of access on those elements. This is done using keywords known asaccess modifiers.
+Let's modify our example to demonstrate this effect:
+
+
+By declaring all fields and methodspublic, we have ensured that they can be used outside the scope of theAnimalclass. This means that any other object (other thanAnimal) has access to these member elements. However, to restrict access to certain member elements of a class, we can always use theprivateaccess modifier (as demonstrated below).
+
+
+In this example, the fieldsnameandlegscan only be accessed within the scope of theAnimalclass. No object outside the scope of this class can access these two fields. However, since thewalk()method still haspublicaccess, it can be manipulated by actors and objects outside the scope of this class. Access modifiers are not just limited to fields or methods, they can be used for class definitions as well (as is demonstrated below).
+
+
+The following list of keywords show the valid access modifiers that can be used with a Java program:
+
+keyworddescriptionpublicOpens access to a certain field or method to be used outside the scope of the class.privateRestricts access to a certain field or method to only be used within the scope of the class.protectedAccess to certain field or methods is reserved for classes that inherit the current class.More on this would be discussed in the section oninheritance.
+
+
+
+The Java PlatformJava ProgrammingGetting startedInstallation
+
+
+
+
+
+

@@ -1,0 +1,42 @@
+
+In light of the above discussion, a thread is the smallest unit of processing that can be scheduled by an operating system. Therefore, using threads, a programmer can effectively create two or more tasks[1]that run at the same time. The first call-to-action is to implement a set of tasks that a particular thread would execute. To do so, we require the creation of aRunnableprocess.
+
+Creating a Runnable process block[edit]
+
+ARunnableprocess block is a simple class that implements arun()method. Within therun()method is the actual task that needs to be executed by a running thread. By implementing a class with theRunnableinterface, we ensure that the class holds arun()method. Consider the following program:
+
+
+In the above code, we create a class calledRunnableProcessand implement theRunnableinterface to ensure that we have arun()method in the class declaration.
+
+
+We then declare the rest of the logic for the class. For the constructor, we take aStringparameter that would serve as the name of the class. Then, we initialize the class member variabletimewith a random number between0and999. To ensure the initialization of a random number, we use theRandomclass in thejava.utilpackage.
+
+
+The actual task that would be executed per this runnable block is presented within therun()method. To keep safe from exceptions occurring because of the concurrent programming, we wrap the code within this method with atry..catchblock. The executing task actually consists of just three statements. The first outputs the provided name for the Runnable process, and the last reports that the thread has executed. Perhaps the most intriguing part of the code is the second statement:Thread.sleep(...).
+
+
+This statement allows the thread executing the current runnable block to halt its execution for the given amount of time. This time is presented in milliseconds. But for our convenience, this time would be the random number generated in the constructor and can be anywhere between0and999milliseconds. We will explore this in a later section. Creating aRunnableprocess block is just the beginning. No code is actually executed. To do so, we would require the creation of threads that would then individually execute this task.
+
+Creating threads[edit]
+
+Once we have aRunnableprocess block, we can create various threads that can then execute the logic encased within such blocks. Multithreading capabilities in Java are utilized and manipulated using theThreadclass. AThreadobject therefore holds all the necessary logic and devices to create truly multithreaded programs. Consider the following program:
+
+
+Creating threads is as simple as the above program suggests. You just have to create an object of theThreadclass and pass a reference to aRunnableprocess object. In the case above, we present theThreadconstructor with the class object for theRunnableProcessclass that we created incode listing 1. But for each object, we give a different name (i.e.,"Thread-1"and"Thread-2", etc.) to differentiate between the threeThreadobjects. The above example only declaresThreadobjects and hasn't yet started them for execution.
+
+Starting threads[edit]
+
+Now, that we know how to effectively create aRunnableprocess block and aThreadobject that executes it, we need to understand how to start the createdThreadobjects. This couldn't be simpler. For this process, we will be calling thestart()method on theThreadobjects and voilà, our threads will begin executing their individual process tasks.
+
+
+The above code will start all three declared threads. This way, all three threads will begin their execution one-by-one. However, this being concurrent programming and us having declared random times for the halting of the execution, the outputs for every one of us would differ. Following is the output we received when we executed the above program.
+
+Output forcode listing 3Thread-1 is sleeping for 419
+Thread-3 is sleeping for 876
+Thread-2 is sleeping for 189
+Thread-2 is done
+Thread-1 is done
+Thread-3 is done
+
+It should be noted that the execution of theThreaddidn't occur in the desired order. Instead of the ordert1–t2–t3, the threads executed in the order oft1–t3–t2. The order in which the threads are executed is completely dependent on the operating system and may change for every execution of the program, thus making output of multithreaded application difficult to predict and control. Some people suggest that this is the major reason that adds to the complexity of multithreaded programming and its debugging. However, it should be observed that once the threads were put to sleep using theThread.sleep(...)function, the execution intervals and order can be predicted quite capably. The thread with the least amount of sleeping time wast2("Thread-2") with189milliseconds of sleep hence it got called first. Thent1was called and finallyt3was called.
+

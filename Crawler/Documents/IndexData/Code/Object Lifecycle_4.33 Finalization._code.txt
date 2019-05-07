@@ -1,0 +1,7 @@
+protected void finalize() throws Throwable {
+  try {
+    doCleanup();        // Perform some cleanup.  If it fails for some reason, it is ignored.
+  } finally {
+    super.finalize(); // Call finalize on the parent object
+  }
+}

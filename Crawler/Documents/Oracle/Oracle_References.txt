@@ -1,0 +1,15 @@
+
+
+For more information, see the following resources:
+
+
+JSR 206 JAXP 1.5 maintenance review
+
+7u40 Release Notes
+
+JDK 8 API and Documentation
+
+JDK 7 API and Documentation
+
+JEP 185
+

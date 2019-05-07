@@ -1,0 +1,68 @@
+
+Undoable edit events occur when an operation that can be undone occurs on a component. Currently, only text components fire undoable edit events, and then only indirectly. The text component's document fires the events. For text components, undoable operations include inserting characters, deleting characters, and modifying the style of text. Programs typically listen to undoable edit events to assist in the implementation of undo and redo commands.
+Here is the undoable edit event handling code from an application called TextComponentDemo.
+
+...
+//where initialization occurs
+document.addUndoableEditListener(new MyUndoableEditListener());
+...
+protected class MyUndoableEditListener implements UndoableEditListener {
+    public void undoableEditHappened(UndoableEditEvent e) {
+        //Remember the edit and update the menus
+        undo.addEdit(e.getEdit());
+        undoAction.updateUndoState();
+        redoAction.updateRedoState();
+    }
+}  
+
+You can find a link to the source file for TextComponentDemo in the 
+example index for Using Swing Components. For a discussion about the undoable edit listener aspect of the program see 
+Implementing Undo and Redo
+The Undoable Edit Listener API
+The UndoableEditListener Interface
+Because UndoableEditListener has only one method, it has no corresponding adapter class.
+
+
+Method
+Purpose
+
+
+
+undoableEditHappened(UndoableEditEvent)
+Called when an undoable event occurs on the listened-to component.
+
+
+The UndoableEditEvent Class
+
+
+Method
+Purpose
+
+
+
+Object getSource()
+(in java.util.EventObject)
+Return the object that fired the event.
+
+
+
+UndoableEdit getEdit()
+Returns an 
+UndoableEdit object that represents the edit that occurred and contains information about and commands for undoing or redoing the edit.
+
+
+Examples that Use Undoable Edit Listeners
+The following table lists the examples that use undoable edit listeners.
+
+
+Example
+Where Described
+Notes
+
+
+TextComponentDemo
+
+Implementing Undo and Redo
+Implements undo and redo on a text pane with help from an undoable edit listener.
+
+

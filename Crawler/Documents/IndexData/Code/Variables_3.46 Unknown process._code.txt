@@ -1,0 +1,3 @@
+int a = 24;
+int b = 365;
+int c = a * b;

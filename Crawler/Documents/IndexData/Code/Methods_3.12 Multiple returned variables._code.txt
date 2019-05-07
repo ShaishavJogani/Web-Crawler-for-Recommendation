@@ -1,0 +1,39 @@
+public class MyObject {
+  ...
+ 
+  /** Nested object is for return values from getPersonInfoById method */
+  private static class ReturnObject {
+      private int age;
+      private String name;
+
+      public void setAge(int age) {
+          this.age = age;
+      }
+ 
+      public int getAge() {
+          return age;
+      }
+
+      public void setName(String name) {
+          name = name;
+      }
+ 
+      public String getName() {
+          return name;
+      }
+  } // End of nested class definition
+
+  /** Method using the nested class to return values */
+  public ReturnObject getPersonInfoById(int id) {
+    int    age;
+    String name;
+    ...
+    // Get the name and age based on the ID from the database
+    ...
+    ReturnObject result = new ReturnObject();
+    result.setAge(age);
+    result.setName(name);
+
+    return result;
+  }
+}

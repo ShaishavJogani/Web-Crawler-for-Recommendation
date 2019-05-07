@@ -1,0 +1,27 @@
+
+switchis a Java keyword.
+It is a branching operation, based on a number. The 'number' must be eitherchar,byte,short, orintprimitive type.
+Syntax:
+
+switch( <integer-var> )
+{case<label1>: <statements>;case<label2>: <statements>;
+   ...case<labeln>: <statements>;default: <statements>;
+}
+
+When the <integer-var> value match one of the <label>, then:
+The statements after the matched label will be executed including the following label's statements, until the end of theswitchblock, or until abreakkeyword is reached.
+For example:
+
+
+The output from the above code is:
+
+Case: 3
+Execute until break
+
+The same code can be written with if-else blocks":
+
+
+See also:
+
+Java Programming/Keywords/if
+

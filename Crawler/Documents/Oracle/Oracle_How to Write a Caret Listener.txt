@@ -1,0 +1,105 @@
+
+Caret events occur when the caret — the cursor indicating the insertion point — in a text component moves or when the selection in a text component changes. The text component's document can initiate caret events when it inserts or removes text, for example. You can attach a caret listener to an instance of any JTextComponent subclass with the addCaretListener method.
+Note: An alternate way of detecting caret changes is to attach a listener directly to the caret object itself rather than to the text component that manages the caret. A caret fires change events (not caret events), so you would need to write a change listener rather than a caret listener.
+Here is the caret event handling code from an application called TextComponentDemo:
+
+...
+//where initialization occurs
+CaretListenerLabel caretListenerLabel =
+    new CaretListenerLabel("Caret Status");
+...
+textPane.addCaretListener(caretListenerLabel);
+...
+protected class CaretListenerLabel extends JLabel
+                                   implements CaretListener
+{
+    ...
+    //Might not be invoked from the event dispatching thread.
+    public void caretUpdate(CaretEvent e) {
+        displaySelectionInfo(e.getDot(), e.getMark());
+    }
+
+    //This method can be invoked from any thread.  It 
+    //invokes the setText and modelToView methods, which 
+    //must run in the event dispatching thread. We use
+    //invokeLater to schedule the code for execution
+    //in the event dispatching thread.
+    protected void displaySelectionInfo(final int dot,
+                                        final int mark) {
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                if (dot == mark) {  // no selection
+                    ...
+                }
+            });
+        }
+    }
+}
+
+Note: The caretUpdate method is not guaranteed to be called in the event-dispatching thread. To use any methods inside of caretUpdate that update the GUI special handling is required to ensure they are executed on the event-dispatching thread. You can do this by wrapping the code inside a Runnable and calling SwingUtilities.invokeLater on that Runnable.
+
+You can find a link to the source file for TextComponentDemo in the 
+example index for using Swing Components. For a discussion about the caret listener aspect of the program see 
+Listening for Caret and Selection Changes in 
+Text Component Features.
+The Caret Listener API
+The CaretListener Interface
+Because CaretListener has only one method, it has no corresponding adapter class.
+
+
+Method
+Purpose
+
+
+
+caretUpdate(CaretEvent)
+Called when the caret in the listened-to component moves or when the selection in the listened-to component changes.
+
+
+The CaretEvent Class
+
+
+Method
+Purpose
+
+
+
+int getDot()
+Returns the current location of the caret. If text is selected, the caret marks one end of the selection.
+
+
+
+int getMark()
+Returns the other end of the selection. If nothing is selected, the value returned by this method is equal to the value returned by getDot. Note that the dot is not guaranteed to be less than the mark.
+
+
+
+Object getSource()
+(in java.util.EventObject)
+Returns the object that fired the event.
+
+
+
+Examples that Use Caret Listeners
+The following table lists the examples that use caret listeners.
+
+
+Example
+Where Described
+Notes
+
+
+TextComponentDemo
+
+Listening for Caret and Selection Changes
+Uses a listener label to display caret and selection status.
+
+
+
+
+« Previous
+            •
+            Trail
+            •
+            Next »
+

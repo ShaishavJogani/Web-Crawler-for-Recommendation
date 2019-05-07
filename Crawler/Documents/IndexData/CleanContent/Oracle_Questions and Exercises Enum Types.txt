@@ -1,0 +1,1 @@
+Questions True false : Enum type subclass java.lang.String . Exercises Rewrite class Card exercise Questions Exercises : Classes represent rank suit card enum type . Rewrite Deck class . Check answer .

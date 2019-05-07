@@ -1,0 +1,3 @@
+SuperClass objectRef = new ClassName(); // features/operations list are defined by the SuperClass class
+...
+Interface inter = new ClassName(); // features/operations list are defined by the interface

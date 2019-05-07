@@ -1,0 +1,6 @@
+
+Thefinalkeyword forbids the creation of a subclass. It is the case of theIntegerorStringclass.
+
+
+A final class cannot beabstract. Thefinalkeyword is similar tosealedkeyword inC#.
+

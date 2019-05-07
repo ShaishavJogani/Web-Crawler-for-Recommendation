@@ -1,0 +1,6 @@
+public class Class1 {
+    public static final int CONSTANT_OF_CLASS_1 = 9;
+    public int myAttributeOfClass1 = 40;
+    public void myMethodOfClass1(int i) {
+    }
+}

@@ -1,0 +1,7 @@
+public class OuterClass {
+   public void method() {
+      class InnerClass {
+ 
+      }
+   }
+}

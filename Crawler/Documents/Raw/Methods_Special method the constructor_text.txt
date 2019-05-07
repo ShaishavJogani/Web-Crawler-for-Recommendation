@@ -1,0 +1,4 @@
+
+The constructor is a special method called automatically when an object is created with thenewkeyword. Constructor does not have a return value and its name is the same as the class name. Each class must have a constructor. If we do not define one, the compiler will create a default so calledempty constructorautomatically.
+
+

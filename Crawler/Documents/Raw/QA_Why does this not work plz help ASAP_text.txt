@@ -1,0 +1,64 @@
+
+import java.util.Random;
+import java.util.Scanner;
+class Main
+{
+
+public static void main (String[]args)
+ {
+   Scanner scanner = new Scanner (System.in);
+
+Random random = new Random ();
+   {
+     int rock = 0;
+     int paper = 0;
+     int scissors = 0;
+     int loop = 0;
+     int no = 0;
+
+while (loop == 0)
+
+no = random.nextInt (3) + 1;
+
+if (no == 1)
+
+rock = 1;
+
+if (no == 2)
+
+paper = 1;
+
+if (no == 3)
+
+scissors = 1;
+
+}
+   System.out.
+     println ("Pick rock paper scissors\nRock = 1 Paper = 2 Scissors = 3: ");
+   int cho = scanner.nextInt ();
+   {
+     if (cho == 1 & no == 3 | cho == 2 & no == 1 | cho == 3 & no == 2)
+
+{
+	  System.out.println ("You Win");
+	  loop++;
+	}
+
+if (cho == 1 & no == 2 | cho == 2 & no == 3 | cho == 3 & no = 1)
+
+{
+	  System.out.
+	    print
+	    ("You loose want to play again? Type 0 to play again or type 1 to Exit: ");
+	  loop = scanner.nextInt ();
+	}
+
+if (cho == 1 & no == 1 | cho == 2 & no == 2 | cho == 3 & no == 3)
+
+System.out.println ("Tie try again");
+
+}
+ }
+
+}
+

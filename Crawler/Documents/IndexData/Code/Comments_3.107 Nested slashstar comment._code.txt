@@ -1,0 +1,5 @@
+/* This comment appears to contain /* a nested comment. */
+ * The comment ends after the first star-slash and
+ * everything after the star-slash sequence is parsed
+ * as non-comment source.
+ */

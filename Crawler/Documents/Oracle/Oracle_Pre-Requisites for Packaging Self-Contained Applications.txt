@@ -1,0 +1,42 @@
+
+The Java Development Kit (JDK) is required to compile and package your application. The installable bundle must be created on the platform on which the self-contained application will run. For example, if your application runs on Windows and Linux, you must run the packaging tool on Windows to create a .exe or .msi bundle, and run the packaging tool on Linux to create a .rpm or .deb file. 
+Third party tools are required to create the installable bundle. The following table identifies the tools for each supported platform.
+
+
+
+Platform
+Format
+Tool
+
+
+Windows
+EXE
+Inno Setup 5 or later
+
+
+Windows
+MSI
+WiX Toolset 3.8 or later
+
+
+Linux
+RPM
+RPMBuild
+
+
+Linux
+DEB
+Debian packaging tools
+
+
+OS X
+DMG
+ 
+
+
+OS X
+PKG
+ 
+
+
+

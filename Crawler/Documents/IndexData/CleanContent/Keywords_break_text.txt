@@ -1,0 +1,1 @@
+breakis Java keyword . Jumps ( break ) loop . Also use atswitchstatement . For example : See also : Java Programming/Keywords/switch

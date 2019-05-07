@@ -1,0 +1,5 @@
+class AnimalComparator implements Comparator<Animal> {
+  int compare(Animal a, Animal b) {
+   //...
+  }
+}

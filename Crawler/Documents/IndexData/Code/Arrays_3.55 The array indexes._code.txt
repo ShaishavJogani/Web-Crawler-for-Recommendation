@@ -1,0 +1,4 @@
+char[] array4 = {'a', 'b', 'c', 'd', 'e'};
+System.out.println(array4[2]);
+array4[4] = 'z';
+System.out.println(array4[4]);

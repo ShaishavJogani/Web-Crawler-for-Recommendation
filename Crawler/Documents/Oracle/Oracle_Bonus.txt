@@ -1,0 +1,4 @@
+
+ Generics, introduced in J2SE 5.0, is the long-awaited enhancement to the type system. It allows a type or method to operate on objects of various types while providing compile-time type safety. It adds compile-time type safety to the Collections Framework and eliminates the drudgery of casting. 
+ Full-Screen Exclusive Mode API teaches you about a powerful feature of J2SE™ version 1.4 that allows the programmer to suspend the windowing system so that drawing can be done directly to the screen. Programmers writing games or other graphic-intensive applications should read this lesson. 
+ Preparation for Java Programmer Language Certification provides information on training resources and lists the portions of the tutorial that cover potential exam topics.

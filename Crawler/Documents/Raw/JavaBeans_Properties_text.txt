@@ -1,0 +1,3 @@
+
+Thepropertiesof a bean are all private fields that are accessible and modifiable by public methods. These getter and setter methods should be marked as such by following a simple naming convention: for some property named, say,xxxthere should be agetXxx()which returns the property value and asetXxx()which sets the property.
+

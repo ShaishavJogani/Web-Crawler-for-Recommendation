@@ -1,0 +1,12 @@
+
+To follow these standards, the bean needs one or morepropertiesabstractions which represent different state values of an object. A property has a name (a valid Java identifier) and a type (either areference type, aprimitive typeor anarray type). By default, the properties of a JavaBean class are inferred by the presence of either a getter method, a setter method, or both:
+
+A getter method which is used to obtain the value of the property from a bean. The name is usually of the formgetPropertyName. For example, the getter method for the String propertywhiskeyispublic String getWhiskey(). For boolean properties (those whose type isboolean, the convention is to use the naming patternisPropertyName.
+
+isDiscounted()would be the getter method for a boolean property nameddiscounted. Thus, the method signature of most getters ispublicPropertyTypegetPropertyName()orpublic boolean isPropertyName().
+
+A setter method which is used to assign a value to a bean's property. A setter method is a method of the formpublic void setPropertyName(PropertyTypevalue). For the previous example, the setter could be invoked assetWhiskey("bourbon");.
+
+As per the JavaBeans standard, getters and setters defined as described above automatically determine the properties of the class. However, by creatingjava.beans.PropertyDescriptorclasses, you can specify alternate implementations by explicitly declaring the property names and the getter and/or setter methods for each property.
+Properties are often implemented withprivateinstance variables, but this is not required.
+

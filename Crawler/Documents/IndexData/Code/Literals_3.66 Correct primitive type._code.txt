@@ -1,0 +1,4 @@
+char one = '1';
+char zero = '0';
+
+System.out.println("120? " + one + '2' + zero);

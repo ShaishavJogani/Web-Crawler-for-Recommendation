@@ -1,0 +1,16 @@
+  public void registerPersonInAgenda(String firstName, String lastName, Date... meeting) {
+    String[] person = {firstName, lastName};
+    lastPosition = lastPosition + 1;
+    contactArray[lastPosition] = person;
+
+    if (meeting.length > 0) {
+      Date[] temporaryMeetings = registeredMeetings.length + meeting.length;
+      for (i = 0; i < registeredMeetings.length; i++) {
+        temporaryMeetings[i] = registeredMeetings[i];
+      }
+      for (i = 0; i < meeting.length; i++) {
+        temporaryMeetings[registeredMeetings.length + i] = meeting[i];
+      }
+      registeredMeetings = temporaryMeetings;
+    }
+  }

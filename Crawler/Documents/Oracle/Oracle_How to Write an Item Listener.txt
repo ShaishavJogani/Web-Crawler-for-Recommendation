@@ -1,0 +1,90 @@
+
+Item events are fired by components that implement the 
+ItemSelectable interface. Generally, ItemSelectable components maintain on/off state for one or more items. The Swing components that fire item events include buttons like 
+check boxes, 
+check menu items, 
+toggle buttons etc...and 
+combo boxes.
+Here is some item-event handling code taken from 
+ComponentEventDemo.java:
+
+//where initialization occurs
+checkbox.addItemListener(this);
+...
+public void itemStateChanged(ItemEvent e) {
+    if (e.getStateChange() == ItemEvent.SELECTED) {
+        label.setVisible(true);
+        ...
+    } else {
+        label.setVisible(false);
+    }
+}
+
+The Item Listener API
+The ItemListener Interface
+Because ItemListener has only one method, it has no corresponding adapter class.
+
+
+Method
+Purpose
+
+
+
+itemStateChanged(ItemEvent)
+Called just after a state change in the listened-to component.
+
+
+The ItemEvent Class
+
+
+Method
+Purpose
+
+
+
+Object getItem()
+Returns the component-specific object associated with the item whose state changed. Often this is a String containing the text on the selected item.
+
+
+
+ItemSelectable getItemSelectable()
+Returns the component that fired the item event. You can use this instead of the getSource method.
+
+
+
+int getStateChange()
+Returns the new state of the item. The ItemEvent class defines two states: SELECTED and DESELECTED.
+
+
+Examples that Use Item Listeners
+The following table lists some examples that use item listeners.
+
+
+Example
+Where Described
+Notes
+
+
+ComponentEventDemo
+This section and How to Write a Component Listener
+Listens for item events on a check box, which determines whether a lable is visible.
+
+
+CheckBoxDemo
+
+How to Use Check Boxes
+Four check boxes share one item listener, which uses getItemSelected to determine which check box fired the event.
+
+
+MenuDemo
+
+How to Use Menus
+Listens for item events on a check box menu item.
+
+
+MenuDemo
+
+How to Use Scroll Panes
+Listens for item events on a toggle button.
+
+

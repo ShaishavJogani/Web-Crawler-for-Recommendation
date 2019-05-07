@@ -1,0 +1,1 @@
+The implementation ofjava.util.Collectioninterface use group simple java object . ExampleWe group together patient Hospital `` patient '' collection .

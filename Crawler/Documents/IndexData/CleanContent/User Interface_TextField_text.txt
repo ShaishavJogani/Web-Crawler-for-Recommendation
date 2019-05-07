@@ -1,0 +1,1 @@
+TextFields area applet allow user insert text . The two parameter , optional , TextFields set predefined text field set number column allow TextField . Here example :

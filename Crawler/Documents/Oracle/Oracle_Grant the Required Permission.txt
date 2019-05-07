@@ -1,0 +1,26 @@
+
+To create a new entry, click the Add Policy Entry button in the main Policy Tool window. This displays the Policy Entry dialog box as shown in the following figure.
+A policy entry specifies one or more permissions for code from a particular code source - code from a particular location (URL), code signed by a particular entity, or both.
+The CodeBase and the SignedBy text boxes specify which code you want to grant the permission(s) you will be adding in the file.
+
+A CodeBase value indicates the code source location; you grant the permission(s) to code from that location. An empty CodeBase entry signifies "any code" -- it does not matter where the code originates.
+A SignedBy value indicates the alias for a certificate stored in a keystore. The public key within that certificate is used to verify the digital signature on the code. You grant permission to code signed by the private key corresponding to the public key in the keystore entry specified by the alias. The SignedBy entry is optional; omitting it signifies "any signer" -- it does not matter whether the code is signed, or by whom.
+
+If you have both a CodeBase and a SignedBy entry, the permission(s) are granted only to code that is both from the specified location and signed by the named alias.
+You can grant permission to all code from the location (URL) where examples are stored.
+Type the following URL into the CodeBase text box of the Policy Entry dialog box:
+
+https://docs.oracle.com/javase/tutorial/security/tour1/examples/
+
+Note: This is a URL. Therefore, it must always use slashes as separators, not backslashes.
+Leave the SignedBy text box blank, since you aren't requiring the code to be signed.
+Note: To grant the permission to any code (.class file) not just from the directory specified previously but from the security directory and its subdirectories, type the following URL into the CodeBase box:
+
+https://docs.oracle.com/javase/tutorial/security/
+
+
+You have specified where the code comes from (the CodeBase), and that the code does not have to be signed (since there is no SignedBy value).
+
+You have now specified this policy entry, so click the Done button in the Policy Entry dialog. The Policy Tool window now contains a line representing the policy entry, showing the CodeBase value.
+
+Note: We will be granting permissions to this new policy entry in the next lesson.

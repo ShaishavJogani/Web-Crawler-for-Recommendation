@@ -1,0 +1,15 @@
+
+doubleis akeywordwhich designates
+the 64 bit floatprimitive type.
+Thejava.lang.Doubleclass is the nominal wrapper class when you need to store adoublevalue but an object reference is required.
+Syntax:
+
+double<variable-name> = <float-value>;
+
+For example:
+
+
+See also:
+
+Java Programming/Primitive Types
+

@@ -1,0 +1,1 @@
+This section describe JAXB represent XML content Java object . Java Representation XML Schema JAXB support grouping generated class Java package . A package consist following : A Java class name derive XML element name specify binding customization . An ObjectFactory class , factory use return instance bound Java class .

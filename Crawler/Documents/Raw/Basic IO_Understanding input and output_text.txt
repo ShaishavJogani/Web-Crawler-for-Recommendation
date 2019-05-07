@@ -1,0 +1,38 @@
+
+The Java platform is an isolated entity, a space on your OS in a way, where everything outside this system is itsenvironment. The interaction between the system and its environment is a two-way dialog of sorts. Either the system receives messages from its environment, or it conveys its messages to the same. When a message is received by the system, it is called aninput, its opposite is anoutput. On a whole, this communication is termedinput/outputabbreviated asI/O.
+The following chapters are designed to introduce basic input and output in Java, including reading text input from the keyboard, outputting text to the monitor, and reading/writing files from the file system.  More advanced user interaction using Graphics andGraphical User Interface(GUI) programs is taken up in the later section onSwing.
+There are two packages for I/O: the older java.io package (does not support symbolic links) and the newer java.nio ("new io") package that has improved exception handling at java.nio.file.
+
+Simple Java Output: Writing to the Screen[edit]
+
+Writing to the screen is very easy, and can be accomplished using one of two methods:
+
+
+Simple Java Input: Inputting from the keyboard[edit]
+
+As of version 5, Java provides a class in thejava.utilpackage calledScannerthat simplifies keyboard input.
+
+
+On the screenEnter your name: John Doe
+Welcome, John Doe
+
+Alternatively, one could write a method to handle keyboard input:
+
+
+Note that the code above shouldn't be used in most applications, as it creates new Objects every time the method is run.
+A better alternative would be to create a separate class file to handle keyboard input.
+
+
+
+
+To do:Add some exercises like the ones inVariables
+
+
+
+Annotations/Compiler and AnnotationsJava ProgrammingBasic IOStreams
+
+
+
+
+
+

@@ -1,0 +1,33 @@
+
+superis a keyword.
+
+It is used inside a sub-class method definition to call a method defined in the super class. Private methods of the super-class cannot be called. Only public and protected methods can be called by thesuperkeyword.It is also used by class constructors to invoke constructors of itsparent class.Super keyword are not used in static Method.
+
+Syntax:
+
+super.<method-name>([zero or more arguments]);
+
+or:
+
+super([zero or more arguments]);
+
+For example:
+
+
+
+Running the above program:
+
+Command for Code listing 2$Java SubClass
+
+Output of Code listing 2Hello from SuperClass
+Hello from SubClass
+
+In Java 1.5 and later, the "super" keyword is also used to specify a lower bound on a wildcard type parameter in Generics.
+
+
+See also:
+
+extends
+
+
+

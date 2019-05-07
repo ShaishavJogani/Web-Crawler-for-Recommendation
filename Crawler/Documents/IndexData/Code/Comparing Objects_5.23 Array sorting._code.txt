@@ -1,0 +1,3 @@
+SortableCustomer[] customerArray;
+//...
+java.util.Arrays.sort(customerArray, new CustomerComparator());

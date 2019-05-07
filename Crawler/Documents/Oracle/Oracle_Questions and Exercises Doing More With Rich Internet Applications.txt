@@ -1,0 +1,36 @@
+
+Questions
+
+True or False: Rich Internet applications (RIAs) can set secure properties by prefixing the property name with "jnlp.".
+True or False: Only signed RIAs can use JNLP API to access files on the client.
+
+Exercises
+
+To the following JNLP file, add a secure property called jnlp.foo and set its value to true.
+
+<?xml version="1.0" encoding="UTF-8"?>
+<jnlp spec="1.0+" codebase="" href="">
+    <information>
+        <title>Dynamic Tree Demo</title>
+        <vendor>Dynamic Team</vendor>
+
+    </information>
+    <resources>
+        <!-- Application Resources -->
+        <j2se version="1.6+" href=
+            "http://java.sun.com/products/autodl/j2se" />
+        <jar href="DynamicTreeDemo.jar" main="true" />
+    </resources>
+    <applet-desc 
+       name="Dynamic Tree Demo Applet"
+       main-class="components.DynamicTreeApplet"
+       width="300"
+       height="300">
+     </applet-desc>
+     <update check="background"/>
+</jnlp>                           
+
+
+
+
+Check your answers.

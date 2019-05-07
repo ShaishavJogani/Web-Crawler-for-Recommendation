@@ -1,0 +1,41 @@
+
+
+It is recommended that applications catch the org.xml.sax.SAXNotRecognizedException exception when setting one of the new properties so that the applications will work properly on older releases that did not support them. For example, the downloadable
+sample code contains the following method, isNewPropertySupported, that detects if the sample is run with a version of the JDK that supports the JDK_GENERAL_ENTITY_SIZE_LIMIT property:
+
+public boolean isNewPropertySupported() {
+    try {
+        SAXParser parser = getSAXParser(false, false, false);
+        parser.setProperty(JDK_GENERAL_ENTITY_SIZE_LIMIT, "10000");
+    } catch (ParserConfigurationException ex) {
+        fail(ex.getMessage());
+    } catch (SAXException ex) {
+        String err = ex.getMessage();
+        if (err.indexOf("Property '" + JDK_GENERAL_ENTITY_SIZE_LIMIT +
+                                       "' is not recognized.") > -1) {
+            //expected before this patch
+            debugPrint("New limit properties not supported. Samples not run.");
+            return false;
+        }
+    }
+    return true;
+}
+
+
+When the input files contain constructs that cause an over-the-limit exception, applications may check the error code to determine the nature of the failure. The following error codes are defined for the  limits:
+
+EntityExpansionLimit: JAXP00010001
+ElementAttributeLimit: JAXP00010002
+MaxEntitySizeLimit: JAXP00010003
+TotalEntitySizeLimit: JAXP00010004
+MaxXMLNameLimit: JAXP00010005
+maxElementDepth: JAXP00010006
+EntityReplacementLimit: JAXP00010007
+
+
+The error code has the following format:
+
+"JAXP" + components (two digits) + error category (two digits) + sequence number
+
+
+The code JAXP00010001, therefore, represents the JAXP base parser security limit EntityExpansionLimit.

@@ -1,0 +1,15 @@
+
+tryis a keyword.
+It starts a try block. If an Exception is thrown inside a try block, the Exception will be compared to any of the catch part of the block. If the Exception matches with one of the Exceptions in the catch part, the exception will be handled there.
+Three things can happen in a try block:
+
+No exception is thrown:the code in the try blockplus the code in the finally block will be executedplus the code after the try-catch block is executedAn exception is thrown and a match is found among the catch blocks:the code in the try block until the exception occurred is executedplus the matched catch block is executedplus the finally block is executedplus the code after the try-catch block is executedAn exception is thrown and no match found among the catch blocks:the code in the try block until the exception occurred is executedplus the finally block is executedNO CODEafter the try-catch block is executed
+
+For example:
+
+
+How the catch-blocks are evaluated seeCatching Rule
+See also:
+
+Java Programming/Keywords/catchJava Programming/Keywords/finallyJava Programming/Throwing and Catching Exceptions#Catching Rule
+

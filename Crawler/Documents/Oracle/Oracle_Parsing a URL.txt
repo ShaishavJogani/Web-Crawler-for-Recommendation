@@ -1,0 +1,56 @@
+
+The URL class provides several methods that let you query URL objects. You can get the protocol, authority, host name, port number, path, query, filename, and reference from a URL using these accessor methods:
+
+getProtocol
+Returns the protocol identifier component of the URL.
+getAuthority
+Returns the authority component of the URL.
+getHost
+Returns the host name component of the URL.
+getPort
+Returns the port number component of the URL. The getPort method returns an integer that is the port number. If the port is not set, getPort returns -1.
+getPath
+Returns the path component of this URL.
+getQuery
+Returns the query component of this URL.
+getFile
+Returns the filename component of the URL. The getFile method returns the same as getPath, plus the concatenation of the value of getQuery, if any.
+getRef
+Returns the reference component of the URL.
+
+Note: Remember that not all URL addresses contain these components. The URL class provides these methods because HTTP URLs do contain these components and are perhaps the most commonly used URLs. The URL class is somewhat HTTP-centric.
+
+You can use these getXXX methods to get information about the URL regardless of the constructor that you used to create the URL object.
+The URL class, along with these accessor methods, frees you from ever having to parse URLs again! Given any string specification of a URL, just create a new URL object and call any of the accessor methods for the information you need. This small example program creates a URL from a string specification and then uses the URL object's accessor methods to parse the URL:
+
+import java.net.*;
+import java.io.*;
+
+public class ParseURL {
+    public static void main(String[] args) throws Exception {
+
+        URL aURL = new URL("http://example.com:80/docs/books/tutorial"
+                           + "/index.html?name=networking#DOWNLOADING");
+
+        System.out.println("protocol = " + aURL.getProtocol());
+        System.out.println("authority = " + aURL.getAuthority());
+        System.out.println("host = " + aURL.getHost());
+        System.out.println("port = " + aURL.getPort());
+        System.out.println("path = " + aURL.getPath());
+        System.out.println("query = " + aURL.getQuery());
+        System.out.println("filename = " + aURL.getFile());
+        System.out.println("ref = " + aURL.getRef());
+    }
+}
+
+Here is the output displayed by the program:
+
+protocol = http
+authority = example.com:80
+host = example.com
+port = 80
+path = /docs/books/tutorial/index.html
+query = name=networking
+filename = /docs/books/tutorial/index.html?name=networking
+ref = DOWNLOADING
+

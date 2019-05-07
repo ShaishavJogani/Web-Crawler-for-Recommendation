@@ -1,0 +1,60 @@
+
+The basic format of the command for creating a JAR file is:
+
+jar cf jar-file input-file(s)
+
+The options and arguments used in this command are:
+
+The c option indicates that you want to create a JAR file.
+The f option indicates that you want the output to go to a file rather than to stdout.
+jar-file is the name that you want the resulting JAR file to have. You can use any filename for a JAR file. By convention, JAR filenames are given a .jar extension, though this is not required.
+The input-file(s) argument is a space-separated list of one or more files that you want to include in your JAR file. The input-file(s) argument can contain the wildcard * symbol. If any of the "input-files" are directories, the contents of those directories are added to the JAR archive recursively.
+
+The c and f options can appear in either order, but there must not be any space between them.
+This command will generate a compressed JAR file and place it in the current directory. The command will also generate a 
+default manifest file for the JAR archive.
+Note: The metadata in the JAR file, such as the entry names, comments, and contents of the manifest, must be encoded in UTF8.
+
+You can add any of these additional options to the cf options of the basic command:
+
+jar command options
+
+Option
+Description
+
+
+v
+Produces verbose output on stdout while the JAR file is being built. The verbose output tells you the name of each file as it's added to the JAR file.
+
+
+0 (zero)
+Indicates that you don't want the JAR file to be compressed.
+
+
+M
+Indicates that the default manifest file should not be produced.
+
+
+m
+Used to include manifest information from an existing manifest file. The format for using this option is:
+
+jar cmf jar-file existing-manifest input-file(s)
+
+See 
+Modifying a Manifest File for more information about this option.
+Warning: The manifest must end with a new line or carriage return. The last line will not be parsed properly if it does not end with a new line or carriage return.
+
+
+
+
+-C
+To change directories during execution of the command. See below for an example.
+
+
+Note: When you create a JAR file, the time of creation is stored in the JAR file. Therefore, even if the contents of the JAR file do not change, when you create a JAR file multiple times, the resulting files are not exactly identical. You should be aware of this when you are using JAR files in a build environment. It is recommended that you use versioning information in the manifest file, rather than creation time, to control versions of a JAR file. See the 
+Setting Package Version Information section.
+
+
+An Example
+Let us look at an example. A simple TicTacToe applet. You can see the source code of this applet by downloading the JDK Demos and Samples bundle from 
+Java SE Downloads. This demo contains class files, audio files, and images having this structure:

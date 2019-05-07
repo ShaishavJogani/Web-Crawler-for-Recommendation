@@ -1,0 +1,122 @@
+
+In addition to specifying a search using a set of attributes, you can specify a search in the form of a search filter. A search filter is a search query expressed in the form of a logical expression. The syntax of search filters accepted by 
+DirContext.search() is described in 
+RFC 2254.
+The following search filter specifies that the qualifying entries must have an "sn" attribute with a value of "Geisel" and a "mail" attribute with any value:
+
+(&(sn=Geisel)(mail=*))
+
+The following code creates a filter and default 
+SearchControls, and uses them to perform a search. The search is equivalent to the one presented in the 
+basic search example.
+
+// Create the default search controls
+SearchControls ctls = new SearchControls();
+
+// Specify the search filter to match
+// Ask for objects that have the attribute "sn" == "Geisel"
+// and the "mail" attribute
+String filter = "(&(sn=Geisel)(mail=*))";
+
+// Search for objects using the filter
+NamingEnumeration answer = ctx.search("ou=People", filter, ctls);
+
+Running 
+this example produces the following result.
+
+# java SearchWithFilterRetAll
+>>>cn=Ted Geisel
+attribute: sn
+value: Geisel
+attribute: objectclass
+value: top
+value: person
+value: organizationalPerson
+value: inetOrgPerson
+attribute: jpegphoto
+value: [B@1dacd75e
+attribute: mail
+value: Ted.Geisel@JNDITutorial.example.com
+attribute: facsimiletelephonenumber
+value: +1 408 555 2329
+attribute: cn
+value: Ted Geisel
+attribute: telephonenumber
+value: +1 408 555 5252
+
+Quick Overview of Search Filter Syntax
+The search filter syntax is basically a logical expression in prefix notation (that is, the logical operator appears before its arguments). The following table lists the symbols used for creating filters.
+
+
+Symbol
+Description
+
+
+&
+conjunction (i.e., and -- all in list must be true)
+
+
+|
+disjunction (i.e., or -- one or more alternatives must be true)
+
+
+!
+negation (i.e., not -- the item being negated must not be true)
+
+
+=
+equality (according to the matching rule of the attribute)
+
+
+~=
+approximate equality (according to the matching rule of the attribute)
+
+
+>=
+greater than (according to the matching rule of the attribute)
+
+
+<=
+less than (according to the matching rule of the attribute)
+
+
+=*
+presence (i.e., the entry must have the attribute but its value is irrelevant)
+
+
+*
+wildcard (indicates zero or more characters can occur in that position); used when specifying attribute values to match
+
+
+\
+escape (for escaping '*', '(', or ')' when they occur inside an attribute value)
+
+
+Each item in the filter is composed using an attribute identifier and either an attribute value or symbols denoting the attribute value. For example, the item "sn=Geisel" means that the "sn" attribute must have the attribute value "Geisel" and the item "mail=*" indicates that the "mail" attribute must be present.
+Each item must be enclosed within a set of parentheses, as in "(sn=Geisel)". These items are composed using logical operators such as "&" (conjunction) to create logical expressions, as in "(& (sn=Geisel) (mail=*))".
+Each logical expression can be further composed of other items that themselves are logical expressions, as in "(| (& (sn=Geisel) (mail=*)) (sn=L*))". This last example is requesting either entries that have both a "sn" attribute of "Geisel" and the "mail" attribute or entries whose "sn" attribute begins with the letter "L."
+For a complete description of the syntax, see 
+
+RFC 2254.
+Returning Selected Attributes
+The previous example returned all attributes associated with the entries that satisfy the specified filter. You can select the attributes to return by setting the search controls argument. You create an array of attribute identifiers that you want to include in the result and pass it to 
+SearchControls.setReturningAttributes(). Here's an example.
+
+// Specify the ids of the attributes to return
+String[] attrIDs = {"sn", "telephonenumber", "golfhandicap", "mail"};
+SearchControls ctls = new SearchControls();
+ctls.setReturningAttributes(attrIDs);
+
+This example is equivalent to the 
+Returning Selected Attributes example in the Basic Search section. Running 
+this example produces the following results. (The entry does not have a "golfhandicap" attribute, so it is not returned.)
+
+# java SearchWithFilter
+>>>cn=Ted Geisel
+attribute: sn
+value: Geisel
+attribute: mail
+value: Ted.Geisel@JNDITutorial.example.com
+attribute: telephonenumber
+value: +1 408 555 5252
+

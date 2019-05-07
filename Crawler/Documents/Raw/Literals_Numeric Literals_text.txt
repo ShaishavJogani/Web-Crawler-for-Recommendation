@@ -1,0 +1,28 @@
+
+There are three types of numeric literals in Java.
+
+Integer Literals[edit]
+
+In Java, you may enter integer numbers in several formats:
+
+As decimal numbers such as1995,51966. Negative decimal numbers such as-42are actuallyexpressionsconsisting of the integer literal with the unary negation operation-.As octal numbers, using a leading0(zero) digit and one or more additional octal digits (digits between0and7), such as077. Octal numbers may evaluate to negative numbers; for example037777777770is actually the decimal value -8.As hexadecimal numbers, using the form0x(or0X) followed by one or more hexadecimal digits (digits from0to9,atoforAtoF). For example, 0xCAFEBABEL is the long integer 3405691582. Like octal numbers, hexadecimal literals may represent negative numbers.Starting in J2SE 7.0, as binary numbers, using the form0b(or0B) followed by one or more binary digits (0 or 1). For example, 0b101010 is the integer 42. Like octal and hex numbers, binary literals may represent negative numbers.
+
+By default, the integer literal primitive type isint. If you want along, add a letterelsuffix (either the characterlor the characterL) to the integer literal. This suffix denotes along integerrather than a standard integer. For example,3405691582Lis a long integer literal. Long integers are 8 bytes in length as opposed to the standard 4 bytes forint. It is best practice to use the suffixLinstead oflto avoid confusion with the digit1(one) which looks likelin many fonts:200l≠2001. If you want a short integer literal, you have to cast it.
+Starting in J2SE 7.0, you may insert underscores between digits in a numeric literal. They are ignored but may help readability by allowing the programmer to group digits.
+
+Floating Point Literals[edit]
+
+Floating point numbers are expressed as decimal fractions or as exponential notation:
+
+
+Floating point numbers consist of:
+
+an optional leading+or-sign, indicating a positive or negative value; if omitted, the value is positive,one of the following number formatsinteger digits(must be followed by either an exponent or a suffix or both, to distinguish it from an integer literal)integer digits.integer digits.integer digits.integer digitsan optional exponent of the formthe exponent indicatoreorEan optional exponent sign+or-(the default being a positive exponent)integer digitsrepresenting the integer exponent valuean optional floating point suffix:eitherforFindicating a single precision (4 bytes) floating point number, ordorDindicating the number is a double precision floating point number (by default, thus the double precision (8 bytes) is default).
+
+Here,integer digitsrepresents one or more of the digits0through9.
+Starting in J2SE 7.0, you may insert underscores between digits in a numeric literal. They are ignored but may help readability by allowing the programmer to group digits.
+
+Character Literals[edit]
+
+Character literals are constant valued character expressions embedded in a Java program. Java characters are sixteen bit Unicode characters, ranging from 0 to 65535. Character literals are expressed in Java as a single quote, the character, and a closing single quote ('a','7','$','π'). Character literals have the typechar, an unsigned integerprimitive type. Character literals may be safely promoted to larger integer types such asintandlong. Character literals used where ashortorbyteis called for must be cast toshortorbytesince truncation may occur.
+

@@ -1,0 +1,19 @@
+
+If you are importing library packages and classes that reside in a.jarfile, you must ensure that the file is in the current classpath (both at compile- and execution-time). Apart from this requirement, importing these packages and classes is the same as if they were in their full, expanded, directory structure.
+
+Javac[edit]
+
+For example, to compile and run a class from a project's top directory (that contains the two directories/sourceand/libraries) you could use the following command:
+
+Compilation$ javac -classpath libraries/lib.jar source/MainClass.java
+
+And then to run it, similarly:
+
+Execution$ java -classpath libraries/lib.jar source/MainClass
+
+The above is simplified, and demands thatMainClassbe in the default package, or a package calledsource, which isn't very desirable.
+
+BlueJ[edit]
+
+With BlueJ just click onTools, Preferences, Libraries, and add the .jar one by one.
+

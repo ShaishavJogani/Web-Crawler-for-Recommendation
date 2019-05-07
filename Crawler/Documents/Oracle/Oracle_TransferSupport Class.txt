@@ -1,0 +1,60 @@
+
+
+The 
+TransferSupport class serves two functions. As the name suggests, its first function is to support the transfer process and for that purpose it provides several utility methods used to access the details of the data transfer. The following list shows the methods that can be used to obtain information from the TransferHandler. Several of these methods are related to drop actions, which will be discussed in 
+Setting the Drop Mode.
+
+
+Component getComponent()— This method returns the target component of the transfer.
+
+int getDropAction() — This method returns the chosen action (COPY, MOVE or LINK) when the transfer is a drop. If the transfer is not a drop, this method throws an exception.
+
+int getUserDropAction() — This method returns the user's chosen drop action. For example, if the user simultaneously holds Control and Shift during the drag gesture, this indicates an ACTION_LINK action. For more information on user drop actions, see the API for 
+DropTargetDragEvent. If the transfer is not a drop, this method throws an exception.
+
+int getSourceDropActions() — This method returns the set of actions supported by the source component. If the transfer is not a drop, this method throws an exception.
+
+DataFlavor[] getDataFlavors() — This method returns all the data flavors supported by this component. For example, a component might support files and text, or text and color. If the transfer is not a drop, this method throws an exception.
+
+boolean isDataFlavorSupported(DataFlavor) — This method returns true if the specified DataFlavor is supported. The 
+DataFlavor indicates the type of data represented, such as an image (imageFlavor), a string (stringFlavor), a list of files (javaFileListFlavor), and so on.
+
+Transferable getTransferable() — This method returns the Transferable data for this transfer. It is more efficient to use one of these methods to query information about the transfer than to fetch the transferable and query it, so this method is not recommended unless you cannot get the information another way.
+
+DropLocation getDropLocation() — This method returns the drop location in the component. Components with built-in drop support, such as list, table and tree, override this method to return more useful data. For example, the version of this method for the JList component returns the index in the list where the drop occurred. If the transfer is not a drop, this method throws an exception.
+
+Sample Import Methods
+Now that you are familiar with the TransferSupport utility methods, let us look at sample canImport and importData methods:
+
+public boolean canImport(TransferSupport supp) {
+    // Check for String flavor
+    if (!supp.isDataFlavorSupported(stringFlavor)) {
+        return false;
+    }
+
+    // Fetch the drop location
+    DropLocation loc = supp.getDropLocation();
+
+    // Return whether we accept the location
+    return shouldAcceptDropLocation(loc);
+}
+
+public boolean importData(TransferSupport supp) {
+    if (!canImport(sup)) {
+        return false;
+    }
+
+    // Fetch the Transferable and its data
+    Transferable t = supp.getTransferable();
+    String data = t.getTransferData(stringFlavor);
+
+    // Fetch the drop location
+    DropLocation loc = supp.getDropLocation();
+
+    // Insert the data at this location
+    insertAt(loc, data);
+
+    return true;
+}
+
+Next we look at how you can set the drop mode for selected components.

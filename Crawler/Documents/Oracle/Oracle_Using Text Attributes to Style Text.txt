@@ -1,0 +1,30 @@
+
+Applications typically need the capability to apply the following text attributes:
+
+Underline – A line that is drawn underneath text
+Strikethrough – A horizontal line that is drawn through the text
+Superscript or Subscript – A text or a letter that appears slightly above a line or correspondingly below a line
+Kerning – The adjustment of the space between characters
+
+These and other text attributes can be applied by using the Java 2D TextAttribute class.
+To apply these text attributes by add them to a Font object. For example:
+
+Map<TextAttribute, Object> map =
+    new Hashtable<TextAttribute, Object>();
+map.put(TextAttribute.KERNING,
+    TextAttribute.KERNING_ON);
+font = font.deriveFont(map);
+graphics.setFont(font);
+
+The code example represented below shows the application of text attributes in the following order:
+
+Sample string (no text attributes applied)
+Kerning
+Kerning and Underlining
+Kerning,Underlining and Strikethrough
+Kerning,Underlining, Strikethrough and Color
+
+
+Note:  If you don't see the applet running, you need to install at least the Java SE Development Kit (JDK) 7 release.
+The complete code for this applet is in 
+AttributedText.java.

@@ -1,0 +1,1 @@
+Thepropertiesof bean private field accessible modifiable public method . These getter setter method mark follow simple naming convention : property name , say , xxxthere agetXxx ( ) return property value asetXxx ( ) set property .

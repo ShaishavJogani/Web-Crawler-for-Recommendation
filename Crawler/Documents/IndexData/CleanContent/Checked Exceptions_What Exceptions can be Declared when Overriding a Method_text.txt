@@ -1,0 +1,1 @@
+The checked exception class specify thethrowskeyword part contract implementer user . An override method declare exception , subclass exception .

@@ -1,0 +1,1 @@
+If work NetBeans IDE past , much section look familiar , since initial step similar project . Still , following step describe setting specific application , take care follow closely . Step 1 : Create New Project To create new project , launch NetBeans IDE choose New Project File menu :

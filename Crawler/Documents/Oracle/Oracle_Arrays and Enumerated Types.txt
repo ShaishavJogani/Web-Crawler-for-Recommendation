@@ -1,0 +1,23 @@
+
+From the Java virtual machine's perspective, arrays and enumerated types (or enums) are just classes. Many of the methods in 
+Class may be used on them. Reflection provides a few specific APIs for arrays and enums. This lesson uses a series of code samples to describe how to distinguish each of these objects from other classes and operate on them. Various errors are also be examined.
+Arrays
+Arrays have a component type and a length (which is not part of the type). Arrays may be maniuplated either in their entirety or component by component. Reflection provides the 
+java.lang.reflect.Array class for the latter purpose.
+
+Identifying Array Types describes how to determine if a class member is a field of array type
+Creating New Arrays illustrates how to create new instances of arrays with simple and complex component types
+Getting and Setting Arrays and Their Components shows how to access fields of type array and individually access array elements
+Troubleshooting covers common errors and programming misconceptions
+
+Enumerated Types
+Enums are treated very much like ordinary classes in reflection code. 
+Class.isEnum() tells whether a 
+Class represents and enum. 
+Class.getEnumConstants() retrieves the enum constants defined in an enum. 
+java.lang.reflect.Field.isEnumConstant() indicates whether a field is an enumerated type.
+
+Examining Enums illustrates how to retrieve an enum's constants and any other fields, constructors, and methods
+Getting and Setting Fields with Enum Types shows how to set and get fields with an enum constant value
+Troubleshooting describes common errors associated with enums
+

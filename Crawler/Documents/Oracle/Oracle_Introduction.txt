@@ -1,0 +1,24 @@
+
+
+JDK 5.0 introduces several new extensions to the Java programming language. One of these is the introduction of generics.
+This trail is an introduction to generics. You may be familiar with similar constructs from other languages, most notably C++ templates. If so, you'll see that there are both similarities and important differences. If you are unfamiliar with look-a-alike constructs from elsewhere, all the better; you can start fresh, without having to unlearn any misconceptions.
+Generics allow you to abstract over types. The most common examples are container types, such as those in the Collections hierarchy.
+Here is a typical usage of that sort:
+
+List myIntList = new LinkedList(); // 1
+myIntList.add(new Integer(0)); // 2
+Integer x = (Integer) myIntList.iterator().next(); // 3        
+
+The cast on line 3 is slightly annoying. Typically, the programmer knows what kind of data has been placed into a particular list. However, the cast is essential. The compiler can only guarantee that an Object will be returned by the iterator. To ensure the assignment to a variable of type Integer is type safe, the cast is required.
+Of course, the cast not only introduces clutter. It also introduces the possibility of a run time error, since the programmer may be mistaken.
+What if programmers could actually express their intent, and mark a list as being restricted to contain a particular data type? This is the core idea behind generics. Here is a version of the program fragment given above using generics:
+
+List<Integer> 
+    myIntList = new LinkedList<Integer>(); // 1'
+myIntList.add(new Integer(0)); // 2'
+Integer x = myIntList.iterator().next(); // 3'
+
+Notice the type declaration for the variable myIntList. It specifies that this is not just an arbitrary List, but a List of Integer, written List<Integer>. We say that List is a generic interface that takes a type parameter--in this case, Integer. We also specify a type parameter when creating the list object.
+Note, too, that the cast on line 3' is gone.
+Now, you might think that all we've accomplished is to move the clutter around. Instead of a cast to Integer on line 3, we have Integer as a type parameter on line 1'. However, there is a very big difference here. The compiler can now check the type correctness of the program at compile-time. When we say that myIntList is declared with type List<Integer>, this tells us something about the variable myIntList, which holds true wherever and whenever it is used, and the compiler will guarantee it. In contrast, the cast tells us something the programmer thinks is true at a single point in the code.
+The net effect, especially in large programs, is improved readability and robustness.

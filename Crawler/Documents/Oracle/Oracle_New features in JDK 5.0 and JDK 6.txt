@@ -1,0 +1,8 @@
+
+In this lesson we will discuss about the new features listed below that are supported by the JNDI and the LDAP Service provider in the JDK 5.0 and JDK 6 releases.
+
+Retreiving the distinguished name (DN) from the search result.
+Using standard LDAP controls.
+Manipulation of LDAP names.
+Setting read timeout for LDAP operations.
+

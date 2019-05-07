@@ -1,0 +1,2 @@
+
+Next, we will add a custom drawing surface to the frame. For this we will create a subclass of javax.swing.JPanel (a generic lightweight container) which will supply the code for rendering our custom painting.

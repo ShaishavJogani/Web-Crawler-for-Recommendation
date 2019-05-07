@@ -1,0 +1,10 @@
+
+Since Java 1.5, the classjava.lang.Classis generic. It is an interesting example of using generics for something other than a container class.
+For example, the type of String.class isClass<String>, and the type of Serializable.class isClass<Serializable>. This can be used to improve the type safety of your reflection code.
+In particular, since thenewInstance()method in Class now returns T, you can get more precise types when creating objects reflectively.
+Now we can use thenewInstance()method to return a new object with exact type, without casting. An example with generics:
+
+
+The same code without generics:
+
+

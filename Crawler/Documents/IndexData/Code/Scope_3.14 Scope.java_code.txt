@@ -1,0 +1,16 @@
+public class Scope {
+
+    public void method1(int i) {
+        i = i++;
+        method2();
+        int j = i * 2;
+    }
+
+    public void method2() {
+        int k = 20;
+    }
+
+    public static void main(String[] args) {
+        method1(10);
+    }
+}

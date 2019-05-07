@@ -1,0 +1,98 @@
+
+A change listener is similar to a property change listener. A change listener is registered on an object — typically a component, but it could be another object, like a model — and the listener is notified when the object has changed. The big difference from a property change listener is that a change listener is not notified of what has changed, but simply that the source object has changed. Therefore, a change listener is most useful when it is only necessary to know when an object has changed in any way.
+Several Swing components (including 
+JTabbedPane, JViewPort) rely on change events for basic functionality — sliders, color choosers and spinners. To learn when the value in a 
+slider changes, you need to register a change listener. Similarly, you need to register a change listener on a 
+color chooser to be informed when the user chooses a new color. You register a change listener on a 
+spinner, to be notified when the spinner's value changes.
+Here is an example of change event handling code for a slider:
+
+//...where initialization occurs:
+framesPerSecond.addChangeListener(new SliderListener());
+...
+class SliderListener implements ChangeListener {
+    public void stateChanged(ChangeEvent e) {
+        JSlider source = (JSlider)e.getSource();
+        if (!source.getValueIsAdjusting()) {
+            int fps = (int)source.getValue();
+            ...
+        }    
+    }
+}
+
+You can find the source file for SliderDemo in the 
+example index for Using Swing Components.
+The Change Listener API
+The ChangeListener Interface
+Because ChangeListener has only one method, it has no corresponding adapter class.
+
+
+Method
+Purpose
+
+
+
+stateChanged(ChangeEvent)
+Called when the listened-to component changes state.
+
+
+The ChangeEvent Class
+
+
+Method
+Purpose
+
+
+
+Object getSource()
+(in java.util.EventObject)
+Returns the object that fired the event.
+
+
+
+Examples that Use Change Listeners
+The following table lists the examples that use change listeners.
+
+
+Example
+Where Described
+Notes
+
+
+SliderDemo and
+SliderDemo2
+
+How to Use Sliders
+Registers a change listener on a slider that controls animation speed. The change listener ignores the change events until the user releases the slider.
+
+
+ColorChooserDemo and
+ColorChooserDemo2
+
+How to Use Color Choosers
+Uses a change listener on the selection model of a color chooser to learn when the user changes the current color.
+
+
+SpinnerDemo3
+
+Detecting Spinner Value Changes in 
+How to Use Spinners.
+Uses a change listener on a date-field spinner to change the color of the text as the spinner's date changes.
+
+
+SpinnerDemo4
+
+Detecting Spinner Value Changes in 
+How to Use Spinners.
+Uses a change listener on a spinner to cycle through the gray scale as the spinner's value changes.
+
+
+
+ConverterRangeModel
+and its subclass,
+FollowerRangeModel
+
+How to Use Models
+Implement custom models for the sliders used in the Converter demo. Both models explicitly fire change events when necessary.
+
+

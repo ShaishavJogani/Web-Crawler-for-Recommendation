@@ -1,0 +1,1 @@
+Below example need override method . For example , component class would use would theCanvasclass . For information theCanvasclass , see section onUnderstanding Canvas class

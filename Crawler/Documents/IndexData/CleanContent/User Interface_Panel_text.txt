@@ -1,0 +1,1 @@
+The main benefit layout combine one another panel . A panel component component inside . A panel add top component ( frame applet ) another panel place define layout constraint parent component . It layout normally use place group related component like button , instance : Figure 9.16 : Java applet example .

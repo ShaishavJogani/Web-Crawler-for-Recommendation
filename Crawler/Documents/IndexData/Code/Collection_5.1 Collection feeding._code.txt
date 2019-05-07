@@ -1,0 +1,3 @@
+Collection ageList = new ArrayList();
+ageList.add(new Integer(46));
+ageList.add("50");

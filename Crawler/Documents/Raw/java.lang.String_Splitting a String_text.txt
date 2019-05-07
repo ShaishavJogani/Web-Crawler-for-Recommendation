@@ -1,0 +1,6 @@
+
+Sometimes it is useful to split a string into separate strings, based on aregular expressions. TheStringclass has asplit()method, since Java 1.4, that will return a String array:
+
+
+Another useful application could be tosplitthe String text based on the new line character, so you could process the text line by line.
+

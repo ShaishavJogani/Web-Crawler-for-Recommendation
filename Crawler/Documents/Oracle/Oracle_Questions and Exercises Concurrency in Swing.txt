@@ -1,0 +1,23 @@
+
+Questions
+
+For each of the following tasks, specify which thread it should be executed in and why.
+
+Initializing the GUI.
+Loading a large file.
+Invoking 
+javax.swing.JComponent.setFont to change the font of a component.
+Invoking 
+javax.swing.text.JTextComponent.setText to change the text of a component.
+
+
+One set of threads is not used for any of the tasks mentioned in the previous question. Name this thread and explain why its applications are so limited.
+SwingWorker has two type parameters. Explain how these type parameters are used, and why it often doesn't matter what they are.
+
+Exercises
+
+Modify the 
+Flipper example so that it pauses 5 seconds between "coin flips." If the user clicks the "Cancel", the coin-flipping loop terminates immediately.
+
+
+Check your answers.

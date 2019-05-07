@@ -1,0 +1,13 @@
+
+dois a Java keyword.
+It starts a do-while looping block. The do-while loop is functionally similar to the while loop, except the condition is evaluatedafterthe statements execute
+Syntax:
+
+
+For example:
+
+
+See also:
+
+Java Programming/StatementsJava Programming/Keywords/forJava Programming/Keywords/while
+

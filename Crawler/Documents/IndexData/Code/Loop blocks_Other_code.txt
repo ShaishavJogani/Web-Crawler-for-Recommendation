@@ -1,0 +1,27 @@
+int numberOfItems = 5;
+int currentItems = 0;
+int currentCandidate = 1;
+
+while (currentItems < numberOfItems) {
+  currentCandidate = currentCandidate + 1;
+  System.out.println("Test with integer: " + currentCandidate);
+ 
+  boolean found = true;
+  for (int i = currentCandidate - 1; i > 1; i--) {
+   
+    // Test if i is a divisor of currentCandidate
+    if ((currentCandidate % i) == 0) {
+      System.out.println("Not matching...");
+      found = false;
+      break;
+    }
+   
+  }
+ 
+  if (found) {
+    System.out.println("Matching!");
+    currentItems = currentItems + 1;
+  }
+}
+
+System.out.println("Find the value: " + currentCandidate);

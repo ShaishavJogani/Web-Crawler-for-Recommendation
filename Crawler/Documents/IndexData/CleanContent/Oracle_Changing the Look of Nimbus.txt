@@ -1,0 +1,1 @@
+One big advantage Nimbus highly customizable . You change look almost way imagine . You use three primary technique modify look Nimbus : Resizing component – Under Nimbus , component available three additional size : mini , small , large . Changing color theme – You change color use Nimbus look feel . Skinning component – You full control component render .

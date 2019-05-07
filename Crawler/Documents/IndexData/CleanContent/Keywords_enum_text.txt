@@ -1,0 +1,1 @@
+This enumeration constant pass method : An enumeration may also parameter : It also possible let enumeration implement interfaces thanjava.lang.Comparableandjava.io.Serializable , already implicitly implement enumeration :

@@ -1,0 +1,11 @@
+
+A constructor is used in the creation of an object that is an instance of a class. Typically it performs operations required to initialize the class before methods are invoked or fields are accessed. Constructors are never inherited.
+Similar to methods, reflection provides APIs to discover and retrieve the constructors of a class and obtain declaration information such as the modifiers, parameters, annotations, and thrown exceptions. New instances of classes may also be created using a specified constructor. The key classes used when working with constructors are 
+Class and 
+java.lang.reflect.Constructor. Common operations involving constructors are covered in the following sections:
+
+Finding Constructors illustrates how to retrieve constructors with specific parameters
+Retrieving and Parsing Constructor Modifiers shows how to obtain the modifiers of a constructor declaration and other information about the constructor
+Creating New Class Instances shows how to instantiate an instance of an object by invoking its constructor
+Troubleshooting describes common errors which may be encountered while finding or invoking constructors
+

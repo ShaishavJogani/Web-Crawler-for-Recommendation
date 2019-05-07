@@ -1,0 +1,1 @@
+extendsis Java keyword . Used inclassandinterfacedefinition declare class interface extend . Syntax : In Java 1.5 later , `` extends '' keyword also use specify upper bound type parameter Generics . See also : Java Programming/Creating ObjectsJava Programming/Keywords/class

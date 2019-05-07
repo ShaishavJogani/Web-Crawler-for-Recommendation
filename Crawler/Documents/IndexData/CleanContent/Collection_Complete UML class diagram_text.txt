@@ -1,0 +1,1 @@
+Figure 5 : UML class diagram theCollectioninterfaces implementation .

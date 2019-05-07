@@ -1,0 +1,7 @@
+
+Now that the code for the compute engine example has been written, it needs to be compiled and run.
+Compiling the Example Programs
+In this section, you learn how to compile the server and the client programs that make up the compute engine example.
+Running the Example Programs
+Finally, you run the server and client programs and consequently compute the value of 
+.

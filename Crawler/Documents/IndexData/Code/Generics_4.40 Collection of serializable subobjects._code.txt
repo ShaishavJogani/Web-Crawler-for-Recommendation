@@ -1,0 +1,3 @@
+Collection<String> textColl = new ArrayList<String>();
+
+Collection<? extends Serializable> serColl = textColl;

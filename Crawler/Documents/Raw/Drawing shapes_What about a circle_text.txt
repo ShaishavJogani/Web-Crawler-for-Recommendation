@@ -1,0 +1,6 @@
+
+Drawing a circle is ever so easy? It is the same process as the syntax above only that the wordRectis changed to the wordOval. And don't ask me why oval? You simply don't have the methoddrawCircle(int, int, int)as you don't havedrawSquare(int, int, int). Following is the application of Graphics code to draw a circle just to whet your appetite.
+
+
+
+

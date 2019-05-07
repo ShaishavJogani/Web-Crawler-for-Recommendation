@@ -1,0 +1,5 @@
+public class Mouse {
+     public void eatCheese() {
+             Cheese c = new Cheese(); // Oops, compile time error!
+     }
+}

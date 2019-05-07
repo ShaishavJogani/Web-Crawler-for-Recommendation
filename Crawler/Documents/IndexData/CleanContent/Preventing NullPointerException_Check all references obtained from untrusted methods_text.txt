@@ -1,0 +1,1 @@
+Many method return reference null reference . Make sure check . For example : File.listFiles ( ) return null if/etcis directory . You decide trust method return null , like , 's assumption 're make . Some method n't specify might return null , actually , instead throw exception .

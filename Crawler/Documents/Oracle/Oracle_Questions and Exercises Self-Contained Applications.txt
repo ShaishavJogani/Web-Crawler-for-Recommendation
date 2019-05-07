@@ -1,0 +1,31 @@
+
+Questions
+
+
+Which of the following items is not an advantage of self-contained applications?
+
+Users install the application with an installer that is familiar to them.
+The application runs as a native application.
+The application requires less space on a user's machine.
+You control the version of the JRE that is used by the application.
+The application does not require a browser to run.
+
+
+
+True or False: MIME type must always be used to set up a file association.
+
+
+What elements are used to identify the entry points for self-contained applications in the <fx:deploy> Ant task?
+
+
+Exercises
+
+
+Write the <fx:deploy> Ant task to generate a Windows MSI bundle for a simple application named My Sample App. The JAR file for the application is in the dist directory, the main class is samples.MyApp, and output files are to be written to the current directory.
+
+
+Enhance the code from the previous exercise to create bundles for all Windows installers and define a file association for text files.
+
+
+
+Check your answers.

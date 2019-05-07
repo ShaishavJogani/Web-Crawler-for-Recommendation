@@ -1,0 +1,18 @@
+
+Most of the time a page from the Java Programming Wikibook has a structure that looks like this:
+
+You writeYou get<noinclude>{{Displaytitle|title=The title of the page}}
+{{Programming/Navigation}}
+{{Java Programming/LanguageFundamentalsTopic/Nav}}
+__NOTOC__</noinclude>
+
+This is the introduction.
+
+==First section==
+
+This is a section.
+
+<noinclude>
+{{Programming/Navigation}}
+{{Status|50%}}</noinclude>NavigateLanguage Fundamentalstopic:(v•d•e)StatementsConditional blocksLoop blocksBoolean expressionsVariablesPrimitive TypesArithmetic expressionsLiteralsMethodsStringObjectsPackagesArraysMathematical functionsLarge numbersRandom numbersUnicodeCommentsKeywordsCoding conventionsLambda expressionsThis is the introduction.First section[edit]This is a section.
+

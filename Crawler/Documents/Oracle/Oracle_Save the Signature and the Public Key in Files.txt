@@ -1,0 +1,23 @@
+
+Now that you have generated a signature for some data, you need to save the signature bytes in one file and the public key bytes in another so you can send (via modem, floppy, mail, and so on) someone else
+
+the data for which the signature was generated,
+the signature, and
+the public key
+
+The receiver can verify that the data came from you and was not modified in transit by running the VerSig program you will generate in the upcoming Verifying a Digital Signature steps. That program uses the public key to verify that the signature received is the true signature for the data received.
+Recall that the signature was placed in a byte array named realSig. You can save the signature bytes in a file named sig via the following.
+
+/* save the signature in a file */
+FileOutputStream sigfos = new FileOutputStream("sig");
+sigfos.write(realSig);
+sigfos.close();
+
+Recall from the Generate Public and Private Keys step that the public key was placed in a PublicKey object named pub. You can get the encoded key bytes by calling the getEncoded method and then store the encoded bytes in a file. You can name the file whatever you want. If, for example, your name is Susan, you might name it something like suepk (for "Sue's public key"), as in the following:
+
+/* save the public key in a file */
+byte[] key = pub.getEncoded();
+FileOutputStream keyfos = new FileOutputStream("suepk");
+keyfos.write(key);
+keyfos.close();
+

@@ -1,0 +1,34 @@
+
+The Java platform contains several classes for use with JAR files. Some of these APIs are:
+
+
+The java.util.jar package
+
+The java.net.JarURLConnection class
+
+The java.net.URLClassLoader class
+
+To give you an idea of the possibilities that are opened up by these new APIs, this lesson guides you through the inner workings of a sample application called JarRunner.
+An Example - The JarRunner Application
+JarRunner enables you to run an application that's bundled in a JAR file by specifying the JAR file's URL on the command line. For example, if an application called TargetApp were bundled in a JAR file at http://www.example.com/TargetApp.jar, you could run the application using this command:
+
+java JarRunner http://www.example.com/TargetApp.jar
+
+In order for JarRunner to work, it must be able to perform the following tasks, all of which are accomplished by using the new APIs:
+
+Access the remote JAR file and establish a communications link with it.
+Inspect the JAR file's manifest to see which of the classes in the archive is the main class.
+Load the classes in the JAR file.
+
+The JarRunner application consists of two classes, JarRunner and JarClassLoader. JarRunner delegates most of the JAR-handling tasks to the JarClassLoader class. JarClassLoader extends the java.net.URLClassLoader class. You can browse the source code for the JarRunner and JarClassLoader classes before proceeding with the lesson:
+
+
+JarRunner.java
+
+JarClassLoader.java
+
+This lesson has two parts:
+The JarClassLoader Class
+This section shows you how JarClassLoader uses some of the new APIs to perform tasks required for the JarRunner application to work.
+The JarRunner Class
+This section summarizes the JarRunner class that comprises the JarRunner application.

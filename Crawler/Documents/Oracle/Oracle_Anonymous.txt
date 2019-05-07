@@ -1,0 +1,22 @@
+
+As just stated, the default authentication mechanism is "none" if no authentication environment properties have been set. If the client sets the 
+Context.SECURITY_AUTHENTICATION environment property to "none", then the authentication mechanism is "none" and all other authentication environment properties are ignored. You would want to do this explicitly only to ensure that any other authentication properties that might have been set are ignored. In either case, the client will be treated as an anonymous client. This means that the server does not know or care who the client is and will allow the client to access (read and update) any data that has been configured to be accessible by any unauthenticated client.
+Because none of the directory examples in the 
+Naming and Directory Operations lesson set any of the authentication environment properties, all of them use anonymous authentication.
+Here is 
+an example
+ that explicitly sets the Context.SECURITY_AUTHENTICATION property to "none" (even though doing this is not strictly necessary because that is the default).
+
+// Set up the environment for creating the initial context
+Hashtable<String, Object> env = new Hashtable<String, Object>();
+env.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.ldap.LdapCtxFactory");
+env.put(Context.PROVIDER_URL, "ldap://localhost:389/o=JNDITutorial");
+
+// Use anonymous authentication
+env.put(Context.SECURITY_AUTHENTICATION, "none");
+
+// Create the initial context
+DirContext ctx = new InitialDirContext(env);
+
+// ... do something useful with ctx
+

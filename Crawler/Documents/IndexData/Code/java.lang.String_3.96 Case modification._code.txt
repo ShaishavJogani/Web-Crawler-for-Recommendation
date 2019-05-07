@@ -1,0 +1,3 @@
+String str = "wIkIbOoKs";
+System.out.println(str.toLowerCase());
+System.out.println(str.toUpperCase());

@@ -1,0 +1,1 @@
+Beware loop array collection loop . If object null , zero loop , throw null pointer exception . So n't forget case . Add anifstatement return empty collection :

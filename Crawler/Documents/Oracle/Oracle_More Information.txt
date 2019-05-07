@@ -1,0 +1,9 @@
+
+
+For more information about supplementary characters, see the following resources.
+
+
+Supplementary Characters in the Java Platform
+Unicode Consortion
+Glossary of Unicode Terms
+

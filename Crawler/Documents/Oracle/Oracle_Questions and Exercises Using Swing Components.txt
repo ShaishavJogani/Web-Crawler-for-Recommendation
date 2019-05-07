@@ -1,0 +1,30 @@
+
+Use the information in this lesson and the component 
+how-to sections to help you complete these questions and exercises.
+Questions
+1. Find the component that best fits each of the following needs. Write down both the componentâs common name (such as âframeâ) and find the component's how-to page online.
+a. A component that lets the user pick a color.
+
+b. A component that displays an icon, but that doesnât react to user clicks.
+
+c. A component that looks like a button and that, when pressed, brings up a menu of items for the user to choose from.
+
+d. A container that looks like a frame, but that appears (usually with other, similar containers) within a real frame.
+
+e. A container that lets the user determine how two components share a limited amount of space.
+2. Which method do you use to add a menu bar to a top-level container such as a JFrame?
+3. Which method do you use to specify the default button for a top-level container such as a JFrame or JDialog?
+4. Which method do you use to enable and disable components such as JButtons? What class is it defined in?
+5. a. Which Swing components use ListSelectionModel? [Hint: The âUseâ link at the top of the specification for each interface and class takes you to a page showing where in the API that interface or class is referenced.]
+b. Do those components use any other models to handle other aspects of the componentsâ state? If so, list the other modelsâ types.
+6. Which type of model holds a text componentâs content?
+Exercises
+1. Implement a program with a GUI that looks like the one shown below. Put the main method in a class named MyDemo1.
+
+
+2. Make a copy of MyDemo1.java named MyDemo2.java. Add a menu bar to MyDemo2.
+
+3. Copy MyDemo1.java to MyDemo3.java. Add a button (JButton) to MyDemo3.java. Make it the default button.
+ 
+
+Check your answers.

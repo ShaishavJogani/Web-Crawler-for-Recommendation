@@ -1,0 +1,16 @@
+
+Going further any number of dimensional array can be defined.
+
+elementType[][]...[]arrayName
+
+or
+
+elementTypearrayName[][]...[]
+
+
+
+PackagesJava ProgrammingArraysMathematical functions
+
+
+
+

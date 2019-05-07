@@ -1,0 +1,10 @@
+
+To be able to compare two Java objects of the same class thebooleanequals(Objectobj)method must be overriden and implemented by the class.
+The implementor decides which values must be equal to consider two objects to be equal. For example in thebelow class, thenameand theaddressmust be equal but not thedescription.
+
+
+After theequals()method is overriden, two objects from the same class can be compared like this:
+
+
+Note that equal objectsmusthave equal hash codes. Therefore, when overriding theequalsmethod, you must also override thehashCodemethod. Failure to do so violates the general contract for thehashCodemethod, and any classes that use the hash code, such asHashMapwill not function properly.
+

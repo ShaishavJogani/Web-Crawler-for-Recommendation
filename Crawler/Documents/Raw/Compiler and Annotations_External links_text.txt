@@ -1,0 +1,16 @@
+
+[4]Advanced usage of the@SuppressWarnings(..)annotation
+
+
+
+
+
+To do:Add some exercises like the ones inVariables
+
+
+
+
+
+
+
+

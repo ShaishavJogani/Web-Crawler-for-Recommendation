@@ -1,0 +1,13 @@
+/*
+ * This is a comment
+ * on several lines.
+ */
+
+/* This also works; slash-star comments may be on a single line. */
+
+/*
+Disable debugging code:
+
+int a = 10;
+while (a-- > 0) System.out.println("DEBUG: tab["+a+"]=" + tab[a]);
+*/

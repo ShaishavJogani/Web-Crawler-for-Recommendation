@@ -1,0 +1,1 @@
+Questions What script contains function deploy applet Java Web Start application ? True False : You always sign RIA sure always work . Exercises Write JavaScript code deploy Exercise applet use ex.jnlp file . Check answer .

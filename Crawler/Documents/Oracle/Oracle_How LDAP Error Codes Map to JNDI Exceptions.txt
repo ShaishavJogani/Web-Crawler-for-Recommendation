@@ -1,0 +1,257 @@
+
+The LDAP defines a set of status codes that are returned with LDAP responses sent by the LDAP server (see 
+RFC 2251). In the JNDI, error conditions are indicated as checked exceptions that are subclasses of 
+NamingException. See the 
+Naming Exceptions section for an overview of the JNDI exception classes.
+The LDAP service provider translates the LDAP status code it receives from the LDAP server to the appropriate subclass of NamingException. The following table shows the mapping between LDAP status codes and JNDI exceptions.
+
+
+LDAP Status Code
+Meaning
+Exception or Action
+
+
+0
+Success
+Report success.
+
+
+1
+Operations error
+
+NamingException
+
+
+2
+Protocol error
+
+CommunicationException
+
+
+3
+Time limit exceeded.
+
+TimeLimitExceededException
+
+
+4
+Size limit exceeded.
+
+SizeLimitExceededException
+
+
+5
+Compared false.
+Used by 
+DirContext.search(). Does not generate an exception.
+
+
+6
+Compared true.
+Used by 
+DirContext.search(). Does not generate an exception.
+
+
+7
+Authentication method not supported.
+
+AuthenticationNotSupportedException
+
+
+8
+Strong authentication required.
+
+AuthenticationNotSupportedException
+
+
+9
+Partial results being returned.
+If the environment property "java.naming.referral" is set to "ignore" or the contents of the error do not contain a referral, throw a 
+PartialResultException. Otherwise, use contents to build a referral.
+
+
+10
+Referral encountered.
+If the environment property "java.naming.referral" is set to "ignore", then ignore. If the property is set to "throw", throw 
+ReferralException. If the property is set to "follow", then the LDAP provider processes the referral. If the "java.naming.ldap.referral.limit" property has been exceeded, throw 
+LimitExceededException.
+
+
+11
+Administrative limit exceeded.
+
+LimitExceededException
+
+
+12
+Unavailable critical extension requested.
+
+OperationNotSupportedException
+
+
+13
+Confidentiality required.
+
+AuthenticationNotSupportedException
+
+
+14
+SASL bind in progress.
+Used internally by the LDAP provider during authentication.
+
+
+16
+No such attribute exists.
+
+NoSuchAttributeException
+
+
+17
+An undefined attribute type.
+
+InvalidAttributeIdentifierException
+
+
+18
+Inappropriate matching
+
+InvalidSearchFilterException
+
+
+19
+A constraint violation.
+
+InvalidAttributeValueException
+
+
+20
+An attribute or value already in use.
+
+AttributeInUseException
+
+
+21
+An invalid attribute syntax.
+
+InvalidAttributeValueException
+
+
+32
+No such object exists.
+
+NameNotFoundException
+
+
+33
+Alias problem
+
+NamingException
+
+
+34
+An invalid DN syntax.
+
+InvalidNameException
+
+
+35
+Is a leaf.
+Used by the LDAP provider; usually doesn't generate an exception.
+
+
+36
+Alias dereferencing problem
+
+NamingException
+
+
+48
+Inappropriate authentication
+
+AuthenticationNotSupportedException
+
+
+49
+Invalid credentials
+
+AuthenticationException
+
+
+50
+Insufficient access rights
+
+NoPermissionException
+
+
+51
+Busy
+
+ServiceUnavailableException
+
+
+52
+Unavailable
+
+ServiceUnavailableException
+
+
+53
+Unwilling to perform
+
+OperationNotSupportedException
+
+
+54
+Loop detected.
+
+NamingException
+
+
+64
+Naming violation
+
+InvalidNameException
+
+
+65
+Object class violation
+
+SchemaViolationException
+
+
+66
+Not allowed on non-leaf.
+
+ContextNotEmptyException
+
+
+67
+Not allowed on RDN.
+
+SchemaViolationException
+
+
+68
+Entry already exists.
+
+NameAlreadyBoundException
+
+
+69
+Object class modifications prohibited.
+
+SchemaViolationException
+
+
+71
+Affects multiple DSAs.
+
+NamingException
+
+
+80
+Other
+
+NamingException
+
+

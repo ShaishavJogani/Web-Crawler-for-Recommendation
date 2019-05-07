@@ -1,0 +1,1 @@
+There tool like FindBugs parse code warn potential bug . Most time , tool detect possible null pointer . To : Add exercise like one inVariables Unchecked ExceptionsJava ProgrammingPreventing NullPointerExceptionStack trace

@@ -1,0 +1,1 @@
+This mean thing like : You replace : You might also consider replace null `` '' first example , default value bring bug cause default value leave place . ANullPointerExceptionis actually well , allow runtime tell bug , rather continue default value .

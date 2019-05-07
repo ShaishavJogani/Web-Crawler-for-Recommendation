@@ -1,0 +1,19 @@
+
+Every type is either a reference or a primitive. Classes, enums, and arrays (which all inherit from
+java.lang.Object) as well as interfaces are all reference types. Examples of reference types include 
+java.lang.String, all of the wrapper classes for primitive types such as 
+java.lang.Double, the interface 
+java.io.Serializable, and the enum 
+javax.swing.SortOrder. There is a fixed set of primitive types: boolean, byte, short, int, long, char, float, and double.
+For every type of object, the Java virtual machine instantiates an immutable instance of 
+java.lang.Class which provides methods to examine the runtime properties of the object including its members and type information. 
+Class also provides the ability to create new classes and objects. Most importantly, it is the entry point for all of the Reflection APIs. This lesson covers the most commonly used reflection operations involving classes:
+
+Retrieving Class Objects describes the ways to get a 
+Class
+Examining Class Modifiers and Types shows how to access the class declaration information
+Discovering Class Members illustrates how to list the constructors, fields, methods, and nested classes in a class
+
+Troubleshooting describes common errors encountered when using 
+Class
+

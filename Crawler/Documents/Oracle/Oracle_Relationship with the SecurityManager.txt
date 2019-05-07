@@ -1,0 +1,6 @@
+
+
+The JAXP properties will be checked first before a connection is attempted whether or not a SecurityManager is present. This means that a connection may be blocked even if it is granted permission by the SecurityManager. For example, if the JAXP properties are set to disallow the http protocol, they will effectively block any connection attempt even when an application has SocketPermission.
+
+For the purpose of restricting connections, the SecurityManager can be views as being at a lower level. Permissions will be checked after the JAXP properties are evaluated. If an application does not have SocketPermission for example, then a SecurityException will be thrown even if the JAXP properties are set to allow a http connection.
+When SecurityManager is present, the JAXP FEATURE_SECURE_PROCESSING is set to true. This behavior will not turn on the new restrictions.

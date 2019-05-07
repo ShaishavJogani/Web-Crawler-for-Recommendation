@@ -1,0 +1,1 @@
+thisis Java keyword . It contain current object reference . Solves ambiguity instance variable parameter .Used pass current object parameter another method . Syntax : this.method ( ) ; orthis.variable ; Example # 1 case 1 : Example # 2 case 1 :

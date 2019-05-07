@@ -1,0 +1,116 @@
+
+
+Prior to the Java SE 8 release, the Java date and time mechanism was provided by the
+java.util.Date,
+java.util.Calendar, and
+java.util.TimeZone classes, as well as their subclasses, such as
+java.util.GregorianCalendar. These classes had several drawbacks, including:
+
+The Calendar class was not type safe.
+Because the classes were mutable, they could not be used in multithreaded applications.
+Bugs in application code were common due to the unusual numbering of months and the lack of type safety.
+
+Interoperability with Legacy Code
+
+Perhaps you have legacy code that uses the java.util date and time classes and you would like to take advantage of the java.time functionality with minimal changes to your code.
+
+Added to the JDK 8 release are several methods that allow conversion between java.util and java.time objects:
+
+
+Calendar.toInstant() converts the Calendar object to an Instant.
+
+GregorianCalendar.toZonedDateTime() converts a GregorianCalendar instance to a ZonedDateTime.
+
+GregorianCalendar.from(ZonedDateTime) creates a GregorianCalendar object using the default locale from a ZonedDateTime instance.
+
+Date.from(Instant) creates a Date object from an Instant.
+
+Date.toInstant() converts a Date object to an Instant.
+
+TimeZone.toZoneId() converts a TimeZone object to a ZoneId.
+
+
+The following example converts a Calendar instance to a ZonedDateTime instance. Note that a time zone must be supplied to convert from an Instant to a ZonedDateTime:
+
+Calendar now = Calendar.getInstance();
+ZonedDateTime zdt = ZonedDateTime.ofInstant(now.toInstant(), ZoneId.systemDefault()));
+
+
+The following example shows conversion between a Date and an Instant:
+
+Instant inst = date.toInstant();
+
+Date newDate = Date.from(inst);
+
+
+The following example converts from a GregorianCalendar to a ZonedDateTime, and then from a ZonedDateTime to a GregorianCalendar. Other temporal-based classes are created using the ZonedDateTime instance:
+
+GregorianCalendar cal = ...;
+
+TimeZone tz = cal.getTimeZone();
+int tzoffset = cal.get(Calendar.ZONE_OFFSET);
+
+ZonedDateTime zdt = cal.toZonedDateTime();
+
+GregorianCalendar newCal = GregorianCalendar.from(zdt);
+
+LocalDateTime ldt = zdt.toLocalDateTime();
+LocalDate date = zdt.toLocalDate();
+LocalTime time = zdt.toLocalTime();
+
+Mapping java.util Date and Time Functionality to java.time
+
+Because the Java implementation of date and time has been completely redesigned in the Java SE 8 release, you cannot swap one method for another method. If you want to use the rich functionality offered by the java.time package,  your easiest solution is to use the toInstant or toZonedDateTime methods listed in the previous section. However, if you do not want to use that approach or it is not sufficient for your needs, then you must rewrite your date-time code.
+
+The table introduced on the
+Overview page is a good place to begin evaluating which java.time classes meet your needs.
+
+There is no one-to-one mapping correspondence between the two APIs, but the following table gives you a general idea of which functionality in the java.util date and time classes maps to the java.time APIs.
+
+
+java.util Functionality
+java.time Functionality
+Comments
+
+
+java.util.Date
+java.time.Instant
+The Instant and Date classes are similar. Each class:
+- Represents an instantaneous point of time on the timeline (UTC)
+- Holds a time independent of a time zone
+- Is represented as epoch-seconds (since 1970-01-01T00:00:00Z) plus nanoseconds
+The Date.from(Instant) and Date.toInstant() methods allow conversion between these classes.
+
+
+
+java.util.GregorianCalendar
+java.time.ZonedDateTime
+The ZonedDateTime class is the replacement for GregorianCalendar. It provides the following similar functionality.
+Human time representation is as follows:
+  LocalDate: year, month, day
+  LocalTime: hours, minutes, seconds, nanoseconds
+  ZoneId: time zone
+  ZoneOffset: current offset from GMT
+The GregorianCalendar.from(ZonedDateTime) and GregorianCalendar.to(ZonedDateTime) methods faciliate conversions between these classes.
+
+
+
+java.util.TimeZone
+java.time.ZoneId or java.time.ZoneOffset
+The ZoneId class specifies a time zone identifier and has access to the rules used each time zone. The ZoneOffset class specifies only an offset from Greenwich/UTC. For more information, see
+Time Zone and Offset Classes.
+
+
+GregorianCalendar with the date set to 1970-01-01
+java.time.LocalTime
+Code that sets the date to 1970-01-01 in a GregorianCalendar instance in order to use the time components can be replaced with an instance of LocalTime.
+
+
+GregorianCalendar with time set to 00:00.
+java.time.LocalDate
+Code that sets the time to 00:00 in a GregorianCalendar instance in order to use the date components can be replaced with an instance of LocalDate. (This GregorianCalendar approach was flawed, as midnight does not occur in some countries once a year due to the transition to daylight saving time.)
+
+
+Date and Time Formatting
+
+Although the java.time.format.DateTimeFormatter provides a powerful mechanism for formatting date and time values, you can also use the java.time temporal-based classes directly with java.util.Formatter and String.format, using the same pattern-based formatting that you use with the java.util date and time classes.

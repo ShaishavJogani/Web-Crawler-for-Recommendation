@@ -1,0 +1,5 @@
+// The constructor with no input parameter will be called
+MyClass obj1 = new MyClass();
+
+// The constructor with one input param. will be called
+MyClass obj2 = new MyClass("Init Value");

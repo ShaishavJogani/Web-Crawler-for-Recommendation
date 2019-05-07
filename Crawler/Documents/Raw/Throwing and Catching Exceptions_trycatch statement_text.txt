@@ -1,0 +1,12 @@
+
+By default, when an exception is thrown, the current method is interrupted, the calling method is interrupted too and so on till themainmethod. A thrown exception can also be caught using atry/catchstatement. Below is how atry/catchstatement works:
+
+
+The executed code lines have been highlighted. When no exception is thrown, the method flow executes thetrystatement and not thecatchstatement.
+
+
+As there is a thrown exception at line 5, the line 6 is not executed, but the exception is caught by thecatchstatement so thecatchblock is executed. The following code is also executed. Note that thecatchstatement takes an exception as parameter. There is a third case: when the exception is not from the same class as the parameter:
+
+
+It is as if there is notry/catchstatement. The exception is thrown to the calling method.
+

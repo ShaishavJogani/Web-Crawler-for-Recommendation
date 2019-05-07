@@ -1,0 +1,11 @@
+
+Thebreakkeyword exits a flow control loop, such as a for loop. It basicallybreaksthe loop.
+In thecode section 3.34, the loop would print out all the numbers from 1 to 10, but we have a check for wheniequals 5. When the loop reaches its fifth iteration, it will be cut short by thebreakstatement, at which point it will exit the loop.
+
+
+Thecontinuekeyword jumps straight to the next iteration of a loop and evaluates the boolean expression controlling the loop. Thecode section 3.35is an example of thecontinuestatement in action:
+
+
+As thebreakandcontinuestatements reduce the readability of the code, it is recommended to reduce their use or replace them with the use ofifandwhileblocks. Some IDE refactoring operations will fail because of such statements.
+
+

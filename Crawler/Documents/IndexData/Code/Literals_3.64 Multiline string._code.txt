@@ -1,0 +1,3 @@
+String text = "This is a String literal\n"
+            + "which spans not one and not two\n"
+            + "but three lines of text.\n";

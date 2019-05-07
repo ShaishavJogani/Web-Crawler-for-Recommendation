@@ -1,0 +1,1 @@
+Labels area applet contain text edit user . This usually ideal description ( i.e . `` Insert name : '' ) . Labels initialize add applet layout way button . Also , like button , text inside label must identify initialization . If , however , label receive text cause late function start blank , text place quotation mark .

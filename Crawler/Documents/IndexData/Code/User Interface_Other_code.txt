@@ -1,0 +1,64 @@
+import java.applet.Applet;
+import java.awt.BorderLayout;
+import java.awt.Button;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.awt.Label;
+import java.awt.Panel;
+
+public class Answer5 extends Applet {
+
+    Label applicationNameLabel = new Label("Wikibooks FTP");
+    Button tool1Button = new Button("Tool");
+    Button tool2Button = new Button("Tool");
+    Button tool3Button = new Button("Tool");
+    Button tool4Button = new Button("Tool");
+    Button tool5Button = new Button("Tool");
+    Button tool6Button = new Button("Tool");
+    Button tool7Button = new Button("Tool");
+    Button tool8Button = new Button("Tool");
+    Button tool9Button = new Button("Tool");
+    Label localFolderLabel = new Label("5 files");
+    Label remoteFolderLabel = new Label("3 files");
+    Label statusBarLabel = new Label("Available");
+
+    /**
+     * Init.
+     */
+    public void init() {
+        setLayout(new BorderLayout());
+
+        // The application name
+        add(applicationNameLabel, BorderLayout.NORTH);
+
+        // The center
+        Panel centerPanel = new Panel();
+        centerPanel.setLayout(new BorderLayout());
+
+        // The buttons
+        Panel buttonPanel = new Panel();
+        buttonPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+        buttonPanel.add(tool1Button);
+        buttonPanel.add(tool2Button);
+        buttonPanel.add(tool3Button);
+        buttonPanel.add(tool4Button);
+        buttonPanel.add(tool5Button);
+        buttonPanel.add(tool6Button);
+        buttonPanel.add(tool7Button);
+        buttonPanel.add(tool8Button);
+        buttonPanel.add(tool9Button);
+        centerPanel.add(buttonPanel, BorderLayout.CENTER);
+
+        // The local and remote folders
+        Panel folderPanel = new Panel();
+        folderPanel.setLayout(new GridLayout(0, 2, 2, 2));
+        folderPanel.add(localFolderLabel);
+        folderPanel.add(remoteFolderLabel);
+        centerPanel.add(folderPanel, BorderLayout.SOUTH);
+
+        add(centerPanel, BorderLayout.CENTER);
+
+        // The status bar
+        add(statusBarLabel, BorderLayout.SOUTH);
+    }
+}

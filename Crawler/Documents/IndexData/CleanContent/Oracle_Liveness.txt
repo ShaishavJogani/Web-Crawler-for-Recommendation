@@ -1,0 +1,1 @@
+A concurrent application 's ability execute timely manner know liveness . This section describe common kind liveness problem , deadlock , go briefly describe two liveness problem , starvation livelock .

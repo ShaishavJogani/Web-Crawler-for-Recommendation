@@ -1,0 +1,34 @@
+
+Consider the following Java code.
+
+outer:for(inti=2;i<1000;i++){for(intj=2;j<i;j++){if(i%j==0)continueouter;}System.out.println(i);}
+
+A Java compiler might translate the Java code above into byte code as follows, assuming the above was put in a method:
+
+Code:
+  0:   iconst_2
+  1:   istore_1
+  2:   iload_1
+  3:   sipush  1000
+  6:   if_icmpge       44
+  9:   iconst_2
+  10:  istore_2
+  11:  iload_2
+  12:  iload_1
+  13:  if_icmpge       31
+  16:  iload_1
+  17:  iload_2
+  18:  irem             # remainder
+  19:  ifne    25
+  22:  goto    38
+  25:  iinc    2, 1
+  28:  goto    11
+  31:  getstatic       #84; //Field java/lang/System.out:Ljava/io/PrintStream;
+  34:  iload_1
+  35:  invokevirtual   #85; //Method java/io/PrintStream.println:(I)V
+  38:  iinc    1, 1
+  41:  goto    2
+  44:  return
+
+
+

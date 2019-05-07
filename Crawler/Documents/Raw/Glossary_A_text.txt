@@ -1,0 +1,3 @@
+
+annotationA means of attaching metadata to methods and classes directly in the source code.
+

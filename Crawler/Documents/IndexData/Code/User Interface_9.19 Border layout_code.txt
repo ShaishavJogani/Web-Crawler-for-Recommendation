@@ -1,0 +1,9 @@
+import java.awt.*;
+
+Container container = getContentPane();
+container.setLayout(new BorderLayout());
+
+JButton b2 = new JButton("two");
+// Add the button to the right edge.
+container.add(b2, BorderLayout.EAST);
+...

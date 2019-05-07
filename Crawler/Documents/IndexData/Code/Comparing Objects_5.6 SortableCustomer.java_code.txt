@@ -1,0 +1,14 @@
+public class SortableCustomer implements Comparable<SortableCustomer> {
+    private String name;
+    private String address;
+    private String description;
+    // ...
+    public int compareTo(SortableCustomer anotherCustomer) {
+        if (name.compareTo(anotherCustomer.getName()) == 0) {
+            return address.compareTo(anotherCustomer.getAddress();
+        } else {
+            return name.compareTo(anotherCustomer.getName();
+        }
+    }
+
+}

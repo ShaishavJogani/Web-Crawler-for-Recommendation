@@ -1,0 +1,1 @@
+[ 4 ] Advanced usage @ SuppressWarnings ( .. ) annotation To : Add exercise like one inVariables

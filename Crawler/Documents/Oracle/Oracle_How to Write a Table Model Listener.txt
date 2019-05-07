@@ -1,0 +1,52 @@
+
+Upon instantiation, each 
+JTable object is passed a table model object that manages the data it displays. By default, a JTable object inherits a DefaultTable object if no custom TableModel object is specified, but by default, this model only manages strings. To handle objects, perform calculations, or to retrieve data from databases or other programs, you must design your own custom TableModel object, which implements the TableModel interface. See Creating a Table Model for details.
+To detect changes to the data managed by a table model object, the JTable class needs to implement the TableModelListener interface, call addTableModelListener() to catch events, and then override tableChanged() to respond to listener events. See Listening for Data Changes for details.
+
+The Table Model Listener API
+The TableModelListener Interface
+Because TableModelListener has only one method, it has no corresponding adapter class.
+
+
+Method
+Purpose
+
+
+
+tableChanged(TableModelEvent)
+Called when the structure of or data in the table has changed.
+
+
+The TableModelEvent API
+
+
+Method
+Purpose
+
+
+
+Object getSource()
+(in java.util.EventObject)
+Return the object that fired the event.
+
+
+
+int getFirstRow()
+Return the index of the first row that changed. TableModelEvent.HEADER_ROW specifies the table header.
+
+
+
+int getLastRow()
+The last row that changed. Again, HEADER_ROW is a possible value.
+
+
+
+int getColumn()
+Return the index of the column that changed. The constant TableModelEvent.ALL_COLUMNS specifies that all the columns might have changed.
+
+
+
+int getType()
+What happened to the changed cells. The returned value is one of the following: TableModelEvent.INSERT, TableModelEvent.DELETE, or TableModelEvent.UPDATE.
+
+

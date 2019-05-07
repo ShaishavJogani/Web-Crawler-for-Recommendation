@@ -1,0 +1,10 @@
+String s = null;
+while (something) {
+    if (something2) {
+        s = "yep";
+    }
+}
+
+if (s != null) {
+    something3(s);
+}

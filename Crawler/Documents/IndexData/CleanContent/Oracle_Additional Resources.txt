@@ -1,0 +1,1 @@
+Now 've complete lesson regular expression , 'll probably find main reference API documentation following class : Pattern , Matcher , PatternSyntaxException . For precise description behavior regular expression construct , recommend read book Mastering Regular Expressions Jeffrey E. F. Friedl .

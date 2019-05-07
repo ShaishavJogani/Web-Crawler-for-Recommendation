@@ -1,0 +1,23 @@
+
+Arguments are passed to Java applications when an application is started. Self-contained applications can be set up with a default argument that is used when no argument is specified. The <fx:argument> element is used to define the argument. More than one argument can be passed by adding an <fx:argument> element for each argument. See 
+<fx:argument> for information about this element.
+The File Association Demo described in 
+Using File Associations is set up use the name of one of the sample files that is bundled with the application as the default argument. 
+The following code in the <fx:deploy> task in the build.xml file shows how the default argument is defined:
+
+<fx:application id="fileassociationdemo"
+                name="File Association Demo"
+                mainClass="${main.class}"
+                version="1.0">
+    <fx:argument>sample.js</fx:argument>
+</fx:application>
+
+See 
+build.xml for the complete build code.
+You can download the source files for the File Association Demo from 
+Self-Contained Application Examples.
+Additional Resources
+For more information about default arguments, see 
+Passing Arguments to a Self-Contained Application.
+For more information about JavaFX Ant arguments, see 
+JavaFX Ant Task Reference.

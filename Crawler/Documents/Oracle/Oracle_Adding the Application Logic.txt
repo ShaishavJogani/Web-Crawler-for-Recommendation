@@ -1,0 +1,5 @@
+
+
+It is now time to add in the application logic. 
+Step 1: Change the Default Variable Names
+The figure below shows the default variable names as they currently appear within the Inspector. For each component, the variable name appears first, followed by the object's type in square brackets. For example, jTextField1 [JTextField] means that "jTextField1" is the variable name and "JTextField" is its type.

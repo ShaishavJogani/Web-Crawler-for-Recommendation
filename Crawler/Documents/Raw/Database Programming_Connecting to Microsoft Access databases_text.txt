@@ -1,0 +1,5 @@
+
+The following is used to open anODBCconnection to an Access database.  Note that the username (and password, if applicable) are given in the DSN rather than thegetConnectioncall.  This is a MS Windows-only example, due to the requirement for the Microsoft Access Driver.
+
+Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");Stringpath="C:/example.mdb";Stringdsn="jdbc:odbc:Driver={Microsoft Access Driver (*.mdb)};DBQ="+path+";UID=admin";accessConn=DriverManager.getConnection(dsn,"","");
+

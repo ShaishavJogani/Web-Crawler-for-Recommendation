@@ -1,0 +1,1 @@
+Exactly name sound , @ Inheritedannotation type inherit subclass annotated type . In example , Superclasshas explicitly annotate @ ForEveryoneand @ JustForMe.Subclasshas n't explicitly mark either one ; however , inherit @ ForEveryonebecause latter annotate @ Inherited . @ JustForMeis n't annotate , n't inherited bySubclass .

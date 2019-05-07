@@ -1,0 +1,9 @@
+
+
+The most basic form of pattern matching supported by this API is the match of a string literal. For example, if the regular expression is foo and the input string is foo, the match will succeed because the strings are identical. Try this out with the test harness:
+ 
+Enter your regex: foo
+Enter input string to search: foo
+I found the text foo starting at index 0 and ending at index 3.
+
+This match was a success. Note that while the input string is 3 characters long, the start index is 0 and the end index is 3. By convention, ranges are inclusive of the beginning index and exclusive of the end index, as shown in the following figure:

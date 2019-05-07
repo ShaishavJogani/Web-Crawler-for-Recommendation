@@ -1,0 +1,8 @@
+Integer sum = new Integer(0);
+for (Object age : ageList) {
+    sum = sum.add((Integer) age);
+}
+
+if (!ageList.isEmpty()) {
+    System.out.println("The average age is " + sum / ageList.size());
+}

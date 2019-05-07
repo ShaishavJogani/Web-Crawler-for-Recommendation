@@ -1,0 +1,1 @@
+Not native code interface Java , also draw aJava API : java.awt.Canvas , possible Java AWT Native Interface . The process almost , change . The Java AWT Native Interface available since J2SE 1.3 . 3D ProgrammingJava ProgrammingJava Native InterfaceInvoking C

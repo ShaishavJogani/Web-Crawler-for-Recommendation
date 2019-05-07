@@ -1,0 +1,42 @@
+
+The LDAP v3 (
+RFC 2251) defines an unsolicited notification, a message that is sent by an LDAP server to the client without any provocation from the client. An unsolicited notification is represented in the JNDI by the 
+UnsolicitedNotification interface.
+Because unsolicited notifications are sent asynchronously by the server, you can use the same 
+event model used for receiving notifications about namespace changes and object content changes. You register interest in receiving unsolicited notifications by registering an 
+UnsolicitedNotificationListener with an 
+EventContext or 
+EventDirContext.
+Here is 
+an example of an UnsolicitedNotificationListener.
+
+public class UnsolListener implements UnsolicitedNotificationListener {
+    public void notificationReceived(UnsolicitedNotificationEvent evt) {
+        System.out.println("received: " + evt);
+    }
+
+    public void namingExceptionThrown(NamingExceptionEvent evt) {
+        System.out.println(">>> UnsolListener got an exception");
+            evt.getException().printStackTrace();
+    }
+}
+
+Following is 
+an example that registers an implementation of UnsolicitedNotificationListener with an event source. Note that only the listener argument to 
+EventContext.addNamingListener() is relevant. The name and scope parameters are not relevant to unsolicited notifications.
+
+// Get the event context for registering the listener
+EventContext ctx = (EventContext)
+    (new InitialContext(env).lookup("ou=People"));
+
+// Create the listener
+NamingListener listener = new UnsolListener();
+
+// Register the listener with the context (all targets equivalent)
+ctx.addNamingListener("", EventContext.ONELEVEL_SCOPE, listener);
+
+When running this program, you need to point it at an LDAP server that can generate unsolicited notifications and prod the server to emit the notification. Otherwise, after one minute the program will exit silently.
+A listener that implements UnsolicitedNotificationListener can also implement other 
+NamingListener interfaces, such as 
+NamespaceChangeListener and 
+ObjectChangeListener.

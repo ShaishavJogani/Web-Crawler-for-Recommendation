@@ -1,0 +1,7 @@
+
+By now, you might truly be able to grasp the power of the Java programming language. With Java, there are many possibilities. Yet not every programmer gets to program applications that take unmanned vehicles onto other planets. Software that we encounter in our daily life is somewhat humble in that respect. Software in Java, however, covers a vast area of the computing ecosphere. Here are just a few examples of the ubiquitous nature of Java applications in real-life:
+
+OpenOffice.org, a desktop office management suite that rivals the Microsoft Office suite has been written in Java.The popular building gameMinecraftis written in Java.Online browser-based games likeRunescape, a 3D massively multi-player online role playing game (MMORPG), run on graphics routines, 3D rendering and networking capabilities powered by the Java programming language.Two of the world's renowned digital video recorders,TiVoand BSkyB'sSky+use built-in live television recording software to record, rewind and play your favorite television shows. These applications make extensive use of the Java programming language.
+
+The above mentioned applications illustrate the reach and ubiquity of Java applications. Here's another fact: almost 80% of mobile phone vendors adopt Java as their primary platform for the development of applications. The most widely used mobile-based operating system,Android, uses Java as one of its key application platforms — developers are encouraged to develop applications for Android in the Java programming language.
+

@@ -1,0 +1,3 @@
+public class 哈嘍世界 {
+    private String 文本 = "哈嘍世界";
+}

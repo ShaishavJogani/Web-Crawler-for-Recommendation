@@ -1,0 +1,39 @@
+
+To generate a self-contained application bundle for each platform on which your application runs, you must run the packaging tool on each platform. You have the option of using platform-specific build files or setting up one build file that can be run on all platforms. Platform-specific files can be simpler to set up, but then you must maintain multiple files.
+The File Association Demo described in 
+Using File Associations uses a single build file that works on all platforms. 
+The following elements of the build file support its use for all platforms: 
+
+The main class for the application is ScriptRunnerApplication.java for Linux and Windows and ScriptRunnerApplicationMac.java for OS X. The following code in the -pre-init task is used to determine which class to use:
+
+<condition property="main.class" 
+           value="sample.fa.ScriptRunnerApplication"
+           else="sample.fa.ScriptRunnerApplicationMac">
+    <not><os family="mac"/></not>
+</condition>
+
+
+The following code in the -pre-init task is used to prevent the main class for OS X from being compiled when running on Linux or Windows:
+
+<condition property="excludes" value="**/*Mac.java">
+    <not><os family="mac"/></not>
+</condition>
+
+
+<fx:bundleArgument> elements are used to pass arguments to the different bundlers available. Arguments that are not used by a bundler are ignored, so the build file can contain the arguments needed by all platforms. The following code defines arguments for Linux, OS X, and Windows:
+
+<fx:bundleArgument arg="classpath" value="FileAssociationsDemo.jar lib/groovy-all-2.3.8.jar"/>
+
+<fx:bundleArgument arg="win.exe.systemWide" value="true"/>
+
+<fx:bundleArgument arg="linux.bundleName" value="file-association-demo"/>
+<fx:bundleArgument arg="email" value="maintainer@example.com"/>
+<fx:bundleArgument arg="mac.CFBundleName" value="File Assoc Demo"/>
+<fx:bundleArgument arg="win.menuGroup" value="Java Demos"/>
+
+
+
+See 
+build.xml for the complete build code.
+You can download the source files for the File Association Demo from 
+Self-Contained Application Examples.

@@ -1,0 +1,1 @@
+The implementation ofjava.util.Mapinterface use represent mapping `` key '' `` value '' object . A Map represent group `` key '' object , `` key '' object map `` value '' object . ExampleFor patient , one one main nurse assign . That association represent `` patient-nurse '' Map .

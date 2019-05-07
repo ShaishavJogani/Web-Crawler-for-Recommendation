@@ -1,0 +1,1 @@
+In Java applet , graphical portion initialize add two different area . While object initialize main class , add layout applet theinit ( ) method . This use syntax ofadd ( < object > ) . A typicalinit ( ) method look something like : The different aspect method cover .

@@ -1,0 +1,1 @@
+Here example RMI client : To : Add exercise like one inVariables Client ServerJava ProgrammingRemote Method InvocationEJB

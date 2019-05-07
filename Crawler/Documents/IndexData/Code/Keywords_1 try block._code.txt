@@ -1,0 +1,9 @@
+try {
+  // ...
+} catch (MyException1 e) {
+  // Handle the Exception1 here
+} catch (MyException2 e) {
+  // Handle the Exception2 here
+} finally {
+  // This will always be executed no matter what happens
+}

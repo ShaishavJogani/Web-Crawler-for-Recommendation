@@ -1,0 +1,1 @@
+The language distinguish byte character . Characters store internally use UCS-2 , although J2SE 5.0 , language also support use UTF-16 surrogate . Java program source may therefore contain Unicode character . The following thus perfectly valid Java code ; contain Chinese character class andvariablenames well stringliteral :

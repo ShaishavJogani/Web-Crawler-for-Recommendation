@@ -1,0 +1,23 @@
+
+In concatenation operations, the values in brackets are concatenated first. Then the values are concatenated from the left to the right. Be careful when mixing character literals and integers in String concatenation operations:
+
+
+The unexpected results arise because'1'and'0'are converted twice. The expression is concatenated as such:
+
+"120? " + one + '2' + zero"120? " +49+ '2' +48"120? 49"+ '2'+ 48"120? 492"+ 48"120? 49248"
+
+oneandzeroare integers. So they store integer values. The integer value of'1'is 49 and the integer value of'0'is 48.So the first concatenation concatenates"120? "and49.49is first converted into String, yielding"49"and the concatenation returns the string"120? 49".The second concatenation concatenates"120? 49"and'2'.'2'is converted into the String"2"and the concatenation returns the string"120? 492".The concatenation between"120? 492"and'0'returns the string"120? 49248".
+
+Thecode section 66yields the desired result:
+
+
+
+
+
+Arithmetic expressionsJava ProgrammingLiteralsMethods
+
+
+
+
+
+

@@ -1,0 +1,105 @@
+
+A Java applet can communicate with other Java applets by using JavaScript functions in the parent web page. JavaScript functions enable communication between applets by receiving messages from one applet and invoking methods of other applets. See the following topics for more information about the interaction between Java code and JavaScript code:
+
+
+Invoking JavaScript Code From an Applet
+
+Invoking Applet Methods From JavaScript Code
+
+You should avoid using the following mechanisms to find other applets and share data between applets:
+
+Avoid using static variables to share data between applets.
+Do not use the getApplet and getApplets methods of the 
+AppletContext class to find other applets. These methods only find applets that are running in the same instance of the Java Runtime Environment software.
+
+Applets must originate from the same directory on the server in order to communicate with each other.
+The Sender and Receiver applets are shown next. When a user clicks the button to increment the counter, the Sender applet invokes a JavaScript function to send a request to the Receiver applet. Upon receiving the request, the Receiver applet increments a counter variable and displays the value of the variable.
+
+
+//<![CDATA[
+        function sendMsgToIncrementCounter() {
+            var myReceiver = document.getElementById("receiver");
+            myReceiver.incrementCounter();
+        } 
+//]]>
+A browser with JavaScript enabled is required for this page to operate properly.
+Sender Applet
+
+
+//<![CDATA[
+ 
+    var attributes = { code:'Sender.class',
+        archive:'examples/dist/applet_SenderReceiver/applet_SenderReceiver.jar',  width:300, height:50} ;
+    var parameters = { permissions:'sandbox' };
+    deployJava.runApplet(attributes, parameters, '1.6');
+//]]>
+
+
+
+Receiver Applet
+
+//<![CDATA[
+ 
+    var attributes = { id:'receiver', code:'Receiver.class',
+        archive:'examples/dist/applet_SenderReceiver/applet_SenderReceiver.jar',  width:300, height:50} ;
+    var parameters = { permissions:'sandbox' };
+    deployJava.runApplet(attributes, parameters, '1.6');
+//]]>
+
+Note:  If you don't see the applet running, you need to install at least the Java SE Development Kit (JDK) 6 update 10 release.Note:  If you don't see the example running, you might need to enable the JavaScript interpreter in your browser so that the Deployment Toolkit script can function properly.
+To enable communication with another applet, obtain a reference to an instance of the netscape.javascript.JSObject class. Use this instance to invoke JavaScript functions. The 
+Sender applet uses an instance of the netscape.javascript.JSObject class to invoke a JavaScript function called sendMsgToIncrementCounter.
+
+try {
+    JSObject window = JSObject.getWindow(this);
+    window.eval("sendMsgToIncrementCounter()");
+} catch (JSException jse) {
+    // ...
+}
+
+Note: To compile Java code that has a reference to classes in the netscape.javascript package, include <your JDK path>/jre/lib/plugin.jar in your classpath. At runtime, the Java Plug-in software automatically makes these classes available to applets.
+
+Write the JavaScript function that will receive requests from one applet and invoke methods of another applet on the web page. The sendMsgToIncrementCounter JavaScript function invokes the Receiver applet's incrementCounter method.
+
+<script>
+    function sendMsgToIncrementCounter() {
+        var myReceiver = document.getElementById("receiver");
+        myReceiver.incrementCounter();
+    } 
+<script>
+
+Note that the JavaScript code uses the name receiver to obtain a reference to the Receiver applet on the web page. This name should be the same as the value of the id attribute that is specified when you deploy the Receiver applet.
+The 
+Receiver applet's incrementCounter method is shown next.
+
+public void incrementCounter() {
+    ctr++;
+    String text = " Current Value Of Counter: "
+        + (new Integer(ctr)).toString();
+    ctrLbl.setText(text);
+}
+
+Deploy the applets on the web page as shown in the following code snippet. You can view the Sender and Receiver applets and associated JavaScript code in 
+AppletPage.html.
+
+<!-- Sender Applet -->
+<script src="https://www.java.com/js/deployJava.js"></script>
+<script> 
+    var attributes = { code:'Sender.class',
+        archive:'examples/dist/applet_SenderReceiver/applet_SenderReceiver.jar',
+        width:300, height:50} ;
+    var parameters = { permissions:'sandbox' };
+    deployJava.runApplet(attributes, parameters, '1.6');
+</script>
+
+<!-- Receiver Applet -->
+<script> 
+    var attributes = { id:'receiver', code:'Receiver.class',
+        archive:'examples/dist/applet_SenderReceiver/applet_SenderReceiver.jar',
+        width:300, height:50} ;
+    var parameters = { permissions:'sandbox' };
+    deployJava.runApplet(attributes, parameters, '1.6');
+</script>
+
+
+Download source code for the Sender Receiver Applets example to experiment further.

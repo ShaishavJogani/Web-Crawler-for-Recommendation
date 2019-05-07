@@ -1,0 +1,18 @@
+
+trycatchfinallythrowsthrow
+
+
+
+
+
+To do:Add some exercises like the ones inVariables
+
+
+
+ExceptionsJava ProgrammingThrowing and Catching ExceptionsChecked Exceptions
+
+
+
+
+
+

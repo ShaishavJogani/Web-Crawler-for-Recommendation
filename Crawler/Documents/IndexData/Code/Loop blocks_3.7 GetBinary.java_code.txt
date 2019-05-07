@@ -1,0 +1,38 @@
+public class GetBinary {
+    public static void main(String[] args) {
+        if (args.length == 0) {
+            // Print usage
+            System.out.println("Usage: java GetBinary <decimal integer>");
+            System.exit(0);
+        } else {
+            // Print arguments
+            System.out.println("Received " + args.length + " arguments.");
+            System.out.println("The arguments are:");
+            for (String arg : args) {
+                System.out.println("\t" + arg);
+            }
+        }
+
+        int number = 0;
+        String binary = "";
+
+        // Get the input number
+        try {
+            number = Integer.parseInt(args[0]);
+        } catch (NumberFormatException ex) {
+            System.out.println("Error: argument must be a base-10 integer.");
+            System.exit(0);
+        }
+
+        // Convert to a binary string
+        do {
+            switch (number % 2) {
+                case 0: binary = '0' + binary; break;
+                case 1: binary = '1' + binary; break;
+            }
+            number >>= 1;
+        } while (number > 0);
+
+        System.out.println("The binary representation of " + args[0] + " is " + binary);
+    }
+}

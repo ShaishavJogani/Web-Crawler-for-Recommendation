@@ -1,0 +1,1 @@
+primitive typeOne type require allocation stack , int , byte , long .

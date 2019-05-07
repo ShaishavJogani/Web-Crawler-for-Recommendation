@@ -1,0 +1,11 @@
+
+A method contains executable code which may be invoked. Methods are inherited and in non-reflective code behaviors such as overloading, overriding, and hiding are enforced by the compiler. In contrast, reflective code makes it possible for method selection to be restricted to a specific class without considering its superclasses. Superclass methods may be accessed but it is possible to determine their declaring class; this is impossible to discover programmatically without reflection and is the source of many subtle bugs.
+The 
+java.lang.reflect.Method class provides APIs to access information about a method's modifiers, return type, parameters, annotations, and thrown exceptions. It also be used to invoke methods. These topics are covered by the following sections:
+
+Obtaining Method Type Information shows how to enumerate methods declared in a class and obtains type information
+Obtaining Names of Method Parameters shows how to retrieve names and other information of a method or constructor's parameters
+Retrieving and Parsing Method Modifiers describes how to access and decode modifiers and other information associated with the method
+Invoking Methods illustrates how to execute a method and obtain its return value
+Troubleshooting covers common errors encountered when finding or invoking methods
+

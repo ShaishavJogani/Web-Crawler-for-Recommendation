@@ -1,0 +1,9 @@
+
+At times, you would like to re-iterate a loop without executing the remaining statement within the loop. Thecontinuestatement causes the loop to re-iterate and start over from the top most statement inside
+the loop.
+Where there is an ability to re-iterate the loop, there is an ability to exit the loop when required. At any given
+moment, if you'd like to exit a loop and end all further work within the loop, thebreakought to be
+used.
+Thecontinueandbreakstatements can be used with a label like follows:
+
+

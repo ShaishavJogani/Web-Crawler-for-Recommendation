@@ -1,0 +1,1 @@
+The System class implement number system utility . Some already cover previous section Configuration Utilities . This section cover system utility .

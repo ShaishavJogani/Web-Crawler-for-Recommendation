@@ -1,0 +1,5 @@
+public class OneClass {
+    public int method1(String parameter) {
+        return 1;
+    }
+}

@@ -1,0 +1,7 @@
+public class MyProgram {
+
+  public static void main(String[] args) {
+    // Create an 'MyObject' for the first time the application started
+    MyObject obj = new MyObject();
+  }
+}

@@ -1,0 +1,1 @@
+Going number dimensional array define . elementType [ ] [ ] ... [ ] arrayName elementTypearrayName [ ] [ ] ... [ ] PackagesJava ProgrammingArraysMathematical function

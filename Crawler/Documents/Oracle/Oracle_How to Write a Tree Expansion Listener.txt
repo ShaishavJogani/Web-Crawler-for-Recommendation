@@ -1,0 +1,101 @@
+
+Sometimes when using a 
+tree, you might need to react when a branch becomes expanded or collapsed. For example, you might need to load or save data.
+Two kinds of listeners report expansion and collapse occurrences: tree expansion listeners and tree-will-expand listeners. This page discusses tree expansion listeners. See How to Write a Tree-Will-Expand Listener for a description of Tree-Will-Expand listeners.
+A tree expansion listener detects when an expansion or collapse has already occured. In general, you should implement a tree expansion listener unless you need to prevent an expansion or collapse from ocurring .
+ 
+This example demonstrates a simple tree expansion listener. The text area at the bottom of the window displays a message every time a tree expansion event occurs. It's a straightforward, simple demo. To see a more interesting version that can veto expansions, see How to Write a Tree-Will-Expand Listener.
+Try this: 
+Click the Launch button to run TreeExpandEventDemo using 
+Java™ Web Start (download JDK 7 or later). Alternatively, to compile and run the example yourself, consult the example index.
+Expand a node. A tree-expanded event is fired.
+Collapse the node. A tree-collapsed event is fired.
+
+
+The following code shows how the program handles expansion events. You can find the source code for this example in 
+TreeExpandEventDemo.java.
+
+public class TreeExpandEventDemo ... {
+    ...
+    void saySomething(String eventDescription, TreeExpansionEvent e) {
+        textArea.append(eventDescription + "; "
+                        + "path = " + e.getPath()
+                        + newline);
+    }
+
+    class DemoArea ... implements TreeExpansionListener {
+        ...
+        public DemoArea() {
+            ...
+            tree.addTreeExpansionListener(this);
+            ...
+        }
+        ...
+        // Required by TreeExpansionListener interface.
+        public void treeExpanded(TreeExpansionEvent e) {
+            saySomething("Tree-expanded event detected", e);
+        }
+
+        // Required by TreeExpansionListener interface.
+        public void treeCollapsed(TreeExpansionEvent e) {
+            saySomething("Tree-collapsed event detected", e);
+        }
+    }
+}
+
+The Tree Expansion Listener API
+The TreeExpansionListener Interface
+TreeExpansionListener has no adapter class.
+
+
+Method
+Purpose
+
+
+
+treeCollapsed(TreeExpansionEvent)
+Called just after a tree node collapses.
+
+
+
+treeExpanded(TreeExpansionEvent)
+Called just after a tree node expands.
+
+
+The TreeExpansionEvent API
+
+
+Method
+Purpose
+
+
+
+Object getSource()
+Return the object that fired the event.
+
+
+
+TreePath getPath()
+Returns a 
+TreePath object that identifies each node from the root of the tree to the collapsed/expanded node, inclusive.
+
+
+Examples that Use Tree Expansion Listeners
+The following table lists the examples that use tree expansion listeners.
+
+
+Example
+Where Described
+Notes
+
+
+TreeExpandEventDemo
+This section
+Displays a message whenever a tree expansion event occurs.
+
+
+TreeExpandEventDemo2
+How to Write a Tree-Will-Expand Listener
+Adds a tree-will-expand listener to TreeExpandEventDemo.
+
+

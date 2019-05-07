@@ -1,0 +1,24 @@
+
+Write a program that calculates the current checking account balance, based on user input.
+
+Inputs:
+Ask user for account number and name.
+Ask user for opening balance.
+Ask user for up to 5 debit transactions, user can stop entering by typing -1.
+Ask user for up to 5 credit transactions, user can stop entering by typing -1.
+
+Processing:
+Calculate new balance.
+
+Output:
+[Account number] - [Customer first name] [Customer last name]
+Original Balance: [Original balance]
+Debits: [Number of debits]
+Debit Total: [Debit total]
+Credits: [Number of credits]
+Credit Total: [Credit total]
+Balance: [Current account balance]
+
+
+
+

@@ -1,0 +1,9 @@
+
+Strings areimmutable; that is, they cannot be modified once created. Whenever it looks as if a String object was modified actually a new String object was created. For instance, theString.trim()method returns the string with leading and trailing whitespace removed. Actually, it creates a new trimmed string and then returns it. Pay attention on what happens inCode section 3.82:
+
+
+Thetrim()method call does not modify the object so nothing happens. It creates a new trimmed string and then throws it away.
+
+
+The returned string is assigned to the variable. It does the job as thetrim()method has created a newStringinstance.
+

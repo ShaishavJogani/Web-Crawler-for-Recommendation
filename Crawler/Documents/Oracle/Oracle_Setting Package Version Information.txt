@@ -1,0 +1,79 @@
+
+You may need to include package version information in a JAR file's manifest. You provide this information with the following headers in the manifest:
+
+Headers in a manifest
+
+Header
+Definition
+
+
+Name
+The name of the specification.
+
+
+Specification-Title
+The title of the specification.
+
+
+Specification-Version
+The version of the specification.
+
+
+Specification-Vendor
+The vendor of the specification.
+
+
+Implementation-Title
+The title of the implementation.
+
+
+Implementation-Version
+The build number of the implementation.
+
+
+Implementation-Vendor
+The vendor of the implementation.
+
+
+One set of such headers can be assigned to each package. The versioning headers should appear directly beneath the Name header for the package. This example shows all the versioning headers:
+
+Name: java/util/
+Specification-Title: Java Utility Classes
+Specification-Version: 1.2
+Specification-Vendor: Example Tech, Inc.
+Implementation-Title: java.util
+Implementation-Version: build57
+Implementation-Vendor: Example Tech, Inc.
+
+For more information about package version headers, see the 
+Package Versioning specification .
+An Example
+We want to include the headers in the example above in the manifest of MyJar.jar.
+We first create a text file named Manifest.txt with the following contents:
+
+Name: java/util/
+Specification-Title: Java Utility Classes
+Specification-Version: 1.2
+Specification-Vendor: Example Tech, Inc.
+Implementation-Title: java.util 
+Implementation-Version: build57
+Implementation-Vendor: Example Tech, Inc.
+
+Warning: The text file must end with a new line or carriage return. The last line will not be parsed properly if it does not end with a new line or carriage return.
+
+We then create a JAR file named MyJar.jar by entering the following command:
+
+jar cfm MyJar.jar Manifest.txt MyPackage/*.class
+
+This creates the JAR file with a manifest with the following contents:
+
+Manifest-Version: 1.0
+Created-By: 1.7.0_06 (Oracle Corporation)
+Name: java/util/
+Specification-Title: Java Utility Classes
+Specification-Version: 1.2
+Specification-Vendor: Example Tech, Inc.
+Implementation-Title: java.util 
+Implementation-Version: build57
+Implementation-Vendor: Example Tech, Inc.
+

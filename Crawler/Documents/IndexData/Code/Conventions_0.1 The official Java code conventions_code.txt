@@ -1,0 +1,5 @@
+if (foo == bar) {
+    // do stuff
+} else {
+    // do other stuff
+}

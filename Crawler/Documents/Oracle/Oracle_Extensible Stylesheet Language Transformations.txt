@@ -1,0 +1,3 @@
+
+The Extensible Stylesheet Language Transformations (XSLT) standard defines mechanisms for addressing XML data (XPath) and for specifying transformations on the data in order to convert it into other forms. JAXP includes an interpreting implementation of XSLT.
+In this lesson, you will write out a Document Object Model as an XML file, and you will see how to generate a DOM from an arbitrary data file in order to convert it to XML. Finally, you will convert XML data into a different form, learning about the XPath addressing mechanism along the way.

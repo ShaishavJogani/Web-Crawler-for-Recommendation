@@ -1,0 +1,54 @@
+
+A field may be either of primitive or reference type. There are eight primitive types: boolean, byte, short, int, long, char, float, and double. A reference type is anything that is a direct or indirect subclass of 
+java.lang.Object including interfaces, arrays, and enumerated types.
+The 
+FieldSpy example prints the field's type and generic type given a fully-qualified binary class name and field name.
+
+
+import java.lang.reflect.Field;
+import java.util.List;
+
+public class FieldSpy<T> {
+    public boolean[][] b = {{ false, false }, { true, true } };
+    public String name  = "Alice";
+    public List<Integer> list;
+    public T val;
+
+    public static void main(String... args) {
+	try {
+	    Class<?> c = Class.forName(args[0]);
+	    Field f = c.getField(args[1]);
+	    System.out.format("Type: %s%n", f.getType());
+	    System.out.format("GenericType: %s%n", f.getGenericType());
+
+        // production code should handle these exceptions more gracefully
+	} catch (ClassNotFoundException x) {
+	    x.printStackTrace();
+	} catch (NoSuchFieldException x) {
+	    x.printStackTrace();
+	}
+    }
+}
+
+Sample output to retrieve the type of the three public fields in this class (b, name, and the parameterized type list), follows. User input is in italics.
+
+$ java FieldSpy FieldSpy b
+Type: class [[Z
+GenericType: class [[Z
+$ java FieldSpy FieldSpy name
+Type: class java.lang.String
+GenericType: class java.lang.String
+$ java FieldSpy FieldSpy list
+Type: interface java.util.List
+GenericType: java.util.List<java.lang.Integer>
+$ java FieldSpy FieldSpy val
+Type: class java.lang.Object
+GenericType: T
+
+The type for the field b is two-dimensional array of boolean. The syntax for the type name is described in 
+Class.getName().
+The type for the field val is reported as java.lang.Object because generics are implemented via type erasure which removes all information regarding generic types during compilation. Thus T is replaced by the upper bound of the type variable, in this case, java.lang.Object.
+
+Field.getGenericType() will consult the 
+Signature Attribute in the class file if it's present. If the attribute isn't available, it falls back on 
+Field.getType() which was not changed by the introduction of generics. The other methods in reflection with name getGenericFoo for some value of Foo are implemented similarly.

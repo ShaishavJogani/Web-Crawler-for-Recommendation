@@ -1,0 +1,10 @@
+int a = 4;
+int b = 0;
+int result = 0;
+try {
+  int c = a / b;
+  result = c;
+} catch(ArithmeticException ex) {
+  result = 0;
+}
+return result;

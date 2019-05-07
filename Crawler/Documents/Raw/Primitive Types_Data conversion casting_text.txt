@@ -1,0 +1,16 @@
+
+Data conversion (casting) can happen between two primitive types. There are two kinds of casting:
+
+Implicit: casting operation is not required; the magnitude of the numeric value is always preserved. However,precisionmay be lost when converting from integer to floating point typesExplicit: casting operation required; the magnitude of the numeric value may not be preserved
+
+
+
+The following table shows the conversions between primitive types, it shows the casting operation for explicit conversions:
+
+frombytefromcharfromshortfromintfromlongfromfloatfromdoublefrombooleantobyte-(byte)(byte)(byte)(byte)(byte)(byte)N/Atochar-(char)(char)(char)(char)(char)N/Atoshort(short)-(short)(short)(short)(short)N/Atoint-(int)(int)(int)N/Atolong-(long)(long)N/Atofloat-(float)N/Atodouble-N/AtobooleanN/AN/AN/AN/AN/AN/AN/A-
+
+Unlike C, C++ and similar languages, Java can't representfalseas0ornulland can't representtrueas non-zero. Java can't cast from boolean to a non-boolean primitive data type, or vice versa.
+For non primitive types:
+
+to Integerto Floatto Doubleto Stringto ArrayInteger-(float)x(double)xx.doubleValue()x.toString()Float.toString(x)new int[] {x}Floatjava.text.DecimalFormat("#").format(x)-(double)xx.toString()new float[] {x}Doublejava.text.DecimalFormat("#").format(x)java.text.DecimalFormat("#").format(x)-x.toString()new double[] {x}StringInteger.parseInt(x)Float.parseFloat(x)Double.parseDouble(x)-new String[] {x}Arrayx[0]x[0]x[0]Arrays.toString(x)-
+

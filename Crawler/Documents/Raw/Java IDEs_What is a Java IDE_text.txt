@@ -1,0 +1,3 @@
+
+A Java IDE (forIntegrated Development Environment) is a software application which enables users to more easily write and debug Java programs. Many IDEs provide features likesyntax highlightingand code completion, which help the user to code more easily.
+

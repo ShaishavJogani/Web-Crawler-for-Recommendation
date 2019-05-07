@@ -1,0 +1,7 @@
+
+Throughout this chapter, we will refer to the process of creating Graphical content with code as either drawing or painting. However, Java officially recognizes the latter as the proper word for the process, but we will differentiate between the two later on.
+Now, the main class that you would be needing would, without doubt, be theGraphicsclass. If you take a closer look at the method that we used in theIdentifying the acquisition of theGraphicsclass in our code
+
+
+To view the contents of theGraphicsclass, please check theexternal linksat the bottom of the page for links to the online API.
+

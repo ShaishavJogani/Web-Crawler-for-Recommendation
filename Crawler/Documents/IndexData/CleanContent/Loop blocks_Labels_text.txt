@@ -1,0 +1,1 @@
+Labels use give name loop . The reason break continue upper-level loop nested loop . Here label loop : label name : loop To break continue loop , use thebreakorcontinuekeyword follow name loop . For example : You need n't worry n't understand code , look label use break outer loop inner loop . However , code hard read maintain , highly recommended use label .

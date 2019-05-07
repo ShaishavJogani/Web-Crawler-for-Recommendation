@@ -1,0 +1,10 @@
+public class Plane extends Vehicle {
+    // ...
+    public void run() throws Exception {
+        if (0 < height) {
+           throw new Exception("A plane can't run in flight.");
+        } else {
+           super.run();
+        }
+    }
+}

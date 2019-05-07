@@ -1,0 +1,1 @@
+CapabilitiesTest demonstrate different buffering capability available machine run . DisplayModeTest show Swing application use passive rendering . If full-screen exclusive mode available , enter full-screen exclusive mode . If display mode change allow , allow switch display mode . MultiBufferTest enters full-screen mode use multi-buffering active render loop .

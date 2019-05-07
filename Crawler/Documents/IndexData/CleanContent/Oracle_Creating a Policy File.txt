@@ -1,0 +1,1 @@
+This lesson show policy file , control resource access , create . The step lesson : Set Up Policy File Grant Required Permission

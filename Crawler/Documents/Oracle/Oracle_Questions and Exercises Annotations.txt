@@ -1,0 +1,43 @@
+
+Questions
+
+
+What is wrong with the following interface?
+
+public interface House {
+    @Deprecated
+    void open();
+    void openFrontDoor();
+    void openBackDoor();
+}
+
+
+
+Consider this implementation of the House interface, shown in Question 1.
+
+public class MyHouse implements House {
+    public void open() {}
+    public void openFrontDoor() {}
+    public void openBackDoor() {}
+}
+
+If you compile this program, the compiler produces a warning because open was deprecated (in the interface). What can you do to get rid of that warning?
+
+
+Will the following code compile without error? Why or why not?
+
+public @interface Meal { ... }
+
+@Meal("breakfast", mainDish="cereal")
+@Meal("lunch", mainDish="pizza")
+@Meal("dinner", mainDish="salad")
+public void evaluateDiet() { ... }
+
+
+
+Exercises
+
+Define an annotation type for an enhancement request with elements id, synopsis, engineer, and date. Specify the default value as unassigned for engineer and unknown for date.
+
+
+Check your answers.

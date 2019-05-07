@@ -1,0 +1,357 @@
+
+The following sections describe how to customize generated JAXB classes and Java program elements.
+Schema-to-Java
+Custom JAXB binding declarations enable you to customize your generated JAXB classes beyond the XML-specific constraints in an XML schema to include Java-specific refinements, such as class and package name mappings. 
+JAXB provides two ways to customize an XML schema:
+
+As inline annotations in a source XML schema
+As declarations in an external binding customization file that is passed to the JAXB binding compiler
+
+Code examples that show how to customize JAXB bindings are provided later in this document.
+Java-to-Schema
+The JAXB annotations defined in the javax.xml.bind.annotation
+package can be used to customize Java program elements to XML schema mapping. The following table summarizes the JAXB annotations that can be used with a Java package.
+Table: JAXB Annotations Associated with a Java Package
+
+
+Annotation
+Description and Default Setting
+
+
+@XmlSchema
+Maps a package to an XML target namespace.Default settings:
+
+@XmlSchema ( 
+    xmlns = {}, 
+    namespace = "", 
+    elementFormDefault = XmlNsForm.UNSET, 
+    attributeFormDefault = XmlNsForm.UNSET
+)
+
+
+
+
+@XmlAccessorType
+Controls default serialization of fields and properties.
+Default settings:
+
+@XmlAccessorType (
+    value = AccessType.PUBLIC_MEMBER 
+)
+
+
+
+@XmlAccessorOrder
+Controls the default ordering of properties and fields mapped to XML elements. 
+Default settings:
+
+@XmlAccessorOrder (
+    value = AccessorOrder.UNDEFINED
+)
+
+
+
+
+@XmlSchemaType
+Allows a customized mapping to an XML Schema built-in type. 
+Default settings:
+
+@XmlSchemaType (
+    namespace = 
+    "http://www.w3.org/2001/XMLSchema", 
+    type = DEFAULT.class
+)
+
+
+
+
+@XmlSchemaTypes
+A container annotation for defining multiple @XmlSchemaType annotations. 
+Default settings:None
+
+
+
+
+The following table summarizes JAXB annotations that can be used with a Java class.
+Table: JAXB Annotations Associated with a Java Class
+
+
+Annotation
+Description and Default Setting
+
+
+@XmlType
+Maps a Java class to a schema type. 
+Default settings:
+
+@XmlType (
+    name = "##default", 
+    propOrder = {""}, 
+    namespace = "##default", 
+    factoryClass = DEFAULT.class, 
+    factoryMethod = ""
+)
+
+
+
+
+@XmlRootElement
+Associates a global element with the schema type to which the class is mapped.
+Default settings:
+
+@XmlRootElement (
+    name = "##default", 
+    namespace = "##default" 
+)
+
+
+
+
+
+The following table summarizes JAXB annotations that can be used with a Java enum type.
+Table: JAXB Annotations Associated with a Java enum
+Type
+
+
+Annotation
+Description and Default Setting
+
+
+@XmlEnum
+Maps a Java type to an XML simple type.
+Default settings:
+
+@XmlEnum ( value = String.class )
+
+
+
+
+@XmlEnumValue
+Maps a Java type to an XML simple type.
+ Default settings:None
+
+
+
+@XmlType
+Maps a Java class to a schema type. 
+Default settings:
+ 
+@XmlType (
+    name = "##default", 
+    propOrder = {""}, 
+    namespace = "##default", 
+    factoryClass = DEFAULT.class, 
+    factoryMethod = ""
+)
+
+
+
+
+@XmlRootElement
+Associates a global element with the schema type to which the class is mapped. 
+Default settings:
+
+@XmlRootElement (
+    name = "##default", 
+    namespace = "##default" 
+)
+
+
+
+
+
+The following table summarizes JAXB annotations that can be used with Java properties and fields.
+Table: JAXB Annotations Associated with Java Properties
+and Fields
+
+
+Annotation
+Description and Default Setting
+
+
+@XmlElement
+Maps a JavaBeans property or field to an XML element derived from a property or field name. 
+Default settings:
+
+@XmlElement (
+    name = "##default", 
+    nillable = false, 
+    namespace = "##default", 
+    type = DEFAULT.class, 
+    defaultValue = "\u0000"
+)
+
+
+
+
+@XmlElements
+A container annotation for defining multiple @XmlElement annotations. 
+Default settings:None
+
+
+
+@XmlElementRef
+Maps a JavaBeans property or field to an XML element derived from a property or field’s type. 
+Default settings:
+
+@XmlElementRef (
+    name = "##default", 
+    namespace = "##default", 
+    type = DEFAULT.class
+)
+
+
+
+
+@XmlElementRefs
+A container annotation for defining multiple @XmlElementRef annotations. 
+Default settings:None
+
+
+
+@XmlElementWrapper
+Generates a wrapper element around an XML representation. It is typically used as a wrapper XML element around collections.
+Default settings:
+
+@XmlElementWrapper (
+    name = "##default", 
+    namespace = "##default", 
+    nillable = false
+)
+
+
+
+
+@XmlAnyElement
+Maps a JavaBeans property to an XML infoset representation or a JAXB element. 
+Default settings:
+
+@XmlAnyElement (
+    lax = false, 
+    value = W3CDomHandler.class
+)
+
+
+
+
+@XmlAttribute
+Maps a JavaBeans property to an XML attribute. 
+Default settings:
+
+@XmlAttribute (
+    name = ##default, 
+    required = false, 
+    namespace = "##default" 
+)
+
+
+
+
+@XmlAnyAttribute
+Maps a JavaBeans property to a map of wildcard attributes. 
+Default settings:None
+
+
+
+@XmlTransient
+Prevents the mapping of a JavaBeans property to an XML representation. 
+Default settings:None
+
+
+
+@XmlValue
+Defines mapping of a class to an XML Schema complex type with a simpleContent or an XML Schema simple type. 
+Default settings:None
+
+
+
+@XmlID
+Maps a JavaBeans property to an XML ID. 
+Default settings:None
+
+
+
+@XmlIDREF
+Maps a JavaBeans property to an XML IDREF. 
+Default settings:None
+
+
+
+@XmlList
+Maps a property to a list simple type. 
+Default settings:None
+
+
+
+@XmlMixed
+Marks a JavaBeans multi-valued property to support mixed content. 
+Default settings:None
+
+
+
+@XmlMimeType
+Associates the MIME type that controls the XML representation of the property. 
+Default settings:None
+
+
+
+@XmlAttachmentRef
+Marks a field/property that its XML form is a URI reference to mime content. 
+Default settings:None
+
+
+
+@XmlInlineBinaryData
+Disables consideration of XOP encoding for data types that are bound to base64-encoded binary data in XML. 
+Default settings:None
+
+
+
+
+The following table summarizes the JAXB annotation that can be used with object factories.
+Table: JAXB Annotations Associated with Object Factories
+
+
+Annotation
+Description and Default Setting
+
+
+@XmlElementDecl
+Maps a factory method to an XML element.
+Default settings:
+
+@XmlElementDecl (
+    scope = GLOBAL.class, 
+    namespace = "##default", 
+    substitutionHeadNamespace = "##default", 
+    substitutionHeadName = ""
+)
+
+
+
+
+
+The following table summarizes JAXB annotations that can be used with adapters.
+Table: JAXB Annotations Associated with Adapters
+
+
+Annotation
+Description and Default Setting
+
+
+@XmlJavaTypeAdapter
+Use the adapter that implements the @XmlAdapter annotation for custom marshalling. 
+Default settings:
+
+@XmlJavaTypeAdapter ( type = DEFAULT.class )
+
+
+
+
+@XmlJavaTypeAdapters
+A container annotation for defining multiple 
+@XmlJavaTypeAdapter annotations at the package level.
+Default settings:	None 
+
+
+

@@ -1,0 +1,19 @@
+public class MyClass {
+
+  private String memberField;
+ 
+  /**
+   * MyClass Constructor, there is no input parameter
+   */
+  public MyClass() {
+     ...
+  }
+ 
+  /**
+   * MyClass Constructor, there is one input parameter
+   */
+   public MyClass(String param1) {
+     memberField = param1;
+     ...
+  }
+}

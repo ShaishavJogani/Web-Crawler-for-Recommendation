@@ -1,0 +1,68 @@
+
+Methods in thejava.lang.Objectclass are inherited, and thus shared in common by all classes.
+
+Theclonemethod[edit]
+
+Thejava.lang.Object.clone()method returns a new object that is a copy of the current object.  Classes must implement the marker interfacejava.lang.Cloneableto indicate that they can be cloned.
+
+Theequalsmethod[edit]
+
+Thejava.lang.Object.equals(java.lang.Object)method compares the object to another object and returns abooleanresult indicating if the two objects are equal.  Semantically, this method compares the contents of the objects whereas the equality comparison operator "==" compares the object references.  Theequalsmethod is used by many of the data structure classes in thejava.utilpackage.  Some of these data structure classes also rely on theObject.hashCodemethod—see thehashCodemethod for details on the contract betweenequalsandhashCode. Implementing equals() isn't always as easy as it seems, see 'Secrets of equals()' for more information.
+
+Thefinalizemethod[edit]
+
+Thejava.lang.Object.finalize()method is called exactly once before the garbage collector frees the memory for object.  A class overridesfinalizeto perform any clean up that must be performed before an object is reclaimed.  Most objects do not need to overridefinalize.
+There is no guarantee when thefinalizemethod will be called, or the order in which thefinalizemethod will be called for multiple objects.  If the JVM exits without performing garbage collection, the OS may free the objects, in which case thefinalizemethod doesn't get called.
+Thefinalizemethod should always be declaredprotectedto prevent other classes from calling thefinalizemethod.
+
+protected void finalize() throws Throwable { ... }
+
+ThegetClassmethod[edit]
+
+Thejava.lang.Object.getClass()method returns thejava.lang.Classobject for the class that was used to instantiate the object.  The class object is the base class ofreflectionin Java.  Additional reflection support is provided in thejava.lang.reflectpackage.
+
+ThehashCodemethod[edit]
+
+Thejava.lang.Object.hashCode()method returns an integer (int). This integer can be used to distinguish objects although not completely. It quickly separates most of the objects and those with the samehash codeare separated later in another way. It is used by the classes that provide associative arrays, for instance, those that implement thejava.util.Mapinterface
+. They use thehash codeto store the object in the associative array. A goodhashCodeimplementation will return a hash code:
+
+Stable: does not changeEvenly distributed: the hash codes of unequal objects tend to be unequal and the hash codes are evenly distributed across integer values.
+
+The second point means that two different objects can have the samehash codeso two objects with the samehash codearenot necessarily the same!
+Since associative arrays depend on both theequalsandhashCodemethods, there is an important contract between these two methods that must be maintained if the objects are to be inserted into aMap:
+
+For two objectsaandba.equals(b) == b.equals(a)ifa.equals(b)thena.hashCode() == b.hashCode()butifa.hashCode() == b.hashCode()thena.equals(b)
+
+In order to maintain this contract, a class that overrides theequalsmethod must also override thehashCodemethod, and vice versa, so thathashCodeis based on the same properties (or a subset of the properties) asequals.
+A further contract that the map has with the object is that the results of thehashCodeandequalsmethods will not change once the object has been inserted into the map.  For this reason, it is generally a good practice to base the hash function on immutable properties of the object.
+
+ThetoStringmethod[edit]
+
+Thejava.lang.Object.toString()method returns ajava.lang.Stringthat contains a text representation of the object.  ThetoStringmethod is implicitly called by the compiler when an object operand is used with the string concatenation operators (+and+=).
+
+The wait and notify thread signaling methods[edit]
+
+Every object has two wait lists for threads associated with it.  One wait list is used by thesynchronizedkeyword to acquire the mutex lock associated with the object.  If the mutex lock is currently held by another thread, the current thread is added to the list of blocked threads waiting on the mutex lock.  The other wait list is used for signaling between threads accomplished through thewaitandnotifyandnotifyAllmethods.
+Use of wait/notify allows efficient coordination of tasks between threads.  When one thread needs to wait for another thread to complete an operation, or needs to wait until an event occurs, the thread can suspend its execution and wait to be notified when the event occurs.  This is in contrast to polling, where the thread repeatedly sleeps for a short period of time and then checks a flag or other condition indicator.  Polling is both more computationally expensive, as the thread has to continue checking, and less responsive since the thread won't notice the condition has changed until the next time to check.
+
+Thewaitmethods[edit]
+
+There are three overloaded versions of thewaitmethod to support different ways to specify the timeout value:java.lang.Object.wait(),java.lang.Object.wait(long)andjava.lang.Object.wait(long, int).  The first method uses a timeout value of zero (0), which means that the wait does not timeout; the second method takes the number of milliseconds as a timeout; the third method takes the number of nanoseconds as a timeout, calculated as1000000 * timeout + nanos.
+The thread callingwaitis blocked (removed from the set of executable threads) and added to the object's wait list.  The thread remains in the object's wait list until one of three events occurs:
+
+another thread calls the object'snotifyornotifyAllmethod;another thread calls the thread'sjava.lang.Thread.interruptmethod; ora non-zero timeout that was specified in the call towaitexpires.
+
+Thewaitmethod must be called inside of a block or method synchronized on the object.  This insures that there are no race conditions betweenwaitandnotify.  When the thread is placed in the wait list, the thread releases the object's mutex lock.  After the thread is removed from the wait list and added to the set of executable threads, it must acquire the object's mutex lock before continuing execution.
+
+ThenotifyandnotifyAllmethods[edit]
+
+Thejava.lang.Object.notify()andjava.lang.Object.notifyAll()methods remove one or more threads from an object's wait list and add them to the set of executable threads.notifyremoves a single thread from the wait list, whilenotifyAllremoves all threads from the wait list.  Which thread is removed bynotifyis unspecified and dependent on the JVM implementation.
+The notify methods must be called inside of a block or method synchronized on the object.  This insures that there are no race conditions betweenwaitandnotify.
+
+
+
+API/java.lang.StringJava ProgrammingClasses, Objects and TypesPackages
+
+
+
+

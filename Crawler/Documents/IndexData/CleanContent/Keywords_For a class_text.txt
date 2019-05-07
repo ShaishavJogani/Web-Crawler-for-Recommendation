@@ -1,0 +1,1 @@
+Thefinalkeyword forbid creation subclass . It case theIntegerorStringclass . A final class beabstract . Thefinalkeyword similar tosealedkeyword inC # .

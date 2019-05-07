@@ -1,0 +1,14 @@
+
+Remember thatStringobjects are immutable objects. Once aStringis created, it can not be modified, takes up memory until garbage collected. Be careful of writing a method like this:
+
+
+On the+operation a newStringobject is created at each iteration. Supposewordscontains the elements["Foo", "Bar", "Bam", "Baz"]. At runtime, the method creates thirteenStrings:
+
+"""Foo"" ""Foo ""Foo Bar"" ""Foo Bar ""Foo Bar Bam"" ""Foo Bar Bam ""Foo Bar Bam Baz"" ""Foo Bar Bam Baz "
+
+Even though only the last one is actually useful.
+To avoid unnecessary memory use like this, use theStringBuilderclass. It provides similar functionality toStrings, but stores its data in a mutable way. Only oneStringBuilderobject is created. Also because object creation is time consuming, usingStringBuilderproduces much faster code.
+
+
+AsStringBuilderisn't thread safe (see the chapter onConcurrency) you can't use it in more than one thread. For a multi-thread environment, useStringBufferinstead which does the same and is thread safe. However,StringBufferis slower so only use it when it is required. Moreover, before Java 5 onlyStringBufferexisted.
+

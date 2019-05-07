@@ -1,0 +1,82 @@
+
+By implementing a tree model listener, you can detect when the data displayed by a 
+tree changes. You can use a tree model listener to detect when the user edits tree nodes. All notifications describe changes relative to a node in the tree. For details, read 
+Dynamically Changing a Tree.
+The Tree Model Listener API
+The TreeModelListener Interface
+TreeModelListener has no adapter class.
+
+
+Method
+Purpose
+
+
+
+treeNodesChanged(TreeModelEvent)
+Called when one or more sibling nodes have changed in some way.
+
+
+
+treeNodesInserted(TreeModelEvent)
+Called after nodes have been inserted into the tree.
+
+
+
+treeNodesRemoved(TreeModelEvent)
+Called after nodes have been removed from the tree.
+
+
+
+treeStructureChanged(TreeModelEvent)
+Called after the tree's structure has drastically changed from the current node on down. This event applies to all nodes connected to this node.
+
+
+The TreeModelEvent API
+
+
+Method
+Purpose
+
+
+
+Object getSource()
+(in java.util.EventObject)
+Return the object that fired the event.
+
+
+
+int[] getChildIndices()
+For treeNodesChanged, treeNodesInserted, and treeNodesRemoved, returns the indices of the changed, inserted, or deleted nodes, respectively. Returns nothing useful for treeStructureChanged.
+
+
+
+Object[] getChildren()
+Returns the objects corresponding to the child indices.
+
+
+
+Object[] getPath()
+Returns the path to the parent of the changed, inserted, or deleted nodes. For treeStructureChanged, returns the path to the node beneath which the structure has changed.
+
+
+
+TreePath getTreePath()
+Returns the same thing as getPath, but as a 
+TreePath object.
+
+
+Examples that Use Tree Model Listeners
+The following table lists the examples that use tree expansion listeners.
+
+
+Example
+Where Described
+Notes
+
+
+DynamicTreeDemo
+
+How to Use Trees
+The DynamicTree class implements a tree model listener to detect when the user has edited a node's data.
+
+

@@ -1,0 +1,16 @@
+
+The@Targetmeta-annotation determines what may be marked by the annotation. Thevalueattribute is one or more of thejava.lang.annotation.ElementTypeenum constants. Those constants areElementType.ANNOTATION_TYPE,CONSTRUCTOR,FIELD,LOCAL_VARIABLE,METHOD,PACKAGE,PARAMETER, andTYPE.
+If@Targetis not specified, the annotation may be used on any program element.
+
+
+
+
+To do:Add some exercises like the ones inVariables
+
+
+
+
+
+
+
+

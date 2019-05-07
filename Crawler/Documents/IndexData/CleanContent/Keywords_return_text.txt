@@ -1,0 +1,1 @@
+returnis Java keyword . Returns primitive value , object reference , nothing ( void ) . It return object value , object reference . Syntax : returnvariable ; // -- - Returns variable orreturn ; // -- - Returns nothing

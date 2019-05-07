@@ -1,0 +1,1 @@
+Over year , feature C/C++ programming become abuse programmer . Although language allow , know bad practice . So creator Java disable : Operator overloadingMultiple inheritanceFriend class ( access another object 's private member ) Restrictions explicit type casting ( relate memory management )

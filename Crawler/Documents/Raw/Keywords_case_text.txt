@@ -1,0 +1,6 @@
+
+caseis a Java keyword.
+This is part of theswitchstatement, to find if the value passed to the switch statement matches a value followed by case.
+For example:
+
+

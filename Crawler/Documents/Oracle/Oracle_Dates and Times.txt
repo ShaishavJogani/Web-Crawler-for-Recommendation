@@ -1,0 +1,13 @@
+
+Version note: This Date and Time section uses the date and time APIs in the java.util package. The java.time APIs, available in the JDK 8 release, provides a comprehensive date and time model that offers significant improvements over the java.util classes. The java.time APIs are described in the 
+Date Time trail. The
+Legacy Date-Time Code page might be of particular interest.
+
+Date objects represent dates and times. You cannot display or print a Date object without first converting it to a String that is in the proper format. Just what is the "proper" format? First, the format should conform to the conventions of the end user's Locale. For example, Germans recognize 20.4.09 as a valid date, but Americans expect that same date to appear as 4/20/09. Second, the format should include the necessary information. For instance, a program that measures network performance may report on elapsed milliseconds. An online appointment calendar probably won't display milliseconds, but it will show the days of the week.
+This section explains how to format dates and times in various ways and in a locale-sensitive manner. If you follow these techniques your programs will display dates and times in the appropriate Locale, but your source code will remain independent of any specific Locale.
+Using Predefined Formats
+The DateFormat class provides predefined formatting styles that are locale-specific and easy to use.
+Customizing Formats
+With the SimpleDateFormat class, you can create customized, locale-specific formats.
+Changing Date Format Symbols
+Using the DateFormatSymbols class, you can change the symbols that represent the names of months, days of the week, and other formatting elements.

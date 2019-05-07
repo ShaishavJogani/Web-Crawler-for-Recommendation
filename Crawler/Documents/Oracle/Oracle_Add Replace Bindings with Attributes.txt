@@ -1,0 +1,86 @@
+
+The naming examples discussed how you can use 
+bind(), rebind(). The 
+DirContext interface contains overloaded versions of these methods that accept attributes. You can use these DirContext methods to associate attributes with the object at the time that the binding or subcontext is added to the namespace. For example, you might create a Person object and bind it to the namespace and at the same time associate attributes about that Person object.
+Adding a Binding That Has Attributes
+
+DirContext.bind() is used to add a binding that has attributes to a context. It accepts as arguments the name of the object, the object to be bound, and a set of attributes.
+
+// Create the object to be bound
+Fruit fruit = new Fruit("orange");
+
+// Create attributes to be associated with the object
+Attributes attrs = new BasicAttributes(true); // case-ignore
+Attribute objclass = new BasicAttribute("objectclass");
+objclass.add("top");
+objclass.add("organizationalUnit");
+attrs.put(objclass);
+
+// Perform bind
+ctx.bind("ou=favorite, ou=Fruits", fruit, attrs);
+
+
+This example creates an object of class 
+
+Fruit
+ and binds it to the name "ou=favorite" into the context named "ou=Fruits", relative to ctx. This binding has the "objectclass" attribute. If you subsequently looked up the name "ou=favorite, ou=Fruits" in ctx, then you would get the fruit object. If you then got the attributes of "ou=favorite, ou=Fruits", you would get those attributes with which the object was created. Following is this example's output.
+
+# java Bind
+orange
+attribute: objectclass
+value: top
+value: organizationalUnit
+value: javaObject
+value: javaNamingReference
+attribute: javaclassname
+value: Fruit
+attribute: javafactory
+value: FruitFactory
+attribute: javareferenceaddress
+value: #0#fruit#orange
+attribute: ou
+value: favorite
+
+The extra attributes and attribute values shown are used to store information about the object (fruit). These extra attributes are discussed in more detail in the 
+ trail.
+If you were to run this example twice, then the second attempt would fail with a 
+NameAlreadyBoundException. This is because the name "ou=favorite" is already bound in the "ou=Fruits" context. For the second attempt to succeed, you would have to use rebind().
+Replacing a Binding That Has Attributes
+
+DirContext.rebind() is used to add or replace a binding and its attributes. It accepts the same arguments as bind(). However, rebind()'s semantics require that if the name is already bound, then it will be unbound and the newly given object and attributes will be bound.
+
+// Create the object to be bound
+Fruit fruit = new Fruit("lemon");
+
+// Create attributes to be associated with the object
+Attributes attrs = new BasicAttributes(true); // case-ignore
+Attribute objclass = new BasicAttribute("objectclass");
+objclass.add("top");
+objclass.add("organizationalUnit");
+attrs.put(objclass);
+
+// Perform bind
+ctx.rebind("ou=favorite, ou=Fruits", fruit, attrs);
+
+When you run 
+this example
+, it replaces the binding that the 
+bind()
+ example created.
+
+# java Rebind
+lemon
+attribute: objectclass
+value: top
+value: organizationalUnit
+value: javaObject
+value: javaNamingReference
+attribute: javaclassname
+value: Fruit
+attribute: javafactory
+value: FruitFactory
+attribute: javareferenceaddress
+value: #0#fruit#lemon
+attribute: ou
+value: favorite
+

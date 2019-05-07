@@ -1,0 +1,3 @@
+public void addAtBottom(Collection anyCollection) {
+  anyCollection.add(new Integer(1));
+}

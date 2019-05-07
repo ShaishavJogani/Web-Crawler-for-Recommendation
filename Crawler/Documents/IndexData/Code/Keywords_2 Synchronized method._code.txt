@@ -1,0 +1,4 @@
+public synchronized void method() {
+   // Thread.currentThread() has a lock on this object, i.e. a synchronized method is the same as
+   // calling { synchronized(this) {…} }.
+}

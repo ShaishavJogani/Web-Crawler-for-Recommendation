@@ -1,0 +1,2 @@
+/* This is a comment. */
+String statement = "This is not a comment.";

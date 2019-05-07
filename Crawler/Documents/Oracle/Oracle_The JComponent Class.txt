@@ -1,0 +1,434 @@
+
+With the exception of top-level containers, all Swing components whose names begin with "J" descend from the 
+JComponent class. For example, JPanel, JScrollPane, JButton, and JTable all inherit from JComponent. However, JFrame and JDialog don't because they implement top-level containers.
+The JComponent class extends the 
+Container class, which itself extends 
+Component. The Component class includes everything from providing layout hints to supporting painting and events. The Container class has support for adding components to the container and laying them out. This section's API tables summarize the most often used methods of Component and Container, as well as of JComponent. 
+JComponent Features
+The JComponent class provides the following functionality to its descendants:
+
+Tool tips
+Painting and borders
+Application-wide pluggable look and feel
+Custom properties
+Support for layout
+Support for accessibility
+Support for drag and drop
+Double buffering
+Key bindings
+
+
+Tool tips
+By specifying a string with the setToolTipText method, you can provide help to users of a component. When the cursor pauses over the component, the specified string is displayed in a small window that appears near the component. See How to Use Tool Tips for more information.
+Painting and borders
+The setBorder method allows you to specify the border that a component displays around its edges. To paint the inside of a component, override the paintComponent method. See 
+How to Use Borders and 
+Performing Custom Painting for details.
+Application-wide pluggable look and feel
+Behind the scenes, each JComponent object has a corresponding ComponentUI object that performs all the drawing, event handling, size determination, and so on for that JComponent. Exactly which ComponentUI object is used depends on the current look and feel, which you can set using the UIManager.setLookAndFeel method. See 
+How to Set the Look and Feel for details.
+Custom properties
+You can associate one or more properties (name/object pairs) with any JComponent. For example, a layout manager might use properties to associate a constraints object with each JComponent it manages. You put and get properties using the putClientProperty and getClientProperty methods. For general information about properties, see 
+Properties.
+Support for layout
+Although the Component class provides layout hint methods such as getPreferredSize and getAlignmentX, it doesn't provide any way to set these layout hints, short of creating a subclass and overriding the methods. To give you another way to set layout hints, the JComponent class adds setter methods — 
+setMinimumSize, setMaximumSize, setAlignmentX, and setAlignmentY. See 
+Laying Out Components Within a Container for more information.
+Support for accessibility
+The JComponent class provides API and basic functionality to help assistive technologies such as screen readers get information from Swing components, For more information about accessibility, see 
+How to Support Assistive Technologies.
+Support for drag and drop
+The JComponent class provides API to set a component's transfer handler, which is the basis for Swing's drag and drop support. See 
+Introduction to DnD for details.
+Double buffering
+Double buffering smooths on-screen painting. For details, see 
+Performing Custom Painting.
+Key bindings
+This feature makes components react when the user presses a key on the keyboard. For example, in many look and feels when a button has the focus, typing the Space key is equivalent to a mouse click on the button. The look and feel automatically sets up the bindings between pressing and releasing the Space key and the resulting effects on the button. For more information about key bindings, see 
+How to Use Key Bindings.
+
+The JComponent API
+The JComponent class provides many new methods and inherits many methods from Component and Container. The following tables summarize the methods we use the most.
+
+Customizing Component Appearance
+Setting and Getting Component State
+Handling Events
+Painting Components
+Dealing with the Containment Hierarchy
+Laying Out Components
+Getting Size and Position Information
+Specifying Absolute Size and Position
+
+
+
+Customizing Component Appearance
+
+Method
+Purpose
+
+
+
+void setBorder(Border)
+Border getBorder()
+Set or get the border of the component. See 
+How to Use Borders for details.
+
+
+
+void setForeground(Color)
+void setBackground(Color)
+Set the foreground or background color for the component. The foreground is generally the color used to draw the text in a component. The background is (not surprisingly) the color of the background areas of the component, assuming that the component is opaque.
+
+
+
+Color getForeground()
+Color getBackground()
+Get the foreground or background color for the component.
+
+
+
+void setOpaque(boolean)
+boolean isOpaque()
+Set or get whether the component is opaque. An opaque component fills its background with its background color.
+
+
+
+void setFont(Font)
+Font getFont()
+Set or get the component's font. If a font has not been set for the component, the font of its parent is returned.
+
+
+
+
+void setCursor(Cursor)
+Cursor getCursor()
+Set or get the cursor displayed over the component and all components it contains (except for children that have their own cursor set). Example: aPanel.setCursor( Cursor.getPredefinedCursor( Cursor.WAIT_CURSOR));
+
+
+
+Setting and Getting Component State
+
+Method
+Purpose
+
+
+
+void setComponentPopupMenu(JPopupMenu)
+Sets the JPopupMenu for this JComponent. The UI is responsible for registering bindings and adding the necessary listeners such that the JPopupMenu will be shown at the appropriate time. When the JPopupMenu is shown depends upon the look and feel: some may show it on a mouse event, some may enable a key binding.
+
+If popup is null, and getInheritsPopupMenu returns true, then getComponentPopupMenu will be delegated to the parent. This provides for a way to make all child components inherit the popupmenu of the parent.
+
+
+
+void setTransferHandler(TransferHandler)
+TransferHandler getTransferHandler()
+Set or remove the transferHandler property. The TransferHandler supports exchanging data via cut, copy, or paste to/from a clipboard as well a drag and drop. See 
+Introduction to DnD for more details.
+
+
+
+void setToolTipText(String)
+Set the text to display in a tool tip. See How to Use Tool Tips for more information.
+
+
+
+void setName(String)
+String getName()
+Set or get the name of the component. This can be useful when you need to associate text with a component that does not display text.
+
+
+
+boolean isShowing()
+Determine whether the component is showing on screen. This means that the component must be visible, and it must be in a container that is visible and showing.
+
+
+
+void setEnabled(boolean)
+boolean isEnabled()
+Set or get whether the component is enabled. An enabled component can respond to user input and generate events.
+
+
+
+void setVisible(boolean)
+boolean isVisible()
+Set or get whether the component is visible. Components are initially visible, with the exception of top-level components.
+
+
+
+Handling Events
+(see 
+Writing Event Listeners for details)
+
+Method
+Purpose
+
+
+
+void addHierarchyListener(hierarchyListener l)
+void removeHierarchyListener(hierarchyListener l)
+Adds or removes the specified hierarchy listener to receive hierarchy changed events from this component when the hierarchy to which this container belongs changes. If listener l is null, no exception is thrown and no action is performed.
+
+
+
+void addMouseListener(MouseListener)
+void removeMouseListener(MouseListener)
+Add or remove a 
+mouse listener to or from the component. Mouse listeners are notified when the user uses the mouse to interact with the listened-to component.
+
+
+
+void addMouseMotionListener(MouseMotionListener)
+void removeMouseMotionListener(MouseMotionListener)
+Add or remove a 
+mouse motion listener to or from the component. Mouse motion listeners are notified when the user moves the mouse within the listened-to component's bounds.
+
+
+
+void addKeyListener(KeyListener)
+void removeKeyListener(KeyListener)
+Add or remove a 
+key listener to or from the component. Key listeners are notified when the user types at the keyboard and the listened-to component has the keyboard focus.
+
+
+
+void addComponentListener(ComponentListener)
+void removeComponentListener(ComponentListener)
+Add or remove a 
+component listener to or from the component. Component listeners are notified when the listened-to component is hidden, shown, moved, or resized.
+
+
+
+boolean contains(int, int)
+boolean contains(Point)
+Determine whether the specified point is within the component. The argument should be specified in terms of the component's coordinate system. The two int arguments specify x and y coordinates, respectively.
+
+
+
+Component getComponentAt(int, int)
+Component getComponentAt(Point)
+Return the component that contains the specified x, y position. The top-most child component is returned in the case where components overlap. This is determined by finding the component closest to the index 0 that claims to contain the given point via Component.contains().
+
+
+
+
+Component setComponentZOrder(component comp, int index)
+Moves the specified component to the specified z-order index in the container.
+
+If the component is a child of some other container, it is removed from that container before being added to this container. The important difference between this method and java.awt.Container.add(Component, int) is that this method doesn't call removeNotify on the component while removing it from its previous container unless necessary and when allowed by the underlying native windowing system. This way, if the component has the keyboard focus, it maintains the focus when moved to the new position.
+
+Note:  The z-order determines the order that components are painted. The component with the highest z-order paints first and the component with the lowest z-order paints last. Where components overlap, the component with the lower z-order paints over the component with the higher z-order.
+
+
+
+Component getComponentZOrder(component comp)
+Returns the z-order index of the component inside the container. The higher a component is in the z-order hierarchy, the lower its index. The component with the lowest z-order index is painted last, above all other child components.
+
+
+
+Painting Components
+(see 
+Performing Custom Painting for details)
+
+Method
+Purpose
+
+
+
+void repaint()
+void repaint(int, int, int, int)
+Request that all or part of the component be repainted. The four int arguments specify the bounds (x, y, width, height, in that order) of the rectangle to be painted.
+
+
+
+void repaint(Rectangle)
+Request that the specified area within the component be repainted.
+
+
+
+void revalidate()
+Request that the component and its affected containers be laid out again. You should not generally need to invoke this method unless you explicitly change a component's size/alignment hints after it's visible or change a containment hierarchy after it is visible. Always invoke repaint after revalidate.
+
+
+
+void paintComponent(Graphics)
+Paint the component. Override this method to implement painting for custom components.
+
+
+
+Dealing with the Containment Hierarchy
+(see 
+Using Top-Level Containers for more information)
+
+Method
+Purpose
+
+
+
+Component add(Component)
+Component add(Component, int)
+void add(Component, Object)
+Add the specified component to this container. The one-argument version of this method adds the component to the end of the container. When present, the int argument indicates the new component's position within the container. When present, the Object argument provides layout constraints to the current layout manager.
+
+
+
+void remove(int)
+void remove(Component)
+void removeAll()
+Remove one of or all of the components from this container. When present, the int argument indicates the position within the container of the component to remove.
+
+
+
+JRootPane getRootPane()
+Get the root pane that contains the component.
+
+
+
+Container getTopLevelAncestor()
+Get the topmost container for the component — a Window, Applet, or null if the component has not been added to any container.
+
+
+
+Container getParent()
+Get the component's immediate container.
+
+
+
+int getComponentCount()
+Get the number of components in this container.
+
+
+
+Component getComponent(int)
+Component[] getComponents()
+Get the one of or all of the components in this container. The int argument indicates the position of the component to get.
+
+
+
+Component getComponentZOrder(int)
+Component[] getComponentZOrder()
+Returns the z-order index of the component inside the container. The higher a component is in the z-order hierarchy, the lower its index. The component with the lowest z-order index is painted last, above all other child components.
+
+
+
+
+Laying Out Components
+(see 
+Laying Out Components Within a Container for more information)
+
+Method
+Purpose
+
+
+
+void setPreferredSize(Dimension)
+void setMaximumSize(Dimension)
+void setMinimumSize(Dimension)
+Set the component's preferred, maximum, or minimum size, measured in pixels. The preferred size indicates the best size for the component. The component should be no larger than its maximum size and no smaller than its minimum size. Be aware that these are hints only and might be ignored by certain layout managers.
+
+
+
+Dimension getPreferredSize()
+Dimension getMaximumSize()
+Dimension getMinimumSize()
+Get the preferred, maximum, or minimum size of the component, measured in pixels. Many JComponent classes have setter and getter methods. For those non-JComponent subclasses, which do not have the corresponding setter methods, you can set a component's preferred, maximum, or minimum size by creating a subclass and overriding these methods.
+
+
+
+void setAlignmentX(float)
+void setAlignmentY(float)
+Set the alignment along the x- or y- axis. These values indicate how the component would like to be aligned relative to other components. The value should be a number between 0 and 1 where 0 represents alignment along the origin, 1 is aligned the furthest away from the origin, and 0.5 is centered, and so on. Be aware that these are hints only and might be ignored by certain layout managers.
+
+
+
+float getAlignmentX()
+float getAlignmentY()
+Get the alignment of the component along the x- or y- axis. For non-JComponent subclasses, which do not have the corresponding setter methods, you can set a component's alignment by creating a subclass and overriding these methods.
+
+
+
+void setLayout(LayoutManager)
+LayoutManager getLayout()
+Set or get the component's layout manager. The layout manager is responsible for sizing and positioning the components within a container.
+
+
+
+void applyComponentOrientation(ComponentOrientation)
+void setComponentOrientation(ComponentOrientation)
+Set the ComponentOrientation property of this container and all the components contained within it. See 
+Setting the Container's Orientation for more information.
+
+
+
+Getting Size and Position Information
+
+Method
+Purpose
+
+
+
+int getWidth()
+int getHeight()
+Get the current width or height of the component measured in pixels.
+
+
+
+Dimension getSize()
+Dimension getSize(Dimension)
+Get the component's current size measured in pixels. When using the one-argument version of this method, the caller is responsible for creating the Dimension instance in which the result is returned.
+
+
+
+int getX()
+int getY()
+Get the current x or y coordinate of the component's origin relative to the parent's upper left corner measured in pixels.
+
+
+
+Rectangle getBounds()
+Rectangle getBounds(Rectangle)
+Get the bounds of the component measured in pixels. The bounds specify the component's width, height, and origin relative to its parent. When using the one-argument version of this method, the caller is responsible for creating the Rectangle instance in which the result is returned.
+
+
+
+Point getLocation()
+Point getLocation(Point)
+Gets the current location of the component relative to the parent's upper left corner measured in pixels. When using the one-argument version of getLocation method, the caller is responsible for creating the Point instance in which the result is returned.
+
+
+
+Point getLocationOnScreen()
+Returns the position relative to the upper left corner of the screen.
+
+
+
+Insets getInsets()
+Get the size of the component's border.
+
+
+
+Specifying Absolute Size and Position
+(see 
+Doing Without a Layout Manager (Absolute Positioning) for more information)
+
+Method
+Purpose
+
+
+
+void setLocation(int, int)
+void setLocation(Point)
+Set the location of the component, in pixels, relative to the parent's upper left corner. The two int arguments specify x and y, in that order. Use these methods to position a component when you are not using a layout manager.
+
+
+
+void setSize(int, int)
+void setSize(Dimension)
+Set the size of the component measured in pixels. The two int arguments specify width and height, in that order. Use these methods to size a component when you are not using a layout manager.
+
+
+
+void setBounds(int, int, int, int)
+void setBounds(Rectangle)
+Set the size and location relative to the parent's upper left corner, in pixels, of the component. The four int arguments specify x, y, width, and height, in that order. Use these methods to position and size a component when you are not using a layout manager.
+
+

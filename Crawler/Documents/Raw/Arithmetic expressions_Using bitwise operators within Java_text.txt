@@ -1,0 +1,22 @@
+
+Java has besides arithmetic operators a set of bit operators to manipulate the bits in a number, and a set of logical operators. The bitwise logical operators are
+
+OperatorFunctionValue ofx beforeExampleinputExampleoutputValue ofx after&Bitwise AND7x&2737|Bitwise OR7x|27317^Bitwise XOR7x^27287~Bitwise inversion7~x-87
+
+Besides these logical bitwise functions, there are also operators to assign numbers to variables (x = -5):
+
+OperatorFunctionExampleinputExample output&=Assignxbitwisely ANDed with another value to itselfx &= 33|=Assignxbitwisely ORed with another value to itselfx|= 3-5^=Assignxbitwisely XORed with another value to itselfx ^= 3-8<<=Assignxdivided by another integer to itselfx <<= 1-10>>=Assignxbitwisely negated with another value to itselfx >>= 1-3>>>=Assignxbitwisely negated with another value to itselfx >>>= 12,305,843,009,213,693,949 (64 bit)
+
+The shift operators are used to shift the bits to the left or right, which is also a quick way to multiply/divide by two:
+
+OperatorFunctionValue ofx beforeExampleinputExample outputValue ofx after<<Logical shift left-15x << 2-60-15>>Arithmetic shift right-15x >> 3-2-15>>>Logical shift right-15x >>> 32,305,843,009,213,693,937 (64 bit)-15
+
+
+
+Primitive TypesJava ProgrammingArithmetic expressionsLiterals
+
+
+
+
+
+

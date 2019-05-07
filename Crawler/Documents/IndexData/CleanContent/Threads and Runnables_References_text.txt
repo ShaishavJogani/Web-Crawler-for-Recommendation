@@ -1,0 +1,1 @@
+↑The number task run simultaneously single Java application depend many task operating system allow multithreaded . Daemon thread tutorial To : Add exercise like one inVariables Concurrent ProgrammingJava ProgrammingThreads RunnablesBasic Synchronization

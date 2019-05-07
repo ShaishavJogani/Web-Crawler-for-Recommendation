@@ -1,0 +1,8 @@
+public void methodC() throws CustomException, SomeException {
+  try {
+    methodB();
+  } catch(AnotherException e) {
+    // Handle caught exceptions.
+  }
+  methodA();
+}

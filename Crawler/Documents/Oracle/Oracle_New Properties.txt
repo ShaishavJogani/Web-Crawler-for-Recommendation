@@ -1,0 +1,61 @@
+
+
+JAXP 1.5 defines three new properties that can be used to regulate whether or not XML processors  resolve external resources as listed above. The properties are:
+
+javax.xml.XMLConstants.ACCESS_EXTERNAL_DTD
+javax.xml.XMLConstants.ACCESS_EXTERNAL_SCHEMA
+javax.xml.XMLConstants.ACCESS_EXTERNAL_STYLESHEET
+
+
+These API properties have corresponding system properties and jaxp.properties.
+ACCESS_EXTERNAL_DTD
+
+Name: http://javax.xml.XMLConstants/property/accessExternalDTD
+Definition: Restrict access to external DTDs, external Entity References to the protocols specified.
+Value: see Values of the Properties
+Default value: all,  connection permitted to all protocols.
+System property: javax.xml.accessExternalDTD
+
+ACCESS_EXTERNAL_SCHEMA
+
+Name: http://javax.xml.XMLConstants/property/accessExternalSchema
+Definition: restrict access to the protocols specified for external reference set by the schemaLocation attribute, Import and Include element.
+Value: see Values of the Properties
+Default value: all,  connection permitted to all protocols.
+System property: javax.xml.accessExternalSchema
+
+ACCESS_EXTERNAL_STYLESHEET
+
+Name: http://javax.xml.XMLConstants/property/accessExternalStylesheet
+Definition: restrict access to the protocols specified for external reference set by the stylesheet processing instruction, document function, Import and Include element.
+Value: see Values of the Properties
+Default value: all,  connection permitted to all protocols.
+System property: javax.xml.accessExternalStylesheet
+
+${java.home}/lib/jaxp.properties
+
+These properties can be specified in jaxp.properties to define the behavior for all applications using the Java Runtime. The format is property-name=[value][,value]*. For example:
+
+javax.xml.accessExternalDTD=file,http
+
+
+The property names are the same as those of the system properties: javax.xml.accessExternalDTD, javax.xml.accessExternalSchema, and javax.xml.accessExternalStylesheet.
+Values of the Properties
+
+All of the properties have values in the same format.
+
+Value: a list of protocols separated by comma. A protocol is the scheme portion of an URI, or in the case of the JAR protocol, "jar" plus the scheme portion separated by colon. A scheme is defined as:
+
+scheme = alpha *( alpha | digit | "+" | "-" | "." )
+where alpha = a-z and A-Z.
+
+And the JAR protocol:
+jar[:scheme]
+
+Protocols are case-insensitive. Any whitespaces as defined by Character.isSpaceChar in the value will be ignored. Examples of protocols are file, http, jar:file.
+
+Default value: the default value is implementation specific. In JAXP 1.5 RI, Java SE 7u40, and Java SE 8, the default value is all, granting permissions to all protocols.
+
+Granting all access: the keyword all grants permission to all protocols. For example, setting javax.xml.accessExternalDTD=all in jaxp.properties would allow a system to work as before with no restrictions on accessing external DTDs and Entity References.
+
+Denying any access: an empty string, that is, "", means no permission is granted to any protocol. For example, setting javax.xml.accessExternalDTD="" in jaxp.properties would instruct the JAXP processors to deny any external connections.

@@ -1,0 +1,7 @@
+try {
+  // Some code
+} catch (Exception e) {
+  // Optional exception handling
+} finally {
+  // This code is executed no matter what
+}

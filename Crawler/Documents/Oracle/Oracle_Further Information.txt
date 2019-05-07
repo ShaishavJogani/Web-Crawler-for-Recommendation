@@ -1,0 +1,48 @@
+
+
+For more information about StAX, see:
+
+
+
+Java Community Process page.
+
+
+W3C Recommendation
+Extensible Markup Language (XML) 1.0
+
+
+
+XML Information Set
+
+
+JAXB specification on jcp.org:
+JSR-222 Java Architecture for XML Binding (JAXB)
+
+
+W3C Recommendation
+Document Object Model
+
+
+SAX 
+Simple API for XML
+
+
+DOM
+Document Object Model
+
+
+W3C Recommendation
+Namespaces in XML
+
+
+For some useful articles about working with StAX, see:
+
+
+Jeff Ryan, 
+Does StAX Belong in Your XML Toolbox?
+
+
+Elliott Rusty Harold,
+An Introduction to StAX
+
+

@@ -1,0 +1,13 @@
+
+newis a Java keyword. It creates a Java object and allocates memory for it on the heap.newis also used for array creation, as arrays are also objects.
+Syntax:
+
+<JavaType> <variable> =new<JavaObject>();
+
+For example:
+
+
+See also:
+
+Java Programming/Creating Objects
+

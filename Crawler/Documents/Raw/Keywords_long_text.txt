@@ -1,0 +1,14 @@
+
+longis akeywordwhich designates the 64 bit signed integerprimitive type.
+Thejava.lang.Longclass is the nominal wrapper class when you need to store alongvalue but an object reference is required.
+Syntax:
+
+long<variable-name> = <integer-value>;
+
+For example:
+
+
+See also:
+
+Java Programming/Primitive Types
+

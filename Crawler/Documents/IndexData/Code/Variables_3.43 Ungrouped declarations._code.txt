@@ -1,0 +1,6 @@
+int a;
+int b;
+String c;
+a = 10;
+b = 20;
+c = "some text";

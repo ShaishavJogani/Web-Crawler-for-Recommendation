@@ -1,0 +1,32 @@
+
+
+The following table shows the default values and behaviors of the new properties in the JDK.
+
+
+Values of access properties
+Default Value
+Set FSP(a)
+jaxp.properties
+system property
+API property
+
+
+7u40
+all
+no change
+override
+override
+override
+
+
+JDK8
+all
+change to ""
+override
+override
+override
+
+
+(a) Set FSP means setting FEATURE_SECURE_PROCESSING explicitly using JAXP factories' setFeature method.
+(b) The only behavioral difference between 7u40 and JDK8 is that setting FSP will not change accessExternal* properties in 7u40, but will set the value to an empty string in JDK8. Setting FSP is considered opt-in in JDK8.
+(c) The order from left to right in the table reflects the overriding order. For example, if an accessExternal property is set through the API, it overrides any that may have been set by other means.

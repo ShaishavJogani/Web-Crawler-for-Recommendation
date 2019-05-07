@@ -1,0 +1,15 @@
+
+synchronizedis a keyword.
+It marks acritical section.  Acritical sectionis where one and only one thread is executing.  So to enter into the marked code the threads aresynchronized, only one can enter, the others have to wait. For more information seeSynchronizing Threads Methodsor[3].
+Thesynchronizedkeyword can be used in two ways:
+
+Create asynchronizedblockMark a methodsynchronized
+
+Asynchronizedblock is marked as:
+
+
+The syntax to mark a methodsynchronizedis:
+
+
+The synchronization is always associated to an object. If the method is static, the associated object is the class. If the method is non-static, the associated object is the instance. While it is allowed to declare anabstractmethod assynchronized, it is meaningless to do so since synchronization is an aspect of the implementation, not the declaration, and abstract methods do not have an implementation.
+

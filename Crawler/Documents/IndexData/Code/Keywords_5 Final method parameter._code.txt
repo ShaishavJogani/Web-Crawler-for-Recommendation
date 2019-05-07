@@ -1,0 +1,4 @@
+public int method(final int inputInteger) {
+   int outputInteger = inputInteger + 1;
+   return outputInteger;
+}

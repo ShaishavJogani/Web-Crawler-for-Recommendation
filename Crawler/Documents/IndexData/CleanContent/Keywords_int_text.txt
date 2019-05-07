@@ -1,0 +1,1 @@
+inti akeywordwhich designate 32 bit sign integerprimitive type . Thejava.lang.Integerclass nominal wrapper class need store anintvalue object reference require . Syntax : int < variable-name > = < integer-value > ; For example : See also : Java Programming/Primitive Types

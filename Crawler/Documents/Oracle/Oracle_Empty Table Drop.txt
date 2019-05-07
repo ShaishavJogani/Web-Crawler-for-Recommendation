@@ -1,0 +1,28 @@
+
+
+Dragging and dropping into an empty table presents a unique challenge. When adhering to the proper steps:
+
+Creating the empty table.
+Creating and attaching a TransferHandler.
+Enabling data transfer by calling setDragEnabled(true).
+Creating a scroll pane and adding the table to the scroll pane.
+
+You run the application and try to drag valid data into the table but it rejects the drop. What gives?
+The reason is that the empty table (unlike an empty list or an empty tree) does not occupy any space in the scroll pane. The JTable does not automatically stretch to fill the height of a JScrollPane's viewport — it only takes up as much vertical room as needed for the rows that it contains. So, when you drag over the empty table, you are not actually over the table and the drop fails.
+You can configure the table to allow drop anywhere in the view port by calling 
+JTable.setFillsViewportHeight(boolean). The default for this property is false to ensure backwards compatibility.
+The following example, FillViewportHeightDemo, allows you to experiment with dropping onto an empty table. The demo contains an empty table with five columns that has its drop mode set to insert rows and a drag source that provides five comma-delimited values that autoincrement.
+Try this: 
+Click the Launch button to run FillViewportHeightDemo using 
+Java™ Web Start (download JDK 7 or later). Alternatively, to compile and run the example yourself, consult the example index.
+Drag from the text field labeled "Drag from here" to the table.
+Drop onto the table. The drop is rejected.
+Double-click on the drag source. It deposits the current values (0, 0, 0, 0, 0) into the table and increments the values in the text field.
+Once again, drag from the text field to the table. You can insert above or below the row, but not in the area underneath.
+From the Options menu, choose "Fill Viewport Height" to enable the "fillsViewportHeight" property.
+From the Options menu, choose "Reset" to empty the table.
+Drag from the text component to the table. You can now drop anywhere on the view port and it inserts the data at row 0.
+
+
+You can examine the source for 
+FillViewportHeightDemo.java, but the primary point to remember is that you should generally invoke setFillsViewportHeight(true) on any table that will accept dropped data.

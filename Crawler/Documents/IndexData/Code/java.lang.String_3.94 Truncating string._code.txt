@@ -1,0 +1,2 @@
+String str = "coffee";
+System.out.println(str.substring(3));

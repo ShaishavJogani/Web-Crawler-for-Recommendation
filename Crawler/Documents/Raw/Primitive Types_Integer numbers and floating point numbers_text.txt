@@ -1,0 +1,10 @@
+
+The data types that one can use for integer numbers arebyte,short,intandlongbut when it comes to floating point numbers, we usefloatordouble. Now that we know that, we can modify the code in thecode section 3.53as:
+
+
+Why notfloat, you say? If we'd used afloat, we would have to append the number with afas a suffix, so10.5should be10.5fas in:
+
+
+Floating-point math never throws exceptions. Dividing a non-zero value by0equalsinfinity. Dividing a non-infinite value byinfinityequals0.
+
+

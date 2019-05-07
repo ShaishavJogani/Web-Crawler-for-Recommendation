@@ -1,0 +1,18 @@
+
+↑http://docs.oracle.com/javase/6/docs/technotes/tools/windows/javadoc.html#packagecomment
+
+
+
+
+
+To do:Add some exercises like the ones inVariables.
+
+
+
+AnnotationsJava ProgrammingJavadocAnnotations/Introduction
+
+
+
+
+
+

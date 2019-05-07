@@ -1,0 +1,8 @@
+
+In Java, anannotationis a language construct (introduced in J2SE 1.5) that provides a mechanism for including metadata directly in the source code.
+Annotations can provide metadata for Java classes, attributes, and methods. Syntactically, annotations can be viewed as a special kind of modifier and can be used anywhere that other modifiers (such aspublic,static, orfinal) can be used.
+One of the main forces of adding this feature to Java was the wide spread use of XML descriptors to add additional information, metadata, for Java classes. Frameworks like EJB, JSF, Spring, Hibernate were heavily using external XML descriptors. The problem of those external descriptors was that those files are out of reach of the Java compiler and for that reason compiler type checking could not be used. A small spelling mistake bug in a huge XML descriptor file is hard to locate and fix. On the other hand the Java annotations use the Java compiler type checking features so spelling mistakes in annotation names will be caught by the Java compiler.
+In summary, annotations can be...
+
+used as a source of information for the compiler;made available for compile-time or deployment-time processing;examined at runtime.
+

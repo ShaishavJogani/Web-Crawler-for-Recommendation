@@ -1,0 +1,40 @@
+/**
+ * Class that comprises of constant values & string utilities.
+ *
+ * @since 2013-09-05
+ * @version 2014-10-14
+ */
+public class StringUtils {
+	/** Dash or minus constant */
+	public static final char DASH = '-'; 
+	/** The exponent sign in a scientific number, or the capital letter E */
+	public static final char EXPONENT = 'E';
+	/** The full stop or period */
+	public static final char PERIOD = '.';
+	/** The zero string constant used at several places */
+	public static final String ZERO = "0";
+
+	/**
+	 * Removes all occurrences of the filter character in the text.
+	 *
+	 * @param text Text to be filtered
+	 * @param filter The character to be removed.
+	 * @return the string
+	 */
+	public static String filter(final String text, final String filter) {
+		final String[] words = text.split("[" + filter + "]");
+
+		switch (words.length) {
+			case 0: return text;
+			case 1: return words[0];
+			default:
+				final StringBuilder filteredText = new StringBuilder();
+
+				for (final String word : words) {
+					filteredText.append(word);
+				}
+
+				return filteredText.toString();
+		}
+	}
+}

@@ -1,0 +1,18 @@
+
+Each of the following pages describes how to use a particular kind of layout manager. Another way to get to these pages is through 
+A Visual Guide to Layout Managers.
+Note: This lesson covers writing layout code by hand, which can be challenging. If you are not interested in learning all the details of layout management, you might prefer to use the GroupLayout layout manager combined with a builder tool to lay out your GUI. One such builder tool is the 
+NetBeans IDE. Otherwise, if you want to code by hand and do not want to use GroupLayout, then GridBagLayout is recommended as the next most flexible and powerful layout manager.
+
+If you are interested in using JavaFX to create your GUI, see
+Working With Layouts in JavaFX.
+
+How to Use BorderLayout
+How to Use BoxLayout
+How to Use CardLayout
+How to Use FlowLayout
+How to Use GridBagLayout
+How to Use GridLayout
+How to Use GroupLayout
+How to Use SpringLayout
+

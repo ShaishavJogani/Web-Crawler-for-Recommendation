@@ -1,0 +1,7 @@
+
+Notes grant readers additional information about a certain topic. You can enter additional or side notes by using the following template:
+
+You writeYou get{{XNote|This is an additional note.}}This is an additional note.
+
+Use notes only when it is necessary. A note is less readable than paragraphs.
+

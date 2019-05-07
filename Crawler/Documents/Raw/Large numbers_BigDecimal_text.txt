@@ -1,0 +1,16 @@
+
+TheBigIntegerclass cannot handle decimal numbers. TheBigDecimalclass represents a floating point value of arbitrary precision.  It is composed of both aBigInteger, and a scale value (represented by a 32-bit integer).
+
+
+
+To do:Add some exercises like the ones inVariables
+
+
+
+Mathematical functionsJava ProgrammingLarge numbersRandom numbers
+
+
+
+
+
+

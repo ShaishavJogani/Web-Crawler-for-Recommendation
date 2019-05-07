@@ -1,0 +1,3 @@
+
+The checked exception classes specified after thethrowskeyword are part of the contract between the implementer and user. An overriding method can declare the same exceptions, subclasses or no exceptions.
+

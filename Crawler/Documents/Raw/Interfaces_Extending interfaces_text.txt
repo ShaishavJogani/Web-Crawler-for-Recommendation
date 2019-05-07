@@ -1,0 +1,21 @@
+
+Execution of this example on BlueJ.
+
+An interface can extend several interfaces, similar to the way that a class can extend another class, using theextendskeyword:
+
+
+
+
+This way, a class implementing theInterfaceABinterface has to implement themethodA(), themethodB()and theotherMethod()methods:
+
+
+Doing so, aClassABobject can be casted intoInterfaceA,InterfaceBandInterfaceAB.
+
+
+
+
+InheritanceJava ProgrammingInterfacesOverloading Methods and Constructors
+
+
+
+

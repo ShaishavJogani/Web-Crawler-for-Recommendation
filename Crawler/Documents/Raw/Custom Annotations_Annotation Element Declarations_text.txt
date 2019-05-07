@@ -1,0 +1,6 @@
+
+What look like methods in the body of the annotation definition are calledannotation element declarations. These are the named entities that we used with the annotation body in the example in theprevious section. However, for the sake of clarity, code below also represents the calling of the following annotation:
+
+
+Note:Instead of using the declaration with the class, the annotation is used with the methoddoSomething(). This might not demonstrate the power of annotations yet, but more will be explored in later chapters.
+

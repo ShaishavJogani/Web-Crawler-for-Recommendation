@@ -1,0 +1,3 @@
+
+Afinallyblock can be added after thecatchblocks. Afinallyblock is always executed, even when no exception is thrown, an exception is thrown and caught, or an exception is thrown and not caught. It's a place to put code that should always be executed after an unsafe operation like a file close or a database disconnection. You can define atryblock withoutcatchblock, however, in this case, it must be followed by afinallyblock.
+

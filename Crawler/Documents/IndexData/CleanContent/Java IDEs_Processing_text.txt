@@ -1,0 +1,1 @@
+Processing anenhancedIDE . It add extra command simplified programming model . This make much easy beginner start program Java . It design help graphic artist learn bit program without struggle much . Processing run Windows , GNU/Linux Mac OS X platform . More info : Processing .

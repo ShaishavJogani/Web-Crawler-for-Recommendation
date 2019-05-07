@@ -1,0 +1,90 @@
+
+You can set certain Java Virtual Machine arguments and secure properties for your rich Internet application (RIA) in the RIA's Java Network Launch Protocol (JNLP) file. For applets, you can also set arguments in the java_arguments parameter of the <applet> tag. Although there is a predefined set of secure properties, you can also define new secure properties by prefixing the property name with "jnlp." or "javaws.". Properties can be retrieved in your RIA by using the System.getProperty method.
+Consider the Properties and Arguments Demo applet. The following Java Virtual Machine arguments and properties are set in the applet's JNLP file, 
+appletpropsargs.jnlp.
+
+-Xmx – A secure argument set equal to "256M"
+sun.java2d.noddraw – A predefined secure property set equal to "true"
+jnlp.myProperty – A user-defined secure property set equal to "a user-defined property"
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<jnlp spec="1.0+" codebase="" href="">
+    <information>
+        <title>Properties and Arguments Demo Applet</title>
+        <vendor>Dynamic Team</vendor>
+    </information>
+    <resources>
+        <!-- Application Resources -->
+        <j2se version="1.6+"
+              href="http://java.sun.com/products/autodl/j2se"
+              <!-- secure java vm argument -->
+              java-vm-args="-Xmx256M"/>
+        <jar href="applet_PropertiesAndVMArgs.jar"
+            main="true" />
+            <!-- secure properties -->
+        <property name="sun.java2d.noddraw"
+            value="true"/>
+        <property name="jnlp.myProperty"
+            value="a user-defined property"/>
+    </resources>
+    <applet-desc 
+         name="Properties and Arguments Demo Applet"
+         main-class="PropertiesArgsDemoApplet"
+         width="800"
+         height="50">             
+     </applet-desc>
+     <update check="background"/>
+</jnlp>
+
+The 
+PropertiesArgsDemoApplet class uses the System.getProperty method to retrieve the java.version property and other properties that are set in the JNLP file. The PropertiesArgsDemoApplet class also displays the properties.
+
+
+import javax.swing.JApplet;
+import javax.swing.SwingUtilities;
+import javax.swing.JLabel;
+
+public class PropertiesArgsDemoApplet extends JApplet {
+    public void init() {
+        final String javaVersion = System.getProperty("java.version");
+        final String  swing2dNoDrawProperty = System.getProperty("sun.java2d.noddraw");
+        final String  jnlpMyProperty = System.getProperty("jnlp.myProperty");        
+
+        try {
+            SwingUtilities.invokeAndWait(new Runnable() {
+                public void run() {
+                    createGUI(javaVersion, swing2dNoDrawProperty, jnlpMyProperty);
+                }
+            });
+        } catch (Exception e) {
+            System.err.println("createGUI didn't successfully complete");
+        }
+    }
+    private void createGUI(String javaVersion, String swing2dNoDrawProperty, String jnlpMyProperty) {
+        String text = "Properties: java.version = " + javaVersion + 
+                ",  sun.java2d.noddraw = " + swing2dNoDrawProperty +
+                ",   jnlp.myProperty = " + jnlpMyProperty;
+        JLabel lbl = new JLabel(text);
+        add(lbl);
+    }
+}
+
+The Properties and Arguments Demo applet is shown next. You can also see the applet running in 
+AppletPage.html.
+
+
+//<![CDATA[
+ 
+    var attributes = { code:'PropertiesArgsDemoApplet.class',
+            archive:'examples/dist/applet_PropertiesAndVMArgs/applet_PropertiesAndVMArgs.jar',   
+            width:800, height:50} ;
+    var parameters = { jnlp_href: 'examples/dist/applet_PropertiesAndVMArgs/appletpropsargs.jnlp' };
+    deployJava.runApplet(attributes, parameters, '1.6');
+//]]>
+A browser with JavaScript enabled is required for this page to operate properly.
+Note:  If you don't see the applet running, you need to install at least the Java SE Development Kit (JDK) 6 update 10 release.Note:  If you don't see the example running, you might need to enable the JavaScript interpreter in your browser so that the Deployment Toolkit script can function properly.
+
+Download source code for the Properties and Arguments Demo Applet example to experiment further.
+See 
+System Properties for a complete set of system properties that can be accessed by RIAs.

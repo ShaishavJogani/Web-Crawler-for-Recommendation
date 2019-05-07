@@ -1,0 +1,5 @@
+ try {
+   return 11;
+ }  finally {
+   return 12;
+ }

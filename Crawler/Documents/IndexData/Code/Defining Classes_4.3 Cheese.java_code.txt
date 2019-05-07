@@ -1,0 +1,6 @@
+public class Cheese {
+  // This is a constructor
+  public Cheese() {
+    System.out.println("Construct an instance");
+  }
+}

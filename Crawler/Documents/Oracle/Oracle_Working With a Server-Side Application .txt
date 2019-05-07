@@ -1,0 +1,15 @@
+
+Java applets, like other Java programs, can use the API defined in the java.net package to communicate across the network. A Java applet can communicate with server applications that run on the same host as the applet. This communication does not require any special setup on the server.
+Note: Depending on the networking environment that an applet is loaded into, and depending on the browser that runs the applet, an applet might be unable to communicate with its originating host. For example, browsers running on hosts inside firewalls often cannot obtain much information about the world outside the firewall. As a result, some browsers might not allow applet communication to hosts outside the firewall.
+
+When the applet is deployed to a web server, use the Applet getCodeBase method and the java.net.URL getHost method to determine which host the applet came from, as follows:
+
+String host = getCodeBase().getHost();
+
+If the applet is deployed locally, the getCodeBase method returns null. Use of a web server is recommended.
+After you have the correct host name, you can use all the networking code that is documented in the 
+Custom Networking trail.
+Note: Not all browsers support all networking code flawlessly. For example, one widely used browser compatible with Java technology doesn't support posting to a URL.
+
+For an example of implementing an applet that is a network client, see 
+Network Client Applet Example.

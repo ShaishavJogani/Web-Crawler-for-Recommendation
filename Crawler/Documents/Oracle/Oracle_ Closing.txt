@@ -1,0 +1,39 @@
+
+Normal garbage collection takes care of removing Context instances when they are no longer in use. Connections used by Context instances being garbage collected will be closed automatically. Therefore, you do not need to explicitly close connections. Network connections, however, are limited resources and for certain programs, you might want to have control over their proliferation and usage. This section contains information on how to close connections and how to get notified if the server closes the connection.
+Explicit Closures
+You invoke 
+Context.close() on a Context instance to indicate that you no longer need to use it. If the Context instance being closed is using a dedicated connection, the connection is also closed. If the Context instance is sharing a connection with other Context and unterminated NamingEnumeration instances, the connection will not be closed until close() has been invoked on all such Context and NamingEnumeration instances.
+In the 
+
+example from the 
+Connection Creation example section, all three Context instances must be closed before the underlying connection is closed.
+
+// Create initial context
+DirContext ctx = new InitialDirContext(env);
+
+// Get a copy of the same context
+Context ctx2 = (Context)ctx.lookup("");
+
+// Get a child context
+Context ctx3 = (Context) ctx.lookup("ou=NewHires");
+
+// do something useful with ctx, ctx2, ctx3
+
+// Close the contexts when we're done
+ctx.close();
+ctx2.close();
+ctx3.close();
+
+Forced Implicit Closures
+As mentioned previously, for those Context and NamingEnumeration instances that are no longer in scope, the Java runtime system will eventually garbage collect them, thus cleaning up the state that a close() would have done. To force the garbage collection, you can use the following code.
+
+Runtime.getRuntime().gc();
+Runtime.getRuntime().runFinalization();
+
+Depending on the state of the program, performing this procedure can cause serious (temporary) performance degradation. If you need to ensure that connections are closed, track Context instances and close them explicitly.
+Detecting Connection Closures
+LDAP servers often have an idle timeout period after which they will close connections no longer being used. When you subsequently invoke a method on a Context instance that is using such a connection, the method will throw a 
+CommunicationException. To detect when the server closes the connection that a Context instance is using, you register an 
+UnsolicitedNotificationListener with the Context instance. 
+AN example is shown in the LDAP Unsolicited Notifications section. Although the example is designed for receiving unsolicited notification from the server, it can also be used to detect connection closures by the server. After starting the program, stop the LDAP server and observe that the listener's 
+namingExceptionThrown() method gets called.

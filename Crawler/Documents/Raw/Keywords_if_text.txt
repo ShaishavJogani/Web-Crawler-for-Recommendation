@@ -1,0 +1,15 @@
+
+ifis a Java keyword. It starts a branching statement.
+The general syntax of aif, usingExtended Backus-Naur Form, is
+
+branching-statement ::=ifcondition-clausesingle-statement|block-statement[elsesingle-statement|block-statement]
+ 
+condition-clause    ::=(Boolean Expression)single-statement    ::=Statementblock-statement     ::={Statement[Statements]}
+
+For example:
+
+
+See also:
+
+Java Programming/Keywords/else
+

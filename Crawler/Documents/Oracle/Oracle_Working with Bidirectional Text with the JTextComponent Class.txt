@@ -1,0 +1,104 @@
+
+
+This section discusses how to work with bidirectional text with the
+JTextComponent class. Bidirectional text is text that contains text that runs in two directions, left-to-right and right-to-left. An example of bidirectional text is Arabic text (which runs right-to-left) that contain numbers (which run left-to-right). It is more difficult to display and manage bidirectional text; however the
+JTextComponent handles these issues for you.
+The following topics are covered:
+
+Determining Directionality of Bidirectional Text
+Displaying and Moving Carets
+Hit Testing
+Highlighting Selections
+Setting Component Orientation
+
+For more information about these issues, or if you want more control in handling these issues, see
+Working with Bidirectional Text in the
+2D Graphics trail.
+
+Determining Directionality of Bidirectional Text
+The sample
+BidiTextComponentDemo.java, which is based on  
+TextComponentDemo.java, displays bidirectional text in a
+JTextPane object. In most cases, the Java platform can determine the directionality of bidirectional Unicode text:
+
+Explicitly Specifying Text Run Direction in JTextComponent Objects
+You can specify the run direction of the
+Document object of a
+JTextComponent object. For example, the following statement specifies that the text in the
+JTextPane object textPane runs right-to-left:
+
+textPane.getDocument().putProperty(
+    TextAttribute.RUN_DIRECTION,
+    TextAttribute.RUN_DIRECTION_RTL);
+
+Alternatively, you can specify the component orientation of a particular Swing component based on locale. For example, the following statements specify that the component orientation of the object textPane is based on the ar-SA locale:
+
+Locale arabicSaudiArabia = 
+    new Locale.Builder().setLanguage("ar").setRegion("SA").build();
+
+textPane.setComponentOrientation(
+    ComponentOrientation.getOrientation(arabicSaudiArabia));
+
+Because the run direction of the Arabic language is right-to-left, the run direction of the text contained in the textPane object is right-to-left also.
+See the section Setting Component Orientation for more information.
+
+Displaying and Moving Carets
+In editable text, a caret is used to graphically represent the current insertion point, the position in the text where new characters will be inserted. In the
+BidiTextComponentDemo.java sample, the caret contains a small triangle that points toward the direction where an inserted character will be displayed.
+By default, a
+JTextComponent object creates a keymap (of type
+Keymap) that is shared by all
+JTextComponent instances as the default keymap. A keymap lets an application bind key strokes to action. A default keymap (for
+JTextComponent objects that support caret movement) includes the binding between caret movement forward and backward with the left and right arrow keys, which supports caret movement through bidirectional text.
+
+Hit Testing
+Often, a location in device space must be converted to a text offset. For example, when a user clicks the mouse on selectable text, the location of the mouse is converted to a text offset and used as one end of the selection range. Logically, this is the inverse of positioning a caret.
+You can attach a caret listener to an instance of an
+JTextComponent. A caret listener enables you to handle caret events, which occur when the caret moves or when the selection in a text component changes. You attach a caret listener with the
+addCaretListener method. See
+How to Write a Caret Listener for more information.
+
+Highlighting Selections
+A selected range of characters is represented graphically by a highlight region, an area in which glyphs are displayed with inverse video or against a different background color.
+
+JTextComponent objects implement logical highlighting. This means that the selected characters are always contiguous in the text model, and the highlight region is allowed to be discontiguous. The following is an example of logical highlighting:
+
+
+Setting Component Orientation
+Swing's layout managers understand how locale affects a UI; it is not necessary to create a new layout for each locale. For example, in a locale where text flows right to left, the layout manager will arrange components in the same orientation.
+The sample
+InternationalizedMortgageCalculator.java has been localized for English, United States; English, United Kingdom; French, France; French, Canada; and Arabic, Saudi Arabia.
+The following uses the en-US locale:
+
+The following uses the ar-SA locale:
+
+Note that the components have been laid out in the same direction as the corresponding locale: left-to-right for en-US and right-to-left for ar-SA. The
+InternationalizedMortgageCalculator.java sample calls the methods
+applyComponentOrientation and
+getOrientation to specify the direction of its components by locale:
+
+private static JFrame frame;
+
+// ...
+
+private static void createAndShowGUI(Locale currentLocale) {
+
+    // Create and set up the window.
+    // ...
+    // Add contents to the window.
+    // ...
+    frame.applyComponentOrientation(
+        ComponentOrientation.getOrientation(currentLocale));
+    // ...
+  }
+
+The sample
+InternationalizedMortgageCalculator.java requires the following resource files:
+
+
+resources/Resources.properties
+
+resources/Resources_ar.properties
+
+resources/Resources_fr.properties
+

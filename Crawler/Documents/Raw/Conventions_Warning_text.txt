@@ -1,0 +1,5 @@
+
+To warn the user of things like common pitfalls, theXWarningtemplate should be used as demonstrated:
+
+You writeYou get{{XWarning|This is a warning.}}This is a warning.
+

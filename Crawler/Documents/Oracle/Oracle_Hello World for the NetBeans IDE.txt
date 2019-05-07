@@ -1,0 +1,82 @@
+
+
+It's time to write your first application! These detailed instructions are for users of the NetBeans IDE. The NetBeans IDE runs on the Java platform, which means that you can use it with any operating system for which there is a JDK available. These operating systems include Microsoft Windows, Solaris OS, Linux, and Mac OS X.
+
+
+A Checklist
+Creating Your First Application
+
+Create an IDE Project
+Add JDK 8 to the Platform List (if necessary)
+Add Code to the Generated Source File
+Compile the Source File
+Run the Program
+
+
+Continuing the Tutorial with the NetBeans IDE
+
+
+
+ A Checklist  
+
+To write your first program, you'll need:
+
+
+The Java SE Development Kit (JDK 7 has been selected in this example)
+
+For Microsoft Windows, Solaris OS, and Linux: 
+Java SE Downloads Index page
+For Mac OS X: 
+developer.apple.com
+
+
+
+The NetBeans IDE
+
+For all platforms: 
+NetBeans IDE Downloads Index page
+
+
+
+
+
+
+Creating Your First Application
+Your first application, HelloWorldApp, will simply display the greeting "Hello World!" To create this program, you will:
+
+
+Create an IDE project
+When you create an IDE project, you create an environment in which to build and run your applications. Using IDE projects eliminates configuration issues normally associated with developing on the command line. You can build or run your application by choosing a single menu item within the IDE.
+
+
+Add code to the generated source file
+A source file contains code, written in the Java programming language, that you and other programmers can understand. As part of creating an IDE project, a skeleton source file will be automatically generated. You will then modify the source file to add the "Hello World!" message.
+
+
+Compile the source file into a .class file
+The IDE invokes the Java programming language compiler (javac), which takes your source file and translates its text into instructions that the Java virtual machine can understand. The instructions contained within this file are known as bytecodes.
+
+
+Run the program
+The IDE invokes the Java application launcher tool (java), which uses the Java virtual machine to run your application.
+
+
+Create an IDE Project
+To create an IDE project:
+
+
+Launch the NetBeans IDE.
+
+
+On Microsoft Windows systems, you can use the NetBeans IDE item in the Start menu.
+
+
+On Solaris OS and Linux systems, you execute the IDE launcher script by navigating to the IDE's bin directory and typing ./netbeans.
+
+
+On Mac OS X systems, click the NetBeans IDE application icon.
+
+
+
+
+In the NetBeans IDE, choose File | New Project....

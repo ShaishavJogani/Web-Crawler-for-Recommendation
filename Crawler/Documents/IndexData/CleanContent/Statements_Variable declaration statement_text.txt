@@ -1,0 +1,1 @@
+The simple statement variable declaration : It define variable use store value later use . The first token thedata typeof variable ( type value variable store ) . The second token name variable , refer . Then declaration statement end semicolon ( ; ) .

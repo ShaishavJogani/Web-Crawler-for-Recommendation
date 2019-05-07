@@ -1,0 +1,5 @@
+File file = new File("/etc");
+File[] files = file.listFiles();
+if (files != null) {
+    stuff
+}

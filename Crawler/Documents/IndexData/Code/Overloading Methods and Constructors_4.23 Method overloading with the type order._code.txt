@@ -1,0 +1,7 @@
+public void logIt(String param, Error err) {
+  ...
+}
+
+public void logIt(Error err, String param) {
+  ...
+}

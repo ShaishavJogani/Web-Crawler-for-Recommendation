@@ -1,0 +1,15 @@
+
+The scope of a class, a variable or a method is its visibility and its accessibility. The visibility or accessibility means that you can use the item from a given place.
+
+Scope of method parameters[edit]
+
+A method parameter is visible inside of the entire method but not visible outside the method.
+
+
+Incode listing 3.14,iis visible within the entiremethod1method but not in themethod2and themainmethods.
+
+Scope of local variables[edit]
+
+A local variable is visible after its declaration until the end of the block in which the local variable has been created.
+
+

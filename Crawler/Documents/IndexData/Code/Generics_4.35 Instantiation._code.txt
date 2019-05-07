@@ -1,0 +1,7 @@
+Repository<Integer> arithmeticRepository = new Repository<Integer>();
+arithmeticRepository.setItem(new Integer(1));
+Integer number = arithmeticRepository.getItem();
+
+Repository<String> textualRepository = new Repository<String>();
+textualRepository.setItem("Hello!");
+String message = textualRepository.getItem();

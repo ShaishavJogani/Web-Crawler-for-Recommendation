@@ -1,0 +1,6 @@
+
+This stunning image of the sunset on planet Mars wouldn't have been possible without Java.
+
+If you have chosen Java as your first programming language, be assured that Java is also the first choice for computer science programs in many universities. Its simple and intuitivesyntax, or grammar, helps beginners feel at ease with complex programming constructs quickly.
+However, Java is not abasicprogramming language. In fact, NASA used Java as the driving force (quite literally) behind its Mars Rover missions. Robots, air traffic control systems and the self-checkout barcode scanners in your favorite supermarkets can all be programmed in Java.
+

@@ -1,0 +1,6 @@
+
+Now acting as Ruth, who receives the signed JAR file and the certificate file from Stan, perform the following steps.
+
+Import the Certificate as a Trusted Certificate, using the keytool -import command.
+Verify the JAR File Signature, using the jarsigner tool.
+

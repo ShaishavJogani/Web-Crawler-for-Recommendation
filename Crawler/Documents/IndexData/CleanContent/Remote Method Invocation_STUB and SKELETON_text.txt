@@ -1,0 +1,1 @@
+The remote method invocation go STUB client side call SKELETON server side . CLIENT -- > STUB -- > ... Network ... -- > SKELETON -- > REMOTE OBJECT Prior Java 1.2 skeleton explicitly generate thermictool . Since 1.2 dynamic skeleton use , employ feature Java Reflection work .

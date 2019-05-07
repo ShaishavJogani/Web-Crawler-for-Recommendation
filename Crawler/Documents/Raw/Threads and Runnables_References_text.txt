@@ -1,0 +1,18 @@
+
+↑The number of tasks that can be run simultaneously for a single Java application depends on how many tasks an operating system allows to be multithreaded.
+
+Daemon thread tutorial
+
+
+
+To do:Add some exercises like the ones inVariables
+
+
+
+Concurrent ProgrammingJava ProgrammingThreads and RunnablesBasic Synchronization
+
+
+
+
+
+

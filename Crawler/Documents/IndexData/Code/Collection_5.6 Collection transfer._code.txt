@@ -1,0 +1,15 @@
+import java.util.Collection
+import java.util.Iterator
+...
+public boolean addAll(Collection coll) {
+   int sizeBefore = this.size();
+   Iterator iter = coll.iterator();
+   while(iter.hasNext()) {
+      this.add(iter.next());
+   }
+   if (sizeBefore > this.size()) {
+      return true;
+   } else {
+      return false;
+   }
+}
