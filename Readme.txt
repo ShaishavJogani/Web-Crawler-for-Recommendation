@@ -1,6 +1,3 @@
-AW Assignment 2
-Submitted By: Shaishavkumar Jogani
-
 Crawler:(Crawler folder)
 1> To crawl Java Wikibooks Pages data, run: 
 	python crwal.py
